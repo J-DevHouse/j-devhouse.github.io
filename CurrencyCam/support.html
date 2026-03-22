@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurrencyCam - Support</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #333; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #e0e0e0; }
+  .header h1 { font-size: 28px; color: #1a1a1a; margin-bottom: 4px; }
+  .header .app-name { font-size: 15px; color: #666; margin-bottom: 8px; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 0 6px; padding: 6px 14px; font-size: 13px; color: #555; text-decoration: none; border: 1px solid #ddd; border-radius: 6px; transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: #007AFF; color: #fff; border-color: #007AFF; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; color: #1a1a1a; margin: 28px 0 12px; }
+  p, li { font-size: 15px; color: #444; margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .faq-item { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+  .faq-item h3 { font-size: 16px; color: #1a1a1a; margin-bottom: 8px; }
+  .faq-item p { margin-bottom: 0; font-size: 14px; color: #555; }
+  .contact-card { background: linear-gradient(135deg, #007AFF, #0055CC); color: #fff; border-radius: 12px; padding: 28px; margin-top: 32px; text-align: center; }
+  .contact-card h2 { color: #fff; margin: 0 0 12px; }
+  .contact-card p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+  .contact-card a { display: inline-block; background: #fff; color: #007AFF; text-decoration: none; padding: 10px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; }
+  .contact-card a:hover { background: #f0f0f0; }
+  .tip { background: #fff3cd; border-left: 3px solid #ffc107; padding: 12px 16px; border-radius: 4px; margin: 16px 0; }
+  .tip p { margin-bottom: 0; color: #856404; font-size: 14px; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name">CurrencyCam</div>
+    <h1>Support</h1>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">中文</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>How does CurrencyCam work?</h3>
+      <p>Simply point your iPhone camera at any price tag, receipt, or menu. The app uses OCR (Optical Character Recognition) to detect amounts and instantly converts them to your selected currencies.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does the app need an internet connection?</h3>
+      <p>No. Currency detection and conversion work entirely offline using built-in exchange rates. An internet connection is only needed for displaying ads.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>The camera is not detecting any amounts. What should I do?</h3>
+      <p>Try these steps:</p>
+      <ul style="margin-top:8px">
+        <li>Ensure the text is well-lit and clearly visible</li>
+        <li>Hold the camera steady and at a reasonable distance</li>
+        <li>Make sure the amounts include recognizable numbers (e.g., 1,234 or $56.78)</li>
+        <li>Check that camera permission is granted in iOS Settings > CurrencyCam</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I change the source or target currency?</h3>
+      <p>Tap the gear icon (⚙) in the top-right corner to open Settings. You can change the source (detected) currency and add/remove target currencies there.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I set my own exchange rates?</h3>
+      <p>Yes! In Settings, each target currency has an editable rate field. Simply type in your preferred rate and it will be used for all conversions.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I convert to multiple currencies at once?</h3>
+      <p>In Settings, tap the currency selection button to add multiple target currencies. On the main screen, you can quickly switch between them using the currency tabs at the bottom.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I change the app language?</h3>
+      <p>Go to Settings > App Language. CurrencyCam supports English, Japanese, Simplified Chinese, Traditional Chinese, and Spanish.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Are the exchange rates up to date?</h3>
+      <p>The app includes built-in default rates for offline use. For the most accurate rates, you can manually update them in Settings based on current market rates.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Tip:</strong> Use the freeze button (top-left) to pause the camera and examine detected amounts without the view updating.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>Still need help?</h2>
+      <p>We're happy to assist. Send us an email and we'll get back to you as soon as possible.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <h2>よくあるご質問</h2>
+
+    <div class="faq-item">
+      <h3>為替カメラはどのように使いますか？</h3>
+      <p>iPhoneのカメラを値札、レシート、メニューなどに向けるだけです。OCR（光学文字認識）技術で金額を自動検出し、選択した通貨に即座に換算します。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>インターネット接続は必要ですか？</h3>
+      <p>いいえ。通貨検出と換算は内蔵の為替レートを使用してすべてオフラインで動作します。インターネット接続は広告表示にのみ必要です。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>カメラが金額を検出しません。どうすればいいですか？</h3>
+      <p>以下をお試しください：</p>
+      <ul style="margin-top:8px">
+        <li>テキストが十分に明るく、はっきり見えることを確認してください</li>
+        <li>カメラを安定させ、適切な距離を保ってください</li>
+        <li>金額に認識可能な数字が含まれていることを確認してください（例：1,234 や ¥5,678）</li>
+        <li>iOS設定 > 為替カメラ でカメラの許可が有効になっているか確認してください</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>元通貨や目標通貨を変更するには？</h3>
+      <p>右上の歯車アイコン（⚙）をタップして設定を開きます。元通貨（検出通貨）の変更や、目標通貨の追加・削除ができます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>独自の為替レートを設定できますか？</h3>
+      <p>はい！設定画面で各目標通貨のレート入力欄を編集できます。お好みのレートを入力すると、すべての換算に適用されます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>複数の通貨に同時換算するには？</h3>
+      <p>設定画面で通貨選択ボタンをタップし、複数の目標通貨を追加します。メイン画面では、下部の通貨タブをタップして素早く切り替えできます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>アプリの言語を変更するには？</h3>
+      <p>設定 > アプリの言語 から変更できます。英語、日本語、簡体中文、繁體中文、スペイン語に対応しています。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>為替レートは最新ですか？</h3>
+      <p>オフライン利用のためにデフォルトのレートが内蔵されています。最新のレートを使用したい場合は、設定画面で現在の市場レートに手動で更新できます。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>ヒント：</strong>左上のフリーズボタンを使うと、カメラを一時停止して検出された金額をゆっくり確認できます。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>解決しませんか？</h2>
+      <p>お気軽にメールでお問い合わせください。できるだけ早くご返信いたします。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
+    </div>
+  </div>
+
+  <!-- Chinese -->
+  <div id="zh" class="section">
+    <h2>常见问题</h2>
+
+    <div class="faq-item">
+      <h3>汇率相机怎么使用？</h3>
+      <p>只需将 iPhone 摄像头对准任何价格标签、收据或菜单。应用使用 OCR（光学字符识别）技术自动检测金额，并即时转换为您选择的货币。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>需要联网吗？</h3>
+      <p>不需要。货币检测和换算使用内置汇率，完全离线运行。仅广告显示需要网络连接。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>相机检测不到金额怎么办？</h3>
+      <p>请尝试以下步骤：</p>
+      <ul style="margin-top:8px">
+        <li>确保文字光线充足、清晰可见</li>
+        <li>保持相机稳定，与文字保持适当距离</li>
+        <li>确保金额包含可识别的数字（如 1,234 或 ¥5,678）</li>
+        <li>检查 iOS 设置 > 汇率相机 中的相机权限是否已开启</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何更改源货币或目标货币？</h3>
+      <p>点击右上角的齿轮图标（⚙）打开设置。在设置中可以更改源货币（检测货币），以及添加或删除目标货币。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>可以设置自定义汇率吗？</h3>
+      <p>可以！在设置中，每个目标货币都有可编辑的汇率输入框。输入您想要的汇率，即可应用于所有换算。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何同时换算多种货币？</h3>
+      <p>在设置中点击货币选择按钮，添加多个目标货币。在主界面，通过底部的货币标签可以快速切换。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何切换应用语言？</h3>
+      <p>进入设置 > 应用语言。支持英语、日语、简体中文、繁体中文和西班牙语。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>汇率是最新的吗？</h3>
+      <p>应用内置了默认汇率供离线使用。如需使用最新汇率，可在设置中根据当前市场汇率手动更新。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>提示：</strong>使用左上角的冻结按钮可以暂停相机画面，方便仔细查看检测到的金额。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>还有问题？</h2>
+      <p>欢迎通过邮件联系我们，我们会尽快回复。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">联系我们</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 CurrencyCam. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

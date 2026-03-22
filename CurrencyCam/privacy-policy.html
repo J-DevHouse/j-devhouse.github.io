@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurrencyCam - Privacy Policy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #333; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #e0e0e0; }
+  .header h1 { font-size: 28px; color: #1a1a1a; margin-bottom: 4px; }
+  .header .app-name { font-size: 15px; color: #666; margin-bottom: 8px; }
+  .header .date { font-size: 13px; color: #999; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 0 6px; padding: 6px 14px; font-size: 13px; color: #555; text-decoration: none; border: 1px solid #ddd; border-radius: 6px; transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: #007AFF; color: #fff; border-color: #007AFF; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; color: #1a1a1a; margin: 28px 0 12px; }
+  h3 { font-size: 16px; color: #333; margin: 20px 0 8px; }
+  p, li { font-size: 15px; color: #444; margin-bottom: 10px; }
+  ul { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .highlight { background: #e8f4fd; border-left: 3px solid #007AFF; padding: 12px 16px; border-radius: 4px; margin: 16px 0; }
+  .highlight p { margin-bottom: 0; color: #1a5276; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name">CurrencyCam</div>
+    <h1>Privacy Policy</h1>
+    <div class="date">Last updated: March 22, 2026</div>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">中文</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <div class="highlight"><p>CurrencyCam is designed with your privacy in mind. We do not collect, store, or transmit any personal data.</p></div>
+
+    <h2>1. Information We Collect</h2>
+    <h3>Camera Access</h3>
+    <p>CurrencyCam requires camera access to detect currency amounts in real-time. Camera images are processed entirely on your device and are never stored, uploaded, or transmitted to any server.</p>
+    <h3>User Preferences</h3>
+    <p>Your currency selections and custom exchange rates are stored locally on your device using standard iOS storage (UserDefaults). This data never leaves your device.</p>
+    <h3>No Personal Data Collection</h3>
+    <p>We do not collect any of the following:</p>
+    <ul>
+      <li>Names, email addresses, or contact information</li>
+      <li>Location data</li>
+      <li>Device identifiers for tracking purposes</li>
+      <li>Usage analytics or behavioral data</li>
+      <li>Photos, images, or camera recordings</li>
+    </ul>
+
+    <h2>2. Third-Party Services</h2>
+    <h3>Google AdMob</h3>
+    <p>CurrencyCam uses Google AdMob to display advertisements. AdMob may collect certain data as described in <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>. This may include:</p>
+    <ul>
+      <li>Device information (model, OS version)</li>
+      <li>Advertising identifier (IDFA), subject to your App Tracking Transparency choice</li>
+      <li>IP address (for approximate location-based ad serving)</li>
+    </ul>
+    <p>You can opt out of personalized advertising through your iOS Settings > Privacy & Security > Tracking.</p>
+
+    <h2>3. App Tracking Transparency</h2>
+    <p>On iOS 14.5 and later, CurrencyCam will ask for your permission before tracking you across other apps and websites. If you decline, you will still see ads, but they will not be personalized based on your activity across other apps.</p>
+
+    <h2>4. Data Security</h2>
+    <p>All currency detection and conversion processing occurs entirely on your device. No image data or conversion results are transmitted over the internet. Your custom exchange rate settings are stored locally and protected by iOS's built-in security mechanisms.</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>CurrencyCam does not knowingly collect any personal information from children under the age of 13. The app does not require any personal information to function.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have any questions about this privacy policy, please contact us at:</p>
+    <p><strong>Email:</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <div class="highlight"><p>為替カメラはプライバシーを最優先に設計されています。個人データの収集・保存・送信は一切行いません。</p></div>
+
+    <h2>1. 収集する情報</h2>
+    <h3>カメラへのアクセス</h3>
+    <p>為替カメラは、リアルタイムで金額を検出するためにカメラへのアクセスを必要とします。カメラ画像はすべてお使いのデバイス上で処理され、保存・アップロード・外部送信されることはありません。</p>
+    <h3>ユーザー設定</h3>
+    <p>通貨の選択やカスタム為替レートは、iOSの標準ストレージ（UserDefaults）を使用してデバイスにローカル保存されます。これらのデータがデバイスの外に出ることはありません。</p>
+    <h3>個人データの非収集</h3>
+    <p>以下の情報は一切収集しません：</p>
+    <ul>
+      <li>氏名、メールアドレス、連絡先情報</li>
+      <li>位置情報</li>
+      <li>トラッキング目的のデバイス識別子</li>
+      <li>利用状況の分析データや行動データ</li>
+      <li>写真、画像、カメラの録画データ</li>
+    </ul>
+
+    <h2>2. 第三者サービス</h2>
+    <h3>Google AdMob</h3>
+    <p>為替カメラは広告表示のためにGoogle AdMobを使用しています。AdMobは<a href="https://policies.google.com/privacy" target="_blank">Googleのプライバシーポリシー</a>に記載されたデータを収集する場合があります：</p>
+    <ul>
+      <li>デバイス情報（機種、OSバージョン）</li>
+      <li>広告識別子（IDFA）※Appトラッキング透明性の選択に従います</li>
+      <li>IPアドレス（おおよその位置に基づく広告配信のため）</li>
+    </ul>
+    <p>パーソナライズド広告は、iOSの設定 > プライバシーとセキュリティ > トラッキングからオプトアウトできます。</p>
+
+    <h2>3. Appトラッキング透明性</h2>
+    <p>iOS 14.5以降では、他のアプリやWebサイトを横断したトラッキングについて事前に許可を求めます。拒否した場合でも広告は表示されますが、他のアプリでの行動に基づくパーソナライズはされません。</p>
+
+    <h2>4. データセキュリティ</h2>
+    <p>通貨の検出と換算処理はすべてデバイス上で完結します。画像データや換算結果がインターネットを通じて送信されることはありません。カスタム為替レートの設定はローカルに保存され、iOS内蔵のセキュリティ機構により保護されています。</p>
+
+    <h2>5. お子様のプライバシー</h2>
+    <p>為替カメラは、13歳未満のお子様から個人情報を意図的に収集することはありません。本アプリの利用に個人情報は必要ありません。</p>
+
+    <h2>6. ポリシーの変更</h2>
+    <p>本プライバシーポリシーは随時更新される場合があります。変更がある場合は、このページに更新日とともに反映されます。変更後もアプリを継続して使用した場合、改訂されたポリシーに同意したものとみなされます。</p>
+
+    <h2>7. お問い合わせ</h2>
+    <p>本プライバシーポリシーに関するご質問は、以下までご連絡ください：</p>
+    <p><strong>メール：</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Chinese -->
+  <div id="zh" class="section">
+    <div class="highlight"><p>汇率相机以保护您的隐私为设计原则。我们不收集、存储或传输任何个人数据。</p></div>
+
+    <h2>1. 我们收集的信息</h2>
+    <h3>相机访问</h3>
+    <p>汇率相机需要访问您的相机以实时检测货币金额。相机图像完全在您的设备上处理，不会被存储、上传或传输到任何服务器。</p>
+    <h3>用户偏好设置</h3>
+    <p>您的货币选择和自定义汇率使用 iOS 标准存储（UserDefaults）保存在本地设备上，这些数据不会离开您的设备。</p>
+    <h3>不收集个人数据</h3>
+    <p>我们不收集以下任何信息：</p>
+    <ul>
+      <li>姓名、电子邮件地址或联系方式</li>
+      <li>位置数据</li>
+      <li>用于追踪目的的设备标识符</li>
+      <li>使用分析或行为数据</li>
+      <li>照片、图像或相机录像</li>
+    </ul>
+
+    <h2>2. 第三方服务</h2>
+    <h3>Google AdMob</h3>
+    <p>汇率相机使用 Google AdMob 显示广告。AdMob 可能会按照 <a href="https://policies.google.com/privacy" target="_blank">Google 隐私政策</a>收集某些数据，包括：</p>
+    <ul>
+      <li>设备信息（型号、操作系统版本）</li>
+      <li>广告标识符（IDFA），取决于您的 App 跟踪透明度选择</li>
+      <li>IP 地址（用于基于大致位置的广告投放）</li>
+    </ul>
+    <p>您可以通过 iOS 设置 > 隐私与安全性 > 跟踪，来选择退出个性化广告。</p>
+
+    <h2>3. App 跟踪透明度</h2>
+    <p>在 iOS 14.5 及更高版本上，汇率相机会在跨应用和网站追踪您之前征求您的许可。如果您拒绝，仍会看到广告，但广告不会基于您在其他应用中的活动进行个性化。</p>
+
+    <h2>4. 数据安全</h2>
+    <p>所有货币检测和换算处理完全在您的设备上进行。没有任何图像数据或换算结果通过互联网传输。您的自定义汇率设置存储在本地，受 iOS 内置安全机制保护。</p>
+
+    <h2>5. 儿童隐私</h2>
+    <p>汇率相机不会有意收集 13 岁以下儿童的任何个人信息。本应用的使用不需要任何个人信息。</p>
+
+    <h2>6. 政策变更</h2>
+    <p>我们可能会不时更新本隐私政策。任何变更都将在本页面上反映并更新日期。变更后继续使用本应用即表示您接受修订后的政策。</p>
+
+    <h2>7. 联系我们</h2>
+    <p>如您对本隐私政策有任何疑问，请通过以下方式联系我们：</p>
+    <p><strong>邮箱：</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 CurrencyCam. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

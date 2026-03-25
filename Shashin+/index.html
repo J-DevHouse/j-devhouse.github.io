@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashin+ - スマホで簡単！証明写真アプリ</title>
+    <meta name="description" content="Shashin+ は背景除去・美肌加工・自動レイアウト機能を搭載した証明写真アプリ。パスポート・履歴書・免許証サイズ対応。コンビニで手軽に印刷。">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; color: #1a1a1a; background: #fff; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(160deg, #007AFF 0%, #5856D6 50%, #AF52DE 100%);
+            color: #fff;
+            text-align: center;
+            padding: 60px 24px 48px;
+        }
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 27px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .hero .tagline {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        /* Features */
+        .features {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 56px 24px;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 40px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .feature-card .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        .feature-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Sizes */
+        .sizes {
+            background: #f5f5f7;
+            padding: 56px 24px;
+        }
+        .sizes-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .sizes h2 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        .sizes .desc {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+        .size-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .size-tag {
+            background: #fff;
+            border-radius: 10px;
+            padding: 14px 20px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            min-width: 140px;
+        }
+        .size-tag .name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .size-tag .dim { font-size: 13px; color: #888; }
+
+        /* Pricing */
+        .pricing {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 56px 24px;
+            text-align: center;
+        }
+        .pricing h2 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        .pricing .desc {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+        .pricing-table {
+            max-width: 480px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: #fff;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .pricing-row:last-child { border-bottom: none; }
+        .pricing-row .label { font-size: 15px; text-align: left; }
+        .pricing-row .price { font-size: 15px; font-weight: 700; white-space: nowrap; }
+        .price-free { color: #34C759; }
+        .price-paid { color: #007AFF; }
+        .pricing-footer {
+            font-size: 13px;
+            color: #888;
+            margin-top: 16px;
+            line-height: 1.7;
+        }
+
+        /* How to print */
+        .print-section {
+            background: #f5f5f7;
+            padding: 56px 24px;
+        }
+        .print-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .print-section h2 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        .print-section .desc {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+        .print-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .print-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .print-card .store-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .print-card h4 { font-size: 15px; margin-bottom: 4px; }
+        .print-card .app-name { font-size: 13px; color: #888; margin-bottom: 6px; }
+        .print-card .print-price { font-size: 14px; font-weight: 600; color: #007AFF; }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(160deg, #007AFF 0%, #5856D6 100%);
+            color: #fff;
+            text-align: center;
+            padding: 56px 24px;
+        }
+        .cta h2 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        .cta p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+        }
+        .cta .download-btn {
+            background: #fff;
+            color: #007AFF;
+        }
+        .cta .download-btn svg { fill: #007AFF; }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 32px 24px;
+            font-size: 13px;
+            color: #aaa;
+        }
+        .site-footer a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .site-footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="icon.png" alt="Shashin+ アイコン" class="hero-icon">
+        <h1>Shashin+</h1>
+        <p class="tagline">スマホで簡単、プロ品質の証明写真を。<br>背景除去・美肌加工・自動レイアウト搭載。</p>
+        <a href="https://apps.apple.com/us/app/shashin/id6758946739" class="download-btn">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store でダウンロード
+        </a>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <h2>主な機能</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">&#128247;</div>
+                <h3>AI背景除去</h3>
+                <p>ワンタップで人物を自動検出し、背景を除去。白・青・グレーなど好きな色に変更できます。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#10024;</div>
+                <h3>美肌加工</h3>
+                <p>ブラシで気になる部分を塗るだけ。美肌・クマ除去・シワ除去の3つの効果で自然に仕上げます。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128196;</div>
+                <h3>自動レイアウト</h3>
+                <p>証明写真を用紙に自動配置。複数サイズを1枚に混載でき、用紙を無駄なく使えます。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9986;</div>
+                <h3>トリミング調整</h3>
+                <p>サイズごとに顔の位置や切り抜き範囲を細かく調整。規格に合った写真を正確に作成。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128438;</div>
+                <h3>高品質300DPI出力</h3>
+                <p>プロの写真スタジオと同等の300DPIで出力。コンビニ印刷でもキレイに仕上がります。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128190;</div>
+                <h3>履歴管理</h3>
+                <p>作成した写真は履歴に自動保存。いつでも無料で再共有でき、追加料金はかかりません。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Sizes -->
+    <section class="sizes">
+        <div class="sizes-inner">
+            <h2>対応サイズ</h2>
+            <p class="desc">日本で使われる主要な証明写真サイズに対応。カスタムサイズも追加可能です。</p>
+            <div class="size-tags">
+                <div class="size-tag">
+                    <div class="name">パスポート</div>
+                    <div class="dim">35 x 45 mm</div>
+                </div>
+                <div class="size-tag">
+                    <div class="name">履歴書</div>
+                    <div class="dim">30 x 40 mm</div>
+                </div>
+                <div class="size-tag">
+                    <div class="name">運転免許証</div>
+                    <div class="dim">24 x 30 mm</div>
+                </div>
+                <div class="size-tag">
+                    <div class="name">マイナンバーカード</div>
+                    <div class="dim">35 x 45 mm</div>
+                </div>
+                <div class="size-tag">
+                    <div class="name">カスタムサイズ</div>
+                    <div class="dim">15〜60 mm 自由設定</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <h2>ご利用料金</h2>
+        <p class="desc">ダウンロード無料。編集・加工機能はすべて無料でお使いいただけます。</p>
+
+        <div class="pricing-table">
+            <div class="pricing-row">
+                <span class="label">アプリのダウンロード</span>
+                <span class="price price-free">無料</span>
+            </div>
+            <div class="pricing-row">
+                <span class="label">写真の編集・加工・プレビュー</span>
+                <span class="price price-free">無料</span>
+            </div>
+            <div class="pricing-row">
+                <span class="label">背景除去・美肌加工</span>
+                <span class="price price-free">無料</span>
+            </div>
+            <div class="pricing-row">
+                <span class="label">写真の共有・保存（初回）</span>
+                <span class="price price-paid">¥100</span>
+            </div>
+            <div class="pricing-row">
+                <span class="label">履歴からの再共有</span>
+                <span class="price price-free">無料</span>
+            </div>
+        </div>
+
+        <p class="pricing-footer">
+            ※ 写真を新規作成して初めて共有する際に ¥100 のアプリ内課金が発生します。<br>
+            ※ 共有済みの写真は履歴からいつでも無料で再共有できます。<br>
+            ※ お支払いはApple IDを通じて処理されます。
+        </p>
+    </section>
+
+    <!-- Convenience Store Printing -->
+    <section class="print-section">
+        <div class="print-inner">
+            <h2>コンビニで手軽に印刷</h2>
+            <p class="desc">共有ボタンから各コンビニのプリントアプリに写真を送るだけ。</p>
+            <div class="print-grid">
+                <div class="print-card">
+                    <div class="store-icon" style="background: #FF6B00;">7</div>
+                    <h4>セブン-イレブン</h4>
+                    <div class="app-name">かんたんnetprint</div>
+                    <div class="print-price">L判 40円〜</div>
+                </div>
+                <div class="print-card">
+                    <div class="store-icon" style="background: #0068B7;">L</div>
+                    <h4>ローソン / ファミマ</h4>
+                    <div class="app-name">PrintSmash</div>
+                    <div class="print-price">L判 30円〜</div>
+                </div>
+                <div class="print-card">
+                    <div class="store-icon" style="background: #FFB700; color: #333;">M</div>
+                    <h4>ミニストップ</h4>
+                    <div class="app-name">おきがるプリント</div>
+                    <div class="print-price">L判 30円〜</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>今すぐ証明写真を作ろう</h2>
+        <p>写真スタジオに行く必要はもうありません。<br>スマホ1台で、プロ品質の証明写真を。</p>
+        <a href="https://apps.apple.com/us/app/shashin/id6758946739" class="download-btn">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store でダウンロード
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="privacy.html">プライバシーポリシー</a>
+            <a href="disclaimer.html">利用規約</a>
+            <a href="support.html">サポート</a>
+            <a href="tutorial.html">使い方ガイド</a>
+        </div>
+        &copy; 2025 J-DevHouse
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使い方ガイド - Shashin+</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; line-height: 1.8; color: #333; background: #f9f9f9; padding: 20px; }
+        .container { max-width: 680px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 32px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        h1 { font-size: 22px; margin-bottom: 8px; }
+        h2 { font-size: 17px; margin-top: 28px; margin-bottom: 12px; color: #1a1a1a; }
+        h3 { font-size: 15px; margin-top: 20px; margin-bottom: 8px; color: #1a1a1a; }
+        p, li { font-size: 15px; margin-bottom: 8px; }
+        .subtitle { font-size: 14px; color: #888; margin-bottom: 24px; }
+
+        /* Steps */
+        .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+        .step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #007AFF; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+        .step-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+        .step-body p { font-size: 14px; color: #555; margin-bottom: 0; }
+
+        /* Divider */
+        .divider { border: none; border-top: 1px solid #e5e5e5; margin: 28px 0; }
+
+        /* Convenience store cards */
+        .store-card { background: #f5f5f7; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .store-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .store-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 14px; }
+        .store-name { font-size: 15px; font-weight: 600; }
+        .store-app { font-size: 13px; color: #888; }
+        .store-steps { padding-left: 18px; margin-bottom: 8px; }
+        .store-steps li { font-size: 14px; margin-bottom: 4px; }
+        .store-note { display: inline-block; font-size: 12px; color: #666; background: #e5e5ea; border-radius: 20px; padding: 3px 10px; }
+
+        /* Pricing */
+        .pricing-box { background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%); border-radius: 12px; padding: 24px; color: #fff; margin-top: 28px; }
+        .pricing-box h2 { color: #fff; margin-top: 0; margin-bottom: 16px; font-size: 18px; }
+        .price-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        .price-item:last-child { border-bottom: none; }
+        .price-label { font-size: 15px; }
+        .price-value { font-size: 15px; font-weight: 700; }
+        .price-free { color: #30D158; }
+        .pricing-note { font-size: 13px; margin-top: 12px; opacity: 0.85; line-height: 1.6; }
+
+        /* Tips */
+        .tip-box { background: #FFF9E6; border-radius: 12px; padding: 16px; margin-top: 20px; }
+        .tip-box h3 { color: #B8860B; margin-top: 0; font-size: 15px; }
+        .tip-row { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 4px; }
+        .tip-row .check { color: #34C759; font-size: 13px; margin-top: 2px; }
+        .tip-row span { font-size: 14px; color: #555; }
+
+        .footer { text-align: center; margin-top: 32px; font-size: 13px; color: #aaa; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>使い方ガイド</h1>
+        <p class="subtitle">Shashin+ で証明写真を作成・印刷する方法</p>
+
+        <!-- App Usage Steps -->
+        <h2>アプリの使い方</h2>
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <h4>写真を選択</h4>
+                <p>画面下部の「写真を選択」をタップして、証明写真に使いたい写真をカメラロールから選びます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <h4>背景除去（任意）</h4>
+                <p>「背景除去」をタップすると、人物が自動検出され背景が除去されます。もう一度タップすると元の写真に戻せます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <h4>背景色を選択</h4>
+                <p>背景除去後、白・青・グレーのプリセットまたはカスタムカラーから背景色を選択できます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+                <h4>美肌加工（任意）</h4>
+                <p>「美肌加工」をタップして、ブラシで肌の気になる部分を塗ると、美肌・クマ除去・シワ除去の効果が適用されます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+                <h4>サイズ・枚数を設定</h4>
+                <p>よく使うサイズはピン留めして常に表示。カスタムサイズの追加もできます。パスポート・履歴書・運転免許証・マイナンバーカードなど多数対応。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-body">
+                <h4>用紙サイズを選択</h4>
+                <p>L判・2L判・はがき・A4のプリセットから選択、またはカスタムサイズを追加できます。写真は選択した用紙に自動配置されます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">7</div>
+            <div class="step-body">
+                <h4>トリミング調整（任意）</h4>
+                <p>サイズ横のトリミングアイコンをタップすると、各サイズごとに顔の位置や切り抜き範囲を手動で調整できます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">8</div>
+            <div class="step-body">
+                <h4>共有・印刷</h4>
+                <p>画面下部の「共有」ボタンをタップして、コンビニのプリントアプリやAirPrintで印刷できます。</p>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="pricing-box">
+            <h2>ご利用料金</h2>
+
+            <div class="price-item">
+                <span class="price-label">アプリのダウンロード</span>
+                <span class="price-value price-free">無料</span>
+            </div>
+            <div class="price-item">
+                <span class="price-label">写真の編集・加工・プレビュー</span>
+                <span class="price-value price-free">無料</span>
+            </div>
+            <div class="price-item">
+                <span class="price-label">背景除去・美肌加工</span>
+                <span class="price-value price-free">無料</span>
+            </div>
+            <div class="price-item">
+                <span class="price-label">写真の共有・保存（初回）</span>
+                <span class="price-value">¥100</span>
+            </div>
+            <div class="price-item">
+                <span class="price-label">履歴からの再共有</span>
+                <span class="price-value price-free">無料</span>
+            </div>
+
+            <p class="pricing-note">
+                ※ 写真を新規作成して初めて共有する際に1回 ¥100 のアプリ内課金が発生します。<br>
+                ※ 一度共有した写真は「履歴」タブからいつでも無料で再共有できます。<br>
+                ※ 写真を変更した場合は、再度共有時に購入が必要になります。<br>
+                ※ お支払いはApple IDを通じて処理されます。
+            </p>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Convenience Store Printing -->
+        <h2>コンビニプリントの手順</h2>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">共有ボタンから各コンビニのプリントアプリに写真を送信してください。</p>
+
+        <div class="store-card">
+            <div class="store-header">
+                <div class="store-icon" style="background: #FF6B00;">7</div>
+                <div>
+                    <div class="store-name">セブン-イレブン</div>
+                    <div class="store-app">アプリ：かんたんnetprint</div>
+                </div>
+            </div>
+            <ol class="store-steps">
+                <li>「かんたんnetprint」アプリをインストール</li>
+                <li>本アプリの共有ボタンから「かんたんnetprint」を選択</li>
+                <li>用紙サイズは選択した用紙に合わせて設定（例：L判）</li>
+                <li>予約番号が発行されるのでメモ</li>
+                <li>セブン-イレブンのマルチコピー機で「ネットプリント」→ 予約番号を入力</li>
+            </ol>
+            <span class="store-note">料金：L判 1枚 40円（税込）</span>
+        </div>
+
+        <div class="store-card">
+            <div class="store-header">
+                <div class="store-icon" style="background: #0068B7;">L</div>
+                <div>
+                    <div class="store-name">ローソン / ファミリーマート</div>
+                    <div class="store-app">アプリ：PrintSmash</div>
+                </div>
+            </div>
+            <ol class="store-steps">
+                <li>「PrintSmash」アプリをインストール</li>
+                <li>本アプリの共有ボタンから「PrintSmash」を選択、またはPrintSmashアプリで写真を追加</li>
+                <li>コンビニのマルチコピー機の前でPrintSmashからWi-Fi接続</li>
+                <li>マルチコピー機で「写真プリント」→ 用紙サイズを選択</li>
+                <li>印刷を実行</li>
+            </ol>
+            <span class="store-note">料金：L判 1枚 30円（税込）</span>
+        </div>
+
+        <div class="store-card">
+            <div class="store-header">
+                <div class="store-icon" style="background: #FFB700; color: #333;">M</div>
+                <div>
+                    <div class="store-name">ミニストップ</div>
+                    <div class="store-app">アプリ：おきがるプリント&スキャン</div>
+                </div>
+            </div>
+            <ol class="store-steps">
+                <li>「おきがるプリント&スキャン」アプリをインストール</li>
+                <li>アプリに写真を追加してプリント番号を取得</li>
+                <li>ミニストップのマルチコピー機で「コンテンツプリント」→ プリント番号を入力</li>
+                <li>用紙サイズを選択して印刷</li>
+            </ol>
+            <span class="store-note">料金：L判 1枚 30円（税込）</span>
+        </div>
+
+        <!-- Tips -->
+        <div class="tip-box">
+            <h3>印刷のコツ</h3>
+            <div class="tip-row"><span class="check">&#10003;</span><span>本アプリは300DPI（高品質）で画像を出力します</span></div>
+            <div class="tip-row"><span class="check">&#10003;</span><span>用紙サイズに合わせて印刷設定してください（L判、2L判、はがき、A4等）</span></div>
+            <div class="tip-row"><span class="check">&#10003;</span><span>「フチなし」印刷を推奨します</span></div>
+            <div class="tip-row"><span class="check">&#10003;</span><span>印刷後、ハサミやカッターで切り取ってください</span></div>
+            <div class="tip-row"><span class="check">&#10003;</span><span>用紙背景色もカスタマイズ可能です</span></div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 J-DevHouse
+        </div>
+    </div>
+</body>
+</html>

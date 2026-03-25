@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家計簿 使い方ガイド</title>
+<style>
+  :root {
+    --theme: #4F7971;
+    --theme-light: #e8f0ee;
+    --theme-dark: #3d5e58;
+    --bg: #f7f9f8;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --text-sub: #666666;
+    --border: #e0e0e0;
+    --accent-blue: #4a90d9;
+    --accent-green: #34a853;
+    --accent-orange: #f5a623;
+    --accent-red: #e74c3c;
+    --accent-purple: #8e44ad;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding-bottom: 80px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--theme) 0%, var(--theme-dark) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 800; letter-spacing: 1px; }
+  .hero .subtitle { font-size: 14px; opacity: 0.85; margin-top: 6px; }
+  .hero .tagline {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 18px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  /* ===== Navigation ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 0 12px;
+  }
+  .nav a {
+    display: inline-block;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--text-sub);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav a:hover, .nav a.active {
+    color: var(--theme);
+    border-bottom-color: var(--theme);
+  }
+
+  /* ===== Section ===== */
+  .container { max-width: 680px; margin: 0 auto; padding: 0 16px; }
+  section { padding-top: 32px; }
+  section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--theme-dark);
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 4px solid var(--theme);
+  }
+  section h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 20px 0 10px;
+  }
+
+  /* ===== Card ===== */
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--text-sub);
+  }
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 4px; }
+
+  /* ===== Badge ===== */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .badge-new { background: var(--accent-green); color: #fff; }
+  .badge-tip { background: var(--accent-orange); color: #fff; }
+  .badge-important { background: var(--accent-red); color: #fff; }
+
+  /* ===== Icon circle ===== */
+  .icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ===== Step list ===== */
+  .steps { counter-reset: step; }
+  .step {
+    position: relative;
+    padding-left: 44px;
+    margin-bottom: 16px;
+    min-height: 36px;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0;
+    width: 32px; height: 32px;
+    background: var(--theme);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .step-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+  .step-desc { font-size: 13px; color: var(--text-sub); }
+
+  /* ===== Feature grid ===== */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .feature-item {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .feature-item .emoji { font-size: 28px; margin-bottom: 6px; }
+  .feature-item .label { font-size: 13px; font-weight: 600; }
+  .feature-item .desc { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+
+  /* ===== Table ===== */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .info-table th {
+    background: var(--theme-light);
+    color: var(--theme-dark);
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .info-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-sub);
+  }
+
+  /* ===== Highlight box ===== */
+  .highlight-box {
+    background: var(--theme-light);
+    border-left: 4px solid var(--theme);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .highlight-box strong { color: var(--theme-dark); }
+
+  .tip-box {
+    background: #fff8e1;
+    border-left: 4px solid var(--accent-orange);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+  footer .logo { font-size: 18px; font-weight: 700; color: var(--theme); }
+
+  @media (max-width: 400px) {
+    .feature-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <h1>家計簿</h1>
+  <div class="subtitle">家計簿・支出管理アプリ</div>
+  <div class="tagline">レシートをスキャンして、かんたん家計管理</div>
+</div>
+
+<!-- ===== Navigation ===== -->
+<div class="nav">
+  <a href="#overview">概要</a>
+  <a href="#scan">スキャン</a>
+  <a href="#record">記録</a>
+  <a href="#calendar">カレンダー</a>
+  <a href="#statistics">統計</a>
+  <a href="#widget">ウィジェット</a>
+  <a href="#export">データ移行</a>
+  <a href="#manage">データ管理</a>
+  <a href="#settings">設定</a>
+  <a href="#tips">便利な使い方</a>
+</div>
+
+<div class="container">
+
+<!-- ===== 概要 ===== -->
+<section id="overview">
+  <h2>アプリの概要</h2>
+  <div class="card">
+    <p>家計簿は、レシートや領収書をカメラでスキャンするだけで、日付・金額・内容を自動認識し、支出記録を作成できる家計簿アプリです。</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="emoji">📸</div>
+      <div class="label">レシートスキャン</div>
+      <div class="desc">カメラで撮るだけ<br>日本語OCR自動認識</div>
+    </div>
+    <div class="feature-item">
+      <div class="emoji">📅</div>
+      <div class="label">カレンダー管理</div>
+      <div class="desc">日別の支出を<br>一目で把握</div>
+    </div>
+    <div class="feature-item">
+      <div class="emoji">📊</div>
+      <div class="label">統計・分析</div>
+      <div class="desc">グラフでカテゴリ別<br>支出を可視化</div>
+    </div>
+    <div class="feature-item">
+      <div class="emoji">📱</div>
+      <div class="label">ウィジェット</div>
+      <div class="desc">ホーム画面・ロック画面<br>からすぐアクセス</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== スキャン ===== -->
+<section id="scan">
+  <h2>レシートスキャン</h2>
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-blue)">📷</span> カメラでスキャン</h4>
+    <p>アプリ内蔵のドキュメントスキャナーでレシートを撮影すると、Apple の Vision フレームワーク（日本語OCR）が自動的にテキストを認識します。</p>
+    <div class="steps" style="margin-top:14px">
+      <div class="step">
+        <div class="step-title">スキャン一覧 → 右上の「＋」ボタンをタップ</div>
+        <div class="step-desc">カメラが起動し、ドキュメントスキャンモードになります</div>
+      </div>
+      <div class="step">
+        <div class="step-title">レシートにカメラを向ける</div>
+        <div class="step-desc">自動でレシートの輪郭を検出し、シャッターが切られます</div>
+      </div>
+      <div class="step">
+        <div class="step-title">「保存」をタップ</div>
+        <div class="step-desc">スキャン画像が保存され、OCR認識結果が表示されます</div>
+      </div>
+      <div class="step">
+        <div class="step-title">「新規記録を作成」をタップ</div>
+        <div class="step-desc">認識された日付・金額が自動入力された記録作成画面へ遷移します</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-purple)">🖼️</span> スクリーンショット・写真から読み取り</h4>
+    <p>カメラだけでなく、保存済みのスクリーンショットや写真からもOCR読み取りが可能です。ネットショッピングの注文確認画面など、紙のレシートがない場面で便利です。</p>
+    <div class="tip-box">
+      💡 <strong>活用例：</strong>ネット通販の注文完了画面をスクリーンショットして、フォトライブラリから取り込めば、オンライン支出も簡単に記録できます。
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-green)">📑</span> 一括スキャン</h4>
+    <p>複数枚のレシートをまとめてスキャンし、一度に記録を作成できます。溜まったレシートを一気に処理したい時に最適です。</p>
+  </div>
+
+  <div class="highlight-box">
+    <strong>OCR認識のコツ：</strong><br>
+    ・レシートを平らな場所に置いて撮影する<br>
+    ・明るい場所で影が入らないようにする<br>
+    ・文字がはっきり見える距離で撮影する<br>
+    ・日本語のレシートに最適化されています
+  </div>
+</section>
+
+<!-- ===== 記録 ===== -->
+<section id="record">
+  <h2>支出記録</h2>
+  <div class="card">
+    <h4>記録の作成・編集</h4>
+    <p>手動またはスキャン結果から、支出記録を作成できます。</p>
+    <table class="info-table">
+      <tr><th>項目</th><th>説明</th></tr>
+      <tr><td><strong>金額</strong></td><td>支出金額（円）。スキャン時は自動入力</td></tr>
+      <tr><td><strong>日付</strong></td><td>支出日時。カレンダーから選択可能</td></tr>
+      <tr><td><strong>カテゴリ</strong></td><td>固定費・変動費から選択。カスタム追加も可能</td></tr>
+      <tr><td><strong>支払方法</strong></td><td>現金、クレカ、電子マネー、QR決済など</td></tr>
+      <tr><td><strong>メモ</strong></td><td>自由記述の備考欄</td></tr>
+      <tr><td><strong>画像</strong></td><td>スキャンしたレシート画像の紐付け</td></tr>
+    </table>
+  </div>
+
+  <h3>カテゴリ一覧</h3>
+  <div class="card">
+    <h4>固定費</h4>
+    <p>🏠 家賃 ／ 🛡 保険 ／ 📈 積立 ／ 📱 通信費 ／ 🌐 インターネット ／ 🎬 サブスク ／ 💳 ローン</p>
+    <h4 style="margin-top:12px">変動費</h4>
+    <p>💧 水道 ／ ⚡ 電気 ／ 🔥 ガス ／ 🍽 外食 ／ 🛒 買い物 ／ 👥 交際費 ／ 🚌 交通費 ／ 🏥 医療費 ／ 🎭 趣味・娯楽 ／ 📚 教育費</p>
+    <div class="tip-box" style="margin-top:10px">
+      💡 足りないカテゴリは<strong>カスタムカテゴリ</strong>として自由に追加できます。アイコンや色も選べます。
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>支払方法</h4>
+    <p>💴 現金 ／ 💳 クレジットカード ／ 💳 デビットカード ／ 📶 電子マネー ／ 📱 QR決済 ／ 🏦 銀行振込 ／ ⋯ その他</p>
+  </div>
+</section>
+
+<!-- ===== カレンダー ===== -->
+<section id="calendar">
+  <h2>カレンダー</h2>
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--theme)">📅</span> カレンダービュー</h4>
+    <p>メイン画面のカレンダーで、日ごとの支出合計が一目でわかります。</p>
+    <ul style="margin-top:8px">
+      <li><strong>日付タップ</strong>：その日の支出記録一覧を表示</li>
+      <li><strong>今日の合計</strong>：選択した日の支出合計金額を表示</li>
+      <li><strong>新規記録を追加</strong>：選択した日付で新しい記録を作成</li>
+      <li><strong>記録カード</strong>：カテゴリアイコン・金額・時間・メモを表示</li>
+      <li><strong>長押し</strong>：記録の削除メニューを表示</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 統計 ===== -->
+<section id="statistics">
+  <h2>統計</h2>
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-blue)">📊</span> 支出分析</h4>
+    <p>期間を選んで、支出データをグラフやリストで確認できます。</p>
+
+    <h4 style="margin-top:14px">期間の選択</h4>
+    <table class="info-table">
+      <tr><td>今週</td><td>今月</td><td>先月</td><td>今年</td><td>カスタム</td></tr>
+    </table>
+
+    <h4 style="margin-top:14px">表示される情報</h4>
+    <ul>
+      <li><strong>合計金額</strong>：選択期間の支出総額</li>
+      <li><strong>記録数</strong>：支出記録の件数</li>
+      <li><strong>1日平均</strong>：日割りの平均支出額</li>
+      <li><strong>最高支出</strong>：最も大きな単一支出</li>
+      <li><strong>よく使うカテゴリ</strong>：最も利用頻度の高いカテゴリ</li>
+      <li><strong>円グラフ</strong>：カテゴリ別の支出比率</li>
+      <li><strong>棒グラフ</strong>：日別・週別・月別の支出推移</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== ウィジェット ===== -->
+<section id="widget">
+  <h2>ウィジェット <span class="badge badge-tip">便利！</span></h2>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-green)">🏠</span> ホーム画面ウィジェット</h4>
+    <p>ホーム画面に追加して、アプリを開かずに情報確認＆クイック操作ができます。</p>
+    <table class="info-table" style="margin-top:10px">
+      <tr><th>サイズ</th><th>表示内容</th><th>タップ動作</th></tr>
+      <tr>
+        <td><strong>小</strong></td>
+        <td>今月の支出合計</td>
+        <td>統計画面を開く</td>
+      </tr>
+      <tr>
+        <td><strong>中</strong></td>
+        <td>今月の支出合計<br>＋ 統計ボタン・スキャンボタン</td>
+        <td>統計 or 新規スキャンへ</td>
+      </tr>
+      <tr>
+        <td><strong>小（スキャン）</strong></td>
+        <td>スキャンアイコン</td>
+        <td>即座にカメラスキャン起動</td>
+      </tr>
+    </table>
+
+    <div class="highlight-box" style="margin-top:12px">
+      <strong>追加方法：</strong>ホーム画面を長押し → 左上の「＋」→ 「家計簿」を検索 → ウィジェットを選んで追加
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-purple)">🔒</span> ロック画面ウィジェット <span class="badge badge-tip">おすすめ</span></h4>
+    <p>iPhoneのロック画面に配置すれば、<strong>ロック画面からワンタップでアプリを起動</strong>できます。買い物の直後にすぐ記録をつける習慣づけに最適です。</p>
+    <table class="info-table" style="margin-top:10px">
+      <tr><th>形状</th><th>表示</th></tr>
+      <tr><td>丸型（Circular）</td><td>¥ アイコン</td></tr>
+      <tr><td>横長（Rectangular）</td><td>「家計簿 / 記録を追加」</td></tr>
+      <tr><td>インライン（Inline）</td><td>「家計簿に記録」テキスト</td></tr>
+    </table>
+    <div class="tip-box" style="margin-top:10px">
+      💡 <strong>おすすめ設定：</strong>ロック画面に<strong>丸型ウィジェット</strong>を配置しておけば、支払い後すぐにタップ → スキャン → 記録という最速フローが実現します。
+    </div>
+    <div class="highlight-box">
+      <strong>追加方法：</strong>ロック画面を長押し → 「カスタマイズ」→ ロック画面を選択 → ウィジェットエリアをタップ → 「家計簿」を追加
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>📹 実際の操作を見る</h4>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:10px;">
+      <div style="text-align:center; flex:1; min-width:120px; max-width:180px;">
+        <video controls muted playsinline style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <source src="video_widget.mp4" type="video/mp4">
+        </video>
+        <p style="font-size:11px; color:#888; margin-top:6px;">ホーム画面ウィジェット</p>
+      </div>
+      <div style="text-align:center; flex:1; min-width:120px; max-width:180px;">
+        <video controls muted playsinline style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <source src="video_lockscreen.mp4" type="video/mp4">
+        </video>
+        <p style="font-size:11px; color:#888; margin-top:6px;">ロック画面ウィジェット</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--text)">⚙️</span> コントロールセンター（iOS 18以降）</h4>
+    <p>コントロールセンターにも家計簿アプリのボタンを追加できます。</p>
+    <ul>
+      <li><strong>統計ボタン</strong>：統計画面を直接開く</li>
+      <li><strong>スキャンボタン</strong>：新規記録＋カメラスキャンを起動</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== データ移行 ===== -->
+<section id="export">
+  <h2>データの移行（エクスポート / インポート）</h2>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-blue)">📤</span> エクスポート（書き出し）</h4>
+    <p>2つの形式でデータを書き出せます。</p>
+    <table class="info-table" style="margin-top:10px">
+      <tr><th>形式</th><th>内容</th><th>用途</th></tr>
+      <tr>
+        <td><strong>mmdata</strong></td>
+        <td>全記録 ＋ スキャン画像</td>
+        <td>別の iPhone への完全移行<br>バックアップ</td>
+      </tr>
+      <tr>
+        <td><strong>CSV</strong> <span class="badge badge-new">New</span></td>
+        <td>記録データのみ（表形式）</td>
+        <td>Excel / Google スプレッドシート<br>で開いて分析</td>
+      </tr>
+    </table>
+
+    <div class="steps" style="margin-top:14px">
+      <div class="step">
+        <div class="step-title">設定 → データ移行 → エクスポート / インポート</div>
+      </div>
+      <div class="step">
+        <div class="step-title">「mmdata」または「CSV」ボタンをタップ</div>
+      </div>
+      <div class="step">
+        <div class="step-title">共有先を選択</div>
+        <div class="step-desc">iCloud Drive に保存、AirDrop で送信、メールに添付など</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      💡 <strong>Excel で家計を分析したい方へ：</strong>CSV でエクスポートすれば、Excel やスプレッドシートで自由にグラフを作ったり、年間の支出レポートを作成できます。
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-green)">📥</span> インポート（読み込み）</h4>
+    <p>mmdata ファイルまたは CSV ファイルからデータを読み込めます。ファイル形式は自動判定されます。</p>
+
+    <h4 style="margin-top:12px">読み込み方法</h4>
+    <ul>
+      <li>「ファイルを選択」ボタンからファイルアプリで選ぶ</li>
+      <li>AirDrop で受信したファイルをタップして開く</li>
+      <li>iCloud Drive に保存した .mmdata ファイルをタップ</li>
+    </ul>
+
+    <div class="highlight-box" style="margin-top:10px">
+      <strong>重複防止：</strong>mmdata ファイルの場合、同じ記録IDを持つデータは自動的にスキップされます。同じファイルを2回インポートしても重複しません。
+    </div>
+
+    <h4 style="margin-top:12px">CSV インポートの対応形式</h4>
+    <ul>
+      <li>文字コード：UTF-8（BOM付き対応）/ Shift_JIS</li>
+      <li>ヘッダー行：「日付, カテゴリ, 金額, 支払方法, メモ」</li>
+      <li>日付形式：yyyy-MM-dd / yyyy/MM/dd など複数対応</li>
+      <li>金額：¥マークやカンマを自動除去</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== データ管理 ===== -->
+<section id="manage">
+  <h2>データ管理</h2>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-red)">🗑️</span> 記録の一括削除</h4>
+    <p>期間を指定して、まとめて記録を削除できます。</p>
+    <ul>
+      <li>開始日・終了日を選択して検索</li>
+      <li>該当する全記録を一覧表示（合計金額・件数つき）</li>
+      <li>「関連画像も削除」オプション：紐づくスキャン画像も一緒に削除</li>
+      <li>削除前に確認ダイアログで安全に操作</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-orange)">🖼️</span> 画像の一括削除</h4>
+    <p>不要なスキャン画像をまとめて削除してストレージを節約できます。</p>
+    <ul>
+      <li><strong>絞り込み機能</strong>：期間で画像をフィルタリング</li>
+      <li><strong>閲覧モード</strong>：タップで拡大表示（ピンチイン・アウトで縮放可能）</li>
+      <li><strong>選択モード</strong>：右上の「選択」→ チェックマークで複数選択 → 一括削除</li>
+      <li><strong>全選択</strong>：ワンタップで全画像を選択</li>
+      <li>記録に紐づいている画像はバッジ表示で確認可能</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 設定 ===== -->
+<section id="settings">
+  <h2>設定</h2>
+
+  <div class="card">
+    <h4>画像保存品質</h4>
+    <p>スキャンした画像の保存品質を選べます。高品質ほど画像が鮮明ですが、ストレージを多く使います。</p>
+    <table class="info-table">
+      <tr><th>品質</th><th>特徴</th></tr>
+      <tr><td>低品質</td><td>容量を節約したい方向け</td></tr>
+      <tr><td>標準</td><td>画質とサイズのバランス（推奨）</td></tr>
+      <tr><td>高品質</td><td>細かい文字も鮮明に保存</td></tr>
+      <tr><td>最高品質</td><td>最も鮮明な画像で保存</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h4>その他</h4>
+    <ul>
+      <li><strong>アプリ情報</strong>：バージョン情報・開発者メッセージ</li>
+      <li><strong>免責事項</strong>：利用規約・プライバシーポリシー</li>
+      <li><strong>フィードバック</strong>：開発者へのお問い合わせ（メール）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 便利な使い方 ===== -->
+<section id="tips">
+  <h2>便利な使い方 <span class="badge badge-tip">Tips</span></h2>
+
+  <div class="card">
+    <h4>🚀 最速記録フロー</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">ロック画面のウィジェットをタップ</div>
+        <div class="step-desc">アプリが起動します</div>
+      </div>
+      <div class="step">
+        <div class="step-title">レシートにカメラを向ける</div>
+        <div class="step-desc">自動でスキャン＆OCR認識</div>
+      </div>
+      <div class="step">
+        <div class="step-title">金額・日付を確認して保存</div>
+        <div class="step-desc">わずか数秒で記録完了！</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>💻 Excel で年間レポートを作る</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">設定 → エクスポート / インポート</div>
+      </div>
+      <div class="step">
+        <div class="step-title">「CSV」をタップしてファイルを保存</div>
+      </div>
+      <div class="step">
+        <div class="step-title">PC で Excel / Google スプレッドシートで開く</div>
+        <div class="step-desc">ピボットテーブルやグラフで自由に分析できます</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>📱 機種変更時のデータ移行</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">旧端末：mmdata でエクスポート → iCloud Drive に保存</div>
+      </div>
+      <div class="step">
+        <div class="step-title">新端末：家計簿アプリをインストール</div>
+      </div>
+      <div class="step">
+        <div class="step-title">設定 → インポート → iCloud Drive から .mmdata ファイルを選択</div>
+        <div class="step-desc">全記録・スキャン画像が完全に復元されます</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>📸 ネットショッピングの記録</h4>
+    <p>紙のレシートがないオンライン購入も、注文確認画面のスクリーンショットをフォトライブラリから取り込むことで、OCR認識→記録作成が可能です。</p>
+  </div>
+
+  <div class="card">
+    <h4>🔄 家族でデータを共有</h4>
+    <p>mmdata ファイルを AirDrop で家族の端末に送れば、同じ家計データを共有できます。同じ記録は自動スキップされるので、安心して何度でも共有できます。</p>
+  </div>
+
+  <div class="card">
+    <h4>🧹 ストレージ節約</h4>
+    <p>スキャン画像が増えてきたら、設定 → データ管理 → 画像の一括削除 で不要な画像を整理しましょう。記録は残したまま、画像だけ削除できます。</p>
+  </div>
+</section>
+
+</div><!-- .container -->
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="logo">家計簿</div>
+  <p style="margin-top:6px">支出管理アプリ</p>
+  <p style="margin-top:4px">© J-DevHouse</p>
+</footer>
+
+</body>
+</html>

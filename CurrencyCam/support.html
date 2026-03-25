@@ -42,7 +42,9 @@ function switchLang(lang) {
 window.onload = function() {
   var lang = (navigator.language || '').toLowerCase();
   if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
   else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
   else switchLang('en');
 };
 </script>
@@ -56,7 +58,9 @@ window.onload = function() {
   <div class="lang-switch">
     <a href="javascript:switchLang('en')" data-lang="en">English</a>
     <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
-    <a href="javascript:switchLang('zh')" data-lang="zh">中文</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
   </div>
 
   <!-- English -->
@@ -242,8 +246,130 @@ window.onload = function() {
     </div>
   </div>
 
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <h2>常見問題</h2>
+
+    <div class="faq-item">
+      <h3>匯率相機怎麼使用？</h3>
+      <p>只需將 iPhone 相機對準任何價格標籤、收據或菜單。應用程式使用 OCR（光學字元辨識）技術自動偵測金額，並即時轉換為您選擇的貨幣。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>需要連網嗎？</h3>
+      <p>不需要。貨幣偵測和換算使用內建匯率，完全離線運作。僅廣告顯示需要網路連線。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>相機偵測不到金額怎麼辦？</h3>
+      <p>請嘗試以下步驟：</p>
+      <ul style="margin-top:8px">
+        <li>確保文字光線充足、清晰可見</li>
+        <li>保持相機穩定，與文字保持適當距離</li>
+        <li>確保金額包含可辨識的數字（如 1,234 或 ¥5,678）</li>
+        <li>檢查 iOS 設定 > 匯率相機 中的相機權限是否已開啟</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何更改來源貨幣或目標貨幣？</h3>
+      <p>點擊右上角的齒輪圖示（⚙）開啟設定。在設定中可以更改來源貨幣（偵測貨幣），以及新增或刪除目標貨幣。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>可以設定自訂匯率嗎？</h3>
+      <p>可以！在設定中，每個目標貨幣都有可編輯的匯率輸入框。輸入您想要的匯率，即可套用於所有換算。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何同時換算多種貨幣？</h3>
+      <p>在設定中點擊貨幣選擇按鈕，新增多個目標貨幣。在主畫面，透過底部的貨幣標籤可以快速切換。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何切換應用程式語言？</h3>
+      <p>進入設定 > 應用程式語言。支援英語、日語、簡體中文、繁體中文和西班牙語。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>匯率是最新的嗎？</h3>
+      <p>應用程式內建了預設匯率供離線使用。如需使用最新匯率，可在設定中根據目前市場匯率手動更新。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>提示：</strong>使用左上角的凍結按鈕可以暫停相機畫面，方便仔細查看偵測到的金額。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>還有問題？</h2>
+      <p>歡迎透過郵件聯絡我們，我們會盡快回覆。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">聯絡我們</a>
+    </div>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <h2>Preguntas frecuentes</h2>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo funciona CurrencyCam?</h3>
+      <p>Simplemente apunta la c&aacute;mara de tu iPhone a cualquier etiqueta de precio, recibo o men&uacute;. La app usa OCR (Reconocimiento &Oacute;ptico de Caracteres) para detectar montos y convertirlos instant&aacute;neamente a las monedas seleccionadas.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;La app necesita conexi&oacute;n a internet?</h3>
+      <p>No. La detecci&oacute;n y conversi&oacute;n de monedas funcionan completamente sin conexi&oacute;n usando tasas de cambio integradas. Solo se necesita internet para mostrar anuncios.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>La c&aacute;mara no detecta montos. &iquest;Qu&eacute; debo hacer?</h3>
+      <p>Intenta estos pasos:</p>
+      <ul style="margin-top:8px">
+        <li>Aseg&uacute;rate de que el texto est&eacute; bien iluminado y sea claramente visible</li>
+        <li>Mant&eacute;n la c&aacute;mara estable y a una distancia razonable</li>
+        <li>Aseg&uacute;rate de que los montos incluyan n&uacute;meros reconocibles (ej. 1,234 o $56.78)</li>
+        <li>Verifica que el permiso de c&aacute;mara est&eacute; habilitado en Ajustes de iOS > CurrencyCam</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo cambio la moneda de origen o destino?</h3>
+      <p>Toca el icono de engranaje (⚙) en la esquina superior derecha para abrir Ajustes. All&iacute; puedes cambiar la moneda de origen (detectada) y agregar o eliminar monedas de destino.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Puedo configurar mis propias tasas de cambio?</h3>
+      <p>&iexcl;S&iacute;! En Ajustes, cada moneda de destino tiene un campo de tasa editable. Simplemente escribe tu tasa preferida y se usar&aacute; para todas las conversiones.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo convierto a m&uacute;ltiples monedas a la vez?</h3>
+      <p>En Ajustes, toca el bot&oacute;n de selecci&oacute;n de monedas para agregar m&uacute;ltiples monedas de destino. En la pantalla principal, puedes cambiar r&aacute;pidamente entre ellas usando las pesta&ntilde;as de moneda en la parte inferior.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo cambio el idioma de la app?</h3>
+      <p>Ve a Ajustes > Idioma de la app. CurrencyCam es compatible con ingl&eacute;s, japon&eacute;s, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Las tasas de cambio est&aacute;n actualizadas?</h3>
+      <p>La app incluye tasas predeterminadas para uso sin conexi&oacute;n. Para las tasas m&aacute;s precisas, puedes actualizarlas manualmente en Ajustes seg&uacute;n las tasas actuales del mercado.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Consejo:</strong> Usa el bot&oacute;n de congelar (arriba a la izquierda) para pausar la c&aacute;mara y examinar los montos detectados sin que la vista se actualice.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>&iquest;A&uacute;n necesitas ayuda?</h2>
+      <p>Estamos encantados de ayudarte. Env&iacute;anos un correo electr&oacute;nico y te responderemos lo antes posible.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
   <div class="footer">
-    <p>&copy; 2026 J-DevHouse</p>
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
   </div>
 </div>
 </body>

@@ -1,1 +1,347 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurrencyCam - Exchange Rates</title>
+<meta name="description" content="Point your camera, get instant currency conversion. CurrencyCam uses real-time OCR to detect amounts and convert currencies on the fly.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #333; background: #f8f9fa; }
+  .hero { background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%); color: #fff; text-align: center; padding: 60px 24px 48px; }
+  .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); margin-bottom: 20px; }
+  .hero h1 { font-size: 32px; margin-bottom: 4px; }
+  .hero .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+  .hero .badge { display: inline-block; }
+  .hero .badge img { width: 180px; height: auto; border-radius: 0; box-shadow: none; }
+  .lang-switch { text-align: center; padding: 20px 0 0; }
+  .lang-switch a { display: inline-block; margin: 0 5px; padding: 6px 14px; font-size: 13px; color: #555; text-decoration: none; border: 1px solid #ddd; border-radius: 6px; background: #fff; transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: #007AFF; color: #fff; border-color: #007AFF; }
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 24px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .tagline { text-align: center; font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+  .tagline-sub { text-align: center; font-size: 15px; color: #666; margin-bottom: 36px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; }
+  @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
+  .feature { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 22px 20px; }
+  .feature .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature h3 { font-size: 16px; color: #1a1a1a; margin-bottom: 6px; }
+  .feature p { font-size: 14px; color: #666; margin: 0; }
+  .screenshots { text-align: center; margin-bottom: 36px; }
+  .screenshots h2 { font-size: 20px; margin-bottom: 16px; color: #1a1a1a; }
+  .screenshot-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .screenshot-scroll img { height: 420px; width: auto; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); scroll-snap-align: center; flex-shrink: 0; }
+  .links { text-align: center; margin-top: 32px; }
+  .links a { display: inline-block; margin: 0 10px 10px; color: #007AFF; text-decoration: none; font-size: 15px; }
+  .links a:hover { text-decoration: underline; }
+  .footer { text-align: center; padding: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+
+<div class="hero">
+  <img src="icon_256.png" alt="CurrencyCam App Icon">
+  <h1>CurrencyCam</h1>
+  <div class="subtitle">Exchange Rates</div>
+</div>
+
+<div class="lang-switch">
+  <a href="javascript:switchLang('en')" data-lang="en">English</a>
+  <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+  <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+  <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+  <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+</div>
+
+<div class="container">
+
+  <!-- English -->
+  <div id="en" class="section">
+    <p class="tagline">Point Your Camera, Get Instant Conversion</p>
+    <p class="tagline-sub">Automatically detect currency amounts with your camera and convert them in real-time. Perfect for travel, shopping abroad, and everyday currency needs.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4F7;</div>
+        <h3>Real-Time Camera Detection</h3>
+        <p>Point your camera at any price tag, receipt, or menu. OCR technology instantly detects amounts.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4B1;</div>
+        <h3>Multi-Currency Support</h3>
+        <p>Convert between 50+ currencies simultaneously. Add multiple target currencies at once.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2708;&#xFE0F;</div>
+        <h3>Works Offline</h3>
+        <p>No internet connection needed. Built-in exchange rates work anywhere in the world.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>Custom Exchange Rates</h3>
+        <p>Set your own rates for the most accurate conversions. Look up live rates with one tap.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F30F;</div>
+        <h3>5 Languages</h3>
+        <p>Available in English, Japanese, Simplified Chinese, Traditional Chinese, and Spanish.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x26A1;</div>
+        <h3>Fast &amp; Lightweight</h3>
+        <p>Optimized performance with on-device processing. No sign-up required, no data collected.</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>Screenshots</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/en/6.5/01_IMG_4979.png" alt="Camera detection">
+        <img src="ScreenShot/exports/en/6.5/02_IMG_4977.png" alt="Conversion results">
+        <img src="ScreenShot/exports/en/6.5/03_IMG_4978.png" alt="Settings">
+        <img src="ScreenShot/exports/en/6.5/04_IMG_4993.png" alt="Multi-currency">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="mailto:lj_dev@ymail.ne.jp">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <p class="tagline">カメラを向けるだけで即座に換算</p>
+    <p class="tagline-sub">カメラで通貨の金額を自動検出し、リアルタイムで換算。旅行や海外ショッピングに最適です。</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4F7;</div>
+        <h3>リアルタイムカメラ検出</h3>
+        <p>値札、レシート、メニューにカメラを向けるだけ。OCR技術で金額を瞬時に検出します。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4B1;</div>
+        <h3>複数通貨に対応</h3>
+        <p>50以上の通貨を同時に換算。複数の目標通貨を一度に追加できます。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2708;&#xFE0F;</div>
+        <h3>オフラインで動作</h3>
+        <p>インターネット接続不要。内蔵の為替レートで世界中どこでも使えます。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>カスタム為替レート</h3>
+        <p>独自のレートを設定して正確な換算を。ワンタップでライブレートも検索できます。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F30F;</div>
+        <h3>5言語対応</h3>
+        <p>英語・日本語・簡体中文・繁體中文・スペイン語に対応しています。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x26A1;</div>
+        <h3>高速＆軽量</h3>
+        <p>デバイス上で処理する最適化されたパフォーマンス。登録不要、データ収集なし。</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>スクリーンショット</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/jp/6.5/01_IMG_4973.png" alt="カメラ検出">
+        <img src="ScreenShot/exports/jp/6.5/02_IMG_4974.png" alt="換算結果">
+        <img src="ScreenShot/exports/jp/6.5/03_IMG_4975.png" alt="設定">
+        <img src="ScreenShot/exports/jp/6.5/04_IMG_4976.png" alt="複数通貨">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
+    </div>
+  </div>
+
+  <!-- Chinese -->
+  <div id="zh" class="section">
+    <p class="tagline">对准摄像头，即时汇率换算</p>
+    <p class="tagline-sub">使用摄像头自动识别货币金额，实时转换汇率。出国旅行、海外购物的必备工具。</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4F7;</div>
+        <h3>实时摄像头识别</h3>
+        <p>将摄像头对准任何价签、收据或菜单，OCR技术即刻识别金额。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4B1;</div>
+        <h3>多币种支持</h3>
+        <p>支持50+种货币同时换算，可一次添加多个目标货币。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2708;&#xFE0F;</div>
+        <h3>离线可用</h3>
+        <p>无需网络连接，内置汇率让你在世界任何角落都能使用。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>自定义汇率</h3>
+        <p>设置自己的汇率以获得最准确的换算结果。一键查询实时汇率。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F30F;</div>
+        <h3>5种语言</h3>
+        <p>支持英语、日语、简体中文、繁体中文和西班牙语。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x26A1;</div>
+        <h3>快速轻量</h3>
+        <p>设备端处理的优化性能。无需注册，不收集任何数据。</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>应用截图</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/zh-Hans/6.5/01_IMG_4990.png" alt="摄像头识别">
+        <img src="ScreenShot/exports/zh-Hans/6.5/02_IMG_4985.png" alt="换算结果">
+        <img src="ScreenShot/exports/zh-Hans/6.5/03_IMG_4986.png" alt="设置">
+        <img src="ScreenShot/exports/zh-Hans/6.5/04_IMG_4994.png" alt="多币种">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="mailto:lj_dev@ymail.ne.jp">联系我们</a>
+    </div>
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <p class="tagline">對準鏡頭，即時匯率換算</p>
+    <p class="tagline-sub">使用相機自動辨識貨幣金額，即時轉換匯率。出國旅行、海外購物的必備工具。</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4F7;</div>
+        <h3>即時相機辨識</h3>
+        <p>將相機對準任何價標、收據或菜單，OCR技術即刻辨識金額。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4B1;</div>
+        <h3>多幣種支援</h3>
+        <p>支援50+種貨幣同時換算，可一次新增多個目標貨幣。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2708;&#xFE0F;</div>
+        <h3>離線可用</h3>
+        <p>無需網路連線，內建匯率讓你在世界任何角落都能使用。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>自訂匯率</h3>
+        <p>設定自己的匯率以獲得最準確的換算結果。一鍵查詢即時匯率。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F30F;</div>
+        <h3>5種語言</h3>
+        <p>支援英語、日語、簡體中文、繁體中文和西班牙語。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x26A1;</div>
+        <h3>快速輕量</h3>
+        <p>裝置端處理的優化效能。無需註冊，不收集任何資料。</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>應用截圖</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/zh-Hant/6.5/01_IMG_4989.png" alt="相機辨識">
+        <img src="ScreenShot/exports/zh-Hant/6.5/02_IMG_4987.png" alt="換算結果">
+        <img src="ScreenShot/exports/zh-Hant/6.5/03_IMG_4988.png" alt="設定">
+        <img src="ScreenShot/exports/zh-Hant/6.5/04_IMG_4995.png" alt="多幣種">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="mailto:lj_dev@ymail.ne.jp">聯絡我們</a>
+    </div>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <p class="tagline">Apunta tu c&aacute;mara, convierte al instante</p>
+    <p class="tagline-sub">Detecta autom&aacute;ticamente montos con tu c&aacute;mara y conv&iacute;rtelos en tiempo real. Perfecto para viajes, compras en el extranjero y necesidades cotidianas de cambio.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4F7;</div>
+        <h3>Detecci&oacute;n en tiempo real</h3>
+        <p>Apunta tu c&aacute;mara a cualquier etiqueta de precio, recibo o men&uacute;. La tecnolog&iacute;a OCR detecta montos al instante.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4B1;</div>
+        <h3>M&uacute;ltiples monedas</h3>
+        <p>Convierte entre m&aacute;s de 50 monedas simult&aacute;neamente. Agrega varias monedas objetivo a la vez.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2708;&#xFE0F;</div>
+        <h3>Funciona sin conexi&oacute;n</h3>
+        <p>No necesitas internet. Las tasas de cambio integradas funcionan en cualquier parte del mundo.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>Tasas personalizadas</h3>
+        <p>Configura tus propias tasas para conversiones m&aacute;s precisas. Consulta tasas en vivo con un toque.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F30F;</div>
+        <h3>5 idiomas</h3>
+        <p>Disponible en ingl&eacute;s, japon&eacute;s, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x26A1;</div>
+        <h3>R&aacute;pido y ligero</h3>
+        <p>Rendimiento optimizado con procesamiento en el dispositivo. Sin registro, sin recopilaci&oacute;n de datos.</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>Capturas de pantalla</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/es/6.5/01_IMG_4980.png" alt="Detecci&oacute;n por c&aacute;mara">
+        <img src="ScreenShot/exports/es/6.5/02_IMG_4983.png" alt="Resultados de conversi&oacute;n">
+        <img src="ScreenShot/exports/es/6.5/03_IMG_4984.png" alt="Configuraci&oacute;n">
+        <img src="ScreenShot/exports/es/6.5/04_IMG_4992.png" alt="M&uacute;ltiples monedas">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+</div>
+
+</body>
+</html>

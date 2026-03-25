@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurrencyCam - Tutorial</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #333; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #e0e0e0; }
+  .header h1 { font-size: 28px; color: #1a1a1a; margin-bottom: 4px; }
+  .header .app-name { font-size: 15px; color: #666; margin-bottom: 8px; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 0 5px; padding: 6px 14px; font-size: 13px; color: #555; text-decoration: none; border: 1px solid #ddd; border-radius: 6px; transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: #007AFF; color: #fff; border-color: #007AFF; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; color: #1a1a1a; margin: 32px 0 12px; }
+  p, li { font-size: 15px; color: #444; margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .step { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .step-number { display: inline-block; width: 32px; height: 32px; line-height: 32px; text-align: center; background: #007AFF; color: #fff; border-radius: 50%; font-weight: 700; font-size: 16px; margin-right: 12px; vertical-align: middle; }
+  .step h3 { display: inline; font-size: 18px; color: #1a1a1a; vertical-align: middle; }
+  .step p { margin-top: 12px; font-size: 14px; color: #555; }
+  .step .screenshot { text-align: center; margin-top: 16px; }
+  .step .screenshot img { max-height: 380px; width: auto; border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .tip { background: #fff3cd; border-left: 3px solid #ffc107; padding: 12px 16px; border-radius: 4px; margin: 20px 0; }
+  .tip p { margin-bottom: 0; color: #856404; font-size: 14px; }
+  .back-link { text-align: center; margin-bottom: 24px; }
+  .back-link a { color: #007AFF; text-decoration: none; font-size: 15px; }
+  .back-link a:hover { text-decoration: underline; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name">CurrencyCam</div>
+    <h1>Tutorial</h1>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <h2>Getting Started</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>Allow Camera Access</h3>
+      <p>When you first open CurrencyCam, the app will ask for camera permission. Tap <strong>"Allow"</strong> to enable real-time currency detection. The camera is used only for on-device text recognition &mdash; no images are stored or uploaded.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>Point Your Camera at a Price</h3>
+      <p>Aim your camera at any price tag, receipt, menu, or sign that shows a currency amount. The app will automatically detect numbers and display the converted result at the bottom of the screen.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/01_IMG_4979.png" alt="Camera detection">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>Use the Freeze Button</h3>
+      <p>Tap the <strong>freeze button</strong> (top-left corner) to pause the camera feed. This lets you examine detected amounts without the view constantly updating. Tap again to resume live detection.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>Switch Between Target Currencies</h3>
+      <p>If you have multiple target currencies set up, use the <strong>currency tabs</strong> at the bottom of the main screen to quickly switch between them.</p>
+    </div>
+
+    <h2>Settings &amp; Customization</h2>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>Open Settings</h3>
+      <p>Tap the <strong>gear icon</strong> (⚙) in the top-right corner to open Settings. Here you can configure your source currency, target currencies, and exchange rates.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/02_IMG_4977.png" alt="Settings screen">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>Set Source Currency</h3>
+      <p>Under <strong>"Detected Currency"</strong>, select the currency you expect to see through the camera. For example, if you're traveling in Japan, set it to JPY.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>Add Target Currencies</h3>
+      <p>Tap <strong>"Add Target Currency"</strong> to choose which currencies you want to convert to. You can add multiple currencies and reorder them by dragging. Swipe left on a currency to remove it.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/03_IMG_4978.png" alt="Currency selection">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>Customize Exchange Rates</h3>
+      <p>Each target currency has an editable rate field. You can type in your own rate, or tap the <strong>magnifying glass icon</strong> to look up the current rate online.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>Change App Language</h3>
+      <p>Go to <strong>Settings &gt; App Language</strong> to switch between English, Japanese, Simplified Chinese, Traditional Chinese, and Spanish.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/04_IMG_4993.png" alt="Language selection">
+      </div>
+    </div>
+
+    <div class="tip">
+      <p><strong>Pro Tip:</strong> The app remembers your target currency selections per source currency. So when you switch from JPY to EUR as your source, your target currencies will change accordingly!</p>
+    </div>
+
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <h2>はじめに</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>カメラへのアクセスを許可</h3>
+      <p>為替カメラを初めて開くと、カメラの使用許可を求められます。<strong>「許可」</strong>をタップして、リアルタイムの通貨検出を有効にしてください。カメラはデバイス上でのテキスト認識にのみ使用され、画像は保存・アップロードされません。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>カメラを価格に向ける</h3>
+      <p>値札、レシート、メニュー、看板など、金額が表示されているものにカメラを向けてください。アプリが自動的に数字を検出し、画面下部に換算結果を表示します。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/01_IMG_4973.png" alt="カメラ検出">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>フリーズボタンを使う</h3>
+      <p>左上の<strong>フリーズボタン</strong>をタップすると、カメラの映像を一時停止できます。画面が更新されることなく、検出された金額をじっくり確認できます。もう一度タップするとライブ検出が再開されます。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>目標通貨を切り替える</h3>
+      <p>複数の目標通貨が設定されている場合、メイン画面の下部にある<strong>通貨タブ</strong>をタップして素早く切り替えできます。</p>
+    </div>
+
+    <h2>設定とカスタマイズ</h2>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>設定を開く</h3>
+      <p>右上の<strong>歯車アイコン</strong>（⚙）をタップして設定を開きます。元通貨、目標通貨、為替レートを設定できます。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/02_IMG_4974.png" alt="設定画面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>元通貨を設定</h3>
+      <p><strong>「検出通貨」</strong>セクションで、カメラで認識したい通貨を選択します。例えば、日本にいる場合はJPYに設定します。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>目標通貨を追加</h3>
+      <p><strong>「目標通貨を追加」</strong>をタップして、換算先の通貨を選択します。複数の通貨を追加でき、ドラッグで並べ替えもできます。左にスワイプすると削除できます。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/03_IMG_4975.png" alt="通貨選択">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>為替レートをカスタマイズ</h3>
+      <p>各目標通貨には編集可能なレート入力欄があります。独自のレートを入力するか、<strong>虫眼鏡アイコン</strong>をタップして最新のレートをオンラインで検索できます。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>アプリの言語を変更</h3>
+      <p><strong>設定 &gt; アプリの言語</strong>から、英語・日本語・簡体中文・繁體中文・スペイン語に切り替えられます。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/04_IMG_4976.png" alt="言語選択">
+      </div>
+    </div>
+
+    <div class="tip">
+      <p><strong>便利な機能：</strong>アプリは元通貨ごとに目標通貨の選択を記憶します。例えばJPYからEURに元通貨を切り替えると、それぞれに対応した目標通貨リストが表示されます！</p>
+    </div>
+
+  </div>
+
+  <!-- Simplified Chinese -->
+  <div id="zh" class="section">
+    <h2>开始使用</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>允许相机访问</h3>
+      <p>首次打开汇率相机时，应用会请求相机权限。点击<strong>"允许"</strong>以启用实时货币识别。相机仅用于设备端文字识别，不会存储或上传任何图像。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>将相机对准价格</h3>
+      <p>将相机对准任何价签、收据、菜单或标牌上的金额。应用会自动识别数字并在屏幕底部显示换算结果。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/01_IMG_4990.png" alt="相机识别">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>使用冻结按钮</h3>
+      <p>点击左上角的<strong>冻结按钮</strong>可以暂停相机画面，方便你仔细查看识别到的金额，而不会被不断更新的画面干扰。再次点击可恢复实时检测。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>切换目标货币</h3>
+      <p>如果你设置了多个目标货币，可以使用主界面底部的<strong>货币标签</strong>快速切换。</p>
+    </div>
+
+    <h2>设置与自定义</h2>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>打开设置</h3>
+      <p>点击右上角的<strong>齿轮图标</strong>（⚙）打开设置。在这里你可以配置源货币、目标货币和汇率。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/02_IMG_4985.png" alt="设置界面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>设置源货币</h3>
+      <p>在<strong>"检测货币"</strong>部分，选择你期望通过相机看到的货币。例如，如果你在日本旅行，设置为 JPY。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>添加目标货币</h3>
+      <p>点击<strong>"添加目标货币"</strong>来选择要换算的货币。你可以添加多个货币，通过拖动调整顺序，向左滑动可删除。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/03_IMG_4986.png" alt="货币选择">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>自定义汇率</h3>
+      <p>每个目标货币都有可编辑的汇率输入框。你可以输入自己的汇率，也可以点击<strong>放大镜图标</strong>在线查询最新汇率。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>切换应用语言</h3>
+      <p>进入<strong>设置 &gt; 应用语言</strong>，可以在英语、日语、简体中文、繁体中文和西班牙语之间切换。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/04_IMG_4994.png" alt="语言选择">
+      </div>
+    </div>
+
+    <div class="tip">
+      <p><strong>小技巧：</strong>应用会按源货币分别记忆你的目标货币选择。当你从 JPY 切换到 EUR 作为源货币时，对应的目标货币列表也会自动切换！</p>
+    </div>
+
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <h2>開始使用</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>允許相機存取</h3>
+      <p>首次開啟匯率相機時，應用程式會請求相機權限。點擊<strong>「允許」</strong>以啟用即時貨幣辨識。相機僅用於裝置端文字辨識，不會儲存或上傳任何影像。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>將相機對準價格</h3>
+      <p>將相機對準任何價標、收據、菜單或標示上的金額。應用程式會自動辨識數字並在螢幕底部顯示換算結果。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/01_IMG_4989.png" alt="相機辨識">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>使用凍結按鈕</h3>
+      <p>點擊左上角的<strong>凍結按鈕</strong>可以暫停相機畫面，方便你仔細查看辨識到的金額，而不會被不斷更新的畫面干擾。再次點擊可恢復即時偵測。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>切換目標貨幣</h3>
+      <p>如果你設定了多個目標貨幣，可以使用主畫面底部的<strong>貨幣標籤</strong>快速切換。</p>
+    </div>
+
+    <h2>設定與自訂</h2>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>開啟設定</h3>
+      <p>點擊右上角的<strong>齒輪圖示</strong>（⚙）開啟設定。在這裡你可以設定來源貨幣、目標貨幣和匯率。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/02_IMG_4987.png" alt="設定畫面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>設定來源貨幣</h3>
+      <p>在<strong>「偵測貨幣」</strong>部分，選擇你期望透過相機看到的貨幣。例如，如果你在日本旅行，設定為 JPY。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>新增目標貨幣</h3>
+      <p>點擊<strong>「新增目標貨幣」</strong>來選擇要換算的貨幣。你可以新增多個貨幣，透過拖曳調整順序，向左滑動可刪除。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/03_IMG_4988.png" alt="貨幣選擇">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>自訂匯率</h3>
+      <p>每個目標貨幣都有可編輯的匯率輸入框。你可以輸入自己的匯率，也可以點擊<strong>放大鏡圖示</strong>線上查詢最新匯率。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>切換應用程式語言</h3>
+      <p>進入<strong>設定 &gt; 應用程式語言</strong>，可以在英語、日語、簡體中文、繁體中文和西班牙語之間切換。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/04_IMG_4995.png" alt="語言選擇">
+      </div>
+    </div>
+
+    <div class="tip">
+      <p><strong>小技巧：</strong>應用程式會按來源貨幣分別記憶你的目標貨幣選擇。當你從 JPY 切換到 EUR 作為來源貨幣時，對應的目標貨幣清單也會自動切換！</p>
+    </div>
+
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <h2>Primeros pasos</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>Permitir acceso a la c&aacute;mara</h3>
+      <p>Al abrir CurrencyCam por primera vez, la app solicitar&aacute; permiso para usar la c&aacute;mara. Toca <strong>&quot;Permitir&quot;</strong> para activar la detecci&oacute;n de moneda en tiempo real. La c&aacute;mara solo se usa para reconocimiento de texto en el dispositivo; no se almacenan ni suben im&aacute;genes.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>Apunta tu c&aacute;mara a un precio</h3>
+      <p>Dirige tu c&aacute;mara a cualquier etiqueta de precio, recibo, men&uacute; o cartel que muestre un monto. La app detectar&aacute; autom&aacute;ticamente los n&uacute;meros y mostrar&aacute; el resultado de la conversi&oacute;n en la parte inferior de la pantalla.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/01_IMG_4980.png" alt="Detecci&oacute;n por c&aacute;mara">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>Usa el bot&oacute;n de congelar</h3>
+      <p>Toca el <strong>bot&oacute;n de congelar</strong> (esquina superior izquierda) para pausar la vista de la c&aacute;mara. Esto te permite examinar los montos detectados sin que la vista se actualice constantemente. Toca de nuevo para reanudar la detecci&oacute;n en vivo.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>Cambiar entre monedas de destino</h3>
+      <p>Si tienes m&uacute;ltiples monedas de destino configuradas, usa las <strong>pesta&ntilde;as de moneda</strong> en la parte inferior de la pantalla principal para cambiar r&aacute;pidamente entre ellas.</p>
+    </div>
+
+    <h2>Ajustes y personalizaci&oacute;n</h2>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>Abrir Ajustes</h3>
+      <p>Toca el <strong>icono de engranaje</strong> (⚙) en la esquina superior derecha para abrir Ajustes. Aqu&iacute; puedes configurar tu moneda de origen, monedas de destino y tasas de cambio.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/02_IMG_4983.png" alt="Pantalla de ajustes">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>Establecer moneda de origen</h3>
+      <p>En <strong>&quot;Moneda detectada&quot;</strong>, selecciona la moneda que esperas ver a trav&eacute;s de la c&aacute;mara. Por ejemplo, si est&aacute;s viajando en Jap&oacute;n, configura JPY.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>Agregar monedas de destino</h3>
+      <p>Toca <strong>&quot;Agregar moneda de destino&quot;</strong> para elegir a qu&eacute; monedas quieres convertir. Puedes agregar m&uacute;ltiples monedas y reordenarlas arrastrando. Desliza a la izquierda para eliminar una moneda.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/03_IMG_4984.png" alt="Selecci&oacute;n de monedas">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>Personalizar tasas de cambio</h3>
+      <p>Cada moneda de destino tiene un campo de tasa editable. Puedes escribir tu propia tasa o tocar el <strong>icono de lupa</strong> para consultar la tasa actual en l&iacute;nea.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>Cambiar el idioma de la app</h3>
+      <p>Ve a <strong>Ajustes &gt; Idioma de la app</strong> para cambiar entre ingl&eacute;s, japon&eacute;s, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/04_IMG_4992.png" alt="Selecci&oacute;n de idioma">
+      </div>
+    </div>
+
+    <div class="tip">
+      <p><strong>Consejo:</strong> La app recuerda tu selecci&oacute;n de monedas de destino por cada moneda de origen. Cuando cambias de JPY a EUR como moneda de origen, &iexcl;tu lista de monedas de destino cambia autom&aacute;ticamente!</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

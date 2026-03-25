@@ -45,7 +45,8 @@ function getAppInfo() {
  */
 function buildMailtoHref(info) {
   var subject = encodeURIComponent('【家計簿】お問い合わせ');
-  var lines = ['\n\n--------------------', 'アプリ情報（削除しないでください）'];
+  var BR = '\r\n';
+  var lines = [BR, BR, '--------------------', 'アプリ情報（削除しないでください）'];
 
   if (info.isApp) {
     lines.push('バージョン: ' + info.version + ' (' + info.build + ')');
@@ -57,6 +58,6 @@ function buildMailtoHref(info) {
   }
 
   lines.push('--------------------');
-  var body = encodeURIComponent(lines.join('\n'));
+  var body = encodeURIComponent(lines.join(BR));
   return 'mailto:lj_dev@ymail.ne.jp?subject=' + subject + '&body=' + body;
 }

@@ -46,14 +46,16 @@
   .hero .icon {
     width: 90px; height: 90px;
     border-radius: 22px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 44px;
     margin-bottom: 20px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .hero .icon img {
+    width: 100%; height: 100%;
+    object-fit: cover;
   }
   .hero h1 {
     font-size: 34px;
@@ -96,13 +98,13 @@
   }
 
   /* ===== Container ===== */
-  .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
   /* ===== Section ===== */
-  .section { padding: 48px 0; }
+  .section { padding: 56px 0; }
   .section-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--theme-dark);
     margin-bottom: 8px;
@@ -111,33 +113,151 @@
     text-align: center;
     font-size: 14px;
     color: var(--text-sub);
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
 
-  /* ===== Feature Cards ===== */
-  .features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  /* ===== Screenshot Showcase ===== */
+  .screenshot-showcase {
+    display: flex;
     gap: 16px;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 10px 0 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
-  .feature {
+  .screenshot-showcase::-webkit-scrollbar { display: none; }
+  .screenshot-showcase img {
+    width: 180px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .screenshot-showcase img:hover { transform: translateY(-6px); }
+
+  /* ===== Feature Row (text + screenshot) ===== */
+  .feature-row {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .feature-row.reverse { flex-direction: row-reverse; }
+  .feature-row .feature-text { flex: 1; }
+  .feature-row .feature-img { flex: 0 0 220px; }
+  .feature-row .feature-img img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  }
+  .feature-row .feature-tag {
+    display: inline-block;
+    background: var(--theme-light);
+    color: var(--theme-dark);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .feature-row h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .feature-row p {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.8;
+  }
+  .feature-row ul {
+    margin-top: 12px;
+    padding-left: 0;
+    list-style: none;
+  }
+  .feature-row li {
+    font-size: 14px;
+    color: var(--text-sub);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .feature-row li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 12px;
+    width: 8px; height: 8px;
+    background: var(--theme);
+    border-radius: 50%;
+  }
+
+  /* ===== Flow ===== */
+  .flow-steps {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .flow-step {
     background: var(--card);
     border-radius: 16px;
-    padding: 24px 20px;
+    padding: 28px 20px;
     text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    flex: 1 1 160px;
+    max-width: 200px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .flow-step .num {
+    width: 32px; height: 32px;
+    background: var(--theme);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .flow-step .emoji { font-size: 32px; margin-bottom: 8px; display: block; }
+  .flow-step .label { font-size: 14px; font-weight: 600; }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: var(--theme);
+    flex-shrink: 0;
+  }
+
+  /* ===== Widget Section ===== */
+  .widget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .widget-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     transition: transform 0.2s;
   }
-  .feature:hover { transform: translateY(-3px); }
-  .feature .emoji { font-size: 36px; margin-bottom: 10px; }
-  .feature h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .feature p { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+  .widget-card:hover { transform: translateY(-3px); }
+  .widget-card .emoji { font-size: 30px; margin-bottom: 8px; }
+  .widget-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .widget-card p { font-size: 12px; color: var(--text-sub); }
 
-  /* ===== Highlight Section ===== */
+  /* ===== Highlight ===== */
   .highlight {
     background: var(--card);
     border-radius: 20px;
-    padding: 32px 24px;
+    padding: 32px 28px;
     margin: 16px 0;
     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
@@ -154,55 +274,54 @@
   .highlight ul { padding-left: 20px; margin-top: 8px; }
   .highlight li { font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }
 
-  /* ===== Flow ===== */
-  .flow-steps {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  .flow-step {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 20px 16px;
-    text-align: center;
-    flex: 1 1 140px;
-    max-width: 160px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    position: relative;
-  }
-  .flow-step .num {
-    width: 28px; height: 28px;
-    background: var(--theme);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 14px;
+  /* ===== Category Tags ===== */
+  .category-section { display: flex; gap: 20px; flex-wrap: wrap; }
+  .category-group { flex: 1; min-width: 260px; }
+  .category-group h4 {
+    font-size: 15px;
     font-weight: 700;
-    display: inline-flex;
+    color: var(--theme-dark);
+    margin-bottom: 10px;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    display: inline-block;
+    background: var(--theme-light);
+    color: var(--theme-dark);
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* ===== Privacy Banner ===== */
+  .privacy-banner {
+    background: linear-gradient(135deg, var(--theme-light) 0%, #f0f7f5 100%);
+    border-radius: 20px;
+    padding: 36px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .privacy-banner .privacy-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+  }
+  .privacy-banner h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--theme-dark);
     margin-bottom: 8px;
   }
-  .flow-step .emoji { font-size: 28px; margin-bottom: 6px; display: block; }
-  .flow-step .label { font-size: 12px; font-weight: 600; }
-
-  /* ===== Widget Section ===== */
-  .widget-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
+  .privacy-banner p {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
   }
-  .widget-card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 20px 14px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .widget-card .emoji { font-size: 28px; margin-bottom: 6px; }
-  .widget-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-  .widget-card p { font-size: 11px; color: var(--text-sub); }
 
   /* ===== Spec ===== */
   .spec-table {
@@ -212,16 +331,62 @@
   }
   .spec-table th {
     text-align: left;
-    padding: 10px 14px;
+    padding: 12px 16px;
     background: var(--theme-light);
     color: var(--theme-dark);
     font-weight: 600;
     width: 35%;
   }
   .spec-table td {
-    padding: 10px 14px;
+    padding: 12px 16px;
     border-bottom: 1px solid #eee;
     color: var(--text-sub);
+  }
+
+  /* ===== Video Pair ===== */
+  .video-pair {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .video-item {
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+    max-width: 200px;
+  }
+  .video-item video {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+  .video-item .caption {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-top: 10px;
+  }
+
+  /* ===== CTA Bottom ===== */
+  .cta-bottom {
+    text-align: center;
+    padding: 64px 20px 80px;
+  }
+  .cta-bottom .cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--theme);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(79,121,113,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-bottom .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(79,121,113,0.4);
   }
 
   /* ===== Footer ===== */
@@ -237,12 +402,22 @@
   .footer .links a { margin: 0 12px; }
   .footer .copyright { font-size: 11px; opacity: 0.6; margin-top: 12px; }
 
-  @media (max-width: 480px) {
+  /* ===== Responsive ===== */
+  @media (max-width: 680px) {
     .hero h1 { font-size: 28px; }
-    .features { grid-template-columns: 1fr; }
+    .feature-row { flex-direction: column !important; gap: 24px; text-align: center; }
+    .feature-row .feature-img { flex: 0 0 auto; }
+    .feature-row .feature-img img { width: 180px; }
+    .screenshot-showcase img { width: 150px; }
     .widget-grid { grid-template-columns: 1fr 1fr; }
-    .flow-steps { gap: 8px; }
-    .flow-step { flex: 1 1 100px; max-width: 120px; padding: 14px 10px; }
+    .flow-arrow { display: none; }
+    .flow-step { max-width: 140px; }
+    .category-section { flex-direction: column; }
+    .privacy-banner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 400px) {
+    .screenshot-showcase img { width: 130px; }
+    .feature-row .feature-img img { width: 160px; }
   }
 </style>
 </head>
@@ -250,7 +425,7 @@
 
 <!-- ===== Hero ===== -->
 <div class="hero">
-  <div class="icon">&#128179;</div>
+  <div class="icon"><img src="app-icon.jpeg" alt="家計簿 App Icon"></div>
   <h1>家計簿</h1>
   <div class="subtitle">レシートスキャンで、かんたん支出管理</div>
   <div class="catchphrase">
@@ -263,6 +438,18 @@
 
 <div class="container">
 
+<!-- ===== Screenshot Showcase ===== -->
+<div class="section" style="padding-bottom: 32px;">
+  <div class="screenshot-showcase">
+    <img src="Screenshots/6.5/01_calendar.png" alt="カレンダー画面">
+    <img src="Screenshots/6.5/02_scan.png" alt="スキャン画面">
+    <img src="Screenshots/6.5/03_5006.png" alt="記録入力画面">
+    <img src="Screenshots/6.5/04_statistics.png" alt="統計画面">
+    <img src="Screenshots/6.5/05_widget.png" alt="ウィジェット">
+    <img src="Screenshots/6.5/09_category.png" alt="カテゴリ選択">
+  </div>
+</div>
+
 <!-- ===== 3ステップ ===== -->
 <div class="section">
   <div class="section-title">3ステップで記録完了</div>
@@ -273,11 +460,13 @@
       <span class="emoji">&#128247;</span>
       <div class="label">スキャン</div>
     </div>
+    <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
       <div class="num">2</div>
       <span class="emoji">&#129302;</span>
       <div class="label">自動認識</div>
     </div>
+    <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
       <div class="num">3</div>
       <span class="emoji">&#9989;</span>
@@ -286,50 +475,93 @@
   </div>
 </div>
 
-<!-- ===== 主な機能 ===== -->
+<!-- ===== Feature: OCR スキャン ===== -->
 <div class="section">
   <div class="section-title">主な機能</div>
   <div class="section-sub">シンプルだけど、必要なものは全部揃ってる</div>
-  <div class="features">
-    <div class="feature">
-      <div class="emoji">&#128248;</div>
-      <h3>レシートOCR</h3>
-      <p>日本語に最適化されたOCRで<br>日付・金額を自動抽出</p>
+
+  <div class="feature-row">
+    <div class="feature-text">
+      <span class="feature-tag">&#128248; レシートOCR</span>
+      <h3>レシートを撮るだけ<br>自動でデータ化</h3>
+      <p>Apple Vision フレームワークを活用した高精度な日本語テキスト認識。レシートをカメラに向けるだけで、日付・金額・商品名を自動抽出します。</p>
+      <ul>
+        <li>日本語レシートに最適化された高精度OCR</li>
+        <li>スクリーンショットや保存済み画像にも対応</li>
+        <li>複数レシートの一括スキャンも可能</li>
+      </ul>
     </div>
-    <div class="feature">
-      <div class="emoji">&#128197;</div>
-      <h3>カレンダー管理</h3>
-      <p>日別の支出合計を<br>カレンダーで一目把握</p>
-    </div>
-    <div class="feature">
-      <div class="emoji">&#128202;</div>
-      <h3>統計グラフ</h3>
-      <p>カテゴリ別の円グラフと<br>期間別の推移を分析</p>
-    </div>
-    <div class="feature">
-      <div class="emoji">&#128241;</div>
-      <h3>ウィジェット</h3>
-      <p>ホーム画面・ロック画面から<br>ワンタップで記録</p>
-    </div>
-    <div class="feature">
-      <div class="emoji">&#128230;</div>
-      <h3>データ移行</h3>
-      <p>バックアップ・機種変更も<br>iCloud / AirDrop で簡単</p>
-    </div>
-    <div class="feature">
-      <div class="emoji">&#128200;</div>
-      <h3>CSV エクスポート</h3>
-      <p>Excel / スプレッドシートで<br>自由に分析・レポート作成</p>
+    <div class="feature-img">
+      <img src="Screenshots/6.5/02_scan.png" alt="レシートスキャン画面">
     </div>
   </div>
-</div>
 
-<!-- ===== OCR ===== -->
-<div class="section">
-  <div class="highlight">
-    <h3>&#128270; 日本語OCR自動認識</h3>
-    <p>Apple Vision フレームワークを活用した高精度な日本語テキスト認識。レシートをカメラに向けるだけで、日付・金額・商品名を自動抽出します。</p>
-    <p>スクリーンショットや保存済み画像からの読み取りにも対応。ネットショッピングの注文確認画面からも、簡単に支出を記録できます。</p>
+  <!-- Feature: 記録入力 -->
+  <div class="feature-row reverse">
+    <div class="feature-text">
+      <span class="feature-tag">&#9989; ワンタップ記録</span>
+      <h3>スキャン結果から<br>ワンタップで記録</h3>
+      <p>OCRで読み取った金額・日付・カテゴリーが自動入力されるので、確認してタップするだけ。手入力の手間を大幅に削減できます。</p>
+      <ul>
+        <li>金額・日付・カテゴリーを自動入力</li>
+        <li>支払方法やメモも柔軟に設定可能</li>
+        <li>手動での新規記録にも対応</li>
+      </ul>
+    </div>
+    <div class="feature-img">
+      <img src="Screenshots/6.5/03_5006.png" alt="記録入力画面">
+    </div>
+  </div>
+
+  <!-- Feature: カレンダー -->
+  <div class="feature-row">
+    <div class="feature-text">
+      <span class="feature-tag">&#128197; カレンダー管理</span>
+      <h3>日々の支出を<br>カレンダーで管理</h3>
+      <p>日付ごとの支出合計がカレンダー上に表示され、いつ・いくら使ったかが一目でわかります。支出の多い日も少ない日もひと目で把握できます。</p>
+      <ul>
+        <li>日付ごとの合計金額を自動計算</li>
+        <li>タップで日別の詳細記録を確認</li>
+        <li>カレンダーから直接新規記録を追加</li>
+      </ul>
+    </div>
+    <div class="feature-img">
+      <img src="Screenshots/6.5/01_calendar.png" alt="カレンダー画面">
+    </div>
+  </div>
+
+  <!-- Feature: 統計 -->
+  <div class="feature-row reverse">
+    <div class="feature-text">
+      <span class="feature-tag">&#128202; 統計グラフ</span>
+      <h3>支出の傾向を<br>グラフで分析</h3>
+      <p>月別・カテゴリー別に支出を可視化。合計金額、1日平均、最高支出、よく使うカテゴリーなど、家計の全体像を簡単に把握できます。</p>
+      <ul>
+        <li>月別・3ヶ月・半年・年間の集計表示</li>
+        <li>カテゴリー別の円グラフで内訳を可視化</li>
+        <li>1日平均や最高支出を自動算出</li>
+      </ul>
+    </div>
+    <div class="feature-img">
+      <img src="Screenshots/6.5/04_statistics.png" alt="統計画面">
+    </div>
+  </div>
+
+  <!-- Feature: スキャン履歴 -->
+  <div class="feature-row">
+    <div class="feature-text">
+      <span class="feature-tag">&#128203; スキャン履歴</span>
+      <h3>スキャン履歴を<br>まとめて管理</h3>
+      <p>過去にスキャンしたレシートをいつでも確認可能。記録済みかどうかのステータスも表示され、重複記録を防ぎます。</p>
+      <ul>
+        <li>スキャン画像をサムネイル付きで一覧表示</li>
+        <li>記録済み・未記録のステータス管理</li>
+        <li>履歴から再度記録を作成可能</li>
+      </ul>
+    </div>
+    <div class="feature-img">
+      <img src="Screenshots/6.5/06_scanlist.png" alt="スキャン一覧画面">
+    </div>
   </div>
 </div>
 
@@ -354,23 +586,24 @@
       <p>スキャン・統計に<br>ショートカット</p>
     </div>
   </div>
-  <!-- 実際の操作動画 -->
-  <div style="display:flex; gap:16px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
-    <div style="text-align:center; flex:1; min-width:140px; max-width:200px;">
-      <video autoplay loop muted playsinline style="width:100%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+
+  <!-- 操作動画 -->
+  <div class="video-pair">
+    <div class="video-item">
+      <video autoplay loop muted playsinline>
         <source src="video_widget.mp4" type="video/mp4">
       </video>
-      <p style="font-size:12px; color:var(--text-sub); margin-top:8px;">ホーム画面ウィジェット</p>
+      <div class="caption">ホーム画面ウィジェット</div>
     </div>
-    <div style="text-align:center; flex:1; min-width:140px; max-width:200px;">
-      <video autoplay loop muted playsinline style="width:100%; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+    <div class="video-item">
+      <video autoplay loop muted playsinline>
         <source src="video_lockscreen.mp4" type="video/mp4">
       </video>
-      <p style="font-size:12px; color:var(--text-sub); margin-top:8px;">ロック画面ウィジェット</p>
+      <div class="caption">ウィジェット</div>
     </div>
   </div>
 
-  <div class="highlight" style="margin-top:20px">
+  <div class="highlight" style="margin-top:24px">
     <h3>&#128161; おすすめの使い方</h3>
     <p>ロック画面に家計簿ウィジェットを配置しておけば、買い物の直後にロック画面からワンタップ → スキャン → 記録という<strong>最速フロー</strong>が実現します。記録の習慣づけに最適です。</p>
   </div>
@@ -393,27 +626,45 @@
   <div class="section-title">豊富なカテゴリ & 支払方法</div>
   <div class="section-sub">あなたの支出スタイルにフィット</div>
   <div class="highlight">
-    <h3>&#128196; 固定費</h3>
-    <p>家賃 ・ 保険 ・ 積立 ・ 通信費 ・ インターネット ・ サブスク ・ ローン</p>
-    <h3 style="margin-top:16px">&#128722; 変動費</h3>
-    <p>水道 ・ 電気 ・ ガス ・ 外食 ・ 買い物 ・ 交際費 ・ 交通費 ・ 医療費 ・ 趣味 ・ 教育費</p>
-    <h3 style="margin-top:16px">&#128179; 支払方法</h3>
-    <p>現金 ・ クレジットカード ・ デビットカード ・ 電子マネー ・ QR決済 ・ 銀行振込</p>
-    <p style="margin-top:10px; font-size:13px; color:var(--theme-dark)">カスタムカテゴリの追加も可能。アイコンや色も自由に設定できます。</p>
+    <div class="category-section">
+      <div class="category-group">
+        <h4>&#128196; 固定費</h4>
+        <div class="tag-list">
+          <span class="tag">家賃</span><span class="tag">保険</span><span class="tag">積立</span><span class="tag">通信費</span><span class="tag">インターネット</span><span class="tag">サブスク</span><span class="tag">ローン</span>
+        </div>
+      </div>
+      <div class="category-group">
+        <h4>&#128722; 変動費</h4>
+        <div class="tag-list">
+          <span class="tag">水道</span><span class="tag">電気</span><span class="tag">ガス</span><span class="tag">外食</span><span class="tag">買い物</span><span class="tag">交際費</span><span class="tag">交通費</span><span class="tag">医療費</span><span class="tag">趣味</span><span class="tag">教育費</span>
+        </div>
+      </div>
+      <div class="category-group">
+        <h4>&#128179; 支払方法</h4>
+        <div class="tag-list">
+          <span class="tag">現金</span><span class="tag">クレジットカード</span><span class="tag">デビットカード</span><span class="tag">電子マネー</span><span class="tag">QR決済</span><span class="tag">銀行振込</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:16px; font-size:13px; color:var(--theme-dark)">カスタムカテゴリの追加も可能。アイコンや色も自由に設定できます。</p>
   </div>
 </div>
 
 <!-- ===== プライバシー ===== -->
 <div class="section">
-  <div class="highlight">
-    <h3>&#128272; プライバシー重視</h3>
-    <p>すべてのデータは端末内に保存。外部サーバーへのデータ送信は一切ありません。あなたの支出データは、あなただけのものです。</p>
+  <div class="privacy-banner">
+    <div class="privacy-icon">&#128272;</div>
+    <div>
+      <h3>プライバシー重視</h3>
+      <p>すべてのデータは端末内に保存。外部サーバーへのデータ送信は一切ありません。あなたの支出データは、あなただけのものです。</p>
+    </div>
   </div>
 </div>
 
 <!-- ===== スペック ===== -->
 <div class="section">
   <div class="section-title">アプリ情報</div>
+  <div class="section-sub"></div>
   <div class="highlight" style="padding:0; overflow:hidden;">
     <table class="spec-table">
       <tr><th>アプリ名</th><td>家計簿</td></tr>
@@ -427,11 +678,11 @@
   </div>
 </div>
 
-<!-- ===== Download ===== -->
-<div class="section" id="download" style="text-align:center; padding-bottom:60px;">
+<!-- ===== Download CTA ===== -->
+<div class="cta-bottom" id="download">
   <div class="section-title">今すぐはじめよう</div>
   <div class="section-sub">毎日の小さな記録が、大きな一歩につながります</div>
-  <a href="https://apps.apple.com/jp/app/%E5%AE%B6%E8%A8%88%E7%B0%BF-%E3%83%AC%E3%82%B7%E3%83%BC%E3%83%88%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%B3-%E3%83%AC%E3%82%B7%E3%83%AD%E3%82%B0/id6758864044" class="cta" style="display:inline-block; background:var(--theme); color:#fff; margin-top:12px;">
+  <a href="https://apps.apple.com/jp/app/%E5%AE%B6%E8%A8%88%E7%B0%BF-%E3%83%AC%E3%82%B7%E3%83%BC%E3%83%88%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%B3-%E3%83%AC%E3%82%B7%E3%83%AD%E3%82%B0/id6758864044" class="cta">
     App Store でダウンロード
   </a>
 </div>

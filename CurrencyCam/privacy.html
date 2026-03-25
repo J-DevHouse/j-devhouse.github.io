@@ -34,6 +34,13 @@ function switchLang(lang) {
   document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
 }
 window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
   var lang = (navigator.language || '').toLowerCase();
   if (lang.startsWith('ja')) switchLang('ja');
   else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');

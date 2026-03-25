@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アプリ情報 - 家計簿</title>
+<style>
+  :root { --theme: #4F7971; --theme-light: #e8f0ee; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #1a1a1a; background: #f7f9f8; line-height: 1.7;
+  }
+  .container { max-width: 600px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  .header { text-align: center; padding: 20px 0 24px; }
+  .header .icon { width: 88px; height: 88px; border-radius: 20px; margin: 0 auto 14px; background: var(--theme-light); display: flex; align-items: center; justify-content: center; font-size: 44px; }
+  .header h1 { font-size: 24px; font-weight: 800; }
+  .header .sub { font-size: 14px; color: #888; margin-top: 4px; }
+
+  .card {
+    background: #fff; border-radius: 12px; padding: 20px;
+    margin-bottom: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16px; font-weight: 700; color: var(--theme);
+    margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .card p { font-size: 14px; color: #555; margin-bottom: 8px; }
+  .card .italic { font-style: italic; color: #888; }
+
+  .info-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .label { color: #333; }
+  .info-row .value { color: #888; }
+
+  .footer { text-align: center; padding-top: 24px; font-size: 11px; color: #bbb; }
+  .footer a { color: var(--theme); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="icon">&#128179;</div>
+    <h1>家計簿</h1>
+    <div class="sub">支出管理アプリ</div>
+  </div>
+
+  <div class="card">
+    <h2>&#128140; 開発者より</h2>
+    <p>レシートが溜まって整理に困っていた自分自身の経験から、このアプリを作りました。</p>
+    <p>毎日の小さな記録が、きっと大きな一歩につながります。<br>一緒に頑張りましょう！</p>
+    <p class="italic">あなたの暮らしに、少しでもお役に立てますように。</p>
+  </div>
+
+  <div class="card">
+    <h2>&#128196; バージョン情報</h2>
+    <div class="info-row"><span class="label">バージョン</span><span class="value" id="version">-</span></div>
+    <div class="info-row"><span class="label">ビルド番号</span><span class="value" id="build">-</span></div>
+  </div>
+
+  <div class="card">
+    <h2>&#128100; 開発者情報</h2>
+    <div class="info-row"><span class="label">開発</span><span class="value">LI JIE</span></div>
+    <div class="info-row"><span class="label">著作権</span><span class="value">&copy; J-DevHouse</span></div>
+  </div>
+
+  <div class="card" style="text-align:center; font-size:13px;">
+    <a href="disclaimer.html" style="color:var(--theme); text-decoration:none; margin-right:16px;">利用規約・免責事項</a>
+    <a href="privacy.html" style="color:var(--theme); text-decoration:none; margin-right:16px;">プライバシーポリシー</a>
+    <a href="support.html" style="color:var(--theme); text-decoration:none;">サポート</a>
+  </div>
+
+  <div class="footer">
+    <p>&copy; J-DevHouse</p>
+    <p style="margin-top:4px;"><a href="mailto:lj_dev@ymail.ne.jp">lj_dev@ymail.ne.jp</a></p>
+  </div>
+
+</div>
+
+<script>
+// アプリ内 WebView から URL パラメータでバージョンを受け取る
+const params = new URLSearchParams(window.location.search);
+const v = params.get('v');
+const b = params.get('b');
+if (v) document.getElementById('version').textContent = v;
+if (b) document.getElementById('build').textContent = b;
+</script>
+</body>
+</html>

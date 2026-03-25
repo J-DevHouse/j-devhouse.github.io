@@ -36,7 +36,9 @@ function switchLang(lang) {
 window.onload = function() {
   var lang = (navigator.language || '').toLowerCase();
   if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
   else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
   else switchLang('en');
 };
 </script>
@@ -46,12 +48,14 @@ window.onload = function() {
   <div class="header">
     <div class="app-name">CurrencyCam</div>
     <h1>Privacy Policy</h1>
-    <div class="date">Last updated: March 23, 2026</div>
+    <div class="date">Last updated: March 22, 2026</div>
   </div>
   <div class="lang-switch">
     <a href="javascript:switchLang('en')" data-lang="en">English</a>
     <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
-    <a href="javascript:switchLang('zh')" data-lang="zh">中文</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
   </div>
 
   <!-- English -->
@@ -192,8 +196,100 @@ window.onload = function() {
     <p><strong>邮箱：</strong> lj_dev@ymail.ne.jp</p>
   </div>
 
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <div class="highlight"><p>匯率相機以保護您的隱私為設計原則。我們不收集、儲存或傳輸任何個人資料。</p></div>
+
+    <h2>1. 我們收集的資訊</h2>
+    <h3>相機存取</h3>
+    <p>匯率相機需要存取您的相機以即時偵測貨幣金額。相機影像完全在您的裝置上處理，不會被儲存、上傳或傳輸到任何伺服器。</p>
+    <h3>使用者偏好設定</h3>
+    <p>您的貨幣選擇和自訂匯率使用 iOS 標準儲存（UserDefaults）儲存在本機裝置上，這些資料不會離開您的裝置。</p>
+    <h3>不收集個人資料</h3>
+    <p>我們不收集以下任何資訊：</p>
+    <ul>
+      <li>姓名、電子郵件地址或聯絡方式</li>
+      <li>位置資料</li>
+      <li>用於追蹤目的的裝置識別碼</li>
+      <li>使用分析或行為資料</li>
+      <li>照片、影像或相機錄影</li>
+    </ul>
+
+    <h2>2. 第三方服務</h2>
+    <h3>Google AdMob</h3>
+    <p>匯率相機使用 Google AdMob 顯示廣告。AdMob 可能會按照 <a href="https://policies.google.com/privacy" target="_blank">Google 隱私權政策</a>收集某些資料，包括：</p>
+    <ul>
+      <li>裝置資訊（型號、作業系統版本）</li>
+      <li>廣告識別碼（IDFA），取決於您的 App 追蹤透明度選擇</li>
+      <li>IP 位址（用於基於大致位置的廣告投放）</li>
+    </ul>
+    <p>您可以透過 iOS 設定 > 隱私權與安全性 > 追蹤，來選擇退出個人化廣告。</p>
+
+    <h2>3. App 追蹤透明度</h2>
+    <p>在 iOS 14.5 及更高版本上，匯率相機會在跨應用程式和網站追蹤您之前徵求您的許可。如果您拒絕，仍會看到廣告，但廣告不會基於您在其他應用程式中的活動進行個人化。</p>
+
+    <h2>4. 資料安全</h2>
+    <p>所有貨幣偵測和換算處理完全在您的裝置上進行。沒有任何影像資料或換算結果透過網際網路傳輸。您的自訂匯率設定儲存在本機，受 iOS 內建安全機制保護。</p>
+
+    <h2>5. 兒童隱私</h2>
+    <p>匯率相機不會有意收集 13 歲以下兒童的任何個人資訊。本應用程式的使用不需要任何個人資訊。</p>
+
+    <h2>6. 政策變更</h2>
+    <p>我們可能會不時更新本隱私權政策。任何變更都將在本頁面上反映並更新日期。變更後繼續使用本應用程式即表示您接受修訂後的政策。</p>
+
+    <h2>7. 聯絡我們</h2>
+    <p>如您對本隱私權政策有任何疑問，請透過以下方式聯絡我們：</p>
+    <p><strong>電子郵件：</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <div class="highlight"><p>CurrencyCam est&aacute; dise&ntilde;ado pensando en su privacidad. No recopilamos, almacenamos ni transmitimos ning&uacute;n dato personal.</p></div>
+
+    <h2>1. Informaci&oacute;n que recopilamos</h2>
+    <h3>Acceso a la c&aacute;mara</h3>
+    <p>CurrencyCam requiere acceso a la c&aacute;mara para detectar montos de divisas en tiempo real. Las im&aacute;genes de la c&aacute;mara se procesan completamente en su dispositivo y nunca se almacenan, cargan ni transmiten a ning&uacute;n servidor.</p>
+    <h3>Preferencias del usuario</h3>
+    <p>Sus selecciones de moneda y tasas de cambio personalizadas se almacenan localmente en su dispositivo usando el almacenamiento est&aacute;ndar de iOS (UserDefaults). Estos datos nunca salen de su dispositivo.</p>
+    <h3>Sin recolecci&oacute;n de datos personales</h3>
+    <p>No recopilamos ninguno de los siguientes datos:</p>
+    <ul>
+      <li>Nombres, direcciones de correo electr&oacute;nico o informaci&oacute;n de contacto</li>
+      <li>Datos de ubicaci&oacute;n</li>
+      <li>Identificadores de dispositivo con fines de seguimiento</li>
+      <li>An&aacute;lisis de uso o datos de comportamiento</li>
+      <li>Fotos, im&aacute;genes o grabaciones de c&aacute;mara</li>
+    </ul>
+
+    <h2>2. Servicios de terceros</h2>
+    <h3>Google AdMob</h3>
+    <p>CurrencyCam utiliza Google AdMob para mostrar anuncios. AdMob puede recopilar ciertos datos seg&uacute;n se describe en la <a href="https://policies.google.com/privacy" target="_blank">Pol&iacute;tica de Privacidad de Google</a>. Esto puede incluir:</p>
+    <ul>
+      <li>Informaci&oacute;n del dispositivo (modelo, versi&oacute;n del SO)</li>
+      <li>Identificador de publicidad (IDFA), sujeto a su elecci&oacute;n de Transparencia de Seguimiento de Apps</li>
+      <li>Direcci&oacute;n IP (para publicidad basada en ubicaci&oacute;n aproximada)</li>
+    </ul>
+    <p>Puede optar por no recibir publicidad personalizada a trav&eacute;s de Ajustes de iOS > Privacidad y Seguridad > Seguimiento.</p>
+
+    <h2>3. Transparencia de Seguimiento de Apps</h2>
+    <p>En iOS 14.5 y versiones posteriores, CurrencyCam le pedir&aacute; permiso antes de rastrearlo en otras apps y sitios web. Si rechaza, seguir&aacute; viendo anuncios, pero no estar&aacute;n personalizados seg&uacute;n su actividad en otras apps.</p>
+
+    <h2>4. Seguridad de datos</h2>
+    <p>Todo el procesamiento de detecci&oacute;n y conversi&oacute;n de divisas se realiza completamente en su dispositivo. Ning&uacute;n dato de imagen ni resultado de conversi&oacute;n se transmite por internet. Sus configuraciones de tasas de cambio personalizadas se almacenan localmente y est&aacute;n protegidas por los mecanismos de seguridad integrados de iOS.</p>
+
+    <h2>5. Privacidad de los ni&ntilde;os</h2>
+    <p>CurrencyCam no recopila intencionalmente informaci&oacute;n personal de ni&ntilde;os menores de 13 a&ntilde;os. La app no requiere informaci&oacute;n personal para funcionar.</p>
+
+    <h2>6. Cambios en esta pol&iacute;tica</h2>
+    <p>Podemos actualizar esta pol&iacute;tica de privacidad de vez en cuando. Cualquier cambio se reflejar&aacute; en esta p&aacute;gina con una fecha actualizada. El uso continuado de la app despu&eacute;s de los cambios constituye la aceptaci&oacute;n de la pol&iacute;tica revisada.</p>
+
+    <h2>7. Cont&aacute;ctenos</h2>
+    <p>Si tiene alguna pregunta sobre esta pol&iacute;tica de privacidad, cont&aacute;ctenos en:</p>
+    <p><strong>Correo electr&oacute;nico:</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
   <div class="footer">
-    <p>&copy; 2026 J-DevHouse</p>
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
   </div>
 </div>
 </body>

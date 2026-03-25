@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J-DevHouse</title>
+<meta name="description" content="J-DevHouse が開発した iOS アプリ一覧。家計簿、Shashin+、CurrencyCam。">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --text-sub: #6e6e73;
+    --radius: 18px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== Header ===== */
+  .header {
+    text-align: center;
+    padding: 72px 24px 48px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .header p {
+    margin-top: 12px;
+    font-size: 16px;
+    color: var(--text-sub);
+  }
+
+  /* ===== App Grid ===== */
+  .apps {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .app-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+  .app-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+  .app-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .app-card .tagline {
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+  }
+  .app-card .desc {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .app-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #f0f0f5;
+    color: var(--text-sub);
+  }
+  .app-card .link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #007AFF;
+  }
+  .app-card .link:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== Theme colors per app ===== */
+  .app-kakeibo .app-icon { background: #e8f0ee; }
+  .app-shashin .app-icon { background: #fce4ec; }
+  .app-currency .app-icon { background: #e3f2fd; }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: auto;
+  }
+  .footer a {
+    color: var(--text-sub);
+    margin: 0 10px;
+  }
+  .footer a:hover { text-decoration: underline; }
+  .footer .copy { margin-top: 8px; opacity: 0.6; font-size: 12px; }
+
+  @media (max-width: 640px) {
+    .header { padding: 52px 20px 36px; }
+    .header h1 { font-size: 28px; }
+    .apps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>J-DevHouse</h1>
+  <p>シンプルで使いやすい iOS アプリを開発しています</p>
+</div>
+
+<div class="apps">
+
+  <!-- 家計簿 -->
+  <div class="app-card app-kakeibo">
+    <div class="app-icon">&#128179;</div>
+    <h2>家計簿</h2>
+    <div class="tagline">レシートスキャンで、かんたん支出管理</div>
+    <div class="desc">
+      レシートをカメラで撮るだけで日付・金額を自動認識。日本語OCR搭載で、毎日の支出をシンプルに記録。カレンダー表示、統計グラフ、ウィジェット対応。CSV エクスポートも可能。
+    </div>
+    <div class="tags">
+      <span class="tag">無料</span>
+      <span class="tag">iOS 17+</span>
+      <span class="tag">OCR</span>
+      <span class="tag">日本語</span>
+    </div>
+    <a class="link" href="kakeibo/">詳しく見る &rarr;</a>
+  </div>
+
+  <!-- Shashin+ -->
+  <div class="app-card app-shashin">
+    <div class="app-icon">&#128247;</div>
+    <h2>Shashin+</h2>
+    <div class="tagline">証明写真をかんたん作成</div>
+    <div class="desc">
+      証明写真のレイアウト作成を手軽にサポート。背景除去・美肌加工・トリミングなど、すべての画像処理をデバイス上で実行。データは端末内のみで処理され、外部送信なし。
+    </div>
+    <div class="tags">
+      <span class="tag">写真</span>
+      <span class="tag">背景除去</span>
+      <span class="tag">プライバシー重視</span>
+    </div>
+    <a class="link" href="Shashin+/privacy.html">詳しく見る &rarr;</a>
+  </div>
+
+  <!-- CurrencyCam -->
+  <div class="app-card app-currency">
+    <div class="app-icon">&#128176;</div>
+    <h2>CurrencyCam</h2>
+    <div class="tagline">カメラで通貨を即時換算</div>
+    <div class="desc">
+      カメラを通貨にかざすだけで、リアルタイムに為替換算。海外旅行やビジネスシーンで、金額をすばやく確認。多言語対応。
+    </div>
+    <div class="tags">
+      <span class="tag">為替</span>
+      <span class="tag">カメラ</span>
+      <span class="tag">多言語</span>
+    </div>
+    <a class="link" href="CurrencyCam/support.html">詳しく見る &rarr;</a>
+  </div>
+
+</div>
+
+<div class="footer">
+  <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
+  <div class="copy">&copy; 2026 J-DevHouse</div>
+</div>
+
+</body>
+</html>

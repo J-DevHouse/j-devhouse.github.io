@@ -258,6 +258,44 @@
         }
         .site-footer a:hover { text-decoration: underline; }
         .footer-links { margin-bottom: 12px; }
+
+        /* Screenshots */
+        .screenshots {
+            background: #f5f5f7;
+            padding: 56px 0;
+            overflow: hidden;
+        }
+        .screenshots h2 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 32px;
+            padding: 0 24px;
+        }
+        .screenshot-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 24px 16px;
+            scrollbar-width: none;
+        }
+        .screenshot-track::-webkit-scrollbar { display: none; }
+        .screenshot-track img {
+            flex-shrink: 0;
+            width: 220px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .screenshot-track {
+                justify-content: center;
+                flex-wrap: nowrap;
+                overflow-x: visible;
+            }
+            .screenshot-track img { width: 200px; }
+        }
     </style>
 </head>
 <body>
@@ -271,6 +309,20 @@
             <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             App Store でダウンロード
         </a>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="screenshots">
+        <h2>アプリの画面</h2>
+        <div class="screenshot-track">
+            <img src="screenshots/screenshots_6.5/01_screenshot.png" alt="背景除去" loading="lazy">
+            <img src="screenshots/screenshots_6.5/02_screenshot.png" alt="レイアウト" loading="lazy">
+            <img src="screenshots/screenshots_6.5/03_screenshot.png" alt="サイズ設定" loading="lazy">
+            <img src="screenshots/screenshots_6.5/04_screenshot.png" alt="背景色カスタマイズ" loading="lazy">
+            <img src="screenshots/screenshots_6.5/05_screenshot.png" alt="美肌加工" loading="lazy">
+            <img src="screenshots/screenshots_6.5/06_screenshot.png" alt="履歴" loading="lazy">
+            <img src="screenshots/screenshots_6.5/07_screenshot.png" alt="料金" loading="lazy">
+        </div>
     </section>
 
     <!-- Features -->

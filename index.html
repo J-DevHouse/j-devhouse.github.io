@@ -68,12 +68,9 @@
     width: 72px;
     height: 72px;
     border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
     margin-bottom: 20px;
     flex-shrink: 0;
+    object-fit: cover;
   }
   .app-card h2 {
     font-size: 22px;
@@ -116,10 +113,6 @@
     text-decoration: underline;
   }
 
-  /* ===== Theme colors per app ===== */
-  .app-kakeibo .app-icon { background: #e8f0ee; }
-  .app-shashin .app-icon { background: #fce4ec; }
-  .app-currency .app-icon { background: #e3f2fd; }
 
   /* ===== Footer ===== */
   .footer {
@@ -153,8 +146,8 @@
 <div class="apps">
 
   <!-- 家計簿 -->
-  <div class="app-card app-kakeibo">
-    <div class="app-icon">&#128179;</div>
+  <div class="app-card">
+    <img class="app-icon" src="MManager/app-icon.jpeg" alt="家計簿">
     <h2>家計簿</h2>
     <div class="tagline">レシートスキャンで、かんたん支出管理</div>
     <div class="desc">
@@ -166,39 +159,41 @@
       <span class="tag">OCR</span>
       <span class="tag">日本語</span>
     </div>
-    <a class="link" href="kakeibo/">詳しく見る &rarr;</a>
+    <a class="link" href="MManager/index.html">詳しく見る &rarr;</a>
   </div>
 
   <!-- Shashin+ -->
-  <div class="app-card app-shashin">
-    <div class="app-icon">&#128247;</div>
+  <div class="app-card">
+    <img class="app-icon" src="Shashin+/icon.png" alt="Shashin+">
     <h2>Shashin+</h2>
     <div class="tagline">証明写真をかんたん作成</div>
     <div class="desc">
-      証明写真のレイアウト作成を手軽にサポート。背景除去・美肌加工・トリミングなど、すべての画像処理をデバイス上で実行。データは端末内のみで処理され、外部送信なし。
+      パスポート・履歴書・免許証・マイナンバーカードなど各種サイズに対応。背景除去・美肌加工・背景色変更をすべて端末内で処理。コンビニプリント（Lサイズ・300DPI）に最適化。
     </div>
     <div class="tags">
-      <span class="tag">写真</span>
+      <span class="tag">証明写真</span>
       <span class="tag">背景除去</span>
-      <span class="tag">プライバシー重視</span>
+      <span class="tag">美肌加工</span>
+      <span class="tag">コンビニ印刷</span>
     </div>
-    <a class="link" href="Shashin+/privacy.html">詳しく見る &rarr;</a>
+    <a class="link" href="Shashin+/index.html">詳しく見る &rarr;</a>
   </div>
 
   <!-- CurrencyCam -->
-  <div class="app-card app-currency">
-    <div class="app-icon">&#128176;</div>
+  <div class="app-card">
+    <img class="app-icon" src="CurrencyCam/icon_256.png" alt="CurrencyCam">
     <h2>CurrencyCam</h2>
-    <div class="tagline">カメラで通貨を即時換算</div>
+    <div class="tagline">カメラで価格を即時換算</div>
     <div class="desc">
-      カメラを通貨にかざすだけで、リアルタイムに為替換算。海外旅行やビジネスシーンで、金額をすばやく確認。多言語対応。
+      カメラを価格タグやレシートにかざすだけで、OCRが金額を自動認識し即座に換算。オフライン対応で、カスタム為替レートの設定や複数通貨の同時換算も可能。5言語対応。
     </div>
     <div class="tags">
       <span class="tag">為替</span>
-      <span class="tag">カメラ</span>
-      <span class="tag">多言語</span>
+      <span class="tag">OCR</span>
+      <span class="tag">オフライン</span>
+      <span class="tag">5言語対応</span>
     </div>
-    <a class="link" href="CurrencyCam/support.html">詳しく見る &rarr;</a>
+    <a class="link" href="CurrencyCam/index.html">詳しく見る &rarr;</a>
   </div>
 
 </div>

@@ -256,6 +256,7 @@
   <a href="#calendar">カレンダー</a>
   <a href="#statistics">統計</a>
   <a href="#widget">ウィジェット</a>
+  <a href="#customize">カスタマイズ</a>
   <a href="#export">データ移行</a>
   <a href="#manage">データ管理</a>
   <a href="#settings">設定</a>
@@ -365,14 +366,54 @@
     <p>🏠 家賃 ／ 🛡 保険 ／ 📈 積立 ／ 📱 通信費 ／ 🌐 インターネット ／ 🎬 サブスク ／ 💳 ローン</p>
     <h4 style="margin-top:12px">変動費</h4>
     <p>💧 水道 ／ ⚡ 電気 ／ 🔥 ガス ／ 🍽 外食 ／ 🛒 買い物 ／ 👥 交際費 ／ 🚌 交通費 ／ 🏥 医療費 ／ 🎭 趣味・娯楽 ／ 📚 教育費</p>
-    <div class="tip-box" style="margin-top:10px">
-      💡 足りないカテゴリは<strong>カスタムカテゴリ</strong>として自由に追加できます。アイコンや色も選べます。
-    </div>
   </div>
 
   <div class="card">
     <h4>支払方法</h4>
     <p>💴 現金 ／ 💳 クレジットカード ／ 💳 デビットカード ／ 📶 電子マネー ／ 📱 QR決済 ／ 🏦 銀行振込 ／ ⋯ その他</p>
+  </div>
+</section>
+
+<!-- ===== カスタマイズ ===== -->
+<section id="customize">
+  <h2>カテゴリー・支払方法のカスタマイズ <span class="badge badge-new">NEW</span></h2>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-purple)">🎨</span> 外観の編集</h4>
+    <p>デフォルト・カスタム問わず、すべてのカテゴリーと支払方法の<strong>名前・アイコン・カラー</strong>を自由に変更できます。</p>
+    <div class="steps" style="margin-top:10px">
+      <div class="step">
+        <div class="step-title">カテゴリー選択画面 → 「管理」ボタンをタップ</div>
+      </div>
+      <div class="step">
+        <div class="step-title">編集したいカテゴリーをタップ</div>
+      </div>
+      <div class="step">
+        <div class="step-title">名前・カラー・アイコンを変更して戻る</div>
+        <div class="step-desc">戻るボタンで自動保存されます</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-blue)">🔑</span> 自動分類キーワード</h4>
+    <p>レシートをスキャンした際、登録されたキーワードに基づいてカテゴリーと支払方法が自動で判定されます。</p>
+    <ul style="margin-top:8px">
+      <li>各カテゴリー/支払方法の詳細画面でキーワードを追加・削除</li>
+      <li>例：「外食」に「レストラン」「居酒屋」「カフェ」等を登録</li>
+      <li>例：「クレジットカード」に「VISA」「Mastercard」「一括」等を登録</li>
+    </ul>
+    <div class="tip-box" style="margin-top:10px">
+      💡 よく利用するお店の名前をキーワードに追加すると、自動分類の精度が向上します。
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-green)">➕</span> カテゴリー・支払方法の追加と削除</h4>
+    <ul>
+      <li><strong>追加</strong>：管理画面の「追加」ボタンから。名前・アイコン・カラーを選んで作成</li>
+      <li><strong>削除</strong>：詳細画面の右上 🗑️ ボタンから。既存の記録は「未分類」になります</li>
+    </ul>
   </div>
 </section>
 
@@ -590,6 +631,19 @@
   <h2>設定</h2>
 
   <div class="card">
+    <h4><span class="icon-circle" style="background:var(--accent-orange)">👑</span> プレミアム（広告なし）</h4>
+    <p>月額サブスクリプションに登録すると、すべての広告（バナー・ネイティブ・開屏広告）が完全に削除されます。</p>
+    <ul style="margin-top:8px">
+      <li>設定 → 広告設定 から登録</li>
+      <li>月額自動更新。いつでもキャンセル可能</li>
+      <li>キャンセルは端末の「設定」→「Apple ID」→「サブスクリプション」から</li>
+    </ul>
+    <div class="tip-box" style="margin-top:10px">
+      💡 動画広告を視聴して一時的に広告を非表示にする<strong>無料オプション</strong>もあります（3回視聴で12時間広告なし）。
+    </div>
+  </div>
+
+  <div class="card">
     <h4>画像保存品質</h4>
     <p>スキャンした画像の保存品質を選べます。高品質ほど画像が鮮明ですが、ストレージを多く使います。</p>
     <table class="info-table">
@@ -604,6 +658,8 @@
   <div class="card">
     <h4>その他</h4>
     <ul>
+      <li><strong>カテゴリー管理</strong>：カテゴリーの追加・編集・削除、自動分類キーワードの管理</li>
+      <li><strong>支払方法管理</strong>：支払方法の追加・編集・削除、自動分類キーワードの管理</li>
       <li><strong>アプリ情報</strong>：バージョン情報・開発者メッセージ</li>
       <li><strong>免責事項</strong>：利用規約・プライバシーポリシー</li>
       <li><strong>フィードバック</strong>：開発者へのお問い合わせ（メール）</li>

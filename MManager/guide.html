@@ -334,6 +334,18 @@
     <p>複数枚のレシートをまとめてスキャンし、一度に記録を作成できます。溜まったレシートを一気に処理したい時に最適です。</p>
   </div>
 
+  <div class="card">
+    <h4><span class="icon-circle" style="background:var(--theme)">🔗</span> スキャンと記録の相互リンク <span class="badge badge-new">NEW</span></h4>
+    <p>スキャン画像と支出記録は双方向にリンクされており、ワンタップで相互に移動できます。</p>
+    <ul style="margin-top:8px">
+      <li><strong>スキャン詳細 → 記録詳細</strong>：記録に紐づいたスキャン画像から「関連する記録を表示」ボタンで記録詳細へ</li>
+      <li><strong>記録詳細 → スキャン詳細</strong>：画像が紐づいた記録の画像プレビューから「スキャン詳細」リンクでスキャン詳細へ</li>
+    </ul>
+    <div class="tip-box" style="margin-top:10px">
+      💡 無限ループを防ぐため、遷移先ではリンクボタンは表示されません（単方向の1回限りの遷移）。
+    </div>
+  </div>
+
   <div class="highlight-box">
     <strong>OCR認識のコツ：</strong><br>
     ・レシートを平らな場所に置いて撮影する<br>
@@ -348,7 +360,7 @@
   <h2>支出記録</h2>
   <div class="card">
     <h4>記録の作成・編集</h4>
-    <p>手動またはスキャン結果から、支出記録を作成できます。</p>
+    <p>手動またはスキャン結果から、支出記録を作成できます。スキャン詳細画面から記録を作成する場合も、OCRテキストに基づいてカテゴリーと支払方法が自動判定されます。</p>
     <table class="info-table">
       <tr><th>項目</th><th>説明</th></tr>
       <tr><td><strong>金額</strong></td><td>支出金額（円）。スキャン時は自動入力</td></tr>

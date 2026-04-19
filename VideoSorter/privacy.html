@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideoSorter - Privacy Policy</title>
+<style>
+  :root {
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+    --highlight-bg: rgba(0,122,255,0.08); --highlight-text: #0055cc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+      --highlight-bg: rgba(10,132,255,0.15); --highlight-text: #6ab4ff;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 0.5px solid var(--separator); }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.5px; }
+  .header .app-name { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; }
+  .header .date { font-size: 13px; color: var(--text-secondary); }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 12px; letter-spacing: -0.3px; }
+  h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 20px 0 8px; }
+  p, li { font-size: 15px; color: var(--text-secondary); margin-bottom: 10px; }
+  ul { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  .highlight { background: var(--highlight-bg); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 12px; margin: 16px 0; }
+  .highlight p { margin-bottom: 0; color: var(--highlight-text); }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; font-size: 12px; color: var(--text-secondary); }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name">VideoSorter</div>
+    <h1>Privacy Policy</h1>
+    <div class="date">Last updated: April 19, 2026</div>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+    <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <div class="highlight"><p>VideoSorter is designed with your privacy in mind. We do not collect any personally identifying information. The app only reads video metadata from your Photo Library to classify videos into folders. Anonymous, aggregated usage statistics are collected to help us improve the app.</p></div>
+
+    <h2>1. Information We Collect</h2>
+    <h3>Photo Library Access</h3>
+    <p>VideoSorter requires access to your Photo Library to read video metadata such as creation date, duration, and weekday. The app does not store, upload, or transmit any video content. Only metadata is read for the purpose of classifying videos into folders.</p>
+    <h3>User Preferences</h3>
+    <p>Your classification rules and sorting preferences are stored locally on your device in a SQLite database. This data never leaves your device.</p>
+    <h3>No Personal Data Collection</h3>
+    <p>We do not collect any of the following:</p>
+    <ul>
+      <li>Names, email addresses, or contact information</li>
+      <li>Location data</li>
+      <li>Device identifiers for cross-app tracking</li>
+      <li>Photos, videos, or any media content</li>
+    </ul>
+
+    <h2>2. Third-Party Services</h2>
+    <h3>Google AdMob</h3>
+    <p>VideoSorter uses Google AdMob to display advertisements. AdMob may collect certain data as described in <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>. This may include:</p>
+    <ul>
+      <li>Device information (model, OS version)</li>
+      <li>Advertising identifier (IDFA), subject to your App Tracking Transparency choice</li>
+      <li>IP address (for approximate location-based ad serving)</li>
+    </ul>
+    <p>You can opt out of personalized advertising through your iOS Settings > Privacy & Security > Tracking.</p>
+
+    <h3>Firebase Analytics (Google)</h3>
+    <p>VideoSorter uses Firebase Analytics, a service provided by Google, to collect anonymous, aggregated usage statistics that help us understand how the app is used and improve its quality. Details are described in <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase's Privacy and Security page</a>. Data collected includes:</p>
+    <ul>
+      <li>App instance ID (a random identifier not linked to you personally)</li>
+      <li>Device information (model, OS version, language, country derived from IP)</li>
+      <li>App events such as screen opens, video classifications, settings changes, and ad impressions</li>
+    </ul>
+    <p>We do not collect your name, email address, video content, or any content that could identify you. Data is stored on Google servers and retained according to Firebase's default retention policy. You can opt out of analytics collection at any time via iOS Settings &gt; Privacy &amp; Security &gt; Analytics &amp; Improvements.</p>
+
+    <h2>3. App Tracking Transparency</h2>
+    <p>On iOS 14.5 and later, VideoSorter will ask for your permission before tracking you across other apps and websites. If you decline, you will still see ads, but they will not be personalized based on your activity across other apps.</p>
+
+    <h2>4. Data Security</h2>
+    <p>All video metadata reading and classification processing occurs entirely on your device. No video content or classification results are transmitted over the internet. Your classification data is stored locally in a SQLite database and protected by iOS's built-in security mechanisms.</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>VideoSorter does not knowingly collect any personal information from children under the age of 13. The app does not require any personal information to function.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have any questions about this privacy policy, please contact us at:</p>
+    <p><strong>Email:</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <div class="highlight"><p>動画整理はプライバシーを最優先に設計されています。個人を特定できる情報は一切収集しません。本アプリはフォトライブラリの動画メタデータのみを読み取り、動画をフォルダに分類します。アプリ品質の向上を目的とした匿名の統計データのみを収集しています。</p></div>
+
+    <h2>1. 収集する情報</h2>
+    <h3>フォトライブラリへのアクセス</h3>
+    <p>動画整理は、動画の作成日、再生時間、曜日などのメタデータを読み取るためにフォトライブラリへのアクセスを必要とします。動画コンテンツの保存・アップロード・外部送信は一切行いません。フォルダへの分類を目的としたメタデータの読み取りのみを行います。</p>
+    <h3>ユーザー設定</h3>
+    <p>分類ルールや並べ替え設定は、デバイス上のSQLiteデータベースにローカル保存されます。これらのデータがデバイスの外に出ることはありません。</p>
+    <h3>個人データの非収集</h3>
+    <p>以下の情報は一切収集しません：</p>
+    <ul>
+      <li>氏名、メールアドレス、連絡先情報</li>
+      <li>位置情報</li>
+      <li>アプリを跨いだトラッキング目的のデバイス識別子</li>
+      <li>写真、動画、その他のメディアコンテンツ</li>
+    </ul>
+
+    <h2>2. 第三者サービス</h2>
+    <h3>Google AdMob</h3>
+    <p>動画整理は広告表示のためにGoogle AdMobを使用しています。AdMobは<a href="https://policies.google.com/privacy" target="_blank">Googleのプライバシーポリシー</a>に記載されたデータを収集する場合があります：</p>
+    <ul>
+      <li>デバイス情報（機種、OSバージョン）</li>
+      <li>広告識別子（IDFA）※Appトラッキング透明性の選択に従います</li>
+      <li>IPアドレス（おおよその位置に基づく広告配信のため）</li>
+    </ul>
+    <p>パーソナライズド広告は、iOSの設定 > プライバシーとセキュリティ > トラッキングからオプトアウトできます。</p>
+
+    <h3>Firebase Analytics（Google）</h3>
+    <p>動画整理は、アプリの利用状況を把握し品質向上に役立てるため、Googleが提供するFirebase Analyticsで匿名の集計統計データを収集しています。詳細は<a href="https://firebase.google.com/support/privacy" target="_blank">Firebaseのプライバシーとセキュリティのページ</a>に記載されています。収集されるデータは以下の通りです：</p>
+    <ul>
+      <li>アプリインスタンスID（個人には紐付かないランダムな識別子）</li>
+      <li>デバイス情報（機種、OSバージョン、言語、IPから推定される国）</li>
+      <li>画面表示、動画整理、設定変更、広告表示などのアプリイベント</li>
+    </ul>
+    <p>氏名、メールアドレス、動画コンテンツ、その他個人を特定できる情報は一切収集しません。データはGoogleのサーバーに保管され、Firebaseの既定の保持ポリシーに従って保存されます。統計収集は、iOSの設定 &gt; プライバシーとセキュリティ &gt; 解析と改善 からいつでもオプトアウトできます。</p>
+
+    <h2>3. Appトラッキング透明性</h2>
+    <p>iOS 14.5以降では、他のアプリやWebサイトを横断したトラッキングについて事前に許可を求めます。拒否した場合でも広告は表示されますが、他のアプリでの行動に基づくパーソナライズはされません。</p>
+
+    <h2>4. データセキュリティ</h2>
+    <p>動画メタデータの読み取りと分類処理はすべてデバイス上で完結します。動画コンテンツや分類結果がインターネットを通じて送信されることはありません。分類データはデバイス上のSQLiteデータベースにローカル保存され、iOS内蔵のセキュリティ機構により保護されています。</p>
+
+    <h2>5. お子様のプライバシー</h2>
+    <p>動画整理は、13歳未満のお子様から個人情報を意図的に収集することはありません。本アプリの利用に個人情報は必要ありません。</p>
+
+    <h2>6. ポリシーの変更</h2>
+    <p>本プライバシーポリシーは随時更新される場合があります。変更がある場合は、このページに更新日とともに反映されます。変更後もアプリを継続して使用した場合、改訂されたポリシーに同意したものとみなされます。</p>
+
+    <h2>7. お問い合わせ</h2>
+    <p>本プライバシーポリシーに関するご質問は、以下までご連絡ください：</p>
+    <p><strong>メール：</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Chinese -->
+  <div id="zh" class="section">
+    <div class="highlight"><p>视频整理以保护您的隐私为设计原则。我们不收集任何可识别个人身份的信息。本应用仅读取照片图库中的视频元数据，以将视频分类到文件夹中。我们仅收集匿名的汇总使用统计数据以帮助改进应用。</p></div>
+
+    <h2>1. 我们收集的信息</h2>
+    <h3>照片图库访问</h3>
+    <p>视频整理需要访问您的照片图库以读取视频元数据，如创建日期、时长和星期几。本应用不会存储、上传或传输任何视频内容。仅读取元数据用于将视频分类到文件夹中。</p>
+    <h3>用户偏好设置</h3>
+    <p>您的分类规则和排序偏好存储在设备本地的 SQLite 数据库中，这些数据不会离开您的设备。</p>
+    <h3>不收集个人数据</h3>
+    <p>我们不收集以下任何信息：</p>
+    <ul>
+      <li>姓名、电子邮件地址或联系方式</li>
+      <li>位置数据</li>
+      <li>用于跨应用追踪的设备标识符</li>
+      <li>照片、视频或任何媒体内容</li>
+    </ul>
+
+    <h2>2. 第三方服务</h2>
+    <h3>Google AdMob</h3>
+    <p>视频整理使用 Google AdMob 显示广告。AdMob 可能会按照 <a href="https://policies.google.com/privacy" target="_blank">Google 隐私政策</a>收集某些数据，包括：</p>
+    <ul>
+      <li>设备信息（型号、操作系统版本）</li>
+      <li>广告标识符（IDFA），取决于您的 App 跟踪透明度选择</li>
+      <li>IP 地址（用于基于大致位置的广告投放）</li>
+    </ul>
+    <p>您可以通过 iOS 设置 > 隐私与安全性 > 跟踪，来选择退出个性化广告。</p>
+
+    <h3>Firebase Analytics（Google）</h3>
+    <p>视频整理使用 Google 提供的 Firebase Analytics 收集匿名的汇总使用统计数据，以帮助我们了解应用的使用方式并改进质量。详情请参阅 <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase 隐私与安全页面</a>。收集的数据包括：</p>
+    <ul>
+      <li>应用实例 ID（与您个人无关联的随机标识符）</li>
+      <li>设备信息（型号、操作系统版本、语言、基于 IP 推断的国家）</li>
+      <li>应用事件，如页面打开、视频分类、设置更改、广告展示等</li>
+    </ul>
+    <p>我们不会收集您的姓名、电子邮件地址、视频内容或任何可识别您身份的内容。数据存储在 Google 服务器上，按 Firebase 的默认保留策略保存。您可以随时通过 iOS 设置 &gt; 隐私与安全性 &gt; 分析与改进，选择退出统计数据收集。</p>
+
+    <h2>3. App 跟踪透明度</h2>
+    <p>在 iOS 14.5 及更高版本上，视频整理会在跨应用和网站追踪您之前征求您的许可。如果您拒绝，仍会看到广告，但广告不会基于您在其他应用中的活动进行个性化。</p>
+
+    <h2>4. 数据安全</h2>
+    <p>所有视频元数据读取和分类处理完全在您的设备上进行。没有任何视频内容或分类结果通过互联网传输。您的分类数据存储在设备本地的 SQLite 数据库中，受 iOS 内置安全机制保护。</p>
+
+    <h2>5. 儿童隐私</h2>
+    <p>视频整理不会有意收集 13 岁以下儿童的任何个人信息。本应用的使用不需要任何个人信息。</p>
+
+    <h2>6. 政策变更</h2>
+    <p>我们可能会不时更新本隐私政策。任何变更都将在本页面上反映并更新日期。变更后继续使用本应用即表示您接受修订后的政策。</p>
+
+    <h2>7. 联系我们</h2>
+    <p>如您对本隐私政策有任何疑问，请通过以下方式联系我们：</p>
+    <p><strong>邮箱：</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <div class="highlight"><p>影片整理以保護您的隱私為設計原則。我們不收集任何可識別個人身分的資訊。本應用程式僅讀取照片圖庫中的影片元資料，以將影片分類到資料夾中。我們僅收集匿名的彙總使用統計資料以協助改進應用程式。</p></div>
+
+    <h2>1. 我們收集的資訊</h2>
+    <h3>照片圖庫存取</h3>
+    <p>影片整理需要存取您的照片圖庫以讀取影片元資料，如建立日期、時長和星期幾。本應用程式不會儲存、上傳或傳輸任何影片內容。僅讀取元資料用於將影片分類到資料夾中。</p>
+    <h3>使用者偏好設定</h3>
+    <p>您的分類規則和排序偏好儲存在裝置本機的 SQLite 資料庫中，這些資料不會離開您的裝置。</p>
+    <h3>不收集個人資料</h3>
+    <p>我們不收集以下任何資訊：</p>
+    <ul>
+      <li>姓名、電子郵件地址或聯絡方式</li>
+      <li>位置資料</li>
+      <li>用於跨應用程式追蹤的裝置識別碼</li>
+      <li>照片、影片或任何媒體內容</li>
+    </ul>
+
+    <h2>2. 第三方服務</h2>
+    <h3>Google AdMob</h3>
+    <p>影片整理使用 Google AdMob 顯示廣告。AdMob 可能會按照 <a href="https://policies.google.com/privacy" target="_blank">Google 隱私權政策</a>收集某些資料，包括：</p>
+    <ul>
+      <li>裝置資訊（型號、作業系統版本）</li>
+      <li>廣告識別碼（IDFA），取決於您的 App 追蹤透明度選擇</li>
+      <li>IP 位址（用於基於大致位置的廣告投放）</li>
+    </ul>
+    <p>您可以透過 iOS 設定 > 隱私權與安全性 > 追蹤，來選擇退出個人化廣告。</p>
+
+    <h3>Firebase Analytics（Google）</h3>
+    <p>影片整理使用 Google 提供的 Firebase Analytics 收集匿名的彙總使用統計資料，以協助我們了解應用程式的使用方式並改進品質。詳情請參閱 <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase 隱私權與安全性頁面</a>。收集的資料包括：</p>
+    <ul>
+      <li>應用程式執行個體 ID（與您個人無關聯的隨機識別碼）</li>
+      <li>裝置資訊（型號、作業系統版本、語言、基於 IP 推斷的國家）</li>
+      <li>應用程式事件，如頁面開啟、影片分類、設定變更、廣告顯示等</li>
+    </ul>
+    <p>我們不會收集您的姓名、電子郵件地址、影片內容或任何可識別您身分的內容。資料儲存於 Google 伺服器，依 Firebase 預設保留政策保存。您可以隨時透過 iOS 設定 &gt; 隱私權與安全性 &gt; 分析與改進，選擇退出統計資料收集。</p>
+
+    <h2>3. App 追蹤透明度</h2>
+    <p>在 iOS 14.5 及更高版本上，影片整理會在跨應用程式和網站追蹤您之前徵求您的許可。如果您拒絕，仍會看到廣告，但廣告不會基於您在其他應用程式中的活動進行個人化。</p>
+
+    <h2>4. 資料安全</h2>
+    <p>所有影片元資料讀取和分類處理完全在您的裝置上進行。沒有任何影片內容或分類結果透過網際網路傳輸。您的分類資料儲存在裝置本機的 SQLite 資料庫中，受 iOS 內建安全機制保護。</p>
+
+    <h2>5. 兒童隱私</h2>
+    <p>影片整理不會有意收集 13 歲以下兒童的任何個人資訊。本應用程式的使用不需要任何個人資訊。</p>
+
+    <h2>6. 政策變更</h2>
+    <p>我們可能會不時更新本隱私權政策。任何變更都將在本頁面上反映並更新日期。變更後繼續使用本應用程式即表示您接受修訂後的政策。</p>
+
+    <h2>7. 聯絡我們</h2>
+    <p>如您對本隱私權政策有任何疑問，請透過以下方式聯絡我們：</p>
+    <p><strong>電子郵件：</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <div class="highlight"><p>VideoSorter est&aacute; dise&ntilde;ado pensando en su privacidad. No recopilamos ninguna informaci&oacute;n que permita identificarlo personalmente. La aplicaci&oacute;n solo lee metadatos de video de su Fototeca para clasificar videos en carpetas. Solo recopilamos estad&iacute;sticas de uso an&oacute;nimas y agregadas para ayudarnos a mejorar la aplicaci&oacute;n.</p></div>
+
+    <h2>1. Informaci&oacute;n que recopilamos</h2>
+    <h3>Acceso a la Fototeca</h3>
+    <p>VideoSorter requiere acceso a su Fototeca para leer metadatos de video como fecha de creaci&oacute;n, duraci&oacute;n y d&iacute;a de la semana. La aplicaci&oacute;n no almacena, carga ni transmite ning&uacute;n contenido de video. Solo se leen metadatos con el fin de clasificar videos en carpetas.</p>
+    <h3>Preferencias del usuario</h3>
+    <p>Sus reglas de clasificaci&oacute;n y preferencias de ordenaci&oacute;n se almacenan localmente en su dispositivo en una base de datos SQLite. Estos datos nunca salen de su dispositivo.</p>
+    <h3>Sin recolecci&oacute;n de datos personales</h3>
+    <p>No recopilamos ninguno de los siguientes datos:</p>
+    <ul>
+      <li>Nombres, direcciones de correo electr&oacute;nico o informaci&oacute;n de contacto</li>
+      <li>Datos de ubicaci&oacute;n</li>
+      <li>Identificadores de dispositivo para seguimiento entre aplicaciones</li>
+      <li>Fotos, videos o cualquier contenido multimedia</li>
+    </ul>
+
+    <h2>2. Servicios de terceros</h2>
+    <h3>Google AdMob</h3>
+    <p>VideoSorter utiliza Google AdMob para mostrar anuncios. AdMob puede recopilar ciertos datos seg&uacute;n se describe en la <a href="https://policies.google.com/privacy" target="_blank">Pol&iacute;tica de Privacidad de Google</a>. Esto puede incluir:</p>
+    <ul>
+      <li>Informaci&oacute;n del dispositivo (modelo, versi&oacute;n del SO)</li>
+      <li>Identificador de publicidad (IDFA), sujeto a su elecci&oacute;n de Transparencia de Seguimiento de Apps</li>
+      <li>Direcci&oacute;n IP (para publicidad basada en ubicaci&oacute;n aproximada)</li>
+    </ul>
+    <p>Puede optar por no recibir publicidad personalizada a trav&eacute;s de Ajustes de iOS > Privacidad y Seguridad > Seguimiento.</p>
+
+    <h3>Firebase Analytics (Google)</h3>
+    <p>VideoSorter utiliza Firebase Analytics, un servicio proporcionado por Google, para recopilar estad&iacute;sticas de uso an&oacute;nimas y agregadas que nos ayudan a entender c&oacute;mo se usa la aplicaci&oacute;n y a mejorar su calidad. Los detalles se describen en la <a href="https://firebase.google.com/support/privacy" target="_blank">p&aacute;gina de Privacidad y Seguridad de Firebase</a>. Los datos recopilados incluyen:</p>
+    <ul>
+      <li>ID de instancia de la aplicaci&oacute;n (un identificador aleatorio no vinculado a usted personalmente)</li>
+      <li>Informaci&oacute;n del dispositivo (modelo, versi&oacute;n del SO, idioma, pa&iacute;s derivado de la IP)</li>
+      <li>Eventos de la aplicaci&oacute;n como aperturas de pantalla, clasificaciones de video, cambios de configuraci&oacute;n e impresiones de anuncios</li>
+    </ul>
+    <p>No recopilamos su nombre, direcci&oacute;n de correo electr&oacute;nico, contenido de video ni ning&uacute;n contenido que pueda identificarlo. Los datos se almacenan en los servidores de Google y se retienen seg&uacute;n la pol&iacute;tica de retenci&oacute;n predeterminada de Firebase. Puede optar por no participar en la recopilaci&oacute;n de estad&iacute;sticas en cualquier momento a trav&eacute;s de Ajustes de iOS &gt; Privacidad y Seguridad &gt; An&aacute;lisis y Mejoras.</p>
+
+    <h2>3. Transparencia de Seguimiento de Apps</h2>
+    <p>En iOS 14.5 y versiones posteriores, VideoSorter le pedir&aacute; permiso antes de rastrearlo en otras apps y sitios web. Si rechaza, seguir&aacute; viendo anuncios, pero no estar&aacute;n personalizados seg&uacute;n su actividad en otras apps.</p>
+
+    <h2>4. Seguridad de datos</h2>
+    <p>Toda la lectura de metadatos de video y el procesamiento de clasificaci&oacute;n se realizan completamente en su dispositivo. Ning&uacute;n contenido de video ni resultado de clasificaci&oacute;n se transmite por internet. Sus datos de clasificaci&oacute;n se almacenan localmente en una base de datos SQLite y est&aacute;n protegidos por los mecanismos de seguridad integrados de iOS.</p>
+
+    <h2>5. Privacidad de los ni&ntilde;os</h2>
+    <p>VideoSorter no recopila intencionalmente informaci&oacute;n personal de ni&ntilde;os menores de 13 a&ntilde;os. La app no requiere informaci&oacute;n personal para funcionar.</p>
+
+    <h2>6. Cambios en esta pol&iacute;tica</h2>
+    <p>Podemos actualizar esta pol&iacute;tica de privacidad de vez en cuando. Cualquier cambio se reflejar&aacute; en esta p&aacute;gina con una fecha actualizada. El uso continuado de la app despu&eacute;s de los cambios constituye la aceptaci&oacute;n de la pol&iacute;tica revisada.</p>
+
+    <h2>7. Cont&aacute;ctenos</h2>
+    <p>Si tiene alguna pregunta sobre esta pol&iacute;tica de privacidad, cont&aacute;ctenos en:</p>
+    <p><strong>Correo electr&oacute;nico:</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <div class="highlight"><p>동영상 분류는 사용자의 개인정보를 최우선으로 고려하여 설계되었습니다. 개인을 식별할 수 있는 정보는 일체 수집하지 않습니다. 본 앱은 사진 보관함의 동영상 메타데이터만 읽어 동영상을 폴더로 분류합니다. 앱 품질 향상을 위해 익명의 집계된 사용 통계만 수집합니다.</p></div>
+
+    <h2>1. 수집하는 정보</h2>
+    <h3>사진 보관함 접근</h3>
+    <p>동영상 분류는 동영상의 생성 날짜, 재생 시간, 요일 등의 메타데이터를 읽기 위해 사진 보관함 접근 권한이 필요합니다. 본 앱은 동영상 콘텐츠를 저장, 업로드 또는 전송하지 않습니다. 동영상을 폴더로 분류하기 위한 메타데이터 읽기만 수행합니다.</p>
+    <h3>사용자 설정</h3>
+    <p>분류 규칙 및 정렬 설정은 기기의 SQLite 데이터베이스에 로컬 저장됩니다. 이 데이터는 기기 외부로 나가지 않습니다.</p>
+    <h3>개인정보 미수집</h3>
+    <p>다음과 같은 정보는 일체 수집하지 않습니다:</p>
+    <ul>
+      <li>이름, 이메일 주소, 연락처 정보</li>
+      <li>위치 정보</li>
+      <li>앱 간 추적을 위한 기기 식별자</li>
+      <li>사진, 동영상 또는 기타 미디어 콘텐츠</li>
+    </ul>
+
+    <h2>2. 제3자 서비스</h2>
+    <h3>Google AdMob</h3>
+    <p>동영상 분류는 광고 표시를 위해 Google AdMob을 사용합니다. AdMob은 <a href="https://policies.google.com/privacy" target="_blank">Google 개인정보 처리방침</a>에 명시된 바와 같이 특정 데이터를 수집할 수 있습니다. 여기에는 다음이 포함될 수 있습니다:</p>
+    <ul>
+      <li>기기 정보(모델, OS 버전)</li>
+      <li>광고 식별자(IDFA) — App 추적 투명성 선택에 따릅니다</li>
+      <li>IP 주소(대략적인 위치 기반 광고 제공용)</li>
+    </ul>
+    <p>개인 맞춤형 광고는 iOS 설정 > 개인정보 보호 및 보안 > 추적 에서 거부할 수 있습니다.</p>
+
+    <h3>Firebase Analytics(Google)</h3>
+    <p>동영상 분류는 앱 사용 방식을 파악하고 품질 개선에 활용하기 위해 Google이 제공하는 Firebase Analytics를 통해 익명의 집계된 사용 통계를 수집합니다. 자세한 내용은 <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase 개인정보 및 보안 페이지</a>에 설명되어 있습니다. 수집되는 데이터는 다음과 같습니다:</p>
+    <ul>
+      <li>앱 인스턴스 ID(개인과 연결되지 않는 임의의 식별자)</li>
+      <li>기기 정보(모델, OS 버전, 언어, IP에서 추정된 국가)</li>
+      <li>화면 열기, 동영상 분류, 설정 변경, 광고 노출 등의 앱 이벤트</li>
+    </ul>
+    <p>이름, 이메일 주소, 동영상 콘텐츠 또는 개인을 식별할 수 있는 그 밖의 콘텐츠는 일체 수집하지 않습니다. 데이터는 Google 서버에 저장되며 Firebase의 기본 보존 정책에 따라 보관됩니다. 통계 수집은 iOS 설정 &gt; 개인정보 보호 및 보안 &gt; 분석 및 개선 사항 에서 언제든지 거부할 수 있습니다.</p>
+
+    <h2>3. App 추적 투명성</h2>
+    <p>iOS 14.5 이상에서는 동영상 분류가 다른 앱 및 웹사이트에서 사용자를 추적하기 전에 허가를 요청합니다. 거부하시더라도 광고는 계속 표시되지만, 다른 앱에서의 활동을 기반으로 개인화되지 않습니다.</p>
+
+    <h2>4. 데이터 보안</h2>
+    <p>모든 동영상 메타데이터 읽기 및 분류 처리는 전적으로 사용자의 기기 내에서 수행됩니다. 동영상 콘텐츠나 분류 결과는 인터넷을 통해 전송되지 않습니다. 분류 데이터는 기기의 SQLite 데이터베이스에 로컬 저장되며 iOS에 내장된 보안 메커니즘으로 보호됩니다.</p>
+
+    <h2>5. 아동의 개인정보</h2>
+    <p>동영상 분류는 13세 미만 아동의 개인정보를 고의로 수집하지 않습니다. 본 앱 사용에 개인정보는 필요하지 않습니다.</p>
+
+    <h2>6. 본 방침의 변경</h2>
+    <p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 변경 사항은 업데이트된 날짜와 함께 본 페이지에 반영됩니다. 변경 후에도 앱을 계속 사용하시는 경우 개정된 방침에 동의한 것으로 간주됩니다.</p>
+
+    <h2>7. 문의</h2>
+    <p>본 개인정보 처리방침에 관한 문의 사항은 아래로 연락해 주세요:</p>
+    <p><strong>이메일:</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

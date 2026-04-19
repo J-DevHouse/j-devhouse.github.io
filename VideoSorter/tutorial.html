@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideoSorter - Tutorial</title>
+<style>
+  :root {
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+    --tip-bg: rgba(255,149,0,0.1); --tip-border: #ff9500; --tip-text: #c77700;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+      --tip-bg: rgba(255,159,10,0.15); --tip-border: #ff9f0a; --tip-text: #ffd580;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 0.5px solid var(--separator); }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.5px; }
+  .header .app-name { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px; letter-spacing: -0.3px; }
+  p, li { font-size: 15px; color: var(--text-secondary); margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .step { background: var(--card-bg); border-radius: 16px; padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .step-number { display: inline-block; width: 32px; height: 32px; line-height: 32px; text-align: center; background: var(--accent); color: #fff; border-radius: 50%; font-weight: 700; font-size: 16px; margin-right: 12px; vertical-align: middle; }
+  .step h3 { display: inline; font-size: 18px; font-weight: 600; color: var(--text); vertical-align: middle; }
+  .step p { margin-top: 12px; font-size: 14px; color: var(--text-secondary); }
+  .step .screenshot { text-align: center; margin-top: 16px; }
+  .step .screenshot img { max-height: 380px; width: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+  .tip { background: var(--tip-bg); border-left: 3px solid var(--tip-border); padding: 14px 18px; border-radius: 12px; margin: 20px 0; }
+  .tip p { margin-bottom: 0; color: var(--tip-text); font-size: 14px; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; font-size: 12px; color: var(--text-secondary); }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name">VideoSorter</div>
+    <h1>Tutorial</h1>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+    <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <h2>Getting Started</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>Allow Photo Library Access</h3>
+      <p>When you first launch VideoSorter, the app will ask for photo library permission. Choose <strong>"Allow Full Access"</strong> for the best experience. Only metadata such as date and duration is read &mdash; no videos are uploaded anywhere.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>Create Your First Directory</h3>
+      <p>Tap the <strong>+ button</strong> in the top-right corner. Choose <strong>"Rule Match"</strong> to set up automatic classification rules, or <strong>"Manual Select"</strong> to hand-pick videos yourself.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/03_IMG_5118.png" alt="Create directory screen">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>Set Classification Rules</h3>
+      <p>In Rule Match mode, give your directory a name, then configure one or more filters: <strong>weekday filter</strong>, <strong>time range</strong>, <strong>date range</strong>, or <strong>duration range</strong>. At least one rule is required to save the directory.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>Import &amp; Classify Videos</h3>
+      <p>After creating directories, the app scans your photo library for matching videos and offers to import them automatically. Confirm the prompt to let VideoSorter organize everything for you.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>Browse Videos by Directory</h3>
+      <p>Tap any directory to see its videos. You can <strong>play</strong> videos, <strong>pin favorites</strong>, or <strong>remove</strong> videos from the directory as needed.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/02_IMG_5117.png" alt="Browse videos in a directory">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>Unclassified Videos</h3>
+      <p>Videos that don't match any of your rules are placed in the <strong>"Unclassified"</strong> folder. You can review them there and manually move them to the appropriate directory.</p>
+    </div>
+
+    <h2>Settings &amp; Management</h2>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>Open Settings</h3>
+      <p>Tap the <strong>gear icon</strong> in the top-left corner to open Settings. Here you can manage sync, data, language preferences, and access help resources.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/en/6.5/01_IMG_5116.png" alt="Settings screen">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>Sync &amp; Classify</h3>
+      <p>Use the <strong>"Sync &amp; Classify"</strong> option in Settings to re-import and re-classify all videos in your photo library against your current rules.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>Edit a Directory</h3>
+      <p>Swipe left on any directory to <strong>delete</strong> it. Tap into a directory to manage its videos &mdash; remove individual clips or reorganize as needed.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">10</span>
+      <h3>Manual Video Adding</h3>
+      <p>Inside any directory, tap the <strong>+ button</strong> to manually pick videos from your photo library and add them to that directory.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">11</span>
+      <h3>Change App Language</h3>
+      <p>Go to your device's <strong>Settings &gt; VideoSorter</strong> to change the app language. The app supports 6 languages: English, Japanese, Simplified Chinese, Traditional Chinese, Spanish, and Korean.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Tip:</strong> The app automatically checks for new matching videos when you open it. If new videos in your photo library match your rules, you'll get a prompt to import them right away.</p>
+    </div>
+
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <h2>はじめに</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>写真ライブラリへのアクセスを許可</h3>
+      <p>動画整理を初めて起動すると、写真ライブラリへのアクセス許可を求められます。<strong>「フルアクセスを許可」</strong>を選択してください。読み取るのは日付や再生時間などのメタデータのみで、動画がアップロードされることはありません。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>最初のディレクトリを作成</h3>
+      <p>右上の<strong>「+」ボタン</strong>をタップします。<strong>「ルールマッチ」</strong>で自動分類ルールを設定するか、<strong>「手動選択」</strong>で動画を自分で選ぶことができます。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/03_IMG_5121.png" alt="ディレクトリ作成画面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>分類ルールの設定</h3>
+      <p>ルールマッチモードでは、ディレクトリ名を付けてから、<strong>曜日フィルター</strong>、<strong>時間帯</strong>、<strong>日付範囲</strong>、<strong>再生時間の範囲</strong>を設定します。保存するには少なくとも1つのルールが必要です。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>動画のインポートと分類</h3>
+      <p>ディレクトリを作成すると、アプリが写真ライブラリからルールに一致する動画を検出し、自動インポートを提案します。確認すると、動画整理が自動的に整理してくれます。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>ディレクトリごとに動画を閲覧</h3>
+      <p>ディレクトリをタップすると、その中の動画一覧が表示されます。動画の<strong>再生</strong>、<strong>お気に入りのピン留め</strong>、<strong>ディレクトリからの削除</strong>ができます。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/02_IMG_5120.png" alt="ディレクトリ内の動画一覧">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>未分類の動画</h3>
+      <p>どのルールにも一致しない動画は<strong>「未分類」</strong>フォルダに入ります。そこで確認し、手動で適切なディレクトリに移動できます。</p>
+    </div>
+
+    <h2>設定と管理</h2>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>設定を開く</h3>
+      <p>左上の<strong>歯車アイコン</strong>をタップして設定を開きます。同期、データ管理、言語設定、ヘルプにアクセスできます。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/jp/6.5/01_IMG_5119.png" alt="設定画面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>同期と分類</h3>
+      <p>設定の<strong>「同期と分類」</strong>を使うと、写真ライブラリの全動画を現在のルールに基づいて再インポート・再分類できます。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>ディレクトリの編集</h3>
+      <p>ディレクトリを左にスワイプすると<strong>削除</strong>できます。ディレクトリをタップして中に入ると、個別の動画の管理や整理ができます。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">10</span>
+      <h3>手動で動画を追加</h3>
+      <p>ディレクトリ内で<strong>「+」ボタン</strong>をタップすると、写真ライブラリから動画を手動で選んで追加できます。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">11</span>
+      <h3>アプリの言語を変更</h3>
+      <p>端末の<strong>設定 &gt; 動画整理</strong>からアプリの言語を変更できます。英語・日本語・簡体字中国語・繁体字中国語・スペイン語・韓国語の6言語に対応しています。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>便利な機能：</strong>アプリを開くと、新しい動画がルールに一致するか自動的にチェックされます。一致する動画が見つかると、インポートするかどうかの確認が表示されます。</p>
+    </div>
+
+  </div>
+
+  <!-- Simplified Chinese -->
+  <div id="zh" class="section">
+    <h2>开始使用</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>允许访问照片图库</h3>
+      <p>首次启动视频整理时，应用会请求照片图库访问权限。请选择<strong>"允许完全访问"</strong>以获得最佳体验。应用仅读取日期、时长等元数据，不会上传任何视频。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>创建第一个目录</h3>
+      <p>点击右上角的<strong>"+"按钮</strong>。选择<strong>"规则匹配"</strong>来设置自动分类规则，或选择<strong>"手动选择"</strong>来自行挑选视频。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/03_IMG_5130.png" alt="创建目录界面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>设置分类规则</h3>
+      <p>在规则匹配模式下，为目录命名，然后配置筛选条件：<strong>星期筛选</strong>、<strong>时间范围</strong>、<strong>日期范围</strong>或<strong>时长范围</strong>。至少需要设置一条规则才能保存。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>导入并分类视频</h3>
+      <p>创建目录后，应用会扫描你的照片图库，检测符合规则的视频，并提示你自动导入。确认后，视频整理会自动完成整理工作。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>按目录浏览视频</h3>
+      <p>点击任意目录即可查看其中的视频。你可以<strong>播放</strong>视频、<strong>收藏</strong>喜欢的视频，或从目录中<strong>移除</strong>视频。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/02_IMG_5129.png" alt="浏览目录中的视频">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>未分类的视频</h3>
+      <p>不匹配任何规则的视频会被放入<strong>"未分类"</strong>文件夹。你可以在那里查看并手动将它们移到合适的目录。</p>
+    </div>
+
+    <h2>设置与管理</h2>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>打开设置</h3>
+      <p>点击左上角的<strong>齿轮图标</strong>打开设置。在这里可以管理同步、数据、语言偏好，以及访问帮助资源。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hans/6.5/01_IMG_5128.png" alt="设置界面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>同步与分类</h3>
+      <p>使用设置中的<strong>"同步与分类"</strong>选项，可以根据当前规则重新导入和重新分类照片图库中的所有视频。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>编辑目录</h3>
+      <p>在目录上向左滑动即可<strong>删除</strong>。点击进入目录后，可以管理其中的视频 &mdash; 移除单个视频或重新整理。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">10</span>
+      <h3>手动添加视频</h3>
+      <p>在任意目录内，点击<strong>"+"按钮</strong>即可从照片图库中手动选择视频并添加到该目录。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">11</span>
+      <h3>切换应用语言</h3>
+      <p>前往系统<strong>设置 &gt; 视频整理</strong>即可更改应用语言。支持英语、日语、简体中文、繁体中文、西班牙语和韩语共6种语言。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>小技巧：</strong>每次打开应用时，它会自动检查是否有新的视频符合你的规则。如果照片图库中有新的匹配视频，会立即提示你导入。</p>
+    </div>
+
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <h2>開始使用</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>允許存取照片圖庫</h3>
+      <p>首次啟動影片整理時，應用程式會請求照片圖庫存取權限。請選擇<strong>「允許完整存取」</strong>以獲得最佳體驗。應用程式僅讀取日期、時長等中繼資料，不會上傳任何影片。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>建立第一個目錄</h3>
+      <p>點擊右上角的<strong>「+」按鈕</strong>。選擇<strong>「規則配對」</strong>來設定自動分類規則，或選擇<strong>「手動選擇」</strong>來自行挑選影片。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/03_IMG_5127.png" alt="建立目錄畫面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>設定分類規則</h3>
+      <p>在規則配對模式下，為目錄命名，然後設定篩選條件：<strong>星期篩選</strong>、<strong>時間範圍</strong>、<strong>日期範圍</strong>或<strong>時長範圍</strong>。至少需要設定一條規則才能儲存。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>匯入並分類影片</h3>
+      <p>建立目錄後，應用程式會掃描你的照片圖庫，偵測符合規則的影片，並提示你自動匯入。確認後，影片整理會自動完成整理工作。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>依目錄瀏覽影片</h3>
+      <p>點擊任意目錄即可查看其中的影片。你可以<strong>播放</strong>影片、<strong>釘選收藏</strong>喜歡的影片，或從目錄中<strong>移除</strong>影片。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/02_IMG_5126.png" alt="瀏覽目錄中的影片">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>未分類的影片</h3>
+      <p>不符合任何規則的影片會被放入<strong>「未分類」</strong>資料夾。你可以在那裡查看並手動將它們移到合適的目錄。</p>
+    </div>
+
+    <h2>設定與管理</h2>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>開啟設定</h3>
+      <p>點擊左上角的<strong>齒輪圖示</strong>開啟設定。在這裡可以管理同步、資料、語言偏好，以及存取說明資源。</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/zh-Hant/6.5/01_IMG_5125.png" alt="設定畫面">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>同步與分類</h3>
+      <p>使用設定中的<strong>「同步與分類」</strong>選項，可以根據目前的規則重新匯入和重新分類照片圖庫中的所有影片。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>編輯目錄</h3>
+      <p>在目錄上向左滑動即可<strong>刪除</strong>。點擊進入目錄後，可以管理其中的影片 &mdash; 移除單一影片或重新整理。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">10</span>
+      <h3>手動新增影片</h3>
+      <p>在任意目錄內，點擊<strong>「+」按鈕</strong>即可從照片圖庫中手動選擇影片並新增到該目錄。</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">11</span>
+      <h3>切換應用程式語言</h3>
+      <p>前往系統<strong>設定 &gt; 影片整理</strong>即可更改應用程式語言。支援英語、日語、簡體中文、繁體中文、西班牙語和韓語共6種語言。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>小技巧：</strong>每次開啟應用程式時，它會自動檢查是否有新的影片符合你的規則。如果照片圖庫中有新的配對影片，會立即提示你匯入。</p>
+    </div>
+
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <h2>Primeros pasos</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>Permitir acceso a la fototeca</h3>
+      <p>Al abrir VideoSorter por primera vez, la app solicitar&aacute; permiso para acceder a tu fototeca. Elige <strong>&quot;Permitir acceso completo&quot;</strong> para obtener la mejor experiencia. Solo se leen metadatos como fecha y duraci&oacute;n; ning&uacute;n video se sube a ning&uacute;n servidor.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>Crear tu primer directorio</h3>
+      <p>Toca el <strong>bot&oacute;n +</strong> en la esquina superior derecha. Elige <strong>&quot;Coincidencia de reglas&quot;</strong> para configurar reglas de clasificaci&oacute;n autom&aacute;tica, o <strong>&quot;Selecci&oacute;n manual&quot;</strong> para elegir videos t&uacute; mismo.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/03_IMG_5124.png" alt="Pantalla de creaci&oacute;n de directorio">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>Configurar reglas de clasificaci&oacute;n</h3>
+      <p>En el modo de coincidencia de reglas, asigna un nombre al directorio y configura uno o m&aacute;s filtros: <strong>filtro por d&iacute;a de la semana</strong>, <strong>rango horario</strong>, <strong>rango de fechas</strong> o <strong>rango de duraci&oacute;n</strong>. Se necesita al menos una regla para guardar el directorio.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>Importar y clasificar videos</h3>
+      <p>Despu&eacute;s de crear directorios, la app escanea tu fototeca en busca de videos que coincidan con tus reglas y te ofrece importarlos autom&aacute;ticamente. Confirma para que VideoSorter organice todo por ti.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>Explorar videos por directorio</h3>
+      <p>Toca cualquier directorio para ver sus videos. Puedes <strong>reproducir</strong> videos, <strong>fijar favoritos</strong> o <strong>eliminar</strong> videos del directorio seg&uacute;n necesites.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/02_IMG_5123.png" alt="Explorar videos en un directorio">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>Videos sin clasificar</h3>
+      <p>Los videos que no coinciden con ninguna regla se colocan en la carpeta <strong>&quot;Sin clasificar&quot;</strong>. Puedes revisarlos all&iacute; y moverlos manualmente al directorio adecuado.</p>
+    </div>
+
+    <h2>Ajustes y gesti&oacute;n</h2>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>Abrir Ajustes</h3>
+      <p>Toca el <strong>icono de engranaje</strong> en la esquina superior izquierda para abrir Ajustes. Aqu&iacute; puedes gestionar la sincronizaci&oacute;n, los datos, las preferencias de idioma y acceder a recursos de ayuda.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/es/6.5/01_IMG_5122.png" alt="Pantalla de ajustes">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>Sincronizar y clasificar</h3>
+      <p>Usa la opci&oacute;n <strong>&quot;Sincronizar y clasificar&quot;</strong> en Ajustes para reimportar y reclasificar todos los videos de tu fototeca seg&uacute;n las reglas actuales.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>Editar un directorio</h3>
+      <p>Desliza a la izquierda sobre cualquier directorio para <strong>eliminarlo</strong>. Toca un directorio para entrar y gestionar sus videos: eliminar clips individuales o reorganizar.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">10</span>
+      <h3>A&ntilde;adir videos manualmente</h3>
+      <p>Dentro de cualquier directorio, toca el <strong>bot&oacute;n +</strong> para seleccionar videos manualmente desde tu fototeca y a&ntilde;adirlos a ese directorio.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">11</span>
+      <h3>Cambiar el idioma de la app</h3>
+      <p>Ve a <strong>Ajustes del sistema &gt; VideoSorter</strong> para cambiar el idioma de la app. Se admiten 6 idiomas: ingl&eacute;s, japon&eacute;s, chino simplificado, chino tradicional, espa&ntilde;ol y coreano.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Consejo:</strong> La app comprueba autom&aacute;ticamente si hay nuevos videos que coincidan con tus reglas cada vez que la abres. Si se encuentran coincidencias, recibir&aacute;s un aviso para importarlos de inmediato.</p>
+    </div>
+
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <h2>시작하기</h2>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h3>사진 보관함 접근 허용</h3>
+      <p>동영상 분류를 처음 실행하면 사진 보관함 접근 권한을 요청합니다. <strong>"전체 접근 허용"</strong>을 선택하면 최상의 환경을 이용할 수 있습니다. 날짜, 재생 시간 등 메타데이터만 읽으며, 동영상이 업로드되는 일은 없습니다.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h3>첫 번째 디렉토리 만들기</h3>
+      <p>오른쪽 상단의 <strong>"+" 버튼</strong>을 탭하세요. <strong>"규칙 매칭"</strong>을 선택하면 자동 분류 규칙을 설정할 수 있고, <strong>"수동 선택"</strong>을 선택하면 직접 동영상을 골라 넣을 수 있습니다.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/ko/6.5/03_IMG_5133.png" alt="디렉토리 생성 화면">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h3>분류 규칙 설정</h3>
+      <p>규칙 매칭 모드에서 디렉토리 이름을 지정한 다음 필터를 설정합니다: <strong>요일 필터</strong>, <strong>시간대 범위</strong>, <strong>날짜 범위</strong>, <strong>재생 시간 범위</strong>. 저장하려면 최소 하나의 규칙이 필요합니다.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h3>동영상 가져오기 및 분류</h3>
+      <p>디렉토리를 만들면 앱이 사진 보관함에서 규칙에 맞는 동영상을 감지하고 자동 가져오기를 제안합니다. 확인하면 동영상 분류가 자동으로 정리해 줍니다.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h3>디렉토리별 동영상 탐색</h3>
+      <p>디렉토리를 탭하면 해당 동영상 목록을 볼 수 있습니다. 동영상을 <strong>재생</strong>하거나 즐겨찾기를 <strong>고정</strong>하거나 디렉토리에서 <strong>제거</strong>할 수 있습니다.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/ko/6.5/02_IMG_5132.png" alt="디렉토리 내 동영상 탐색">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">6</span>
+      <h3>미분류 동영상</h3>
+      <p>어떤 규칙에도 해당하지 않는 동영상은 <strong>"미분류"</strong> 폴더에 들어갑니다. 거기서 확인한 후 수동으로 적절한 디렉토리로 이동할 수 있습니다.</p>
+    </div>
+
+    <h2>설정 및 관리</h2>
+
+    <div class="step">
+      <span class="step-number">7</span>
+      <h3>설정 열기</h3>
+      <p>왼쪽 상단의 <strong>톱니바퀴 아이콘</strong>을 탭하여 설정을 엽니다. 동기화, 데이터 관리, 언어 설정, 도움말에 접근할 수 있습니다.</p>
+      <div class="screenshot">
+        <img src="ScreenShot/exports/ko/6.5/01_IMG_5131.png" alt="설정 화면">
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-number">8</span>
+      <h3>동기화 및 분류</h3>
+      <p>설정에서 <strong>"동기화 및 분류"</strong> 옵션을 사용하면 사진 보관함의 모든 동영상을 현재 규칙에 따라 다시 가져오고 재분류할 수 있습니다.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">9</span>
+      <h3>디렉토리 편집</h3>
+      <p>디렉토리를 왼쪽으로 밀면 <strong>삭제</strong>할 수 있습니다. 디렉토리를 탭하여 들어가면 개별 동영상을 관리하거나 정리할 수 있습니다.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">10</span>
+      <h3>수동으로 동영상 추가</h3>
+      <p>디렉토리 안에서 <strong>"+" 버튼</strong>을 탭하면 사진 보관함에서 동영상을 직접 골라 해당 디렉토리에 추가할 수 있습니다.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">11</span>
+      <h3>앱 언어 변경</h3>
+      <p>기기의 <strong>설정 &gt; 동영상 분류</strong>에서 앱 언어를 변경할 수 있습니다. 영어, 일본어, 중국어 간체, 중국어 번체, 스페인어, 한국어 총 6개 언어를 지원합니다.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>유용한 팁:</strong> 앱을 열 때마다 새로운 동영상이 규칙에 맞는지 자동으로 확인합니다. 사진 보관함에 규칙에 맞는 새 동영상이 있으면 바로 가져오기 안내가 표시됩니다.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

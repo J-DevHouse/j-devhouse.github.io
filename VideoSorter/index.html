@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideoSorter - Smart Video Organizer</title>
+<meta name="description" content="Automatically classify and organize videos from your photo library by weekday, time, date, and duration. Perfect for students and teachers who record lectures.">
+<style>
+  :root {
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .hero { background: linear-gradient(135deg, #007aff 0%, #5856d6 100%); color: #fff; text-align: center; padding: 60px 24px 48px; }
+  .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); margin-bottom: 20px; }
+  .hero h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .hero .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+  .hero .badge { display: inline-block; }
+  .hero .badge img { width: 180px; height: auto; border-radius: 0; box-shadow: none; }
+  .lang-switch { text-align: center; padding: 20px 0 0; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 20px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .tagline { text-align: center; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .tagline-sub { text-align: center; font-size: 15px; color: var(--text-secondary); margin-bottom: 36px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
+  @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
+  .feature { background: var(--card-bg); border-radius: 16px; padding: 22px 20px; box-shadow: var(--shadow); }
+  .feature .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .feature p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+  .screenshots { text-align: center; margin-bottom: 36px; }
+  .screenshots h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+  .screenshot-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .screenshot-scroll img { height: 420px; width: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); scroll-snap-align: center; flex-shrink: 0; }
+  .links { text-align: center; margin-top: 32px; }
+  .links a { display: inline-block; margin: 0 10px 10px; color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .links a:hover { text-decoration: underline; }
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-secondary); }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+
+<div class="hero">
+  <img src="icon_256.png" alt="VideoSorter App Icon">
+  <h1>VideoSorter</h1>
+  <div class="subtitle">Smart Video Organizer</div>
+  <a class="badge" href="#" target="_blank" rel="noopener">
+    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+  </a>
+</div>
+
+<div class="lang-switch">
+  <a href="javascript:switchLang('en')" data-lang="en">English</a>
+  <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+  <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+  <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+  <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+  <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
+</div>
+
+<div class="container">
+
+  <!-- English -->
+  <div id="en" class="section">
+    <p class="tagline">Automatically Sort Your Videos by Schedule</p>
+    <p class="tagline-sub">Set rules based on weekday, time, date, and duration &mdash; VideoSorter reads your photo library and organizes lecture recordings into folders automatically. Perfect for students and teachers.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4C2;</div>
+        <h3>Smart Auto-Classification</h3>
+        <p>Define rules by weekday, time range, date range, and duration. Videos matching your criteria are automatically sorted into the right folders.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x270F;&#xFE0F;</div>
+        <h3>Manual Organization</h3>
+        <p>Create custom folders and manually pick which videos go where. Full control when you need it.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4F1;</div>
+        <h3>Photo Library Integration</h3>
+        <p>Reads video metadata (creation date, duration) directly from your photo library. No importing or duplicating files needed.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F310;</div>
+        <h3>Multi-Language Support</h3>
+        <p>Available in 6 languages: English, Japanese, Korean, Simplified Chinese, Traditional Chinese, and Spanish.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F512;</div>
+        <h3>Privacy First</h3>
+        <p>All processing happens on your device. No video data is ever uploaded. The app only reads metadata &mdash; your videos stay private.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x25B6;&#xFE0F;</div>
+        <h3>Video Playback</h3>
+        <p>Watch and manage your sorted videos directly within the app. No need to switch between apps.</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>Screenshots</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/en/6.5/01_IMG_5116.png" alt="Auto-classification rules">
+        <img src="ScreenShot/exports/en/6.5/02_IMG_5117.png" alt="Video folder list">
+        <img src="ScreenShot/exports/en/6.5/03_IMG_5118.png" alt="Create directory">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">Tutorial</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <p class="tagline">スケジュールに合わせて動画を自動分類</p>
+    <p class="tagline-sub">曜日・時間帯・日付範囲・動画の長さでルールを設定するだけ。フォトライブラリから講義録画を自動でフォルダに振り分けます。学生や教師に最適です。</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4C2;</div>
+        <h3>スマート自動分類</h3>
+        <p>曜日・時間帯・日付範囲・動画の長さでルールを定義。条件に合った動画が自動的に適切なフォルダに振り分けられます。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x270F;&#xFE0F;</div>
+        <h3>手動整理</h3>
+        <p>カスタムフォルダを作成し、動画を手動で選んで整理。必要な時に完全なコントロールが可能です。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4F1;</div>
+        <h3>フォトライブラリ連携</h3>
+        <p>フォトライブラリから動画のメタデータ（作成日時・長さ）を直接読み取り。ファイルの取り込みや複製は不要です。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F310;</div>
+        <h3>多言語対応</h3>
+        <p>英語・日本語・韓国語・簡体字中国語・繁体字中国語・スペイン語の6言語に対応しています。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F512;</div>
+        <h3>プライバシー優先</h3>
+        <p>すべての処理はデバイス上で完結。動画データがアップロードされることはありません。メタデータのみを読み取り、動画はプライベートに保たれます。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x25B6;&#xFE0F;</div>
+        <h3>動画再生</h3>
+        <p>分類された動画をアプリ内で直接視聴・管理。アプリを切り替える必要はありません。</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>スクリーンショット</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/jp/6.5/01_IMG_5119.png" alt="自動分類ルール">
+        <img src="ScreenShot/exports/jp/6.5/02_IMG_5120.png" alt="動画フォルダ一覧">
+        <img src="ScreenShot/exports/jp/6.5/03_IMG_5121.png" alt="ディレクトリ作成">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">使い方ガイド</a>
+      <a href="support.html">サポート</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
+    </div>
+  </div>
+
+  <!-- Simplified Chinese -->
+  <div id="zh" class="section">
+    <p class="tagline">按日程自动分类你的视频</p>
+    <p class="tagline-sub">设置星期、时间段、日期范围和时长规则，视频整理自动从相册读取讲课录像并整理到对应文件夹。专为学生和教师设计。</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4C2;</div>
+        <h3>智能自动分类</h3>
+        <p>通过星期、时间段、日期范围和视频时长定义规则，符合条件的视频自动归入对应文件夹。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x270F;&#xFE0F;</div>
+        <h3>手动整理</h3>
+        <p>创建自定义文件夹，手动选择要归入的视频。需要时可完全手动控制。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4F1;</div>
+        <h3>相册集成</h3>
+        <p>直接从相册读取视频元数据（创建日期、时长），无需导入或复制文件。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F310;</div>
+        <h3>多语言支持</h3>
+        <p>支持6种语言：英语、日语、韩语、简体中文、繁体中文和西班牙语。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F512;</div>
+        <h3>隐私优先</h3>
+        <p>所有处理均在设备上完成，视频数据绝不会被上传。应用仅读取元数据，你的视频始终保持私密。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x25B6;&#xFE0F;</div>
+        <h3>视频播放</h3>
+        <p>在应用内直接观看和管理已分类的视频，无需切换其他应用。</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>应用截图</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/zh-Hans/6.5/01_IMG_5128.png" alt="自动分类规则">
+        <img src="ScreenShot/exports/zh-Hans/6.5/02_IMG_5129.png" alt="视频文件夹列表">
+        <img src="ScreenShot/exports/zh-Hans/6.5/03_IMG_5130.png" alt="创建目录">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">使用教程</a>
+      <a href="support.html">帮助与支持</a>
+      <a href="privacy.html">隐私政策</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">联系我们</a>
+    </div>
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <p class="tagline">依照排程自動分類你的影片</p>
+    <p class="tagline-sub">設定星期、時段、日期範圍和時長規則，影片整理自動從相簿讀取授課錄影並整理到對應資料夾。專為學生和教師設計。</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4C2;</div>
+        <h3>智慧自動分類</h3>
+        <p>透過星期、時段、日期範圍和影片時長定義規則，符合條件的影片自動歸入對應資料夾。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x270F;&#xFE0F;</div>
+        <h3>手動整理</h3>
+        <p>建立自訂資料夾，手動選擇要歸入的影片。需要時可完全手動控制。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4F1;</div>
+        <h3>相簿整合</h3>
+        <p>直接從相簿讀取影片元資料（建立日期、時長），無需匯入或複製檔案。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F310;</div>
+        <h3>多語言支援</h3>
+        <p>支援6種語言：英語、日語、韓語、簡體中文、繁體中文和西班牙語。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F512;</div>
+        <h3>隱私優先</h3>
+        <p>所有處理均在裝置上完成，影片資料絕不會被上傳。應用程式僅讀取元資料，你的影片始終保持私密。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x25B6;&#xFE0F;</div>
+        <h3>影片播放</h3>
+        <p>在應用程式內直接觀看和管理已分類的影片，無需切換其他應用程式。</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>應用截圖</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/zh-Hant/6.5/01_IMG_5125.png" alt="自動分類規則">
+        <img src="ScreenShot/exports/zh-Hant/6.5/02_IMG_5126.png" alt="影片資料夾列表">
+        <img src="ScreenShot/exports/zh-Hant/6.5/03_IMG_5127.png" alt="建立目錄">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">使用教學</a>
+      <a href="support.html">幫助與支援</a>
+      <a href="privacy.html">隱私權政策</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">聯絡我們</a>
+    </div>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <p class="tagline">Clasifica tus videos autom&aacute;ticamente por horario</p>
+    <p class="tagline-sub">Define reglas por d&iacute;a de la semana, hora, rango de fechas y duraci&oacute;n. Clasificador de Videos lee tu biblioteca de fotos y organiza las grabaciones de clases en carpetas autom&aacute;ticamente. Ideal para estudiantes y profesores.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4C2;</div>
+        <h3>Clasificaci&oacute;n autom&aacute;tica inteligente</h3>
+        <p>Define reglas por d&iacute;a de la semana, rango horario, rango de fechas y duraci&oacute;n. Los videos que cumplan los criterios se clasifican autom&aacute;ticamente en las carpetas correspondientes.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x270F;&#xFE0F;</div>
+        <h3>Organizaci&oacute;n manual</h3>
+        <p>Crea carpetas personalizadas y selecciona manualmente qu&eacute; videos van en cada una. Control total cuando lo necesites.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4F1;</div>
+        <h3>Integraci&oacute;n con la biblioteca de fotos</h3>
+        <p>Lee los metadatos de video (fecha de creaci&oacute;n, duraci&oacute;n) directamente de tu biblioteca de fotos. Sin necesidad de importar o duplicar archivos.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F310;</div>
+        <h3>Soporte multiling&uuml;e</h3>
+        <p>Disponible en 6 idiomas: ingl&eacute;s, japon&eacute;s, coreano, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F512;</div>
+        <h3>Privacidad ante todo</h3>
+        <p>Todo el procesamiento se realiza en tu dispositivo. Ning&uacute;n dato de video se sube a la nube. La app solo lee metadatos &mdash; tus videos permanecen privados.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x25B6;&#xFE0F;</div>
+        <h3>Reproducci&oacute;n de video</h3>
+        <p>Mira y gestiona tus videos clasificados directamente dentro de la app. Sin necesidad de cambiar entre aplicaciones.</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>Capturas de pantalla</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/es/6.5/01_IMG_5122.png" alt="Reglas de clasificaci&oacute;n autom&aacute;tica">
+        <img src="ScreenShot/exports/es/6.5/02_IMG_5123.png" alt="Lista de carpetas de video">
+        <img src="ScreenShot/exports/es/6.5/03_IMG_5124.png" alt="Crear directorio">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">Tutorial</a>
+      <a href="support.html">Soporte</a>
+      <a href="privacy.html">Pol&iacute;tica de privacidad</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <p class="tagline">일정에 따라 동영상을 자동 분류</p>
+    <p class="tagline-sub">요일, 시간대, 날짜 범위, 영상 길이로 규칙을 설정하면 동영상 분류가 사진 라이브러리에서 강의 녹화를 자동으로 폴더에 정리합니다. 학생과 교사에게 최적입니다.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4C2;</div>
+        <h3>스마트 자동 분류</h3>
+        <p>요일, 시간대, 날짜 범위, 영상 길이로 규칙을 정의하세요. 조건에 맞는 동영상이 자동으로 적절한 폴더에 분류됩니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x270F;&#xFE0F;</div>
+        <h3>수동 정리</h3>
+        <p>맞춤 폴더를 만들고 동영상을 직접 선택하여 정리하세요. 필요할 때 완전한 제어가 가능합니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4F1;</div>
+        <h3>사진 라이브러리 연동</h3>
+        <p>사진 라이브러리에서 동영상 메타데이터(생성 날짜, 길이)를 직접 읽어옵니다. 파일을 가져오거나 복제할 필요가 없습니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F310;</div>
+        <h3>다국어 지원</h3>
+        <p>영어, 일본어, 한국어, 간체 중국어, 번체 중국어, 스페인어 등 6개 언어를 지원합니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F512;</div>
+        <h3>개인정보 보호 최우선</h3>
+        <p>모든 처리는 기기에서 이루어집니다. 동영상 데이터가 업로드되는 일은 없습니다. 앱은 메타데이터만 읽으며 동영상은 항상 비공개로 유지됩니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x25B6;&#xFE0F;</div>
+        <h3>동영상 재생</h3>
+        <p>분류된 동영상을 앱 내에서 바로 시청하고 관리하세요. 다른 앱으로 전환할 필요가 없습니다.</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>스크린샷</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/ko/6.5/01_IMG_5131.png" alt="자동 분류 규칙">
+        <img src="ScreenShot/exports/ko/6.5/02_IMG_5132.png" alt="동영상 폴더 목록">
+        <img src="ScreenShot/exports/ko/6.5/03_IMG_5133.png" alt="디렉토리 만들기">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">사용 가이드</a>
+      <a href="support.html">고객 지원</a>
+      <a href="privacy.html">개인정보 처리방침</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">문의하기</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideoSorter - Support</title>
+<style>
+  :root {
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+    --tip-bg: rgba(255,149,0,0.1); --tip-border: #ff9500; --tip-text: #c77700;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+      --tip-bg: rgba(255,159,10,0.15); --tip-border: #ff9f0a; --tip-text: #ffd580;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 0.5px solid var(--separator); }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.5px; }
+  .header .app-name { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 12px; letter-spacing: -0.3px; }
+  p, li { font-size: 15px; color: var(--text-secondary); margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .faq-item { background: var(--card-bg); border-radius: 16px; padding: 20px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .faq-item h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .faq-item p { margin-bottom: 0; font-size: 14px; color: var(--text-secondary); }
+  .contact-card { background: linear-gradient(135deg, #007aff, #5856d6); color: #fff; border-radius: 20px; padding: 32px; margin-top: 32px; text-align: center; }
+  .contact-card h2 { color: #fff; margin: 0 0 12px; }
+  .contact-card p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+  .contact-card a { display: inline-block; background: rgba(255,255,255,0.95); color: var(--accent); text-decoration: none; padding: 12px 32px; border-radius: 14px; font-weight: 600; font-size: 15px; }
+  .contact-card a:hover { background: #fff; }
+  .tip { background: var(--tip-bg); border-left: 3px solid var(--tip-border); padding: 14px 18px; border-radius: 12px; margin: 16px 0; }
+  .tip p { margin-bottom: 0; color: var(--tip-text); font-size: 14px; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; font-size: 12px; color: var(--text-secondary); }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name">VideoSorter</div>
+    <h1>Support</h1>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+    <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>How does VideoSorter work?</h3>
+      <p>VideoSorter reads videos from your iPhone photo library and automatically sorts them into folders based on rules you define. Create directories, set up filtering rules (weekday, time range, date range, duration), then tap "Sync &amp; Classify" to let the app organize everything for you.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why does the app need photo library access?</h3>
+      <p>VideoSorter needs read access to your photo library so it can retrieve video metadata such as creation date and duration. The app does NOT upload, modify, or delete your original videos. All processing happens locally on your device.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I create a directory?</h3>
+      <p>Tap the + button on the main screen. You can choose between two types:</p>
+      <ul style="margin-top:8px">
+        <li><strong>Rule Match</strong> &mdash; Videos are automatically classified into this directory based on the filtering rules you set up.</li>
+        <li><strong>Manual Select</strong> &mdash; You hand-pick which videos belong in this directory using the video picker.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I set up filtering rules?</h3>
+      <p>When creating or editing a "Rule Match" directory, you can configure the following filters:</p>
+      <ul style="margin-top:8px">
+        <li><strong>Weekday</strong> &mdash; Match videos recorded on specific days of the week</li>
+        <li><strong>Time range</strong> &mdash; Match videos recorded within a specific time window (e.g., 09:00 &ndash; 12:00)</li>
+        <li><strong>Date range</strong> &mdash; Match videos recorded between two dates</li>
+        <li><strong>Duration range</strong> &mdash; Match videos by length (e.g., 5 min &ndash; 30 min)</li>
+        <li><strong>Per-weekday time</strong> &mdash; Set different time ranges for each day of the week</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>What does "Sync &amp; Classify" do?</h3>
+      <p>Tapping "Sync &amp; Classify" imports all videos from your photo library and re-classifies them against every directory's rules. Any newly added or changed videos will be sorted into the correct folders.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the "Unclassified" folder?</h3>
+      <p>Videos that do not match any directory's filtering rules are placed in the "Unclassified" folder. You can review them there and either adjust your rules or manually move them to a directory.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I manually add videos to a folder?</h3>
+      <p>Yes. Open any directory and use the manual add or video picker to select specific videos from your photo library. This is especially useful for "Manual Select" type directories.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I change the app language?</h3>
+      <p>Go to your device's Settings &gt; VideoSorter &gt; Language. The app supports English, Japanese, Simplified Chinese, Traditional Chinese, Spanish, and Korean.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does the app need an internet connection?</h3>
+      <p>No. VideoSorter works entirely offline. All video classification and data storage happen locally on your device. An internet connection is only used for displaying ads.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Where is my data stored?</h3>
+      <p>All your data &mdash; directories, rules, and classification results &mdash; is stored locally on your device. Nothing is uploaded to any server. Your videos remain untouched in your photo library.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Tip:</strong> After adding new videos to your photo library, tap "Sync &amp; Classify" to automatically sort them into the correct directories.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>Still need help?</h2>
+      <p>We're happy to assist. Send us an email and we'll get back to you as soon as possible.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <h2>よくあるご質問</h2>
+
+    <div class="faq-item">
+      <h3>動画整理はどのように使いますか？</h3>
+      <p>動画整理はiPhoneの写真ライブラリから動画を読み込み、設定したルールに基づいて自動的にフォルダに分類します。ディレクトリを作成し、フィルタリングルール（曜日、時間帯、期間、長さ）を設定して、「同期＆分類」をタップするだけで自動整理できます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>なぜ写真ライブラリへのアクセスが必要ですか？</h3>
+      <p>動画のメタデータ（作成日時、再生時間など）を読み取るために、写真ライブラリへの読み取りアクセスが必要です。アプリが動画をアップロード、変更、削除することはありません。すべての処理はデバイス上でローカルに行われます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>ディレクトリはどう作成しますか？</h3>
+      <p>メイン画面の＋ボタンをタップします。2つのタイプから選べます：</p>
+      <ul style="margin-top:8px">
+        <li><strong>ルールマッチ</strong> &mdash; 設定したフィルタリングルールに基づいて動画が自動的に分類されます。</li>
+        <li><strong>手動選択</strong> &mdash; 動画ピッカーを使って手動で動画を選択します。</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>フィルタリングルールはどう設定しますか？</h3>
+      <p>「ルールマッチ」タイプのディレクトリを作成・編集する際に、以下のフィルターを設定できます：</p>
+      <ul style="margin-top:8px">
+        <li><strong>曜日</strong> &mdash; 特定の曜日に撮影された動画をマッチ</li>
+        <li><strong>時間帯</strong> &mdash; 特定の時間帯に撮影された動画をマッチ（例：09:00〜12:00）</li>
+        <li><strong>期間</strong> &mdash; 指定した日付の範囲内に撮影された動画をマッチ</li>
+        <li><strong>長さ</strong> &mdash; 再生時間でマッチ（例：5分〜30分）</li>
+        <li><strong>曜日別時間帯</strong> &mdash; 曜日ごとに異なる時間帯を設定可能</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>「同期＆分類」とは？</h3>
+      <p>「同期＆分類」をタップすると、写真ライブラリからすべての動画を読み込み、各ディレクトリのルールに基づいて再分類します。新しく追加・変更された動画も正しいフォルダに振り分けられます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>「未分類」フォルダとは？</h3>
+      <p>どのディレクトリのルールにも一致しない動画は「未分類」フォルダに入ります。ここで確認してルールを調整したり、手動でディレクトリに移動したりできます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>動画を手動でフォルダに追加できますか？</h3>
+      <p>はい。任意のディレクトリを開き、手動追加または動画ピッカーを使って写真ライブラリから動画を選択できます。「手動選択」タイプのディレクトリで特に便利です。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>アプリの言語を変更するには？</h3>
+      <p>デバイスの設定 &gt; 動画整理 &gt; 言語 から変更できます。英語、日本語、簡体字中国語、繁体字中国語、スペイン語、韓国語に対応しています。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>インターネット接続は必要ですか？</h3>
+      <p>いいえ。動画整理は完全にオフラインで動作します。すべての動画整理とデータ保存はデバイス上でローカルに行われます。インターネット接続は広告表示にのみ使用されます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>データはどこに保存されますか？</h3>
+      <p>ディレクトリ、ルール、分類結果など、すべてのデータはデバイス上にローカル保存されます。サーバーにアップロードされることはありません。動画は写真ライブラリにそのまま残ります。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>ヒント：</strong>写真ライブラリに新しい動画を追加した後、「同期＆分類」をタップすると自動的に正しいディレクトリに振り分けられます。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>解決しませんか？</h2>
+      <p>お気軽にメールでお問い合わせください。できるだけ早くご返信いたします。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
+    </div>
+  </div>
+
+  <!-- Chinese -->
+  <div id="zh" class="section">
+    <h2>常见问题</h2>
+
+    <div class="faq-item">
+      <h3>视频整理是怎么工作的？</h3>
+      <p>视频整理从 iPhone 照片图库中读取视频，并根据您设定的规则自动分类到不同文件夹中。创建目录、设置筛选规则（星期、时间段、日期范围、时长），然后点击「同步并分类」即可自动整理。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>为什么需要访问照片图库？</h3>
+      <p>视频整理需要读取照片图库以获取视频的元数据（创建日期、时长等）。应用不会上传、修改或删除您的原始视频。所有处理均在设备本地完成。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何创建目录？</h3>
+      <p>在主界面点击 + 按钮。您可以选择两种类型：</p>
+      <ul style="margin-top:8px">
+        <li><strong>规则匹配</strong> &mdash; 视频根据您设定的筛选规则自动分类到此目录。</li>
+        <li><strong>手动选择</strong> &mdash; 使用视频选择器手动挑选要放入此目录的视频。</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何设置筛选规则？</h3>
+      <p>创建或编辑「规则匹配」类型的目录时，可以配置以下筛选条件：</p>
+      <ul style="margin-top:8px">
+        <li><strong>星期</strong> &mdash; 匹配在特定星期几录制的视频</li>
+        <li><strong>时间段</strong> &mdash; 匹配在特定时间窗口内录制的视频（如 09:00 &ndash; 12:00）</li>
+        <li><strong>日期范围</strong> &mdash; 匹配在两个日期之间录制的视频</li>
+        <li><strong>时长范围</strong> &mdash; 按视频长度匹配（如 5 分钟 &ndash; 30 分钟）</li>
+        <li><strong>按星期设置时间</strong> &mdash; 为每个星期几设置不同的时间段</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>「同步并分类」是做什么的？</h3>
+      <p>点击「同步并分类」会从照片图库导入所有视频，并根据每个目录的规则重新分类。新添加或更改的视频将被分配到正确的文件夹中。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>「未分类」文件夹是什么？</h3>
+      <p>不匹配任何目录筛选规则的视频会被放入「未分类」文件夹。您可以在此查看并调整规则，或手动将视频移到某个目录。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>可以手动添加视频到文件夹吗？</h3>
+      <p>可以。打开任意目录，使用手动添加或视频选择器从照片图库中选择特定视频。这在「手动选择」类型的目录中尤为方便。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何切换应用语言？</h3>
+      <p>前往设备的 设置 &gt; 视频整理 &gt; 语言。支持英语、日语、简体中文、繁体中文、西班牙语和韩语。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>需要联网吗？</h3>
+      <p>不需要。视频整理完全离线运行。所有视频分类和数据存储均在设备本地完成。网络连接仅用于显示广告。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>数据存储在哪里？</h3>
+      <p>所有数据（目录、规则、分类结果）均存储在设备本地，不会上传到任何服务器。您的视频保持原样存放在照片图库中。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>提示：</strong>向照片图库添加新视频后，点击「同步并分类」即可自动将其分配到正确的目录。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>还有问题？</h2>
+      <p>欢迎通过邮件联系我们，我们会尽快回复。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">联系我们</a>
+    </div>
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <h2>常見問題</h2>
+
+    <div class="faq-item">
+      <h3>影片整理是怎麼運作的？</h3>
+      <p>影片整理從 iPhone 照片圖庫中讀取影片，並根據您設定的規則自動分類到不同資料夾中。建立目錄、設定篩選規則（星期、時間段、日期範圍、時長），然後點擊「同步並分類」即可自動整理。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>為什麼需要存取照片圖庫？</h3>
+      <p>影片整理需要讀取照片圖庫以取得影片的中繼資料（建立日期、時長等）。應用程式不會上傳、修改或刪除您的原始影片。所有處理均在裝置本機完成。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何建立目錄？</h3>
+      <p>在主畫面點擊 + 按鈕。您可以選擇兩種類型：</p>
+      <ul style="margin-top:8px">
+        <li><strong>規則匹配</strong> &mdash; 影片根據您設定的篩選規則自動分類到此目錄。</li>
+        <li><strong>手動選擇</strong> &mdash; 使用影片選擇器手動挑選要放入此目錄的影片。</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何設定篩選規則？</h3>
+      <p>建立或編輯「規則匹配」類型的目錄時，可以設定以下篩選條件：</p>
+      <ul style="margin-top:8px">
+        <li><strong>星期</strong> &mdash; 匹配在特定星期幾錄製的影片</li>
+        <li><strong>時間段</strong> &mdash; 匹配在特定時間區間內錄製的影片（如 09:00 &ndash; 12:00）</li>
+        <li><strong>日期範圍</strong> &mdash; 匹配在兩個日期之間錄製的影片</li>
+        <li><strong>時長範圍</strong> &mdash; 依影片長度匹配（如 5 分鐘 &ndash; 30 分鐘）</li>
+        <li><strong>依星期設定時間</strong> &mdash; 為每個星期幾設定不同的時間段</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>「同步並分類」是做什麼的？</h3>
+      <p>點擊「同步並分類」會從照片圖庫匯入所有影片，並根據每個目錄的規則重新分類。新增或變更的影片將被分配到正確的資料夾中。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>「未分類」資料夾是什麼？</h3>
+      <p>不符合任何目錄篩選規則的影片會被放入「未分類」資料夾。您可以在此查看並調整規則，或手動將影片移到某個目錄。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>可以手動新增影片到資料夾嗎？</h3>
+      <p>可以。開啟任意目錄，使用手動新增或影片選擇器從照片圖庫中選擇特定影片。這在「手動選擇」類型的目錄中尤為方便。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何切換應用程式語言？</h3>
+      <p>前往裝置的 設定 &gt; 影片整理 &gt; 語言。支援英語、日語、簡體中文、繁體中文、西班牙語和韓語。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>需要連網嗎？</h3>
+      <p>不需要。影片整理完全離線運作。所有影片分類和資料儲存均在裝置本機完成。網路連線僅用於顯示廣告。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>資料儲存在哪裡？</h3>
+      <p>所有資料（目錄、規則、分類結果）均儲存在裝置本機，不會上傳到任何伺服器。您的影片保持原樣存放在照片圖庫中。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>提示：</strong>向照片圖庫新增影片後，點擊「同步並分類」即可自動將其分配到正確的目錄。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>還有問題？</h2>
+      <p>歡迎透過郵件聯絡我們，我們會盡快回覆。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">聯絡我們</a>
+    </div>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <h2>Preguntas frecuentes</h2>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo funciona VideoSorter?</h3>
+      <p>VideoSorter lee los videos de la biblioteca de fotos de tu iPhone y los clasifica autom&aacute;ticamente en carpetas seg&uacute;n las reglas que definas. Crea directorios, configura reglas de filtrado (d&iacute;a de la semana, rango horario, rango de fechas, duraci&oacute;n) y toca "Sincronizar y clasificar" para que la app lo organice todo.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Por qu&eacute; la app necesita acceso a la biblioteca de fotos?</h3>
+      <p>VideoSorter necesita acceso de lectura a tu biblioteca de fotos para obtener los metadatos de los videos, como la fecha de creaci&oacute;n y la duraci&oacute;n. La app NO sube, modifica ni elimina tus videos originales. Todo el procesamiento se realiza localmente en tu dispositivo.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo creo un directorio?</h3>
+      <p>Toca el bot&oacute;n + en la pantalla principal. Puedes elegir entre dos tipos:</p>
+      <ul style="margin-top:8px">
+        <li><strong>Coincidencia por reglas</strong> &mdash; Los videos se clasifican autom&aacute;ticamente en este directorio seg&uacute;n las reglas de filtrado configuradas.</li>
+        <li><strong>Selecci&oacute;n manual</strong> &mdash; T&uacute; eliges manualmente qu&eacute; videos incluir usando el selector de videos.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo configuro las reglas de filtrado?</h3>
+      <p>Al crear o editar un directorio de tipo "Coincidencia por reglas", puedes configurar los siguientes filtros:</p>
+      <ul style="margin-top:8px">
+        <li><strong>D&iacute;a de la semana</strong> &mdash; Coincidir videos grabados en d&iacute;as espec&iacute;ficos</li>
+        <li><strong>Rango horario</strong> &mdash; Coincidir videos grabados dentro de una franja horaria (ej. 09:00 &ndash; 12:00)</li>
+        <li><strong>Rango de fechas</strong> &mdash; Coincidir videos grabados entre dos fechas</li>
+        <li><strong>Rango de duraci&oacute;n</strong> &mdash; Coincidir videos por su duraci&oacute;n (ej. 5 min &ndash; 30 min)</li>
+        <li><strong>Horario por d&iacute;a</strong> &mdash; Establecer rangos horarios diferentes para cada d&iacute;a de la semana</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Qu&eacute; hace "Sincronizar y clasificar"?</h3>
+      <p>Al tocar "Sincronizar y clasificar", se importan todos los videos de tu biblioteca de fotos y se reclasifican seg&uacute;n las reglas de cada directorio. Los videos nuevos o modificados se asignar&aacute;n a las carpetas correctas.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Qu&eacute; es la carpeta "Sin clasificar"?</h3>
+      <p>Los videos que no coinciden con las reglas de ning&uacute;n directorio se colocan en la carpeta "Sin clasificar". Puedes revisarlos ah&iacute; y ajustar tus reglas o moverlos manualmente a un directorio.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Puedo agregar videos manualmente a una carpeta?</h3>
+      <p>S&iacute;. Abre cualquier directorio y usa la opci&oacute;n de agregar manualmente o el selector de videos para elegir videos espec&iacute;ficos de tu biblioteca de fotos. Es especialmente &uacute;til para directorios de tipo "Selecci&oacute;n manual".</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo cambio el idioma de la app?</h3>
+      <p>Ve a Ajustes del dispositivo &gt; VideoSorter &gt; Idioma. La app es compatible con ingl&eacute;s, japon&eacute;s, chino simplificado, chino tradicional, espa&ntilde;ol y coreano.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;La app necesita conexi&oacute;n a internet?</h3>
+      <p>No. VideoSorter funciona completamente sin conexi&oacute;n. Toda la clasificaci&oacute;n de videos y el almacenamiento de datos se realizan localmente en tu dispositivo. La conexi&oacute;n a internet solo se usa para mostrar anuncios.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;D&oacute;nde se almacenan mis datos?</h3>
+      <p>Todos tus datos (directorios, reglas y resultados de clasificaci&oacute;n) se almacenan localmente en tu dispositivo. Nada se sube a ning&uacute;n servidor. Tus videos permanecen intactos en tu biblioteca de fotos.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Consejo:</strong> Despu&eacute;s de agregar nuevos videos a tu biblioteca de fotos, toca "Sincronizar y clasificar" para ordenarlos autom&aacute;ticamente en los directorios correctos.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>&iquest;A&uacute;n necesitas ayuda?</h2>
+      <p>Estamos encantados de ayudarte. Env&iacute;anos un correo electr&oacute;nico y te responderemos lo antes posible.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <h2>자주 묻는 질문</h2>
+
+    <div class="faq-item">
+      <h3>동영상 분류는 어떻게 작동하나요?</h3>
+      <p>동영상 분류는 iPhone 사진 보관함에서 동영상을 읽어와 사용자가 정의한 규칙에 따라 자동으로 폴더에 분류합니다. 디렉토리를 만들고 필터링 규칙(요일, 시간대, 날짜 범위, 길이)을 설정한 후 "동기화 및 분류"를 탭하면 앱이 자동으로 정리해 줍니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>앱에서 사진 보관함 접근이 필요한 이유는 무엇인가요?</h3>
+      <p>동영상의 메타데이터(생성 날짜, 재생 시간 등)를 읽기 위해 사진 보관함에 대한 읽기 접근 권한이 필요합니다. 앱은 원본 동영상을 업로드, 수정 또는 삭제하지 않습니다. 모든 처리는 기기에서 로컬로 이루어집니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>디렉토리는 어떻게 만드나요?</h3>
+      <p>메인 화면에서 + 버튼을 탭합니다. 두 가지 유형 중 선택할 수 있습니다:</p>
+      <ul style="margin-top:8px">
+        <li><strong>규칙 매칭</strong> &mdash; 설정한 필터링 규칙에 따라 동영상이 자동으로 이 디렉토리에 분류됩니다.</li>
+        <li><strong>수동 선택</strong> &mdash; 동영상 선택기를 사용하여 수동으로 동영상을 선택합니다.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>필터링 규칙은 어떻게 설정하나요?</h3>
+      <p>"규칙 매칭" 유형의 디렉토리를 생성하거나 편집할 때 다음 필터를 설정할 수 있습니다:</p>
+      <ul style="margin-top:8px">
+        <li><strong>요일</strong> &mdash; 특정 요일에 촬영된 동영상 매칭</li>
+        <li><strong>시간대</strong> &mdash; 특정 시간 범위 내에 촬영된 동영상 매칭 (예: 09:00 &ndash; 12:00)</li>
+        <li><strong>날짜 범위</strong> &mdash; 두 날짜 사이에 촬영된 동영상 매칭</li>
+        <li><strong>길이 범위</strong> &mdash; 동영상 길이로 매칭 (예: 5분 &ndash; 30분)</li>
+        <li><strong>요일별 시간대</strong> &mdash; 각 요일마다 다른 시간대를 설정 가능</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>"동기화 및 분류"는 무엇인가요?</h3>
+      <p>"동기화 및 분류"를 탭하면 사진 보관함에서 모든 동영상을 가져와 각 디렉토리의 규칙에 따라 다시 분류합니다. 새로 추가되거나 변경된 동영상도 올바른 폴더에 배정됩니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>"미분류" 폴더란 무엇인가요?</h3>
+      <p>어떤 디렉토리의 필터링 규칙에도 일치하지 않는 동영상은 "미분류" 폴더에 들어갑니다. 여기에서 확인한 후 규칙을 조정하거나 수동으로 디렉토리에 이동할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>동영상을 폴더에 수동으로 추가할 수 있나요?</h3>
+      <p>네. 아무 디렉토리나 열어서 수동 추가 또는 동영상 선택기를 사용해 사진 보관함에서 특정 동영상을 선택할 수 있습니다. "수동 선택" 유형의 디렉토리에서 특히 유용합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>앱 언어를 변경하려면 어떻게 하나요?</h3>
+      <p>기기의 설정 &gt; 동영상 분류 &gt; 언어로 이동하세요. 영어, 일본어, 중국어 간체, 중국어 번체, 스페인어 및 한국어를 지원합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>인터넷 연결이 필요한가요?</h3>
+      <p>아니요. 동영상 분류는 완전히 오프라인으로 작동합니다. 모든 동영상 분류와 데이터 저장은 기기에서 로컬로 이루어집니다. 인터넷 연결은 광고 표시에만 사용됩니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>데이터는 어디에 저장되나요?</h3>
+      <p>모든 데이터(디렉토리, 규칙, 분류 결과)는 기기에 로컬로 저장됩니다. 어떤 서버에도 업로드되지 않습니다. 동영상은 사진 보관함에 그대로 유지됩니다.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>팁:</strong> 사진 보관함에 새 동영상을 추가한 후 "동기화 및 분류"를 탭하면 자동으로 올바른 디렉토리에 분류됩니다.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>아직 해결되지 않으셨나요?</h2>
+      <p>기꺼이 도와드리겠습니다. 이메일로 문의해 주시면 가능한 한 빨리 답변드리겠습니다.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">문의하기</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

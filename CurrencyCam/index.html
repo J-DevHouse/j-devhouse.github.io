@@ -57,6 +57,7 @@ window.onload = function() {
   else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
   else if (lang.startsWith('zh')) switchLang('zh');
   else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
   else switchLang('en');
 };
 </script>
@@ -67,6 +68,9 @@ window.onload = function() {
   <img src="icon_256.png" alt="CurrencyCam App Icon">
   <h1>CurrencyCam</h1>
   <div class="subtitle">Exchange Rates</div>
+  <a class="badge" href="https://apps.apple.com/us/app/currencycam-exchange-rates/id6760966205" target="_blank" rel="noopener">
+    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+  </a>
 </div>
 
 <div class="lang-switch">
@@ -75,6 +79,7 @@ window.onload = function() {
   <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
   <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
   <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+  <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
 </div>
 
 <div class="container">
@@ -88,12 +93,12 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x1F4F7;</div>
         <h3>Smart Camera Detection</h3>
-        <p>Point your camera at any price tag, receipt, or menu. Smart OCR filters out dates, phone numbers, and product codes &mdash; only real prices are detected.</p>
+        <p>Point your camera at any price tag, receipt, or menu. Drag or pinch the adjustable frame to target a single price &mdash; smart OCR filters out dates, phone numbers and product codes.</p>
       </div>
       <div class="feature">
         <div class="icon">&#x1F4B1;</div>
         <h3>50+ Currencies &amp; Local Formats</h3>
-        <p>Supports global price formats: Indian lakh (1,23,456), European comma decimals (19,99), Vietnamese dot-thousands (150.000), and more.</p>
+        <p>Currencies grouped by region (Asia-Pacific, Americas, Europe, and more) with multi-select. Supports global formats: Indian lakh (1,23,456), European comma decimals (19,99), Vietnamese dot-thousands (150.000).</p>
       </div>
       <div class="feature">
         <div class="icon">&#x2328;&#xFE0F;</div>
@@ -113,17 +118,18 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x26A1;</div>
         <h3>Fast &amp; Lightweight</h3>
-        <p>On-device processing, 5 languages, no sign-up required. No data collected.</p>
+        <p>On-device processing, 6 languages, no sign-up required. No data collected.</p>
       </div>
     </div>
 
     <div class="screenshots">
       <h2>Screenshots</h2>
       <div class="screenshot-scroll">
-        <img src="ScreenShot/exports/en/6.5/01_IMG_4979.png" alt="Camera detection">
-        <img src="ScreenShot/exports/en/6.5/02_IMG_4977.png" alt="Conversion results">
-        <img src="ScreenShot/exports/en/6.5/03_IMG_4978.png" alt="Settings">
-        <img src="ScreenShot/exports/en/6.5/04_IMG_4993.png" alt="Multi-currency">
+        <img src="ScreenShot/exports/en/6.5/01_IMG_4805.png" alt="Camera detection">
+        <img src="ScreenShot/exports/en/6.5/02_IMG_4806.png" alt="Adjustable focus frame">
+        <img src="ScreenShot/exports/en/6.5/03_IMG_4807.png" alt="Settings">
+        <img src="ScreenShot/exports/en/6.5/04_IMG_4808.png" alt="50+ Currencies">
+        <img src="ScreenShot/exports/en/6.5/05_IMG_4809.png" alt="Manual input">
       </div>
     </div>
 
@@ -144,12 +150,12 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x1F4F7;</div>
         <h3>スマートカメラ検出</h3>
-        <p>値札、レシート、メニューにカメラを向けるだけ。日付・電話番号・商品番号を自動除外し、金額だけを正確に検出します。</p>
+        <p>値札・レシート・メニューにカメラを向けるだけ。取景框はドラッグ＆ピンチで自由に調整でき、読みたい金額だけを枠内に収められます。日付・電話番号・商品番号は自動で除外。</p>
       </div>
       <div class="feature">
         <div class="icon">&#x1F4B1;</div>
         <h3>50以上の通貨と各国フォーマット</h3>
-        <p>インドのlakh表記(1,23,456)、欧州のコンマ小数(19,99)、ベトナムのドット千分位(150.000)など世界中の価格形式に対応。</p>
+        <p>通貨はアジア太平洋・アメリカ・ヨーロッパなど地域別にグループ表示され、複数選択も簡単。インドのlakh表記(1,23,456)・欧州のコンマ小数(19,99)・ベトナムのドット千分位(150.000)など世界中の形式に対応。</p>
       </div>
       <div class="feature">
         <div class="icon">&#x2328;&#xFE0F;</div>
@@ -169,17 +175,18 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x26A1;</div>
         <h3>高速＆軽量</h3>
-        <p>デバイス上処理、5言語対応。登録不要、データ収集なし。</p>
+        <p>デバイス上処理、6言語対応。登録不要、データ収集なし。</p>
       </div>
     </div>
 
     <div class="screenshots">
       <h2>スクリーンショット</h2>
       <div class="screenshot-scroll">
-        <img src="ScreenShot/exports/jp/6.5/01_IMG_4973.png" alt="カメラ検出">
-        <img src="ScreenShot/exports/jp/6.5/02_IMG_4974.png" alt="換算結果">
-        <img src="ScreenShot/exports/jp/6.5/03_IMG_4975.png" alt="設定">
-        <img src="ScreenShot/exports/jp/6.5/04_IMG_4976.png" alt="複数通貨">
+        <img src="ScreenShot/exports/jp/6.5/01_IMG_4811.png" alt="カメラ検出">
+        <img src="ScreenShot/exports/jp/6.5/02_IMG_4812.png" alt="取込枠の調整">
+        <img src="ScreenShot/exports/jp/6.5/03_IMG_4814.png" alt="設定">
+        <img src="ScreenShot/exports/jp/6.5/04_IMG_4815.png" alt="50以上の通貨">
+        <img src="ScreenShot/exports/jp/6.5/05_IMG_4813.png" alt="手動入力">
       </div>
     </div>
 
@@ -200,12 +207,12 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x1F4F7;</div>
         <h3>智能摄像头识别</h3>
-        <p>将摄像头对准任何价签、收据或菜单，智能 OCR 自动过滤日期、电话号码和商品编号，只识别真实价格。</p>
+        <p>将摄像头对准任何价签、收据或菜单，取景框可自由拖动与缩放，只把想识别的金额框进去。智能 OCR 自动过滤日期、电话号码和商品编号。</p>
       </div>
       <div class="feature">
         <div class="icon">&#x1F4B1;</div>
         <h3>50+币种与各国价格格式</h3>
-        <p>支持印度 lakh 分组(1,23,456)、欧洲逗号小数(19,99)、越南点千分位(150.000)等全球价格格式。</p>
+        <p>货币按地区（亚太、美洲、欧洲等）分组显示，支持批量选择。覆盖印度 lakh 分组(1,23,456)、欧洲逗号小数(19,99)、越南点千分位(150.000)等全球价格格式。</p>
       </div>
       <div class="feature">
         <div class="icon">&#x2328;&#xFE0F;</div>
@@ -225,17 +232,18 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x26A1;</div>
         <h3>快速轻量</h3>
-        <p>设备端处理，支持5种语言。无需注册，不收集任何数据。</p>
+        <p>设备端处理，支持6种语言。无需注册，不收集任何数据。</p>
       </div>
     </div>
 
     <div class="screenshots">
       <h2>应用截图</h2>
       <div class="screenshot-scroll">
-        <img src="ScreenShot/exports/zh-Hans/6.5/01_IMG_4990.png" alt="摄像头识别">
-        <img src="ScreenShot/exports/zh-Hans/6.5/02_IMG_4985.png" alt="换算结果">
-        <img src="ScreenShot/exports/zh-Hans/6.5/03_IMG_4986.png" alt="设置">
-        <img src="ScreenShot/exports/zh-Hans/6.5/04_IMG_4994.png" alt="多币种">
+        <img src="ScreenShot/exports/zh-Hans/6.5/01_IMG_4796.png" alt="摄像头识别">
+        <img src="ScreenShot/exports/zh-Hans/6.5/02_IMG_4797.png" alt="取景框调整">
+        <img src="ScreenShot/exports/zh-Hans/6.5/03_IMG_4799.png" alt="设置">
+        <img src="ScreenShot/exports/zh-Hans/6.5/04_IMG_4800.png" alt="50+货币">
+        <img src="ScreenShot/exports/zh-Hans/6.5/05_IMG_4798.png" alt="手动输入">
       </div>
     </div>
 
@@ -256,12 +264,12 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x1F4F7;</div>
         <h3>智慧相機辨識</h3>
-        <p>將相機對準任何價標、收據或菜單，智慧 OCR 自動過濾日期、電話號碼和商品編號，只辨識真實價格。</p>
+        <p>將相機對準任何價標、收據或菜單，取景框可自由拖曳與縮放，只把想辨識的金額框進去。智慧 OCR 自動過濾日期、電話號碼和商品編號。</p>
       </div>
       <div class="feature">
         <div class="icon">&#x1F4B1;</div>
         <h3>50+幣種與各國價格格式</h3>
-        <p>支援印度 lakh 分組(1,23,456)、歐洲逗號小數(19,99)、越南點千分位(150.000)等全球價格格式。</p>
+        <p>貨幣依地區（亞太、美洲、歐洲等）分組顯示，支援批次選擇。涵蓋印度 lakh 分組(1,23,456)、歐洲逗號小數(19,99)、越南點千分位(150.000)等全球價格格式。</p>
       </div>
       <div class="feature">
         <div class="icon">&#x2328;&#xFE0F;</div>
@@ -281,17 +289,18 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x26A1;</div>
         <h3>快速輕量</h3>
-        <p>裝置端處理，支援5種語言。無需註冊，不收集任何資料。</p>
+        <p>裝置端處理，支援6種語言。無需註冊，不收集任何資料。</p>
       </div>
     </div>
 
     <div class="screenshots">
       <h2>應用截圖</h2>
       <div class="screenshot-scroll">
-        <img src="ScreenShot/exports/zh-Hant/6.5/01_IMG_4989.png" alt="相機辨識">
-        <img src="ScreenShot/exports/zh-Hant/6.5/02_IMG_4987.png" alt="換算結果">
-        <img src="ScreenShot/exports/zh-Hant/6.5/03_IMG_4988.png" alt="設定">
-        <img src="ScreenShot/exports/zh-Hant/6.5/04_IMG_4995.png" alt="多幣種">
+        <img src="ScreenShot/exports/zh-Hant/6.5/01_IMG_4801.png" alt="相機辨識">
+        <img src="ScreenShot/exports/zh-Hant/6.5/02_IMG_4802.png" alt="取景框調整">
+        <img src="ScreenShot/exports/zh-Hant/6.5/03_IMG_4803.png" alt="設定">
+        <img src="ScreenShot/exports/zh-Hant/6.5/04_IMG_4804.png" alt="50+貨幣">
+        <img src="ScreenShot/exports/zh-Hant/6.5/05_IMG_4810.png" alt="手動輸入">
       </div>
     </div>
 
@@ -312,12 +321,12 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x1F4F7;</div>
         <h3>Detecci&oacute;n inteligente</h3>
-        <p>Apunta tu c&aacute;mara a cualquier etiqueta de precio. El OCR inteligente filtra fechas, tel&eacute;fonos y c&oacute;digos de producto &mdash; solo detecta precios reales.</p>
+        <p>Apunta tu c&aacute;mara a cualquier etiqueta de precio. Arrastra o pellizca el marco ajustable para enfocar un solo precio &mdash; el OCR inteligente filtra fechas, tel&eacute;fonos y c&oacute;digos de producto.</p>
       </div>
       <div class="feature">
         <div class="icon">&#x1F4B1;</div>
         <h3>50+ monedas y formatos locales</h3>
-        <p>Soporta formatos de precios globales: lakh indio (1,23,456), decimales europeos (19,99), miles vietnamitas (150.000) y m&aacute;s.</p>
+        <p>Monedas agrupadas por regi&oacute;n (Asia-Pac&iacute;fico, Am&eacute;ricas, Europa y m&aacute;s) con selecci&oacute;n m&uacute;ltiple. Compatible con formatos globales: lakh indio (1,23,456), decimales europeos (19,99), miles vietnamitas (150.000).</p>
       </div>
       <div class="feature">
         <div class="icon">&#x2328;&#xFE0F;</div>
@@ -337,17 +346,18 @@ window.onload = function() {
       <div class="feature">
         <div class="icon">&#x26A1;</div>
         <h3>R&aacute;pido y ligero</h3>
-        <p>Procesamiento en dispositivo, 5 idiomas. Sin registro, sin recopilaci&oacute;n de datos.</p>
+        <p>Procesamiento en dispositivo, 6 idiomas. Sin registro, sin recopilaci&oacute;n de datos.</p>
       </div>
     </div>
 
     <div class="screenshots">
       <h2>Capturas de pantalla</h2>
       <div class="screenshot-scroll">
-        <img src="ScreenShot/exports/es/6.5/01_IMG_4980.png" alt="Detecci&oacute;n por c&aacute;mara">
-        <img src="ScreenShot/exports/es/6.5/02_IMG_4983.png" alt="Resultados de conversi&oacute;n">
-        <img src="ScreenShot/exports/es/6.5/03_IMG_4984.png" alt="Configuraci&oacute;n">
-        <img src="ScreenShot/exports/es/6.5/04_IMG_4992.png" alt="M&uacute;ltiples monedas">
+        <img src="ScreenShot/exports/es/6.5/01_IMG_4816.png" alt="Detecci&oacute;n por c&aacute;mara">
+        <img src="ScreenShot/exports/es/6.5/02_IMG_4817.png" alt="Marco ajustable">
+        <img src="ScreenShot/exports/es/6.5/03_IMG_4819.png" alt="Configuraci&oacute;n">
+        <img src="ScreenShot/exports/es/6.5/04_IMG_4820.png" alt="50+ monedas">
+        <img src="ScreenShot/exports/es/6.5/05_IMG_4818.png" alt="Entrada manual">
       </div>
     </div>
 
@@ -356,6 +366,63 @@ window.onload = function() {
       <a href="support.html">Soporte</a>
       <a href="privacy.html">Pol&iacute;tica de privacidad</a>
       <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <p class="tagline">카메라를 비추기만 하면 즉시 환산</p>
+    <p class="tagline-sub">카메라로 통화 금액을 자동 인식하여 실시간으로 환산합니다. 여행, 해외 쇼핑, 일상적인 환전에 최적입니다.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#x1F4F7;</div>
+        <h3>스마트 카메라 인식</h3>
+        <p>가격표, 영수증, 메뉴판에 카메라를 비추기만 하면 됩니다. 스캔 프레임을 드래그하거나 핀치로 크기를 조절해 원하는 금액만 집어낼 수 있고, 스마트 OCR이 날짜·전화번호·상품 코드는 자동으로 걸러냅니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x1F4B1;</div>
+        <h3>50개 이상의 통화와 로컬 형식</h3>
+        <p>통화가 지역별(아시아-태평양, 아메리카, 유럽 등)로 묶여 있어 여러 개를 한 번에 선택할 수 있습니다. 인도식 lakh(1,23,456), 유럽식 쉼표 소수(19,99), 베트남식 점 천단위(150.000) 등 전 세계 가격 형식을 지원합니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2328;&#xFE0F;</div>
+        <h3>수동 입력 모드</h3>
+        <p>키보드 아이콘을 탭하여 금액을 직접 입력하세요. 모든 대상 통화로의 환산 결과가 한 번에 표시됩니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2708;&#xFE0F;</div>
+        <h3>오프라인 작동</h3>
+        <p>인터넷 연결이 필요 없습니다. 내장된 환율로 전 세계 어디서나 사용할 수 있습니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>사용자 지정 환율</h3>
+        <p>정확한 환산을 위해 직접 환율을 설정하세요. 한 번의 탭으로 실시간 환율을 조회할 수 있습니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#x26A1;</div>
+        <h3>빠르고 가벼움</h3>
+        <p>기기 내 처리, 6개 언어 지원. 가입 불필요, 데이터 수집 없음.</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <h2>스크린샷</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/exports/ko/6.5/01_IMG_4821.png" alt="카메라 인식">
+        <img src="ScreenShot/exports/ko/6.5/02_IMG_4823.png" alt="프레임 크기 조절">
+        <img src="ScreenShot/exports/ko/6.5/03_IMG_4825.png" alt="설정">
+        <img src="ScreenShot/exports/ko/6.5/04_IMG_4826.png" alt="50+ 통화">
+        <img src="ScreenShot/exports/ko/6.5/05_IMG_4824.png" alt="수동 입력">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="tutorial.html">사용 가이드</a>
+      <a href="support.html">고객 지원</a>
+      <a href="privacy.html">개인정보 처리방침</a>
+      <a href="mailto:lj_dev@ymail.ne.jp">문의하기</a>
     </div>
   </div>
 

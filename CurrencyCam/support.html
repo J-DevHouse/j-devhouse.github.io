@@ -52,6 +52,7 @@ window.onload = function() {
   else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
   else if (lang.startsWith('zh')) switchLang('zh');
   else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
   else switchLang('en');
 };
 </script>
@@ -68,6 +69,7 @@ window.onload = function() {
     <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
     <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
     <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+    <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
   </div>
 
   <!-- English -->
@@ -88,11 +90,22 @@ window.onload = function() {
       <h3>The camera is not detecting any amounts. What should I do?</h3>
       <p>Try these steps:</p>
       <ul style="margin-top:8px">
+        <li>Drag and pinch the on-screen frame so only the price you want sits inside it</li>
         <li>Ensure the text is well-lit and clearly visible</li>
         <li>Hold the camera steady and at a reasonable distance</li>
         <li>Make sure the amounts include recognizable numbers (e.g., 1,234 or $56.78)</li>
         <li>Check that camera permission is granted in iOS Settings > CurrencyCam</li>
       </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I adjust the scan frame?</h3>
+      <p>Drag the on-screen frame to reposition it, or pinch with two fingers to resize. Narrow the frame onto a single price and the app will ignore unrelated numbers around it &mdash; handy for busy menus or shelf labels.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I add multiple target currencies quickly?</h3>
+      <p>Open Settings &gt; Add Currency. Currencies are grouped by region (Asia-Pacific, Oceania, Americas, Europe, Middle East &amp; Africa). Tap to multi-select, use "Clear All" to reset, and search by name or code.</p>
     </div>
 
     <div class="faq-item">
@@ -112,7 +125,7 @@ window.onload = function() {
 
     <div class="faq-item">
       <h3>How do I change the app language?</h3>
-      <p>Go to Settings > App Language. CurrencyCam supports English, Japanese, Simplified Chinese, Traditional Chinese, and Spanish.</p>
+      <p>Go to Settings > App Language. CurrencyCam supports English, Japanese, Korean, Simplified Chinese, Traditional Chinese, and Spanish.</p>
     </div>
 
     <div class="faq-item">
@@ -154,11 +167,22 @@ window.onload = function() {
       <h3>カメラが金額を検出しません。どうすればいいですか？</h3>
       <p>以下をお試しください：</p>
       <ul style="margin-top:8px">
+        <li>取景框をドラッグ・ピンチで調整し、読み取りたい金額だけを枠内に収めてください</li>
         <li>テキストが十分に明るく、はっきり見えることを確認してください</li>
         <li>カメラを安定させ、適切な距離を保ってください</li>
         <li>金額に認識可能な数字が含まれていることを確認してください（例：1,234 や ¥5,678）</li>
         <li>iOS設定 > 為替カメラ でカメラの許可が有効になっているか確認してください</li>
       </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>取景框はどう調整しますか？</h3>
+      <p>画面上の取景框はドラッグで移動、2本指のピンチで拡大・縮小できます。読み取りたい金額だけを枠内に収めれば、周囲の無関係な数字は無視されます。ごちゃごちゃしたメニューや値札に便利です。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>目標通貨をまとめて追加するには？</h3>
+      <p>設定 &gt; 通貨を追加 を開いてください。通貨は地域別（アジア太平洋・オセアニア・アメリカ・ヨーロッパ・中東＆アフリカ）にグループ表示され、タップで複数選択、「すべてクリア」で一括解除、名称やコードでの検索もできます。</p>
     </div>
 
     <div class="faq-item">
@@ -178,7 +202,7 @@ window.onload = function() {
 
     <div class="faq-item">
       <h3>アプリの言語を変更するには？</h3>
-      <p>設定 > アプリの言語 から変更できます。英語、日本語、簡体中文、繁體中文、スペイン語に対応しています。</p>
+      <p>設定 > アプリの言語 から変更できます。英語、日本語、韓国語、簡体中文、繁體中文、スペイン語に対応しています。</p>
     </div>
 
     <div class="faq-item">
@@ -220,11 +244,22 @@ window.onload = function() {
       <h3>相机检测不到金额怎么办？</h3>
       <p>请尝试以下步骤：</p>
       <ul style="margin-top:8px">
+        <li>拖动或捏合调整屏幕上的取景框，只把想识别的金额框进去</li>
         <li>确保文字光线充足、清晰可见</li>
         <li>保持相机稳定，与文字保持适当距离</li>
         <li>确保金额包含可识别的数字（如 1,234 或 ¥5,678）</li>
         <li>检查 iOS 设置 > 汇率相机 中的相机权限是否已开启</li>
       </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何调整取景框？</h3>
+      <p>屏幕上的取景框可以拖动移动位置，也可以用双指捏合放大或缩小。只把想识别的金额框进去，周围无关的数字就会被忽略，在杂乱的菜单、价签上特别好用。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何一次添加多种目标货币？</h3>
+      <p>打开设置 &gt; 添加货币。货币按地区分组显示（亚太、大洋洲、美洲、欧洲、中东与非洲），轻点即可批量选择，「清空」按钮一键清除，也可按名称或代码搜索。</p>
     </div>
 
     <div class="faq-item">
@@ -244,7 +279,7 @@ window.onload = function() {
 
     <div class="faq-item">
       <h3>如何切换应用语言？</h3>
-      <p>进入设置 > 应用语言。支持英语、日语、简体中文、繁体中文和西班牙语。</p>
+      <p>进入设置 > 应用语言。支持英语、日语、韩语、简体中文、繁体中文和西班牙语。</p>
     </div>
 
     <div class="faq-item">
@@ -286,11 +321,22 @@ window.onload = function() {
       <h3>相機偵測不到金額怎麼辦？</h3>
       <p>請嘗試以下步驟：</p>
       <ul style="margin-top:8px">
+        <li>拖曳或捏合調整螢幕上的取景框，只把想辨識的金額框進去</li>
         <li>確保文字光線充足、清晰可見</li>
         <li>保持相機穩定，與文字保持適當距離</li>
         <li>確保金額包含可辨識的數字（如 1,234 或 ¥5,678）</li>
         <li>檢查 iOS 設定 > 匯率相機 中的相機權限是否已開啟</li>
       </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何調整取景框？</h3>
+      <p>螢幕上的取景框可以拖曳移動位置，也可以用雙指捏合放大或縮小。只把想辨識的金額框進去，周圍無關的數字就會被忽略，在雜亂的菜單、價標上特別好用。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何一次新增多種目標貨幣？</h3>
+      <p>開啟設定 &gt; 新增貨幣。貨幣依地區分組顯示（亞太、大洋洲、美洲、歐洲、中東與非洲），輕點即可批次選擇，「清空」按鈕一鍵清除，也可依名稱或代碼搜尋。</p>
     </div>
 
     <div class="faq-item">
@@ -310,7 +356,7 @@ window.onload = function() {
 
     <div class="faq-item">
       <h3>如何切換應用程式語言？</h3>
-      <p>進入設定 > 應用程式語言。支援英語、日語、簡體中文、繁體中文和西班牙語。</p>
+      <p>進入設定 > 應用程式語言。支援英語、日語、韓語、簡體中文、繁體中文和西班牙語。</p>
     </div>
 
     <div class="faq-item">
@@ -352,11 +398,22 @@ window.onload = function() {
       <h3>La c&aacute;mara no detecta montos. &iquest;Qu&eacute; debo hacer?</h3>
       <p>Intenta estos pasos:</p>
       <ul style="margin-top:8px">
+        <li>Arrastra y pellizca el marco en pantalla para que solo quede dentro el precio que quieres leer</li>
         <li>Aseg&uacute;rate de que el texto est&eacute; bien iluminado y sea claramente visible</li>
         <li>Mant&eacute;n la c&aacute;mara estable y a una distancia razonable</li>
         <li>Aseg&uacute;rate de que los montos incluyan n&uacute;meros reconocibles (ej. 1,234 o $56.78)</li>
         <li>Verifica que el permiso de c&aacute;mara est&eacute; habilitado en Ajustes de iOS > CurrencyCam</li>
       </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo ajusto el marco de escaneo?</h3>
+      <p>Arrastra el marco en pantalla para moverlo, o pell&iacute;zcalo con dos dedos para cambiar su tama&ntilde;o. Deja dentro solo el precio que quieres leer y la app ignorar&aacute; los dem&aacute;s n&uacute;meros. Muy &uacute;til en recibos, men&uacute;s y etiquetas cargadas.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo agrego varias monedas de destino r&aacute;pidamente?</h3>
+      <p>Abre Ajustes &gt; Agregar moneda. Las monedas est&aacute;n agrupadas por regi&oacute;n (Asia-Pac&iacute;fico, Ocean&iacute;a, Am&eacute;ricas, Europa, Oriente Medio y &Aacute;frica). Toca para seleccionar varias a la vez, usa "Borrar todo" para reiniciar y busca por nombre o c&oacute;digo.</p>
     </div>
 
     <div class="faq-item">
@@ -376,7 +433,7 @@ window.onload = function() {
 
     <div class="faq-item">
       <h3>&iquest;C&oacute;mo cambio el idioma de la app?</h3>
-      <p>Ve a Ajustes > Idioma de la app. CurrencyCam es compatible con ingl&eacute;s, japon&eacute;s, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+      <p>Ve a Ajustes > Idioma de la app. CurrencyCam es compatible con ingl&eacute;s, japon&eacute;s, coreano, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
     </div>
 
     <div class="faq-item">
@@ -397,6 +454,83 @@ window.onload = function() {
       <h2>&iquest;A&uacute;n necesitas ayuda?</h2>
       <p>Estamos encantados de ayudarte. Env&iacute;anos un correo electr&oacute;nico y te responderemos lo antes posible.</p>
       <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <h2>자주 묻는 질문</h2>
+
+    <div class="faq-item">
+      <h3>환율 카메라는 어떻게 작동하나요?</h3>
+      <p>iPhone 카메라를 가격표, 영수증, 메뉴판 등에 비추기만 하면 됩니다. OCR(광학 문자 인식) 기술로 금액을 자동 인식하여 선택한 통화로 즉시 환산해 드립니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>인터넷 연결이 필요한가요?</h3>
+      <p>아니요. 통화 인식과 환산은 내장된 환율을 사용하여 오프라인에서도 완전하게 작동합니다. 인터넷 연결은 광고 표시에만 필요합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>카메라가 금액을 인식하지 못합니다. 어떻게 해야 하나요?</h3>
+      <p>다음 방법을 시도해 보세요:</p>
+      <ul style="margin-top:8px">
+        <li>화면의 스캔 프레임을 드래그·핀치로 조절하여 원하는 금액만 안에 들어오게 하세요</li>
+        <li>텍스트에 충분한 조명이 있고 선명하게 보이는지 확인하세요</li>
+        <li>카메라를 안정적으로 잡고 적절한 거리를 유지하세요</li>
+        <li>금액에 인식 가능한 숫자가 포함되어 있는지 확인하세요(예: 1,234 또는 $56.78)</li>
+        <li>iOS 설정 > 환율 카메라 에서 카메라 권한이 허용되어 있는지 확인하세요</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>스캔 프레임은 어떻게 조절하나요?</h3>
+      <p>화면의 스캔 프레임을 드래그하여 위치를 옮기거나, 두 손가락으로 핀치하여 크기를 조절할 수 있습니다. 원하는 금액만 프레임 안에 들어오게 하면 주변의 관련 없는 숫자는 자동으로 무시됩니다. 복잡한 영수증이나 메뉴판에서 특히 유용합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>여러 대상 통화를 한 번에 추가하려면 어떻게 하나요?</h3>
+      <p>설정 &gt; 통화 추가 를 여세요. 통화는 지역별(아시아-태평양, 오세아니아, 아메리카, 유럽, 중동·아프리카)로 그룹화되어 있으며, 탭하여 여러 개를 한 번에 선택할 수 있고, "모두 지우기"로 초기화하거나 이름·코드로 검색할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>원본 통화나 대상 통화를 변경하려면 어떻게 하나요?</h3>
+      <p>오른쪽 상단의 톱니바퀴 아이콘(⚙)을 탭하여 설정을 여세요. 원본 통화(인식 통화)를 변경하거나 대상 통화를 추가·삭제할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>직접 환율을 설정할 수 있나요?</h3>
+      <p>네! 설정 화면에서 각 대상 통화마다 편집 가능한 환율 입력란이 있습니다. 원하는 환율을 입력하시면 모든 환산에 적용됩니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>여러 통화로 동시에 환산하려면 어떻게 하나요?</h3>
+      <p>설정 화면에서 통화 선택 버튼을 탭하여 여러 대상 통화를 추가하세요. 메인 화면에서는 하단의 통화 탭을 이용해 빠르게 전환할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>앱 언어를 변경하려면 어떻게 하나요?</h3>
+      <p>설정 > 앱 언어 로 이동하세요. CurrencyCam은 영어, 일본어, 중국어 간체, 중국어 번체, 스페인어 및 한국어를 지원합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>환율은 최신 정보인가요?</h3>
+      <p>오프라인 사용을 위해 기본 환율이 내장되어 있습니다. 가장 정확한 환율을 사용하려면 설정에서 현재 시장 환율에 맞춰 수동으로 업데이트할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>수동 입력 모드란 무엇인가요?</h3>
+      <p>카메라 화면 왼쪽 상단의 키보드 아이콘을 탭하면 금액을 직접 입력할 수 있습니다. 모든 대상 통화로의 환산 결과가 즉시 표시됩니다. 카메라를 비추기 어려운 상황에서 유용합니다.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>팁:</strong> 화면 하단 중앙의 카메라 버튼을 탭하면 화면을 일시 정지하여 인식된 금액을 천천히 확인할 수 있습니다.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>아직 해결되지 않으셨나요?</h2>
+      <p>기꺼이 도와드리겠습니다. 이메일로 문의해 주시면 가능한 한 빨리 답변드리겠습니다.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">문의하기</a>
     </div>
   </div>
 

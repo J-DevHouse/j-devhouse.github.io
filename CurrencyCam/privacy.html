@@ -46,6 +46,7 @@ window.onload = function() {
   else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
   else if (lang.startsWith('zh')) switchLang('zh');
   else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
   else switchLang('en');
 };
 </script>
@@ -55,7 +56,7 @@ window.onload = function() {
   <div class="header">
     <div class="app-name">CurrencyCam</div>
     <h1>Privacy Policy</h1>
-    <div class="date">Last updated: April 12, 2026</div>
+    <div class="date">Last updated: April 15, 2026</div>
   </div>
   <div class="lang-switch">
     <a href="javascript:switchLang('en')" data-lang="en">English</a>
@@ -63,11 +64,12 @@ window.onload = function() {
     <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
     <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
     <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+    <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
   </div>
 
   <!-- English -->
   <div id="en" class="section">
-    <div class="highlight"><p>CurrencyCam is designed with your privacy in mind. We do not collect, store, or transmit any personal data.</p></div>
+    <div class="highlight"><p>CurrencyCam is designed with your privacy in mind. We do not collect any personally identifying information. Anonymous, aggregated usage statistics are collected to help us improve the app.</p></div>
 
     <h2>1. Information We Collect</h2>
     <h3>Camera Access</h3>
@@ -79,8 +81,7 @@ window.onload = function() {
     <ul>
       <li>Names, email addresses, or contact information</li>
       <li>Location data</li>
-      <li>Device identifiers for tracking purposes</li>
-      <li>Usage analytics or behavioral data</li>
+      <li>Device identifiers for cross-app tracking</li>
       <li>Photos, images, or camera recordings</li>
     </ul>
 
@@ -93,6 +94,15 @@ window.onload = function() {
       <li>IP address (for approximate location-based ad serving)</li>
     </ul>
     <p>You can opt out of personalized advertising through your iOS Settings > Privacy & Security > Tracking.</p>
+
+    <h3>Firebase Analytics (Google)</h3>
+    <p>CurrencyCam uses Firebase Analytics, a service provided by Google, to collect anonymous, aggregated usage statistics that help us understand how the app is used and improve its quality. Details are described in <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase's Privacy and Security page</a>. Data collected includes:</p>
+    <ul>
+      <li>App instance ID (a random identifier not linked to you personally)</li>
+      <li>Device information (model, OS version, language, country derived from IP)</li>
+      <li>App events such as screen opens, currency detections, settings changes, and ad impressions</li>
+    </ul>
+    <p>We do not collect your name, email address, camera images, or any content that could identify you. Data is stored on Google servers and retained according to Firebase's default retention policy. You can opt out of analytics collection at any time via iOS Settings &gt; Privacy &amp; Security &gt; Analytics &amp; Improvements.</p>
 
     <h2>3. App Tracking Transparency</h2>
     <p>On iOS 14.5 and later, CurrencyCam will ask for your permission before tracking you across other apps and websites. If you decline, you will still see ads, but they will not be personalized based on your activity across other apps.</p>
@@ -113,7 +123,7 @@ window.onload = function() {
 
   <!-- Japanese -->
   <div id="ja" class="section">
-    <div class="highlight"><p>為替カメラはプライバシーを最優先に設計されています。個人データの収集・保存・送信は一切行いません。</p></div>
+    <div class="highlight"><p>為替カメラはプライバシーを最優先に設計されています。個人を特定できる情報は一切収集しません。アプリ品質の向上を目的とした匿名の統計データのみを収集しています。</p></div>
 
     <h2>1. 収集する情報</h2>
     <h3>カメラへのアクセス</h3>
@@ -125,8 +135,7 @@ window.onload = function() {
     <ul>
       <li>氏名、メールアドレス、連絡先情報</li>
       <li>位置情報</li>
-      <li>トラッキング目的のデバイス識別子</li>
-      <li>利用状況の分析データや行動データ</li>
+      <li>アプリを跨いだトラッキング目的のデバイス識別子</li>
       <li>写真、画像、カメラの録画データ</li>
     </ul>
 
@@ -139,6 +148,15 @@ window.onload = function() {
       <li>IPアドレス（おおよその位置に基づく広告配信のため）</li>
     </ul>
     <p>パーソナライズド広告は、iOSの設定 > プライバシーとセキュリティ > トラッキングからオプトアウトできます。</p>
+
+    <h3>Firebase Analytics（Google）</h3>
+    <p>為替カメラは、アプリの利用状況を把握し品質向上に役立てるため、Googleが提供するFirebase Analyticsで匿名の集計統計データを収集しています。詳細は<a href="https://firebase.google.com/support/privacy" target="_blank">Firebaseのプライバシーとセキュリティのページ</a>に記載されています。収集されるデータは以下の通りです：</p>
+    <ul>
+      <li>アプリインスタンスID（個人には紐付かないランダムな識別子）</li>
+      <li>デバイス情報（機種、OSバージョン、言語、IPから推定される国）</li>
+      <li>画面表示、金額検出、設定変更、広告表示などのアプリイベント</li>
+    </ul>
+    <p>氏名、メールアドレス、カメラ画像、その他個人を特定できる情報は一切収集しません。データはGoogleのサーバーに保管され、Firebaseの既定の保持ポリシーに従って保存されます。統計収集は、iOSの設定 &gt; プライバシーとセキュリティ &gt; 解析と改善 からいつでもオプトアウトできます。</p>
 
     <h2>3. Appトラッキング透明性</h2>
     <p>iOS 14.5以降では、他のアプリやWebサイトを横断したトラッキングについて事前に許可を求めます。拒否した場合でも広告は表示されますが、他のアプリでの行動に基づくパーソナライズはされません。</p>
@@ -159,7 +177,7 @@ window.onload = function() {
 
   <!-- Chinese -->
   <div id="zh" class="section">
-    <div class="highlight"><p>汇率相机以保护您的隐私为设计原则。我们不收集、存储或传输任何个人数据。</p></div>
+    <div class="highlight"><p>汇率相机以保护您的隐私为设计原则。我们不收集任何可识别个人身份的信息，仅收集匿名的汇总使用统计数据以帮助我们改进应用。</p></div>
 
     <h2>1. 我们收集的信息</h2>
     <h3>相机访问</h3>
@@ -171,8 +189,7 @@ window.onload = function() {
     <ul>
       <li>姓名、电子邮件地址或联系方式</li>
       <li>位置数据</li>
-      <li>用于追踪目的的设备标识符</li>
-      <li>使用分析或行为数据</li>
+      <li>用于跨应用追踪的设备标识符</li>
       <li>照片、图像或相机录像</li>
     </ul>
 
@@ -185,6 +202,15 @@ window.onload = function() {
       <li>IP 地址（用于基于大致位置的广告投放）</li>
     </ul>
     <p>您可以通过 iOS 设置 > 隐私与安全性 > 跟踪，来选择退出个性化广告。</p>
+
+    <h3>Firebase Analytics（Google）</h3>
+    <p>汇率相机使用 Google 提供的 Firebase Analytics 收集匿名的汇总使用统计数据，以帮助我们了解应用的使用方式并改进质量。详情请参阅 <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase 隐私与安全页面</a>。收集的数据包括：</p>
+    <ul>
+      <li>应用实例 ID（与您个人无关联的随机标识符）</li>
+      <li>设备信息（型号、操作系统版本、语言、基于 IP 推断的国家）</li>
+      <li>应用事件，如页面打开、金额检测、设置更改、广告展示等</li>
+    </ul>
+    <p>我们不会收集您的姓名、电子邮件地址、相机图像或任何可识别您身份的内容。数据存储在 Google 服务器上，按 Firebase 的默认保留策略保存。您可以随时通过 iOS 设置 &gt; 隐私与安全性 &gt; 分析与改进，选择退出统计数据收集。</p>
 
     <h2>3. App 跟踪透明度</h2>
     <p>在 iOS 14.5 及更高版本上，汇率相机会在跨应用和网站追踪您之前征求您的许可。如果您拒绝，仍会看到广告，但广告不会基于您在其他应用中的活动进行个性化。</p>
@@ -205,7 +231,7 @@ window.onload = function() {
 
   <!-- Traditional Chinese -->
   <div id="zh-hant" class="section">
-    <div class="highlight"><p>匯率相機以保護您的隱私為設計原則。我們不收集、儲存或傳輸任何個人資料。</p></div>
+    <div class="highlight"><p>匯率相機以保護您的隱私為設計原則。我們不收集任何可識別個人身分的資訊，僅收集匿名的彙總使用統計資料以協助改進應用程式。</p></div>
 
     <h2>1. 我們收集的資訊</h2>
     <h3>相機存取</h3>
@@ -217,8 +243,7 @@ window.onload = function() {
     <ul>
       <li>姓名、電子郵件地址或聯絡方式</li>
       <li>位置資料</li>
-      <li>用於追蹤目的的裝置識別碼</li>
-      <li>使用分析或行為資料</li>
+      <li>用於跨應用程式追蹤的裝置識別碼</li>
       <li>照片、影像或相機錄影</li>
     </ul>
 
@@ -231,6 +256,15 @@ window.onload = function() {
       <li>IP 位址（用於基於大致位置的廣告投放）</li>
     </ul>
     <p>您可以透過 iOS 設定 > 隱私權與安全性 > 追蹤，來選擇退出個人化廣告。</p>
+
+    <h3>Firebase Analytics（Google）</h3>
+    <p>匯率相機使用 Google 提供的 Firebase Analytics 收集匿名的彙總使用統計資料，以協助我們了解應用程式的使用方式並改進品質。詳情請參閱 <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase 隱私權與安全性頁面</a>。收集的資料包括：</p>
+    <ul>
+      <li>應用程式執行個體 ID（與您個人無關聯的隨機識別碼）</li>
+      <li>裝置資訊（型號、作業系統版本、語言、基於 IP 推斷的國家）</li>
+      <li>應用程式事件，如頁面開啟、金額偵測、設定變更、廣告顯示等</li>
+    </ul>
+    <p>我們不會收集您的姓名、電子郵件地址、相機影像或任何可識別您身分的內容。資料儲存於 Google 伺服器，依 Firebase 預設保留政策保存。您可以隨時透過 iOS 設定 &gt; 隱私權與安全性 &gt; 分析與改進，選擇退出統計資料收集。</p>
 
     <h2>3. App 追蹤透明度</h2>
     <p>在 iOS 14.5 及更高版本上，匯率相機會在跨應用程式和網站追蹤您之前徵求您的許可。如果您拒絕，仍會看到廣告，但廣告不會基於您在其他應用程式中的活動進行個人化。</p>
@@ -251,7 +285,7 @@ window.onload = function() {
 
   <!-- Spanish -->
   <div id="es" class="section">
-    <div class="highlight"><p>CurrencyCam est&aacute; dise&ntilde;ado pensando en su privacidad. No recopilamos, almacenamos ni transmitimos ning&uacute;n dato personal.</p></div>
+    <div class="highlight"><p>CurrencyCam est&aacute; dise&ntilde;ado pensando en su privacidad. No recopilamos ninguna informaci&oacute;n que permita identificarlo personalmente. Solo recopilamos estad&iacute;sticas de uso an&oacute;nimas y agregadas para ayudarnos a mejorar la aplicaci&oacute;n.</p></div>
 
     <h2>1. Informaci&oacute;n que recopilamos</h2>
     <h3>Acceso a la c&aacute;mara</h3>
@@ -263,8 +297,7 @@ window.onload = function() {
     <ul>
       <li>Nombres, direcciones de correo electr&oacute;nico o informaci&oacute;n de contacto</li>
       <li>Datos de ubicaci&oacute;n</li>
-      <li>Identificadores de dispositivo con fines de seguimiento</li>
-      <li>An&aacute;lisis de uso o datos de comportamiento</li>
+      <li>Identificadores de dispositivo para seguimiento entre aplicaciones</li>
       <li>Fotos, im&aacute;genes o grabaciones de c&aacute;mara</li>
     </ul>
 
@@ -277,6 +310,15 @@ window.onload = function() {
       <li>Direcci&oacute;n IP (para publicidad basada en ubicaci&oacute;n aproximada)</li>
     </ul>
     <p>Puede optar por no recibir publicidad personalizada a trav&eacute;s de Ajustes de iOS > Privacidad y Seguridad > Seguimiento.</p>
+
+    <h3>Firebase Analytics (Google)</h3>
+    <p>CurrencyCam utiliza Firebase Analytics, un servicio proporcionado por Google, para recopilar estad&iacute;sticas de uso an&oacute;nimas y agregadas que nos ayudan a entender c&oacute;mo se usa la aplicaci&oacute;n y a mejorar su calidad. Los detalles se describen en la <a href="https://firebase.google.com/support/privacy" target="_blank">p&aacute;gina de Privacidad y Seguridad de Firebase</a>. Los datos recopilados incluyen:</p>
+    <ul>
+      <li>ID de instancia de la aplicaci&oacute;n (un identificador aleatorio no vinculado a usted personalmente)</li>
+      <li>Informaci&oacute;n del dispositivo (modelo, versi&oacute;n del SO, idioma, pa&iacute;s derivado de la IP)</li>
+      <li>Eventos de la aplicaci&oacute;n como aperturas de pantalla, detecciones de divisas, cambios de configuraci&oacute;n e impresiones de anuncios</li>
+    </ul>
+    <p>No recopilamos su nombre, direcci&oacute;n de correo electr&oacute;nico, im&aacute;genes de c&aacute;mara ni ning&uacute;n contenido que pueda identificarlo. Los datos se almacenan en los servidores de Google y se retienen seg&uacute;n la pol&iacute;tica de retenci&oacute;n predeterminada de Firebase. Puede optar por no participar en la recopilaci&oacute;n de estad&iacute;sticas en cualquier momento a trav&eacute;s de Ajustes de iOS &gt; Privacidad y Seguridad &gt; An&aacute;lisis y Mejoras.</p>
 
     <h2>3. Transparencia de Seguimiento de Apps</h2>
     <p>En iOS 14.5 y versiones posteriores, CurrencyCam le pedir&aacute; permiso antes de rastrearlo en otras apps y sitios web. Si rechaza, seguir&aacute; viendo anuncios, pero no estar&aacute;n personalizados seg&uacute;n su actividad en otras apps.</p>
@@ -293,6 +335,60 @@ window.onload = function() {
     <h2>7. Cont&aacute;ctenos</h2>
     <p>Si tiene alguna pregunta sobre esta pol&iacute;tica de privacidad, cont&aacute;ctenos en:</p>
     <p><strong>Correo electr&oacute;nico:</strong> lj_dev@ymail.ne.jp</p>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <div class="highlight"><p>환율 카메라는 사용자의 개인정보를 최우선으로 고려하여 설계되었습니다. 개인을 식별할 수 있는 정보는 일체 수집하지 않습니다. 앱 품질 향상을 위해 익명의 집계된 사용 통계만 수집합니다.</p></div>
+
+    <h2>1. 수집하는 정보</h2>
+    <h3>카메라 권한</h3>
+    <p>환율 카메라는 실시간으로 금액을 인식하기 위해 카메라 권한이 필요합니다. 카메라 이미지는 전적으로 사용자의 기기 내에서 처리되며, 저장되거나 업로드되거나 어떠한 서버로도 전송되지 않습니다.</p>
+    <h3>사용자 설정</h3>
+    <p>통화 선택 및 사용자 지정 환율은 iOS 표준 저장소(UserDefaults)를 사용하여 기기에 로컬 저장됩니다. 이 데이터는 기기 외부로 나가지 않습니다.</p>
+    <h3>개인정보 미수집</h3>
+    <p>다음과 같은 정보는 일체 수집하지 않습니다:</p>
+    <ul>
+      <li>이름, 이메일 주소, 연락처 정보</li>
+      <li>위치 정보</li>
+      <li>앱 간 추적을 위한 기기 식별자</li>
+      <li>사진, 이미지 또는 카메라 녹화 데이터</li>
+    </ul>
+
+    <h2>2. 제3자 서비스</h2>
+    <h3>Google AdMob</h3>
+    <p>환율 카메라는 광고 표시를 위해 Google AdMob을 사용합니다. AdMob은 <a href="https://policies.google.com/privacy" target="_blank">Google 개인정보 처리방침</a>에 명시된 바와 같이 특정 데이터를 수집할 수 있습니다. 여기에는 다음이 포함될 수 있습니다:</p>
+    <ul>
+      <li>기기 정보(모델, OS 버전)</li>
+      <li>광고 식별자(IDFA) — App 추적 투명성 선택에 따릅니다</li>
+      <li>IP 주소(대략적인 위치 기반 광고 제공용)</li>
+    </ul>
+    <p>개인 맞춤형 광고는 iOS 설정 > 개인정보 보호 및 보안 > 추적 에서 거부할 수 있습니다.</p>
+
+    <h3>Firebase Analytics(Google)</h3>
+    <p>환율 카메라는 앱 사용 방식을 파악하고 품질 개선에 활용하기 위해 Google이 제공하는 Firebase Analytics를 통해 익명의 집계된 사용 통계를 수집합니다. 자세한 내용은 <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase 개인정보 및 보안 페이지</a>에 설명되어 있습니다. 수집되는 데이터는 다음과 같습니다:</p>
+    <ul>
+      <li>앱 인스턴스 ID(개인과 연결되지 않는 임의의 식별자)</li>
+      <li>기기 정보(모델, OS 버전, 언어, IP에서 추정된 국가)</li>
+      <li>화면 열기, 금액 인식, 설정 변경, 광고 노출 등의 앱 이벤트</li>
+    </ul>
+    <p>이름, 이메일 주소, 카메라 이미지 또는 개인을 식별할 수 있는 그 밖의 콘텐츠는 일체 수집하지 않습니다. 데이터는 Google 서버에 저장되며 Firebase의 기본 보존 정책에 따라 보관됩니다. 통계 수집은 iOS 설정 &gt; 개인정보 보호 및 보안 &gt; 분석 및 개선 사항 에서 언제든지 거부할 수 있습니다.</p>
+
+    <h2>3. App 추적 투명성</h2>
+    <p>iOS 14.5 이상에서는 환율 카메라가 다른 앱 및 웹사이트에서 사용자를 추적하기 전에 허가를 요청합니다. 거부하시더라도 광고는 계속 표시되지만, 다른 앱에서의 활동을 기반으로 개인화되지 않습니다.</p>
+
+    <h2>4. 데이터 보안</h2>
+    <p>모든 통화 인식 및 환산 처리는 전적으로 사용자의 기기 내에서 수행됩니다. 이미지 데이터나 환산 결과는 인터넷을 통해 전송되지 않습니다. 사용자 지정 환율 설정은 로컬 저장되며 iOS에 내장된 보안 메커니즘으로 보호됩니다.</p>
+
+    <h2>5. 아동의 개인정보</h2>
+    <p>환율 카메라는 13세 미만 아동의 개인정보를 고의로 수집하지 않습니다. 본 앱 사용에 개인정보는 필요하지 않습니다.</p>
+
+    <h2>6. 본 방침의 변경</h2>
+    <p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 변경 사항은 업데이트된 날짜와 함께 본 페이지에 반영됩니다. 변경 후에도 앱을 계속 사용하시는 경우 개정된 방침에 동의한 것으로 간주됩니다.</p>
+
+    <h2>7. 문의</h2>
+    <p>본 개인정보 처리방침에 관한 문의 사항은 아래로 연락해 주세요:</p>
+    <p><strong>이메일:</strong> lj_dev@ymail.ne.jp</p>
   </div>
 
   <div class="footer">

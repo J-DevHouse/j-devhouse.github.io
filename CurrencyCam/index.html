@@ -38,11 +38,16 @@
   .footer { text-align: center; padding: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
 </style>
 <script>
+var APP_NAMES = {'en':'CurrencyCam','ja':'為替カメラ','zh':'汇率相机','zh-hant':'匯率相機','es':'CámaraTasa','ko':'환율 카메라'};
+var APP_TAGLINES = {'en':'Exchange Rates','ja':'通貨換算','zh':'摄像头换算','zh-hant':'相機換算','es':'Cambio de Divisas','ko':'환율 환산'};
 function switchLang(lang) {
   document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
   document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
   document.getElementById(lang).classList.add('active');
   document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  document.getElementById('hero-name').textContent = APP_NAMES[lang];
+  document.getElementById('hero-subtitle').textContent = APP_TAGLINES[lang];
+  document.title = APP_NAMES[lang] + ' - ' + APP_TAGLINES[lang];
 }
 window.onload = function() {
   var p = new URLSearchParams(window.location.search);
@@ -66,8 +71,8 @@ window.onload = function() {
 
 <div class="hero">
   <img src="icon_256.png" alt="CurrencyCam App Icon">
-  <h1>CurrencyCam</h1>
-  <div class="subtitle">Exchange Rates</div>
+  <h1 id="hero-name">CurrencyCam</h1>
+  <div class="subtitle" id="hero-subtitle">Exchange Rates</div>
   <a class="badge" href="https://apps.apple.com/us/app/currencycam-exchange-rates/id6760966205" target="_blank" rel="noopener">
     <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
   </a>

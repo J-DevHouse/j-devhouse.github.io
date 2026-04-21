@@ -32,11 +32,16 @@
   .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
 </style>
 <script>
+var APP_NAMES = {'en':'CurrencyCam','ja':'為替カメラ','zh':'汇率相机','zh-hant':'匯率相機','es':'CámaraTasa','ko':'환율 카메라'};
+var PAGE_TITLES = {'en':'Tutorial','ja':'使い方ガイド','zh':'使用教程','zh-hant':'使用教學','es':'Tutorial','ko':'사용 가이드'};
 function switchLang(lang) {
   document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
   document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
   document.getElementById(lang).classList.add('active');
   document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  document.getElementById('header-appname').textContent = APP_NAMES[lang];
+  document.getElementById('header-title').textContent = PAGE_TITLES[lang];
+  document.title = APP_NAMES[lang] + ' - ' + PAGE_TITLES[lang];
 }
 window.onload = function() {
   var p = new URLSearchParams(window.location.search);
@@ -59,8 +64,8 @@ window.onload = function() {
 <body>
 <div class="container">
   <div class="header">
-    <div class="app-name">CurrencyCam</div>
-    <h1>Tutorial</h1>
+    <div class="app-name" id="header-appname">CurrencyCam</div>
+    <h1 id="header-title">Tutorial</h1>
   </div>
   <div class="lang-switch">
     <a href="javascript:switchLang('en')" data-lang="en">English</a>
@@ -450,13 +455,13 @@ window.onload = function() {
     <div class="step">
       <span class="step-number">1</span>
       <h3>Permitir acceso a la c&aacute;mara</h3>
-      <p>Al abrir CurrencyCam por primera vez, la app solicitar&aacute; permiso para usar la c&aacute;mara. Toca <strong>&quot;Permitir&quot;</strong> para activar la detecci&oacute;n de moneda en tiempo real. La c&aacute;mara solo se usa para reconocimiento de texto en el dispositivo; no se almacenan ni suben im&aacute;genes.</p>
+      <p>Al abrir C&aacute;maraTasa por primera vez, la app solicitar&aacute; permiso para usar la c&aacute;mara. Toca <strong>&quot;Permitir&quot;</strong> para activar la detecci&oacute;n de moneda en tiempo real. La c&aacute;mara solo se usa para reconocimiento de texto en el dispositivo; no se almacenan ni suben im&aacute;genes.</p>
     </div>
 
     <div class="step">
       <span class="step-number">2</span>
       <h3>Apunta tu c&aacute;mara a un precio</h3>
-      <p>Dirige el marco de enfoque en pantalla a cualquier etiqueta de precio, recibo, men&uacute; o cartel que muestre un monto. CurrencyCam detecta los n&uacute;meros dentro del marco y muestra la conversi&oacute;n en la parte inferior.</p>
+      <p>Dirige el marco de enfoque en pantalla a cualquier etiqueta de precio, recibo, men&uacute; o cartel que muestre un monto. C&aacute;maraTasa detecta los n&uacute;meros dentro del marco y muestra la conversi&oacute;n en la parte inferior.</p>
       <div class="screenshot">
         <img src="ScreenShot/exports/es/6.5/01_IMG_4816.png" alt="Detecci&oacute;n por c&aacute;mara">
       </div>

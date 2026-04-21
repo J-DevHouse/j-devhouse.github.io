@@ -49,11 +49,27 @@
   .footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-secondary); }
 </style>
 <script>
+var appInfo = {
+  'en':      { name: 'VideoSorter',            subtitle: 'Smart Video Organizer',      badge: 'en-us', htmlLang: 'en',      title: 'VideoSorter - Smart Video Organizer',           badgeAlt: 'Download on the App Store' },
+  'ja':      { name: '動画整理',                subtitle: 'スマート動画整理アプリ',      badge: 'ja-jp', htmlLang: 'ja',      title: '動画整理 - スマート動画整理アプリ',              badgeAlt: 'App Storeでダウンロード' },
+  'zh':      { name: '视频整理',                subtitle: '智能视频整理工具',            badge: 'zh-cn', htmlLang: 'zh-Hans', title: '视频整理 - 智能视频整理工具',                    badgeAlt: '在 App Store 下载' },
+  'zh-hant': { name: '影片整理',                subtitle: '智慧影片整理工具',            badge: 'zh-tw', htmlLang: 'zh-Hant', title: '影片整理 - 智慧影片整理工具',                    badgeAlt: '在 App Store 下載' },
+  'es':      { name: 'Clasificador de Videos', subtitle: 'Organizador inteligente de videos', badge: 'es-es', htmlLang: 'es', title: 'Clasificador de Videos - Organizador inteligente de videos', badgeAlt: 'Descargar en el App Store' },
+  'ko':      { name: '동영상 분류',             subtitle: '스마트 동영상 정리 도구',     badge: 'ko-kr', htmlLang: 'ko',      title: '동영상 분류 - 스마트 동영상 정리 도구',          badgeAlt: 'App Store에서 다운로드' }
+};
 function switchLang(lang) {
   document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
   document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
   document.getElementById(lang).classList.add('active');
   document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  var info = appInfo[lang] || appInfo['en'];
+  document.documentElement.lang = info.htmlLang;
+  document.title = info.title;
+  document.getElementById('app-name').textContent = info.name;
+  document.getElementById('app-subtitle').textContent = info.subtitle;
+  var badge = document.getElementById('app-badge');
+  badge.src = 'https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/' + info.badge + '?size=250x83';
+  badge.alt = info.badgeAlt;
 }
 window.onload = function() {
   var p = new URLSearchParams(window.location.search);
@@ -77,10 +93,10 @@ window.onload = function() {
 
 <div class="hero">
   <img src="icon_256.png" alt="VideoSorter App Icon">
-  <h1>VideoSorter</h1>
-  <div class="subtitle">Smart Video Organizer</div>
-  <a class="badge" href="#" target="_blank" rel="noopener">
-    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+  <h1 id="app-name">VideoSorter</h1>
+  <div class="subtitle" id="app-subtitle">Smart Video Organizer</div>
+  <a class="badge" href="https://apps.apple.com/app/videosorter/id6762550006" target="_blank" rel="noopener">
+    <img id="app-badge" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
   </a>
 </div>
 

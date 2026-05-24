@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["T9LUTVZ3X2.com.dev.lj.MManager"],
+        "components": [
+          {
+            "/": "/MManager/share*",
+            "comment": "Share Extension → 家計簿 アプリへ自動取り込み"
+          }
+        ]
+      }
+    ]
+  }
+}

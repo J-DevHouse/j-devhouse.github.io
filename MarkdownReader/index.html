@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Doc Reader - Markdown Viewer for macOS</title>
+<meta name="description" content="A fast, beautiful macOS reader for Markdown documents — ideal for AI-generated docs. Renders Mermaid diagrams, KaTeX math, highlighted code, with Git version history.">
+<style>
+  :root {
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .hero { background: linear-gradient(135deg, #007aff 0%, #5856d6 100%); color: #fff; text-align: center; padding: 60px 24px 48px; }
+  .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); margin-bottom: 20px; }
+  .hero h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .hero .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+  .hero .badge { display: inline-block; }
+  .hero .badge img { width: 180px; height: auto; border-radius: 0; box-shadow: none; }
+  .lang-switch { text-align: center; padding: 20px 0 0; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 20px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .tagline { text-align: center; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .tagline-sub { text-align: center; font-size: 15px; color: var(--text-secondary); margin-bottom: 36px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
+  @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
+  .feature { background: var(--card-bg); border-radius: 16px; padding: 22px 20px; box-shadow: var(--shadow); }
+  .feature .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .feature p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+  .screenshots { text-align: center; margin-bottom: 36px; }
+  .screenshots h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+  .screenshot-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .screenshot-scroll img { height: 420px; width: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); scroll-snap-align: center; flex-shrink: 0; }
+  .links { text-align: center; margin-top: 32px; }
+  .links a { display: inline-block; margin: 0 10px 10px; color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .links a:hover { text-decoration: underline; }
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-secondary); }
+</style>
+<script>
+var appInfo = {
+  'en': { name: 'AI Doc Reader', subtitle: 'Markdown View',        badge: 'en-us', htmlLang: 'en',      title: 'AI Doc Reader - Markdown Viewer for macOS', badgeAlt: 'Download on the Mac App Store' },
+  'ja': { name: 'AI文書リーダー', subtitle: 'Markdownビューア',     badge: 'ja-jp', htmlLang: 'ja',      title: 'AI文書リーダー - Markdownビューア',          badgeAlt: 'Mac App Storeでダウンロード' },
+  'zh': { name: 'AI文档阅读器',   subtitle: 'Markdown 查看器',      badge: 'zh-cn', htmlLang: 'zh-Hans', title: 'AI文档阅读器 - Markdown 查看器',             badgeAlt: '在 Mac App Store 下载' }
+};
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  var info = appInfo[lang] || appInfo['en'];
+  document.documentElement.lang = info.htmlLang;
+  document.title = info.title;
+  document.getElementById('app-name').textContent = info.name;
+  document.getElementById('app-subtitle').textContent = info.subtitle;
+  var badge = document.getElementById('app-badge');
+  badge.src = 'https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/' + info.badge + '?size=250x83';
+  badge.alt = info.badgeAlt;
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="hero">
+  <img src="icon_256.png" alt="AI Doc Reader App Icon">
+  <h1 id="app-name">AI Doc Reader</h1>
+  <div class="subtitle" id="app-subtitle">Markdown View</div>
+  <a class="badge" href="https://apps.apple.com/app/id6806612200" target="_blank" rel="noopener">
+    <img id="app-badge" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the Mac App Store">
+  </a>
+</div>
+
+<div class="lang-switch">
+  <a href="javascript:switchLang('en')" data-lang="en" class="active">English</a>
+  <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+  <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+</div>
+
+<div class="container">
+
+  <!-- English -->
+  <div id="en" class="section active">
+    <p class="tagline">The Missing Reader for AI-Generated Documents</p>
+    <p class="tagline-sub">Today's AI tools write in Markdown. AI Doc Reader turns raw .md output into a clean, beautiful document &mdash; diagrams, math, code and all.</p>
+
+    <div class="features">
+      <div class="feature"><div class="icon">&#x1F4CA;</div><h3>Renders Everything</h3><p>Mermaid diagrams, KaTeX math formulas, syntax-highlighted code blocks, tables and task lists &mdash; all displayed properly, automatically.</p></div>
+      <div class="feature"><div class="icon">&#x1F4C2;</div><h3>Folder Browsing</h3><p>Open a folder and browse every Markdown file in a tree sidebar, with an auto-generated table of contents for each document.</p></div>
+      <div class="feature"><div class="icon">&#x1F550;</div><h3>Git Version History</h3><p>See every revision of a document and compare any two versions side by side &mdash; unique among Markdown readers.</p></div>
+      <div class="feature"><div class="icon">&#x26A1;</div><h3>Fast &amp; Native</h3><p>A lightweight native app, not a browser wrapper. Instant launch, low memory, live reload when files change on disk.</p></div>
+      <div class="feature"><div class="icon">&#x1F310;</div><h3>3 Languages</h3><p>English, Japanese and Simplified Chinese interface, with light and dark themes.</p></div>
+      <div class="feature"><div class="icon">&#x1F512;</div><h3>Privacy First</h3><p>Everything renders locally under macOS App Sandbox. No account, no tracking &mdash; your documents never leave your Mac.</p></div>
+    </div>
+
+    <div class="screenshots">
+      <h2>Screenshots</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/en_folder.png" alt="Folder tree with rendered document">
+        <img src="ScreenShot/en_doc.png" alt="Document with table of contents">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <p class="tagline">AIが生成した文書のためのリーダー</p>
+    <p class="tagline-sub">AIツールの出力はMarkdownがほとんど。AI Doc Readerは.mdファイルを図・数式・コードまで美しく表示します。</p>
+
+    <div class="features">
+      <div class="feature"><div class="icon">&#x1F4CA;</div><h3>あらゆる要素を表示</h3><p>Mermaid図、KaTeX数式、シンタックスハイライト付きコード、表、タスクリストを自動で正しくレンダリング。</p></div>
+      <div class="feature"><div class="icon">&#x1F4C2;</div><h3>フォルダ閲覧</h3><p>フォルダを開けばMarkdownファイルをツリー表示。各文書の目次も自動生成されます。</p></div>
+      <div class="feature"><div class="icon">&#x1F550;</div><h3>Gitバージョン履歴</h3><p>文書の変更履歴を表示し、任意の2バージョンを並べて比較。Markdownリーダーでは他にない機能です。</p></div>
+      <div class="feature"><div class="icon">&#x26A1;</div><h3>高速・ネイティブ</h3><p>ブラウザのラッパーではない軽量ネイティブアプリ。瞬時に起動し、ファイル変更も自動反映。</p></div>
+      <div class="feature"><div class="icon">&#x1F310;</div><h3>3言語対応</h3><p>日本語・英語・簡体字中国語のインターフェース。ライト/ダークテーマ対応。</p></div>
+      <div class="feature"><div class="icon">&#x1F512;</div><h3>プライバシー第一</h3><p>すべての処理はMac内で完結。アカウント不要、トラッキングなし。文書が外部に送信されることはありません。</p></div>
+    </div>
+
+    <div class="screenshots">
+      <h2>スクリーンショット</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/ja_folder.png" alt="フォルダツリーと文書表示">
+        <img src="ScreenShot/ja_doc.png" alt="目次付き文書表示">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="support.html?lang=ja">サポート</a> · <a href="privacy.html?lang=ja">プライバシーポリシー</a>
+    </div>
+  </div>
+
+  <!-- Simplified Chinese -->
+  <div id="zh" class="section">
+    <p class="tagline">为 AI 生成的文档而生的阅读器</p>
+    <p class="tagline-sub">如今 AI 工具的输出几乎都是 Markdown。AI Doc Reader 把原始 .md 文件渲染成排版精美的文档——图表、公式、代码一个不落。</p>
+
+    <div class="features">
+      <div class="feature"><div class="icon">&#x1F4CA;</div><h3>完整渲染</h3><p>Mermaid 图表、KaTeX 数学公式、语法高亮代码块、表格、任务清单,全部自动正确显示。</p></div>
+      <div class="feature"><div class="icon">&#x1F4C2;</div><h3>文件夹浏览</h3><p>打开文件夹即可树状浏览全部 Markdown 文件,每篇文档自动生成目录。</p></div>
+      <div class="feature"><div class="icon">&#x1F550;</div><h3>Git 版本历史</h3><p>查看文档每一次修改,任选两个版本并排对比——Markdown 阅读器中独此一家。</p></div>
+      <div class="feature"><div class="icon">&#x26A1;</div><h3>轻快原生</h3><p>原生应用而非浏览器套壳,秒开、省内存,文件变动自动刷新。</p></div>
+      <div class="feature"><div class="icon">&#x1F310;</div><h3>三语界面</h3><p>中文、日语、英语界面,支持浅色/深色主题。</p></div>
+      <div class="feature"><div class="icon">&#x1F512;</div><h3>隐私优先</h3><p>所有渲染在本地完成,受 macOS 沙盒保护。无账号、无跟踪,文档永不离开你的 Mac。</p></div>
+    </div>
+
+    <div class="screenshots">
+      <h2>应用截图</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/zh_folder.png" alt="文件夹树与文档渲染">
+        <img src="ScreenShot/zh_doc.png" alt="带目录的文档视图">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="support.html?lang=zh">支持</a> · <a href="privacy.html?lang=zh">隐私政策</a>
+    </div>
+  </div>
+
+  <div class="footer">© 2026 J-DevHouse</div>
+</div>
+
+</body>
+</html>

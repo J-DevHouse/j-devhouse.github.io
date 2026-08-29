@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Doc Reader - Support</title>
+<style>
+  :root {
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+    --tip-bg: rgba(255,149,0,0.1); --tip-border: #ff9500; --tip-text: #c77700;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+      --tip-bg: rgba(255,159,10,0.15); --tip-border: #ff9f0a; --tip-text: #ffd580;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 0.5px solid var(--separator); }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.5px; }
+  .header .app-name { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 12px; letter-spacing: -0.3px; }
+  p, li { font-size: 15px; color: var(--text-secondary); margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .faq-item { background: var(--card-bg); border-radius: 16px; padding: 20px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .faq-item h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .faq-item p { margin-bottom: 0; font-size: 14px; color: var(--text-secondary); }
+  .contact-card { background: linear-gradient(135deg, #007aff, #5856d6); color: #fff; border-radius: 20px; padding: 32px; margin-top: 32px; text-align: center; }
+  .contact-card h2 { color: #fff; margin: 0 0 12px; }
+  .contact-card p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+  .contact-card a { display: inline-block; background: rgba(255,255,255,0.95); color: var(--accent); text-decoration: none; padding: 12px 32px; border-radius: 14px; font-weight: 600; font-size: 15px; }
+  .contact-card a:hover { background: #fff; }
+  .tip { background: var(--tip-bg); border-left: 3px solid var(--tip-border); padding: 14px 18px; border-radius: 12px; margin: 16px 0; }
+  .tip p { margin-bottom: 0; color: var(--tip-text); font-size: 14px; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; font-size: 12px; color: var(--text-secondary); }
+</style>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="header">
+  <h1 id="page-title">Support</h1>
+  <div class="app-name">AI Doc Reader: Markdown View</div>
+</div>
+
+<div class="lang-switch">
+  <a href="javascript:switchLang('en')" data-lang="en" class="active">English</a>
+  <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+  <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+</div>
+
+<div class="container">
+
+  <div id="en" class="section active">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item"><h3>Which files can I open?</h3><p>Markdown files (.md, .markdown) and folders containing them. Open a folder to browse all its Markdown files in a tree sidebar.</p></div>
+    <div class="faq-item"><h3>How do I make it the default Markdown app?</h3><p>Right-click any .md file in Finder → Get Info → Open with → choose AI Doc Reader → Change All.</p></div>
+    <div class="faq-item"><h3>Why is the version history empty?</h3><p>Version history works for files inside a Git repository. Open the repository's root folder so the app can find the Git data.</p></div>
+    <div class="faq-item"><h3>Are diagrams and math supported?</h3><p>Yes — Mermaid diagrams, KaTeX math and syntax-highlighted code blocks render automatically.</p></div>
+    <div class="faq-item"><h3>Does the app modify my files?</h3><p>Never. AI Doc Reader is a pure reader and opens your documents in read-only mode.</p></div>
+    <div class="contact-card"><h2>Still need help?</h2><p>We usually reply within 2 business days.</p><a href="mailto:lj_dev@ymail.ne.jp">Contact Us</a></div>
+  </div>
+
+  <div id="ja" class="section">
+    <h2>よくある質問</h2>
+    <div class="faq-item"><h3>どのファイルを開けますか?</h3><p>Markdownファイル(.md、.markdown)とそれらを含むフォルダに対応しています。フォルダを開くと、サイドバーにツリー表示されます。</p></div>
+    <div class="faq-item"><h3>Markdownのデフォルトアプリにするには?</h3><p>Finderで.mdファイルを右クリック → 情報を見る → このアプリケーションで開く → AI Doc Readerを選択 → 「すべてを変更」をクリックしてください。</p></div>
+    <div class="faq-item"><h3>バージョン履歴が表示されません</h3><p>バージョン履歴はGitリポジトリ内のファイルで利用できます。リポジトリのルートフォルダを開いてください。</p></div>
+    <div class="faq-item"><h3>図や数式は表示できますか?</h3><p>はい。Mermaid図、KaTeX数式、シンタックスハイライト付きコードブロックを自動で表示します。</p></div>
+    <div class="faq-item"><h3>ファイルが変更されることはありますか?</h3><p>ありません。AI Doc Readerは閲覧専用アプリで、ファイルを読み取り専用で開きます。</p></div>
+    <div class="contact-card"><h2>お困りですか?</h2><p>通常2営業日以内に返信いたします。</p><a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a></div>
+  </div>
+
+  <div id="zh" class="section">
+    <h2>常见问题</h2>
+    <div class="faq-item"><h3>可以打开哪些文件?</h3><p>Markdown 文件(.md、.markdown)以及包含它们的文件夹。打开文件夹后,侧边栏会以树状结构展示全部 Markdown 文件。</p></div>
+    <div class="faq-item"><h3>怎么设为 Markdown 默认打开方式?</h3><p>在 Finder 中右键任意 .md 文件 → 显示简介 → 打开方式 → 选择 AI Doc Reader → 点击「全部更改」。</p></div>
+    <div class="faq-item"><h3>为什么版本历史是空的?</h3><p>版本历史功能适用于 Git 仓库内的文件。请打开仓库的根目录,应用才能读取 Git 数据。</p></div>
+    <div class="faq-item"><h3>支持图表和公式吗?</h3><p>支持。Mermaid 图表、KaTeX 数学公式、语法高亮代码块都会自动渲染。</p></div>
+    <div class="faq-item"><h3>应用会修改我的文件吗?</h3><p>绝不会。AI Doc Reader 是纯阅读器,以只读方式打开文档。</p></div>
+    <div class="contact-card"><h2>还有问题?</h2><p>我们通常在 2 个工作日内回复。</p><a href="mailto:lj_dev@ymail.ne.jp">联系我们</a></div>
+  </div>
+
+  <div class="footer">© 2026 J-DevHouse · <a href="privacy.html" style="color:inherit">Privacy Policy</a></div>
+</div>
+
+</body>
+</html>

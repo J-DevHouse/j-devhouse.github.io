@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使い方ガイド - AirConnect</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="app-icon.png">
+<script>
+const I18N = {"ja": {"title": "使い方ガイド - AirConnect", "h1": "使い方ガイド", "b1h": "基本の使い方(同じWiFi内)", "b1s1": "転送したい2台のデバイスを<strong>同じWiFi</strong>に接続し、両方でAirConnectを開きます。", "b1s2": "数秒でお互いがデバイス一覧に表示されます。相手をタップして転送画面へ。", "b1s3": "テキストを入力して送信、📎からファイル、🖼から写真を選んで送信できます。デスクトップ版は画面にファイルを<strong>ドラッグ&ドロップ</strong>するだけでも送れます。", "b1s4": "受け取ったファイルはタップで開けます。デスクトップでは「フォルダで表示」も使えます。", "b2h": "WiFiがない場所での使い方(テザリング直結)", "b2s1": "ホーム画面右上の📡アイコンから「テザリング直結」を開きます。", "b2s2": "<strong>Androidの場合:</strong>「ワンタップで作成」を押すだけでQRコードが表示されます。<strong>iPhone/Mac/Windowsの場合:</strong>システム設定でテザリングをオンにし、名前とパスワードを入力してQRコードを生成します(次回からは自動表示)。", "b2s3": "もう一方のデバイスで「QRコードをスキャン」。自動的に接続され、そのまま転送できます。カメラのないPCは「ペアリングコード」の貼り付けでもOK。", "b2note": "💡 Androidがホストになる場合は完全ローカルのホットスポットを使うため、モバイル通信量は一切消費しません。", "b3h": "便利な機能", "b3l": ["<strong>メッセージの操作:</strong>吹き出しを長押し(PCは右クリック)でコピー・再送信・削除。", "<strong>デバイスの削除:</strong>デバイスを長押しで履歴ごと削除。下にスワイプ(引っ張って更新)で再検索。", "<strong>デバイス名の変更:</strong>一覧最上部の自分のデバイスの✏️から変更できます。", "<strong>言語の切り替え:</strong>右上の「⋯」メニューから日本語・英語・中国語を選べます。", "<strong>履歴:</strong>自動で保存され、相手がオフラインでも過去のやり取りを確認できます。"], "b4h": "うまくつながらないとき", "b4l": ["両方のデバイスが<strong>同じWiFi</strong>に接続されているか確認してください(ゲスト用WiFiは隔離されている場合があります)。", "ルーターの「APアイソレーション(プライバシーセパレーター)」がオンだと接続できません。ルーター設定で無効にしてください。", "iPhone/Mac:設定でAirConnectの「<strong>ローカルネットワーク</strong>」権限が許可されているか確認してください。", "相手のデバイスでアプリが起動しているか確認してください(バックグラウンドでは受信できない場合があります)。"]}, "en": {"title": "User Guide - AirConnect", "h1": "User Guide", "b1h": "Basics (same WiFi)", "b1s1": "Connect both devices to the <strong>same WiFi</strong> and open AirConnect on each.", "b1s2": "Within seconds they appear in each other's device list. Tap a device to open the transfer screen.", "b1s3": "Type text and send, or pick files via 📎 and photos via 🖼. On desktop you can simply <strong>drag & drop</strong> files onto the window.", "b1s4": "Tap a received file to open it. On desktop, \"Show in folder\" is also available.", "b2h": "Without WiFi (hotspot direct)", "b2s1": "Open \"Hotspot direct\" from the 📡 icon at the top right of the home screen.", "b2s2": "<strong>Android:</strong> press \"Create hotspot\" and a QR code appears. <strong>iPhone/Mac/Windows:</strong> turn on the system hotspot, enter its name and password to generate the QR code (auto-shown next time).", "b2s3": "On the other device, \"Scan QR code\" — it joins automatically and you can transfer right away. PCs without a camera can paste the pairing code instead.", "b2note": "💡 When Android hosts, a fully local hotspot is used — zero mobile data.", "b3h": "Handy features", "b3l": ["<strong>Message actions:</strong> long-press a bubble (right-click on PC) to copy, resend or delete.", "<strong>Remove a device:</strong> long-press it to delete along with its history. Pull down to re-search.", "<strong>Rename this device:</strong> tap ✏️ on your own device at the top of the list.", "<strong>Language:</strong> choose Japanese / English / Chinese from the \"⋯\" menu.", "<strong>History</strong> is saved automatically and stays readable while the peer is offline."], "b4h": "Troubleshooting", "b4l": ["Make sure both devices are on the <strong>same WiFi</strong> (guest networks are often isolated).", "Router \"AP isolation\" (privacy separator) blocks connections — disable it in the router settings.", "iPhone/Mac: check that AirConnect's <strong>Local Network</strong> permission is allowed in Settings.", "Make sure the app is open on the other device (it may not receive in the background)."]}, "zh": {"title": "使用指南 - AirConnect", "h1": "使用指南", "b1h": "基本用法(同一 WiFi)", "b1s1": "把两台设备连接到<strong>同一个 WiFi</strong>,分别打开 AirConnect。", "b1s2": "几秒内互相出现在设备列表里,点击对方进入传输页面。", "b1s3": "输入文字发送,📎 选文件、🖼 选照片发送。桌面版把文件<strong>拖进窗口</strong>即可发送。", "b1s4": "收到的文件点击即可打开,桌面版还支持「在文件夹中显示」。", "b2h": "没有 WiFi 时(热点直连)", "b2s1": "从首页右上角 📡 图标打开「热点直连」。", "b2s2": "<strong>Android:</strong>点「一键创建热点」即出二维码。<strong>iPhone/Mac/Windows:</strong>在系统设置打开热点,输入名称密码生成二维码(下次自动显示)。", "b2s3": "另一台设备「扫描二维码」即自动连接,直接开传。没摄像头的电脑粘贴「配对码」也行。", "b2note": "💡 Android 当主机时用的是纯本地热点,不消耗任何流量。", "b3h": "实用功能", "b3l": ["<strong>消息操作:</strong>长按气泡(电脑右键)可复制、重发、删除。", "<strong>删除设备:</strong>长按设备连同历史一起删除;下拉刷新重新搜索。", "<strong>修改设备名:</strong>点列表最上方本机的 ✏️。", "<strong>语言切换:</strong>「⋯」菜单中选择日语/英语/中文。", "<strong>历史记录</strong>自动保存,对方离线也能查看。"], "b4h": "连不上的时候", "b4l": ["确认两台设备连的是<strong>同一个 WiFi</strong>(访客网络常被隔离)。", "路由器开了「AP 隔离」会无法连接,请在路由器设置中关闭。", "iPhone/Mac:确认系统设置里已允许 AirConnect 的<strong>「本地网络」</strong>权限。", "确认对方设备上应用处于打开状态(后台可能无法接收)。"]}};
+const NAV_I18N = {"ja": {"home": "ホーム", "guide": "使い方ガイド", "support": "サポート", "privacy": "プライバシーポリシー"}, "en": {"home": "Home", "guide": "User Guide", "support": "Support", "privacy": "Privacy Policy"}, "zh": {"home": "首页", "guide": "使用指南", "support": "支持", "privacy": "隐私政策"}};
+function applyLang(lang) {
+  const d = I18N[lang] || I18N.en;
+  const n = NAV_I18N[lang] || NAV_I18N.en;
+  document.documentElement.lang = lang;
+  document.title = d.title;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (k.startsWith('nav.')) { el.innerHTML = n[k.slice(4)]; return; }
+    if (d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.querySelectorAll('[data-i18n-list]').forEach(el => {
+    const v = d[el.dataset.i18nList];
+    if (Array.isArray(v)) el.innerHTML = v.map(x => '<li>' + x + '</li>').join('');
+  });
+  try { localStorage.setItem('ac-lang', lang); } catch (e) {}
+  document.querySelectorAll('.lang-switch a').forEach(a =>
+    a.style.fontWeight = a.dataset.lang === lang ? '700' : '400');
+  document.querySelectorAll('a.keep-lang').forEach(a => {
+    const u = new URL(a.getAttribute('href'), location.href);
+    u.searchParams.set('lang', lang);
+    a.href = u.pathname.split('/').pop() + u.search;
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(location.search).get('lang');
+  let saved = null; try { saved = localStorage.getItem('ac-lang'); } catch (e) {}
+  const nav2 = (navigator.language || 'en').slice(0, 2);
+  const lang = ['ja','en','zh'].includes(p) ? p : (saved || (['ja','zh'].includes(nav2) ? nav2 : 'en'));
+  applyLang(lang);
+  document.querySelectorAll('.lang-switch a').forEach(a =>
+    a.addEventListener('click', e => { e.preventDefault(); applyLang(a.dataset.lang); }));
+});
+</script>
+</head>
+<body>
+<div class="hero" style="padding: 48px 24px 36px;"><h1 style="font-size:24px;" data-i18n="h1">使い方ガイド</h1></div>
+<div class="nav">
+  <a class="keep-lang" href="index.html" data-i18n="nav.home">ホーム</a> |
+  <a class="keep-lang" href="guide.html" data-i18n="nav.guide">使い方ガイド</a> |
+  <a class="keep-lang" href="support.html" data-i18n="nav.support">サポート</a> |
+  <a class="keep-lang" href="privacy.html" data-i18n="nav.privacy">プライバシーポリシー</a>
+  <span class="lang-switch" style="display:block;margin-top:6px;">
+    <a href="#" data-lang="ja">日本語</a> · <a href="#" data-lang="en">English</a> · <a href="#" data-lang="zh">中文</a>
+  </span>
+</div>
+<div class="container">
+  <div class="card">
+    <h2 data-i18n="b1h">基本の使い方(同じWiFi内)</h2>
+    <div class="step"><div class="num">1</div><p data-i18n="b1s1">転送したい2台のデバイスを<strong>同じWiFi</strong>に接続し、両方でAirConnectを開きます。</p></div>
+    <div class="step"><div class="num">2</div><p data-i18n="b1s2">数秒でお互いがデバイス一覧に表示されます。相手をタップして転送画面へ。</p></div>
+    <div class="step"><div class="num">3</div><p data-i18n="b1s3">テキストを入力して送信、📎からファイル、🖼から写真を選んで送信できます。デスクトップ版は画面にファイルを<strong>ドラッグ&ドロップ</strong>するだけでも送れます。</p></div>
+    <div class="step"><div class="num">4</div><p data-i18n="b1s4">受け取ったファイルはタップで開けます。デスクトップでは「フォルダで表示」も使えます。</p></div>
+  </div>
+  <div class="card">
+    <h2 data-i18n="b2h">WiFiがない場所での使い方(テザリング直結)</h2>
+    <div class="step"><div class="num">1</div><p data-i18n="b2s1">ホーム画面右上の📡アイコンから「テザリング直結」を開きます。</p></div>
+    <div class="step"><div class="num">2</div><p data-i18n="b2s2"><strong>Androidの場合:</strong>「ワンタップで作成」を押すだけでQRコードが表示されます。<strong>iPhone/Mac/Windowsの場合:</strong>システム設定でテザリングをオンにし、名前とパスワードを入力してQRコードを生成します(次回からは自動表示)。</p></div>
+    <div class="step"><div class="num">3</div><p data-i18n="b2s3">もう一方のデバイスで「QRコードをスキャン」。自動的に接続され、そのまま転送できます。カメラのないPCは「ペアリングコード」の貼り付けでもOK。</p></div>
+    <p style="margin-top:10px;" data-i18n="b2note">💡 Androidがホストになる場合は完全ローカルのホットスポットを使うため、モバイル通信量は一切消費しません。</p>
+  </div>
+  <div class="card">
+    <h2 data-i18n="b3h">便利な機能</h2>
+    <ul data-i18n-list="b3l"></ul>
+  </div>
+  <div class="card">
+    <h2 data-i18n="b4h">うまくつながらないとき</h2>
+    <ul data-i18n-list="b4l"></ul>
+  </div>
+</div>
+<div class="footer">© 2026 AirConnect</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サポート・フィードバック - AirConnect</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="app-icon.png">
+<script>
+const I18N = {"ja": {"title": "サポート・フィードバック - AirConnect", "h1": "サポート・フィードバック", "ch": "📮 お問い合わせ", "cp": "不具合の報告・機能のご要望・ご質問は、下記メールアドレスまでお気軽にお送りください。通常2〜3営業日以内に返信いたします。", "cn": "不具合報告の際は、お使いのデバイス(例:iPhone 16 Pro / Pixel 8)とOSバージョン、発生した操作手順を添えていただけると助かります。", "fh": "よくある質問", "q1": "Q. 相手のデバイスが表示されません", "a1": "A. 両方が同じWiFiに接続されているか、ルーターの「APアイソレーション」が無効か、iPhone/Macの「ローカルネットワーク」権限が許可されているかをご確認ください。詳しくは<a href=\"guide.html\">使い方ガイド</a>へ。", "q2": "Q. データはどこかのサーバーに送られますか?", "a2": "A. いいえ。テキストもファイルもデバイス間で直接転送され、外部サーバーを経由しません。詳しくは<a href=\"privacy.html\">プライバシーポリシー</a>をご覧ください。", "q3": "Q. モバイルデータ通信量はかかりますか?", "a3": "A. 同じWiFi内の転送・Androidがホストのテザリング直結では一切かかりません。iPhoneのインターネット共有をホストにした場合のみ、相手側のバックグラウンド通信が発生する可能性があります。", "q4": "Q. 大きいファイルも送れますか?", "a4": "A. サイズ制限はありません。転送速度はWiFi環境に依存します。"}, "en": {"title": "Support & Feedback - AirConnect", "h1": "Support & Feedback", "ch": "📮 Contact", "cp": "Bug reports, feature requests and questions are all welcome at the address below. We usually reply within 2–3 business days.", "cn": "For bug reports, please include your device (e.g. iPhone 16 Pro / Pixel 8), OS version, and the steps that trigger the issue.", "fh": "FAQ", "q1": "Q. The other device doesn't show up", "a1": "A. Check that both devices are on the same WiFi, that router \"AP isolation\" is off, and that the Local Network permission is allowed on iPhone/Mac. See the <a href=\"guide.html\">User Guide</a>.", "q2": "Q. Is my data sent to a server somewhere?", "a2": "A. No. Text and files transfer directly between your devices and never pass through an external server. See the <a href=\"privacy.html\">Privacy Policy</a>.", "q3": "Q. Does it use mobile data?", "a3": "A. Transfers on the same WiFi, or via an Android-hosted hotspot, use none at all. Only when an iPhone's Personal Hotspot is the host may the joining device generate background traffic.", "q4": "Q. Can I send large files?", "a4": "A. There is no size limit. Speed depends on your WiFi."}, "zh": {"title": "支持与反馈 - AirConnect", "h1": "支持与反馈", "ch": "📮 联系我们", "cp": "问题反馈、功能建议、疑问,欢迎发送到下面的邮箱,通常 2~3 个工作日内回复。", "cn": "报告问题时请附上设备型号(如 iPhone 16 Pro / Pixel 8)、系统版本和复现步骤。", "fh": "常见问题", "q1": "Q. 看不到对方设备", "a1": "A. 请确认两台设备连的是同一 WiFi、路由器没开「AP 隔离」、iPhone/Mac 已允许「本地网络」权限。详见<a href=\"guide.html\">使用指南</a>。", "q2": "Q. 数据会被上传到服务器吗?", "a2": "A. 不会。文字和文件都在设备间直接传输,不经过任何外部服务器。详见<a href=\"privacy.html\">隐私政策</a>。", "q3": "Q. 会消耗手机流量吗?", "a3": "A. 同一 WiFi 内传输、以及 Android 当主机的热点直连完全不消耗。只有用 iPhone 个人热点当主机时,加入方可能产生后台流量。", "q4": "Q. 能传大文件吗?", "a4": "A. 没有大小限制,速度取决于 WiFi 环境。"}};
+const NAV_I18N = {"ja": {"home": "ホーム", "guide": "使い方ガイド", "support": "サポート", "privacy": "プライバシーポリシー"}, "en": {"home": "Home", "guide": "User Guide", "support": "Support", "privacy": "Privacy Policy"}, "zh": {"home": "首页", "guide": "使用指南", "support": "支持", "privacy": "隐私政策"}};
+function applyLang(lang) {
+  const d = I18N[lang] || I18N.en;
+  const n = NAV_I18N[lang] || NAV_I18N.en;
+  document.documentElement.lang = lang;
+  document.title = d.title;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (k.startsWith('nav.')) { el.innerHTML = n[k.slice(4)]; return; }
+    if (d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.querySelectorAll('[data-i18n-list]').forEach(el => {
+    const v = d[el.dataset.i18nList];
+    if (Array.isArray(v)) el.innerHTML = v.map(x => '<li>' + x + '</li>').join('');
+  });
+  try { localStorage.setItem('ac-lang', lang); } catch (e) {}
+  document.querySelectorAll('.lang-switch a').forEach(a =>
+    a.style.fontWeight = a.dataset.lang === lang ? '700' : '400');
+  document.querySelectorAll('a.keep-lang').forEach(a => {
+    const u = new URL(a.getAttribute('href'), location.href);
+    u.searchParams.set('lang', lang);
+    a.href = u.pathname.split('/').pop() + u.search;
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(location.search).get('lang');
+  let saved = null; try { saved = localStorage.getItem('ac-lang'); } catch (e) {}
+  const nav2 = (navigator.language || 'en').slice(0, 2);
+  const lang = ['ja','en','zh'].includes(p) ? p : (saved || (['ja','zh'].includes(nav2) ? nav2 : 'en'));
+  applyLang(lang);
+  document.querySelectorAll('.lang-switch a').forEach(a =>
+    a.addEventListener('click', e => { e.preventDefault(); applyLang(a.dataset.lang); }));
+});
+</script>
+</head>
+<body>
+<div class="hero" style="padding: 48px 24px 36px;"><h1 style="font-size:24px;" data-i18n="h1">サポート・フィードバック</h1></div>
+<div class="nav">
+  <a class="keep-lang" href="index.html" data-i18n="nav.home">ホーム</a> |
+  <a class="keep-lang" href="guide.html" data-i18n="nav.guide">使い方ガイド</a> |
+  <a class="keep-lang" href="support.html" data-i18n="nav.support">サポート</a> |
+  <a class="keep-lang" href="privacy.html" data-i18n="nav.privacy">プライバシーポリシー</a>
+  <span class="lang-switch" style="display:block;margin-top:6px;">
+    <a href="#" data-lang="ja">日本語</a> · <a href="#" data-lang="en">English</a> · <a href="#" data-lang="zh">中文</a>
+  </span>
+</div>
+<div class="container">
+  <div class="card">
+    <h2 data-i18n="ch">📮 お問い合わせ</h2>
+    <p data-i18n="cp">不具合の報告・機能のご要望・ご質問は、下記メールアドレスまでお気軽にお送りください。通常2〜3営業日以内に返信いたします。</p>
+    <p style="margin-top:12px; font-size:16px;">
+      <a href="mailto:support@example.com?subject=AirConnect%20Feedback">✉️ support@example.com</a>
+    </p>
+    <p style="margin-top:10px; font-size:13px;" data-i18n="cn">不具合報告の際は、お使いのデバイス(例:iPhone 16 Pro / Pixel 8)とOSバージョン、発生した操作手順を添えていただけると助かります。</p>
+  </div>
+  <div class="card">
+    <h2 data-i18n="fh">よくある質問</h2>
+    <h3 data-i18n="q1">Q. 相手のデバイスが表示されません</h3><p data-i18n="a1">A. 両方が同じWiFiに接続されているか、ルーターの「APアイソレーション」が無効か、iPhone/Macの「ローカルネットワーク」権限が許可されているかをご確認ください。詳しくは<a href="guide.html">使い方ガイド</a>へ。</p>
+    <h3 data-i18n="q2">Q. データはどこかのサーバーに送られますか?</h3><p data-i18n="a2">A. いいえ。テキストもファイルもデバイス間で直接転送され、外部サーバーを経由しません。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+    <h3 data-i18n="q3">Q. モバイルデータ通信量はかかりますか?</h3><p data-i18n="a3">A. 同じWiFi内の転送・Androidがホストのテザリング直結では一切かかりません。iPhoneのインターネット共有をホストにした場合のみ、相手側のバックグラウンド通信が発生する可能性があります。</p>
+    <h3 data-i18n="q4">Q. 大きいファイルも送れますか?</h3><p data-i18n="a4">A. サイズ制限はありません。転送速度はWiFi環境に依存します。</p>
+  </div>
+</div>
+<div class="footer">© 2026 AirConnect</div>
+</body>
+</html>

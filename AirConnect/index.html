@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AirConnect - 自分のデバイス間でファイル・メモを直接転送</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="app-icon.png">
+<script>
+const I18N = {"ja": {"shotsH": "スクリーンショット", "dlh": "📥 ダウンロード", "dlnote": "※ 現在準備中です。公開後、ここからダウンロードできます。", "dlmac": "macOS 版をダウンロード", "dlwin": "Windows 版をダウンロード", "appstoreBadge": "<img src=\"https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83\" alt=\"App Store\" class=\"badge-appstore\">", "playBadge": "<img src=\"https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png\" alt=\"Google Play\" class=\"badge-play\">", "title": "AirConnect - 自分のデバイス間でファイル・メモを直接転送", "hero": "スマホからPCへ、PCからスマホへ。<br>自分のデバイス間で、ファイルもメモも直接転送。", "s1h": "🔍 自分のデバイスが、自動でつながる", "s1p": "同じWiFiでアプリを開くだけで、あなたのスマホ・PC・タブレットがお互いを自動発見。自分にメールを送ったり、クラウドを経由したり、ケーブルを探したりする必要はもうありません。", "s2h": "⚡ 写真もリンクもテキストも、直接転送", "s2p": "スマホで撮った写真をPCへ、PCで見ていた記事のURLをスマホへ。チャット形式なのでちょっとしたメモの受け渡しにも便利で、履歴も残ります。サーバーを経由しないため高速で、データがネットワークの外に出ることはありません。", "s3h": "📡 WiFiがない場所でも", "s3p": "テザリング直結モードなら、QRコードを読み取るだけでデバイス同士が直接接続。Androidがホストの場合は完全ローカルのホットスポットを使うため、モバイル通信量を消費せずに転送できます。", "s4h": "🌏 3言語対応", "s4p": "日本語・英語・中国語に対応。システム言語に自動で追従し、アプリ内からいつでも切り替えられます。"}, "en": {"shotsH": "Screenshots", "dlh": "📥 Download", "dlnote": "※ Coming soon — downloads will be available here after release.", "dlmac": "Download for macOS", "dlwin": "Download for Windows", "appstoreBadge": "<img src=\"https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83\" alt=\"App Store\" class=\"badge-appstore\">", "playBadge": "<img src=\"https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png\" alt=\"Google Play\" class=\"badge-play\">", "title": "AirConnect - Transfer files & notes between your own devices", "hero": "Phone to PC, PC to phone.<br>Files and notes move directly between your devices.", "s1h": "🔍 Your devices find each other", "s1p": "Open the app on the same WiFi and your phone, PC and tablet discover each other automatically. No more emailing yourself, waiting for cloud uploads, or hunting for cables.", "s2h": "⚡ Photos, links and text — sent directly", "s2p": "Send photos from your phone to your PC, or an article link from your PC to your phone. The chat-style layout doubles as a handy scratchpad, with history kept. Nothing goes through a server: transfers are fast and stay inside your network.", "s3h": "📡 Works without WiFi", "s3p": "In hotspot-direct mode, one device creates a hotspot and the other joins by scanning a QR code. When an Android device hosts, a fully local hotspot is used — no mobile data consumed.", "s4h": "🌏 Three languages", "s4p": "Japanese, English and Chinese. Follows your system language, switchable anytime in the app."}, "zh": {"shotsH": "应用截图", "dlh": "📥 下载", "dlnote": "※ 正在准备中,发布后可在此下载。", "dlmac": "下载 macOS 版", "dlwin": "下载 Windows 版", "appstoreBadge": "<img src=\"https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/zh-cn?size=250x83\" alt=\"App Store\" class=\"badge-appstore\">", "playBadge": "<img src=\"https://play.google.com/intl/zh-CN/badges/static/images/badges/zh-cn_badge_web_generic.png\" alt=\"Google Play\" class=\"badge-play\">", "title": "AirConnect - 在自己的设备间直传文件和备忘", "hero": "手机传电脑,电脑传手机。<br>文件和备忘在你的设备间直接流转。", "s1h": "🔍 你的设备,自动互连", "s1p": "在同一 WiFi 下打开应用,手机、电脑、平板自动互相发现。再也不用给自己发邮件、等云盘上传、翻箱倒柜找数据线。", "s2h": "⚡ 照片、链接、文字,直接传", "s2p": "手机拍的照片发到电脑,电脑上看到的链接发到手机。聊天式界面顺手当备忘录用,历史可查。不经过任何服务器:传输快,数据不出你的网络。", "s3h": "📡 没有 WiFi 也能用", "s3p": "热点直连模式下,一台设备开热点,另一台扫码即连。Android 当主机时用的是纯本地热点,不消耗任何流量。", "s4h": "🌏 三语支持", "s4p": "日语、英语、中文。跟随系统语言,应用内随时切换。"}};
+const NAV_I18N = {"ja": {"home": "ホーム", "guide": "使い方ガイド", "support": "サポート", "privacy": "プライバシーポリシー"}, "en": {"home": "Home", "guide": "User Guide", "support": "Support", "privacy": "Privacy Policy"}, "zh": {"home": "首页", "guide": "使用指南", "support": "支持", "privacy": "隐私政策"}};
+function applyLang(lang) {
+  const d = I18N[lang] || I18N.en;
+  const n = NAV_I18N[lang] || NAV_I18N.en;
+  document.documentElement.lang = lang;
+  document.title = d.title;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (k.startsWith('nav.')) { el.innerHTML = n[k.slice(4)]; return; }
+    if (d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.querySelectorAll('[data-i18n-list]').forEach(el => {
+    const v = d[el.dataset.i18nList];
+    if (Array.isArray(v)) el.innerHTML = v.map(x => '<li>' + x + '</li>').join('');
+  });
+  try { localStorage.setItem('ac-lang', lang); } catch (e) {}
+  document.querySelectorAll('.lang-switch a').forEach(a =>
+    a.style.fontWeight = a.dataset.lang === lang ? '700' : '400');
+  document.querySelectorAll('a.keep-lang').forEach(a => {
+    const u = new URL(a.getAttribute('href'), location.href);
+    u.searchParams.set('lang', lang);
+    a.href = u.pathname.split('/').pop() + u.search;
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(location.search).get('lang');
+  let saved = null; try { saved = localStorage.getItem('ac-lang'); } catch (e) {}
+  const nav2 = (navigator.language || 'en').slice(0, 2);
+  const lang = ['ja','en','zh'].includes(p) ? p : (saved || (['ja','zh'].includes(nav2) ? nav2 : 'en'));
+  applyLang(lang);
+  document.querySelectorAll('.lang-switch a').forEach(a =>
+    a.addEventListener('click', e => { e.preventDefault(); applyLang(a.dataset.lang); }));
+});
+</script>
+</head>
+<body>
+<div class="hero">
+  <div class="icon"><img src="app-icon.png" alt="AirConnect"></div>
+  <h1>AirConnect</h1>
+  <p data-i18n="hero">スマホからPCへ、PCからスマホへ。<br>自分のデバイス間で、ファイルもメモも直接転送。</p>
+  <div class="badge-row">
+    <span><svg viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.03 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iPhone / iPad / Mac</span><span><svg viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993 0 .5511-.4483.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg>Android</span><span><svg viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows</span>
+  </div>
+</div>
+<div class="nav">
+  <a class="keep-lang" href="index.html" data-i18n="nav.home">ホーム</a> |
+  <a class="keep-lang" href="guide.html" data-i18n="nav.guide">使い方ガイド</a> |
+  <a class="keep-lang" href="support.html" data-i18n="nav.support">サポート</a> |
+  <a class="keep-lang" href="privacy.html" data-i18n="nav.privacy">プライバシーポリシー</a>
+  <span class="lang-switch" style="display:block;margin-top:6px;">
+    <a href="#" data-lang="ja">日本語</a> · <a href="#" data-lang="en">English</a> · <a href="#" data-lang="zh">中文</a>
+  </span>
+</div>
+<div class="container">
+  <div class="card">
+    <h2 data-i18n="s1h">🔍 自分のデバイスが、自動でつながる</h2>
+    <p data-i18n="s1p">同じWiFiでアプリを開くだけで、あなたのスマホ・PC・タブレットがお互いを自動発見。自分にメールを送ったり、クラウドを経由したり、ケーブルを探したりする必要はもうありません。</p>
+  </div>
+  <div class="card">
+    <h2 data-i18n="s2h">⚡ 写真もリンクもテキストも、直接転送</h2>
+    <p data-i18n="s2p">スマホで撮った写真をPCへ、PCで見ていた記事のURLをスマホへ。チャット形式なのでちょっとしたメモの受け渡しにも便利で、履歴も残ります。サーバーを経由しないため高速で、データがネットワークの外に出ることはありません。</p>
+  </div>
+  <div class="card">
+    <h2 data-i18n="s3h">📡 WiFiがない場所でも</h2>
+    <p data-i18n="s3p">テザリング直結モードなら、QRコードを読み取るだけでデバイス同士が直接接続。Androidがホストの場合は完全ローカルのホットスポットを使うため、モバイル通信量を消費せずに転送できます。</p>
+  </div>
+  <div class="card">
+    <h2 data-i18n="s4h">🌏 3言語対応</h2>
+    <p data-i18n="s4p">日本語・英語・中国語に対応。システム言語に自動で追従し、アプリ内からいつでも切り替えられます。</p>
+  </div>
+  <div class="card">
+    <h2 data-i18n="shotsH">スクリーンショット</h2>
+    <div class="shots">
+      <img src="shots/s1.png" alt=""><img src="shots/s2.png" alt="">
+      <img src="shots/s3.png" alt=""><img src="shots/s4.png" alt="">
+    </div>
+  </div>
+  <div class="card">
+    <h2 data-i18n="dlh">📥 ダウンロード</h2>
+    <div class="dl-row">
+      <a href="#" class="todo-link" data-i18n="appstoreBadge"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="App Store" class="badge-appstore"></a>
+      <a href="#" class="todo-link" data-i18n="playBadge"><img src="https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png" alt="Google Play" class="badge-play"></a>
+    </div>
+    <div class="dl-row">
+      <a href="#" class="dl-btn todo-link"><svg viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.03 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span data-i18n="dlmac">macOS 版をダウンロード</span></a>
+      <a href="#" class="dl-btn todo-link"><svg viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg><span data-i18n="dlwin">Windows 版をダウンロード</span></a>
+    </div>
+    <p class="dl-note" data-i18n="dlnote">※ 現在準備中です。公開後、ここからダウンロードできます。</p>
+  </div>
+</div>
+<div class="footer">© 2026 AirConnect</div>
+</body>
+</html>

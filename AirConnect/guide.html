@@ -26,14 +26,19 @@ function applyLang(lang) {
   try { localStorage.setItem('ac-lang', lang); } catch (e) {}
   document.querySelectorAll('.lang-switch a').forEach(a =>
     a.style.fontWeight = a.dataset.lang === lang ? '700' : '400');
+  const inAppNav = new URLSearchParams(location.search).get('app') === '1';
   document.querySelectorAll('a.keep-lang').forEach(a => {
     const u = new URL(a.getAttribute('href'), location.href);
     u.searchParams.set('lang', lang);
+    if (inAppNav) u.searchParams.set('app', '1');
     a.href = u.pathname.split('/').pop() + u.search;
   });
 }
 document.addEventListener('DOMContentLoaded', () => {
-  const p = new URLSearchParams(location.search).get('lang');
+  const qs = new URLSearchParams(location.search);
+  const inApp = qs.get('app') === '1';
+  if (inApp) document.querySelectorAll('.lang-switch').forEach(e => e.style.display = 'none');
+  const p = qs.get('lang');
   let saved = null; try { saved = localStorage.getItem('ac-lang'); } catch (e) {}
   const nav2 = (navigator.language || 'en').slice(0, 2);
   const lang = ['ja','en','zh'].includes(p) ? p : (saved || (['ja','zh'].includes(nav2) ? nav2 : 'en'));

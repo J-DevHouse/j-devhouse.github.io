@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TempoFlow - ダンサーのための8カウント・メトロノーム</title>
+<meta name="description" content="音楽のBPMと8カウントの「1」を自動検出し、曲にピッタリ同期してクリック音を鳴らすダンサー向けiOSメトロノーム。0.5x/0.75xスロー再生対応。完全オフライン。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; color: #1a1a1a; background: #faf9f6; line-height: 1.7; }
+  .hero { background: #141926; color: #fff; text-align: center; padding: 64px 24px 52px; }
+  .hero-icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); margin-bottom: 20px; }
+  .hero h1 { font-size: 34px; font-weight: 800; letter-spacing: 0.5px; }
+  .hero .tagline { font-size: 17px; opacity: 0.88; margin-top: 10px; max-width: 560px; margin-inline: auto; }
+  .badge { display: inline-block; margin-top: 20px; padding: 6px 16px; border-radius: 999px; background: rgba(217,68,50,0.22); color: #ff8e80; font-size: 13px; font-weight: 600; }
+  .section { max-width: 860px; margin: 0 auto; padding: 52px 24px; }
+  h2 { font-size: 24px; margin-bottom: 24px; text-align: center; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .card { background: #fff; border: 1px solid #e7e5df; border-radius: 16px; padding: 24px; }
+  .card h3 { font-size: 16px; margin-bottom: 8px; color: #141926; }
+  .card p { font-size: 14px; color: #555; }
+  .steps { background: #fff; border: 1px solid #e7e5df; border-radius: 16px; padding: 28px; }
+  .steps ol { padding-left: 20px; }
+  .steps li { margin-bottom: 12px; font-size: 15px; }
+  .footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #666; border-top: 1px solid #e7e5df; }
+  .footer a { color: #333; margin: 0 10px; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="hero-icon" src="icon.png" alt="TempoFlow">
+  <h1>TempoFlow</h1>
+  <p class="tagline">曲のBPMと8カウントの「1」を自動検出し、音楽とズレずに鳴るダンサー向けメトロノーム</p>
+  <span class="badge">無料 · 広告なし · オフライン動作 · 日本語 / English</span>
+</div>
+
+<div class="section">
+  <h2>主な機能</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>自動BPM検出 &amp; 位相ロック</h3>
+      <p>取り込んだ音源からBPMとビート位置を端末内で自動解析。再生中も曲に高精度でロックしてカウントします。</p>
+    </div>
+    <div class="card">
+      <h3>8カウント「1」を1タップ補正</h3>
+      <p>ハウス・ヒップホップなど8拍構成に最適化。オンの「1」がズレた曲も1タップで即座に補正して保存できます。</p>
+    </div>
+    <div class="card">
+      <h3>0.5x / 0.75x 練習スピード</h3>
+      <p>テンポを落としても音程とビート同期を維持。難しいステップや振り付けの反復練習に最適です。</p>
+    </div>
+    <div class="card">
+      <h3>完全オフライン・アカウント不要</h3>
+      <p>音源も解析もすべてiPhone内で完結。サーバー送信なし、スタジオの圏外でもそのまま使えます。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 0;">
+  <h2>使い方</h2>
+  <div class="steps">
+    <ol>
+      <li>画面右上の「＋」から iPhone の「ファイル」にある音源（MP3 / M4A / WAV 等、DRMなし）を選択して取り込みます。</li>
+      <li>自動解析が終わったら再生ボタンを押すだけ。曲に合わせた8カウントのクリックが鳴ります。</li>
+      <li>「1」の位置を合わせたいときは、拍の頭で「1」タップ補正を押すと即座に記憶されます。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="../index.html">J-DevHouse トップ</a>
+  <a href="privacy.html">プライバシーポリシー</a>
+  <a href="mailto:lj_dev@ymail.ne.jp">サポート・お問い合わせ</a>
+  <p style="margin-top: 10px;">&copy; 2026 J-DevHouse</p>
+</div>
+</body>
+</html>

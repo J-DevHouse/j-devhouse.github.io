@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madori3D - 部屋をスキャンして間取り図と3Dモデルを即作成</title>
+<meta name="description" content="iPhone ProのLiDARで部屋をスキャンするだけ。寸法・畳数入りの2D間取り図（PNG）と3Dモデル（USDZ）をアカウント不要・完全オフラインですぐ書き出せるiOSアプリ。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; color: #1d1d1f; background: #f6f9fb; line-height: 1.7; }
+  .hero { background: #1b3a4b; color: #fff; text-align: center; padding: 64px 24px 52px; }
+  .hero-icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.32); margin-bottom: 20px; }
+  .hero h1 { font-size: 34px; font-weight: 800; letter-spacing: 0.4px; }
+  .hero .tagline { font-size: 17px; opacity: 0.9; margin-top: 10px; max-width: 580px; margin-inline: auto; }
+  .badge { display: inline-block; margin-top: 20px; padding: 6px 16px; border-radius: 999px; background: rgba(245,158,40,0.22); color: #ffd089; font-size: 13px; font-weight: 600; }
+  .section { max-width: 860px; margin: 0 auto; padding: 52px 24px; }
+  h2 { font-size: 24px; margin-bottom: 24px; text-align: center; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .card { background: #fff; border: 1px solid #dfe8ee; border-radius: 16px; padding: 24px; }
+  .card h3 { font-size: 16px; margin-bottom: 8px; color: #1b3a4b; }
+  .card p { font-size: 14px; color: #555; }
+  .note { background: #fff; border: 1px solid #dfe8ee; border-left: 4px solid #f59e28; border-radius: 12px; padding: 20px 24px; font-size: 14px; color: #444; }
+  .footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #666; border-top: 1px solid #dfe8ee; }
+  .footer a { color: #333; margin: 0 10px; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="hero-icon" src="icon.png" alt="Madori3D">
+  <h1>Madori3D</h1>
+  <p class="tagline">iPhone の LiDAR で部屋を歩くだけ。寸法・畳数入り2D間取り図と3Dモデルをその場で書き出し</p>
+  <span class="badge">LiDAR 搭載 iPhone Pro 専用 · 広告なし · アカウント不要 · オフライン完結</span>
+</div>
+
+<div class="section">
+  <h2>主な機能</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>歩いてスキャン、そのまま3D化</h3>
+      <p>Apple RoomPlan により壁・ドア・窓・家具をリアルタイム認識。スキャン直後に指で回して立体確認できます。</p>
+    </div>
+    <div class="card">
+      <h3>寸法・面積・畳数入り2D間取り図</h3>
+      <p>部屋の広さ（㎡・約◯畳）と壁の幅・奥行き・天井高を自動算出。引越し・内見・家具配置の検討に便利です。</p>
+    </div>
+    <div class="card">
+      <h3>PNG / USDZ をワンタップ書き出し</h3>
+      <p>高解像度の2D間取り図画像（PNG）と、iPhone/MacのQuick LookやBlender等で開ける3Dモデル（USDZ）を即共有できます。</p>
+    </div>
+    <div class="card">
+      <h3>不要な家具を非表示＆完全ローカル</h3>
+      <p>間取りに不要な家具ボックスをタップで非表示可能。すべてのスキャンデータは端末内のみに保存され、外部送信はありません。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 0;">
+  <div class="note">
+    <strong>対応機種について：</strong>スキャン機能には LiDAR スキャナを搭載した iPhone Pro モデル（iPhone 12 Pro 以降、iOS 18 以上）が必要です。
+  </div>
+</div>
+
+<div class="footer">
+  <a href="../index.html">J-DevHouse トップ</a>
+  <a href="privacy.html">プライバシーポリシー</a>
+  <a href="mailto:lj_dev@ymail.ne.jp">サポート・お問い合わせ</a>
+  <p style="margin-top: 10px;">&copy; 2026 J-DevHouse</p>
+</div>
+</body>
+</html>

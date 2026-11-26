@@ -36,7 +36,8 @@
   .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
   @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
   .feature { background: var(--card-bg); border-radius: 16px; padding: 22px 20px; box-shadow: var(--shadow); }
-  .feature .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature .icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--tint); background: color-mix(in srgb, var(--tint) 14%, transparent); }
+  .feature .icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .feature h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
   .feature p { font-size: 14px; color: var(--text-secondary); margin: 0; }
   .screenshots { text-align: center; margin-bottom: 36px; }
@@ -118,34 +119,34 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4C2;</div>
-        <h3>Smart Auto-Classification</h3>
-        <p>Define rules by weekday, time range, date range, and duration. Videos matching your criteria are automatically sorted into the right folders.</p>
+        <div class="icon" style="--tint: #007aff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9 13 2 2 4-4"/></svg></div>
+        <h3>Smart Auto-Sorting</h3>
+        <p>Set rules by weekday, time of day, date range and duration. A live preview shows which videos match while you edit.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x270F;&#xFE0F;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3>Auto-Sync on Launch</h3>
+        <p>Every time you open the app, new videos in your photo library are imported and sorted, with a notice showing what was found.</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="--tint: #ff9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
         <h3>Manual Organization</h3>
-        <p>Create custom folders and manually pick which videos go where. Full control when you need it.</p>
+        <p>Create your own folders and pick videos by hand. Anything that matches no rule goes to Uncategorized, so nothing gets lost.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4F1;</div>
-        <h3>Photo Library Integration</h3>
-        <p>Reads video metadata (creation date, duration) directly from your photo library. No importing or duplicating files needed.</p>
+        <div class="icon" style="--tint: #af52de"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg></div>
+        <h3>Playback &amp; Management</h3>
+        <p>Watch sorted videos right in the app, pin important ones to the top, and remove the ones you no longer need.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F310;</div>
-        <h3>Multi-Language Support</h3>
-        <p>Available in 6 languages: English, Japanese, Korean, Simplified Chinese, Traditional Chinese, and Spanish.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">&#x1F512;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>Privacy First</h3>
-        <p>All processing happens on your device. No video data is ever uploaded. The app only reads metadata &mdash; your videos stay private.</p>
+        <p>Only metadata (creation date and duration) is read. Everything is processed on your device; videos are never uploaded.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x25B6;&#xFE0F;</div>
-        <h3>Video Playback</h3>
-        <p>Watch and manage your sorted videos directly within the app. No need to switch between apps.</p>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div>
+        <h3>Ad-Free Option</h3>
+        <p>Remove all ads with a monthly or yearly subscription. Cancel anytime.</p>
       </div>
     </div>
 
@@ -173,34 +174,34 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4C2;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9 13 2 2 4-4"/></svg></div>
         <h3>スマート自動分類</h3>
-        <p>曜日・時間帯・日付範囲・動画の長さでルールを定義。条件に合った動画が自動的に適切なフォルダに振り分けられます。</p>
+        <p>曜日・時間帯・日付範囲・再生時間で条件を設定。編集中にマッチする動画をリアルタイムでプレビューできます。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x270F;&#xFE0F;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3>起動時に自動同期</h3>
+        <p>アプリを開くたびにフォトライブラリの新しい動画を取り込んで自動分類。見つかった動画はお知らせで確認できます。</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="--tint: #ff9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
         <h3>手動整理</h3>
-        <p>カスタムフォルダを作成し、動画を手動で選んで整理。必要な時に完全なコントロールが可能です。</p>
+        <p>フォルダを自分で作成して動画を手動で追加。どの条件にも合わない動画は「未分類」に入るので、見落としません。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4F1;</div>
-        <h3>フォトライブラリ連携</h3>
-        <p>フォトライブラリから動画のメタデータ（作成日時・長さ）を直接読み取り。ファイルの取り込みや複製は不要です。</p>
+        <div class="icon" style="--tint: #af52de"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg></div>
+        <h3>再生と管理</h3>
+        <p>分類した動画をアプリ内でそのまま再生。重要な動画はピン留めで上に固定、不要な動画は削除できます。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F310;</div>
-        <h3>多言語対応</h3>
-        <p>英語・日本語・韓国語・簡体字中国語・繁体字中国語・スペイン語の6言語に対応しています。</p>
-      </div>
-      <div class="feature">
-        <div class="icon">&#x1F512;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>プライバシー優先</h3>
-        <p>すべての処理はデバイス上で完結。動画データがアップロードされることはありません。メタデータのみを読み取り、動画はプライベートに保たれます。</p>
+        <p>読み取るのは作成日時と再生時間などのメタデータだけ。処理はすべてデバイス上で行い、動画をアップロードすることはありません。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x25B6;&#xFE0F;</div>
-        <h3>動画再生</h3>
-        <p>分類された動画をアプリ内で直接視聴・管理。アプリを切り替える必要はありません。</p>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div>
+        <h3>広告なしプラン</h3>
+        <p>月額または年額のサブスクリプションで、すべての広告を非表示にできます。いつでも解約可能です。</p>
       </div>
     </div>
 
@@ -228,34 +229,34 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4C2;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9 13 2 2 4-4"/></svg></div>
         <h3>智能自动分类</h3>
-        <p>通过星期、时间段、日期范围和视频时长定义规则，符合条件的视频自动归入对应文件夹。</p>
+        <p>按星期、时间段、日期范围和时长设置规则。编辑时可实时预览匹配到的视频。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x270F;&#xFE0F;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3>启动时自动同步</h3>
+        <p>每次打开 App 都会导入相册中的新视频并自动分类，并提示新发现的视频。</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="--tint: #ff9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
         <h3>手动整理</h3>
-        <p>创建自定义文件夹，手动选择要归入的视频。需要时可完全手动控制。</p>
+        <p>自己创建目录并手动添加视频。不符合任何规则的视频会进入「未分类」，不会遗漏。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4F1;</div>
-        <h3>相册集成</h3>
-        <p>直接从相册读取视频元数据（创建日期、时长），无需导入或复制文件。</p>
+        <div class="icon" style="--tint: #af52de"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg></div>
+        <h3>播放与管理</h3>
+        <p>在 App 内直接播放已分类的视频，把重要视频置顶，删除不需要的视频。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F310;</div>
-        <h3>多语言支持</h3>
-        <p>支持6种语言：英语、日语、韩语、简体中文、繁体中文和西班牙语。</p>
-      </div>
-      <div class="feature">
-        <div class="icon">&#x1F512;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>隐私优先</h3>
-        <p>所有处理均在设备上完成，视频数据绝不会被上传。应用仅读取元数据，你的视频始终保持私密。</p>
+        <p>只读取创建时间和时长等元数据，所有处理都在设备上完成，视频绝不会上传。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x25B6;&#xFE0F;</div>
-        <h3>视频播放</h3>
-        <p>在应用内直接观看和管理已分类的视频，无需切换其他应用。</p>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div>
+        <h3>去广告订阅</h3>
+        <p>通过月付或年付订阅移除所有广告，可随时取消。</p>
       </div>
     </div>
 
@@ -283,34 +284,34 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4C2;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9 13 2 2 4-4"/></svg></div>
         <h3>智慧自動分類</h3>
-        <p>透過星期、時段、日期範圍和影片時長定義規則，符合條件的影片自動歸入對應資料夾。</p>
+        <p>依星期、時間段、日期範圍和時長設定規則。編輯時可即時預覽符合條件的影片。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x270F;&#xFE0F;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3>啟動時自動同步</h3>
+        <p>每次開啟 App 都會匯入照片圖庫中的新影片並自動分類，並提示新發現的影片。</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="--tint: #ff9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
         <h3>手動整理</h3>
-        <p>建立自訂資料夾，手動選擇要歸入的影片。需要時可完全手動控制。</p>
+        <p>自行建立目錄並手動加入影片。不符合任何規則的影片會進入「未分類」，不會遺漏。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4F1;</div>
-        <h3>相簿整合</h3>
-        <p>直接從相簿讀取影片元資料（建立日期、時長），無需匯入或複製檔案。</p>
+        <div class="icon" style="--tint: #af52de"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg></div>
+        <h3>播放與管理</h3>
+        <p>在 App 內直接播放已分類的影片，將重要影片置頂，刪除不需要的影片。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F310;</div>
-        <h3>多語言支援</h3>
-        <p>支援6種語言：英語、日語、韓語、簡體中文、繁體中文和西班牙語。</p>
-      </div>
-      <div class="feature">
-        <div class="icon">&#x1F512;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>隱私優先</h3>
-        <p>所有處理均在裝置上完成，影片資料絕不會被上傳。應用程式僅讀取元資料，你的影片始終保持私密。</p>
+        <p>只讀取建立時間和時長等中繼資料，所有處理都在裝置上完成，影片絕不會上傳。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x25B6;&#xFE0F;</div>
-        <h3>影片播放</h3>
-        <p>在應用程式內直接觀看和管理已分類的影片，無需切換其他應用程式。</p>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div>
+        <h3>去廣告訂閱</h3>
+        <p>透過月付或年付訂閱移除所有廣告，可隨時取消。</p>
       </div>
     </div>
 
@@ -338,34 +339,34 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4C2;</div>
-        <h3>Clasificaci&oacute;n autom&aacute;tica inteligente</h3>
-        <p>Define reglas por d&iacute;a de la semana, rango horario, rango de fechas y duraci&oacute;n. Los videos que cumplan los criterios se clasifican autom&aacute;ticamente en las carpetas correspondientes.</p>
+        <div class="icon" style="--tint: #007aff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9 13 2 2 4-4"/></svg></div>
+        <h3>Clasificación automática</h3>
+        <p>Define reglas por día de la semana, franja horaria, rango de fechas y duración. Mientras editas, ves en tiempo real qué videos coinciden.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x270F;&#xFE0F;</div>
-        <h3>Organizaci&oacute;n manual</h3>
-        <p>Crea carpetas personalizadas y selecciona manualmente qu&eacute; videos van en cada una. Control total cuando lo necesites.</p>
+        <div class="icon" style="--tint: #34c759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3>Sincronización al abrir</h3>
+        <p>Cada vez que abres la app, los videos nuevos de tu fototeca se importan y clasifican, con un aviso de lo que se encontró.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4F1;</div>
-        <h3>Integraci&oacute;n con la biblioteca de fotos</h3>
-        <p>Lee los metadatos de video (fecha de creaci&oacute;n, duraci&oacute;n) directamente de tu biblioteca de fotos. Sin necesidad de importar o duplicar archivos.</p>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
+        <h3>Organización manual</h3>
+        <p>Crea tus propias carpetas y elige videos a mano. Lo que no coincide con ninguna regla va a «Sin clasificar», así no se pierde nada.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F310;</div>
-        <h3>Soporte multiling&uuml;e</h3>
-        <p>Disponible en 6 idiomas: ingl&eacute;s, japon&eacute;s, coreano, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+        <div class="icon" style="--tint: #af52de"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg></div>
+        <h3>Reproducción y gestión</h3>
+        <p>Mira los videos clasificados en la app, fija los importantes arriba y elimina los que ya no necesitas.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F512;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>Privacidad ante todo</h3>
-        <p>Todo el procesamiento se realiza en tu dispositivo. Ning&uacute;n dato de video se sube a la nube. La app solo lee metadatos &mdash; tus videos permanecen privados.</p>
+        <p>Solo se leen metadatos (fecha de creación y duración). Todo se procesa en tu dispositivo; los videos nunca se suben.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x25B6;&#xFE0F;</div>
-        <h3>Reproducci&oacute;n de video</h3>
-        <p>Mira y gestiona tus videos clasificados directamente dentro de la app. Sin necesidad de cambiar entre aplicaciones.</p>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div>
+        <h3>Opción sin anuncios</h3>
+        <p>Quita todos los anuncios con una suscripción mensual o anual. Cancela cuando quieras.</p>
       </div>
     </div>
 
@@ -393,34 +394,34 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4C2;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9 13 2 2 4-4"/></svg></div>
         <h3>스마트 자동 분류</h3>
-        <p>요일, 시간대, 날짜 범위, 영상 길이로 규칙을 정의하세요. 조건에 맞는 동영상이 자동으로 적절한 폴더에 분류됩니다.</p>
+        <p>요일, 시간대, 날짜 범위, 길이로 규칙을 설정하세요. 편집하는 동안 일치하는 동영상을 실시간으로 미리 볼 수 있습니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x270F;&#xFE0F;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3>실행 시 자동 동기화</h3>
+        <p>앱을 열 때마다 사진 보관함의 새 동영상을 가져와 자동으로 분류하고, 찾은 동영상을 알려 드립니다.</p>
+      </div>
+      <div class="feature">
+        <div class="icon" style="--tint: #ff9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
         <h3>수동 정리</h3>
-        <p>맞춤 폴더를 만들고 동영상을 직접 선택하여 정리하세요. 필요할 때 완전한 제어가 가능합니다.</p>
+        <p>직접 폴더를 만들고 동영상을 골라 추가하세요. 어떤 규칙에도 맞지 않는 동영상은 '미분류'로 들어가므로 놓치지 않습니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4F1;</div>
-        <h3>사진 라이브러리 연동</h3>
-        <p>사진 라이브러리에서 동영상 메타데이터(생성 날짜, 길이)를 직접 읽어옵니다. 파일을 가져오거나 복제할 필요가 없습니다.</p>
+        <div class="icon" style="--tint: #af52de"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg></div>
+        <h3>재생 및 관리</h3>
+        <p>분류된 동영상을 앱에서 바로 재생하고, 중요한 동영상은 상단에 고정하며, 필요 없는 동영상은 삭제할 수 있습니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F310;</div>
-        <h3>다국어 지원</h3>
-        <p>영어, 일본어, 한국어, 간체 중국어, 번체 중국어, 스페인어 등 6개 언어를 지원합니다.</p>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>개인정보 우선</h3>
+        <p>생성 날짜와 길이 같은 메타데이터만 읽습니다. 모든 처리는 기기에서 이루어지며 동영상은 업로드되지 않습니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F512;</div>
-        <h3>개인정보 보호 최우선</h3>
-        <p>모든 처리는 기기에서 이루어집니다. 동영상 데이터가 업로드되는 일은 없습니다. 앱은 메타데이터만 읽으며 동영상은 항상 비공개로 유지됩니다.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">&#x25B6;&#xFE0F;</div>
-        <h3>동영상 재생</h3>
-        <p>분류된 동영상을 앱 내에서 바로 시청하고 관리하세요. 다른 앱으로 전환할 필요가 없습니다.</p>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div>
+        <h3>광고 없는 옵션</h3>
+        <p>월간 또는 연간 구독으로 모든 광고를 제거할 수 있습니다. 언제든지 해지할 수 있습니다.</p>
       </div>
     </div>
 

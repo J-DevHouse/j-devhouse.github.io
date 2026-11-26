@@ -5,7 +5,7 @@ MultiSize ID Photo - App Store Screenshot Generator
 Uses actual app screenshots to create App Store marketing images.
 
 Usage:
-  1. Place screenshots in ./原截图/ folder
+  1. Place screenshots in ./raw/ folder
   2. Run: python3 generate.py
   3. Find exports in ./screenshots_6.7/, ./screenshots_6.5/, etc.
 """
@@ -19,7 +19,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 # ============================================================
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-RAW_DIR = os.path.join(SCRIPT_DIR, "原截图")
+RAW_DIR = os.path.join(SCRIPT_DIR, "raw")
 
 # Font configuration (macOS)
 FONT_PATH = "/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc"
@@ -55,49 +55,49 @@ SIZES = {
 # Screenshot definitions
 SCREENSHOTS = [
     {
-        "file": "IMG_4998.PNG",
-        "headline": "ワンタップで\n背景を自動除去",
-        "sub": "白・青・グレー・カスタム色から選択",
+        "file": "01_layout.png",
+        "headline": "複数サイズを\n1枚の用紙にまとめて",
+        "sub": "背景除去・サイズも枚数も自由に設定",
         "bg": ((0, 102, 204), (0, 71, 153)),
         "text_color": WHITE,
     },
     {
-        "file": "IMG_4999.PNG",
-        "headline": "9種類の証明写真を\n1枚にまとめて印刷",
-        "sub": "300DPI高画質・サイズ標注つきプレビュー",
+        "file": "02_entry.png",
+        "headline": "印刷用も申請用も\nこれひとつで",
+        "sub": "印刷レイアウト／写真1枚のみ を選ぶだけ",
         "bg": ((45, 85, 135), (30, 60, 100)),
         "text_color": WHITE,
     },
     {
-        "file": "IMG_5001.PNG",
-        "headline": "サイズも枚数も\n自由自在に設定",
-        "sub": "パスポート・履歴書・運転免許証 etc.",
+        "file": "03_preview.png",
+        "headline": "仕上がりを\n拡大して確認",
+        "sub": "300DPI高画質・ピンチで拡大",
         "bg": ((0, 122, 255), (0, 90, 200)),
         "text_color": WHITE,
     },
     {
-        "file": "IMG_5003.PNG",
-        "headline": "背景色を\n自由にカスタマイズ",
-        "sub": "プリセット＋カラーピッカーで自在に",
+        "file": "04_crop.png",
+        "headline": "定規とガイドで\n規格どおりに調整",
+        "sub": "頭頂・あごの位置を見ながらトリミング",
         "bg": ((200, 80, 50), (160, 55, 35)),
         "text_color": WHITE,
     },
     {
-        "file": "IMG_4869.PNG",
+        "file": "05_beauty.png",
         "headline": "プロ級の美肌加工を\n指でなぞるだけ",
         "sub": "美肌・クマ除去・シワ除去",
         "bg": ((90, 60, 150), (65, 40, 115)),
         "text_color": WHITE,
     },
     {
-        "file": "IMG_4870.PNG",
-        "headline": "履歴からいつでも\n無料で再利用",
-        "sub": "一度共有した写真は何度でも無料",
+        "file": "06_single.png",
+        "headline": "オンライン申請用に\n1枚だけ書き出し",
+        "sub": "600dpi JPEG・マイナンバー／パスポート申請に",
         "bg": ((34, 139, 87), (25, 105, 65)),
         "text_color": WHITE,
     },
     {
-        "file": "IMG_5002.PNG",
+        "file": "07_pricing.png",
         "headline": "写真館より\n断然おトク",
         "sub": "作成・プレビュー・美肌加工は無料",
         "bg": ((50, 50, 55), (35, 35, 38)),

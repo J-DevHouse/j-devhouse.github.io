@@ -1,327 +1,221 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>J-DevHouse</title>
-<meta name="description" content="J-DevHouse が開発したアプリ一覧。家計簿、Shashin+、CurrencyCam、VideoSorter、AirConnect。">
+<title>AI Doc Reader - Markdown Viewer for macOS, iPhone &amp; iPad</title>
+<meta name="description" content="A fast, native macOS, iPhone &amp; iPad reader and smart editor for Markdown documents — ideal for AI-generated docs. One Pro purchase unlocks all your Apple devices. Renders Mermaid diagrams, KaTeX math, highlighted code, with folder search, Git diff, and PDF/PNG export.">
 <style>
   :root {
-    --bg: #f5f5f7;
-    --card: #ffffff;
-    --text: #1d1d1f;
-    --text-sub: #6e6e73;
-    --radius: 18px;
+    --bg: #f2f2f7; --card-bg: #ffffff; --text: #1c1c1e; --text-secondary: #8e8e93;
+    --accent: #007aff; --separator: rgba(60,60,67,0.12);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    color: var(--text);
-    line-height: 1.6;
-    background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --card-bg: #1c1c1e; --text: #ffffff; --text-secondary: #98989d;
+      --accent: #0a84ff; --separator: rgba(84,84,88,0.36); --shadow: none;
+    }
   }
-  a { text-decoration: none; color: inherit; }
-
-  /* ===== Header ===== */
-  .header {
-    text-align: center;
-    padding: 72px 24px 48px;
-  }
-  .header h1 {
-    font-size: 36px;
-    font-weight: 800;
-    letter-spacing: 1px;
-  }
-  .header p {
-    margin-top: 12px;
-    font-size: 16px;
-    color: var(--text-sub);
-  }
-
-  /* ===== App Grid ===== */
-  .apps {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  .app-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 36px 28px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    transition: transform 0.25s, box-shadow 0.25s;
-    display: flex;
-    flex-direction: column;
-  }
-  .app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  }
-  .app-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    flex-shrink: 0;
-    object-fit: cover;
-  }
-  .app-card h2 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .app-card .tagline {
-    font-size: 14px;
-    color: var(--text-sub);
-    margin-bottom: 16px;
-  }
-  .app-card .desc {
-    font-size: 14px;
-    color: var(--text-sub);
-    line-height: 1.7;
-    flex: 1;
-  }
-  .app-card .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 20px;
-  }
-  .tag {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-    background: #f0f0f5;
-    color: var(--text-sub);
-  }
-  .app-card .link {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #007AFF;
-  }
-  .app-card .link:hover {
-    text-decoration: underline;
-  }
-
-
-  /* ===== Footer ===== */
-  .footer {
-    text-align: center;
-    padding: 32px 20px;
-    font-size: 13px;
-    color: var(--text-sub);
-    margin-top: auto;
-  }
-  .footer a {
-    color: var(--text-sub);
-    margin: 0 10px;
-  }
-  .footer a:hover { text-decoration: underline; }
-  .footer .copy { margin-top: 8px; opacity: 0.6; font-size: 12px; }
-
-  @media (max-width: 640px) {
-    .header { padding: 52px 20px 36px; }
-    .header h1 { font-size: 28px; }
-    .apps { grid-template-columns: 1fr; }
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  .hero { background: linear-gradient(135deg, #007aff 0%, #5856d6 100%); color: #fff; text-align: center; padding: 60px 24px 48px; }
+  .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); margin-bottom: 20px; }
+  .hero h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .hero .subtitle { font-size: 16px; opacity: 0.92; margin-bottom: 14px; }
+  .hero .universal-pill { display: inline-block; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); font-size: 13px; font-weight: 600; letter-spacing: 0.1px; margin-bottom: 22px; backdrop-filter: blur(8px); }
+  .hero .badge { display: inline-block; }
+  .hero .badge img { width: 180px; height: auto; border-radius: 0; box-shadow: none; }
+  .lang-switch { text-align: center; padding: 20px 0 0; }
+  .lang-switch a { display: inline-block; margin: 3px 4px; padding: 7px 16px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow); transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: var(--accent); color: #fff; }
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 20px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .tagline { text-align: center; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .tagline-sub { text-align: center; font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
+  .universal-banner { background: linear-gradient(135deg, rgba(0,122,255,0.12) 0%, rgba(88,86,214,0.12) 100%); border: 1px solid rgba(88,86,214,0.28); border-radius: 18px; padding: 20px 22px; margin-bottom: 24px; display: flex; gap: 16px; align-items: flex-start; }
+  .universal-banner .u-icon { flex-shrink: 0; display: flex; gap: 2px; color: #5856d6; }
+  .universal-banner .u-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .universal-banner h2 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .universal-banner p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
+  @media (max-width: 520px) { .features { grid-template-columns: 1fr; } .universal-banner { flex-direction: column; gap: 8px; } }
+  .feature { background: var(--card-bg); border-radius: 16px; padding: 22px 20px; box-shadow: var(--shadow); }
+  .feature .icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--tint); background: color-mix(in srgb, var(--tint) 14%, transparent); }
+  .feature .icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .feature h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .feature p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+  .screenshots { text-align: center; margin-bottom: 36px; }
+  .screenshots h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+  .screenshot-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .screenshot-scroll img { height: 420px; width: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); scroll-snap-align: center; flex-shrink: 0; }
+  .links { text-align: center; margin-top: 32px; }
+  .links a { display: inline-block; margin: 0 10px 10px; color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .links a:hover { text-decoration: underline; }
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-secondary); }
 </style>
+<script>
+var appInfo = {
+  'en': { name: 'AI Doc Reader', subtitle: 'Markdown View · macOS, iPhone & iPad', pill: 'Universal Purchase · One Pro for Mac, iPhone & iPad', badge: 'en-us', htmlLang: 'en',      title: 'AI Doc Reader - Markdown Viewer for macOS, iPhone & iPad', badgeAlt: 'Download on the App Store' },
+  'ja': { name: 'AI文書リーダー', subtitle: 'Markdownビューア · macOS / iPhone / iPad', pill: 'ユニバーサル購入 · 1つの Pro で Mac・iPhone・iPad すべて解放', badge: 'ja-jp', htmlLang: 'ja',      title: 'AI文書リーダー - Markdownビューア (macOS / iOS)',          badgeAlt: 'App Storeでダウンロード' },
+  'zh': { name: 'AI文档阅读器',   subtitle: 'Markdown 查看器 · macOS / iPhone / iPad', pill: '通用购买 · 一份 Pro，Mac / iPhone / iPad 三端通用',  badge: 'zh-cn', htmlLang: 'zh-Hans', title: 'AI文档阅读器 - Markdown 查看器 (macOS / iOS)',             badgeAlt: '在 App Store 下载' }
+};
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.lang-switch a').forEach(function(a) { a.classList.remove('active'); });
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  var info = appInfo[lang] || appInfo['en'];
+  document.documentElement.lang = info.htmlLang;
+  document.title = info.title;
+  document.getElementById('app-name').textContent = info.name;
+  document.getElementById('app-subtitle').textContent = info.subtitle;
+  document.getElementById('app-pill').textContent = info.pill;
+  var badge = document.getElementById('app-badge');
+  badge.src = 'https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/' + info.badge + '?size=250x83';
+  badge.alt = info.badgeAlt;
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else switchLang('en');
+};
+</script>
 </head>
 <body>
-
-<div class="header">
-  <h1>J-DevHouse</h1>
-  <p>シンプルで使いやすい iOS アプリを開発しています</p>
+<div class="hero">
+  <img src="icon_256.png" alt="AI Doc Reader App Icon">
+  <h1 id="app-name">AI Doc Reader</h1>
+  <div class="subtitle" id="app-subtitle">Markdown View · macOS, iPhone &amp; iPad</div>
+  <div><span class="universal-pill" id="app-pill">Universal Purchase · One Pro for Mac, iPhone &amp; iPad</span></div>
+  <a class="badge" href="https://apps.apple.com/app/id6806612200" target="_blank" rel="noopener">
+    <img id="app-badge" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+  </a>
 </div>
 
-<div class="apps">
-
-  <!-- 家計簿 -->
-  <div class="app-card">
-    <img class="app-icon" src="MManager/app-icon.jpeg" alt="家計簿">
-    <h2>家計簿</h2>
-    <div class="tagline">レシートを撮るだけ、3ステップで記録完了</div>
-    <div class="desc">
-      Apple Vision の日本語OCRでレシートの日付・金額・カテゴリを自動入力。カレンダー・統計グラフ・ロック画面ウィジェットに対応し、支払い後すぐにワンタップで記録。CSVエクスポートも可能です。
-    </div>
-    <div class="tags">
-      <span class="tag">無料</span>
-      <span class="tag">iOS 17+</span>
-      <span class="tag">OCR</span>
-      <span class="tag">ウィジェット</span>
-    </div>
-    <a class="link" href="MManager/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- Shashin+ -->
-  <div class="app-card">
-    <img class="app-icon" src="Shashin+/icon.png" alt="Shashin+">
-    <h2>Shashin+</h2>
-    <div class="tagline">スマホで、プロ品質の証明写真</div>
-    <div class="desc">
-      パスポート・履歴書・免許証など各種サイズに対応。AI背景除去・美肌加工・自動レイアウトで1枚に複数サイズを混載でき、家族の証明写真もまとめて1枚に。オンライン申請用の1枚書き出しにも対応。300DPI高品質出力でコンビニ印刷にも最適。履歴から何度でも無料で再共有可能。
-    </div>
-    <div class="tags">
-      <span class="tag">AI背景除去</span>
-      <span class="tag">美肌加工</span>
-      <span class="tag">自動レイアウト</span>
-      <span class="tag">家族まとめて1枚</span>
-      <span class="tag">300DPI</span>
-    </div>
-    <a class="link" href="Shashin+/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- CurrencyCam -->
-  <div class="app-card">
-    <img class="app-icon" src="CurrencyCam/icon_256.png" alt="CurrencyCam">
-    <h2>CurrencyCam</h2>
-    <div class="tagline">カメラを向けるだけで即座に換算</div>
-    <div class="desc">
-      値札・レシート・メニューにカメラを向けるだけ。取込枠はドラッグ＆ピンチで自由に調整。50以上の通貨に対応し、インドのlakh表記・欧州のコンマ小数など世界中の数値フォーマットを自動認識。オフライン動作・カスタムレート設定も可能。ホーム画面ウィジェットに対応し、サブスクリプションで広告を非表示にできます。
-    </div>
-    <div class="tags">
-      <span class="tag">50+通貨</span>
-      <span class="tag">OCR</span>
-      <span class="tag">オフライン</span>
-      <span class="tag">ウィジェット</span>
-      <span class="tag">13言語対応</span>
-    </div>
-    <a class="link" href="CurrencyCam/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- VideoSorter -->
-  <div class="app-card">
-    <img class="app-icon" src="VideoSorter/icon_256.png" alt="VideoSorter">
-    <h2>VideoSorter</h2>
-    <div class="tagline">スケジュールに合わせて動画を自動分類</div>
-    <div class="desc">
-      曜日・時間帯・日付範囲・動画の長さでルールを設定するだけで、フォトライブラリの動画を自動でフォルダに振り分け。アプリを開くたびに新しい動画を自動同期。講義録画の整理に最適。すべてデバイス上で処理、アプリ内で再生も可能。サブスクリプションで広告を非表示にできます。
-    </div>
-    <div class="tags">
-      <span class="tag">自動分類</span>
-      <span class="tag">自動同期</span>
-      <span class="tag">オフライン</span>
-      <span class="tag">6言語対応</span>
-    </div>
-    <a class="link" href="VideoSorter/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- TempoFlow -->
-  <div class="app-card">
-    <img class="app-icon" src="TempoFlow/icon.png" alt="TempoFlow">
-    <h2>TempoFlow</h2>
-    <div class="tagline">ダンサーのための8カウント・メトロノーム</div>
-    <div class="desc">
-      取り込んだ曲のBPMと8カウントの「1」を自動検出し、音楽とズレずにクリック音を同期。0.5x/0.75xのスロー練習や1タップの拍頭補正に対応。完全オフライン、広告なし。
-    </div>
-    <div class="tags">
-      <span class="tag">無料</span>
-      <span class="tag">8カウント</span>
-      <span class="tag">オフライン</span>
-      <span class="tag">日英対応</span>
-    </div>
-    <a class="link" href="TempoFlow/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- WhenCanUFire -->
-  <div class="app-card">
-    <img class="app-icon" src="WhenCanUFire/icon.png" alt="WhenCanUFire">
-    <h2>WhenCanUFire</h2>
-    <div class="tagline">あと何年でFIREできるか、ひと目で分かる</div>
-    <div class="desc">
-      今の収支と資産からFIRE達成時期をモンテカルロ法と決定論モデルで試算。Coast FIRE・What-If分析・目標年齢からの逆算・家計簿CSV取込に対応。完全ローカル保存。
-    </div>
-    <div class="tags">
-      <span class="tag">無料</span>
-      <span class="tag">FIRE試算</span>
-      <span class="tag">ローカル保存</span>
-      <span class="tag">3言語対応</span>
-    </div>
-    <a class="link" href="WhenCanUFire/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- 医療費レシート -->
-  <div class="app-card">
-    <img class="app-icon" src="IryohiReceipt/icon.png" alt="医療費レシート">
-    <h2>医療費レシート</h2>
-    <div class="tagline">撮るだけで国税庁「医療費集計フォーム」Excel出力</div>
-    <div class="desc">
-      病院・薬局の領収書や市販薬・交通費を端末内OCRで読み取り、家族ごとに集計。国税庁公式「医療費集計フォーム（xlsx）」をそのまま出力できます。大きな文字対応、広告なし。
-    </div>
-    <div class="tags">
-      <span class="tag">確定申告</span>
-      <span class="tag">OCR</span>
-      <span class="tag">国税庁Excel</span>
-      <span class="tag">広告なし</span>
-    </div>
-    <a class="link" href="IryohiReceipt/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- Madori3D -->
-  <div class="app-card">
-    <img class="app-icon" src="Madori3D/icon.png" alt="Madori3D">
-    <h2>Madori3D</h2>
-    <div class="tagline">LiDARで部屋をスキャンして間取り図と3Dモデルを即作成</div>
-    <div class="desc">
-      iPhone ProのLiDAR（RoomPlan）で部屋を歩くだけ。寸法・面積・畳数入りの2D間取り図（PNG）と3Dモデル（USDZ）をアカウント不要・完全オフラインでその場ですぐ書き出せます。
-    </div>
-    <div class="tags">
-      <span class="tag">LiDAR</span>
-      <span class="tag">3D / 2D間取り図</span>
-      <span class="tag">PNG / USDZ</span>
-      <span class="tag">日英対応</span>
-    </div>
-    <a class="link" href="Madori3D/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- AI Doc Reader -->
-  <div class="app-card">
-    <img class="app-icon" src="MarkdownReader/icon_256.png" alt="AI Doc Reader">
-    <h2>AI Doc Reader</h2>
-    <div class="tagline">AI生成のMarkdownを、図表・数式まで美しく閲覧＆編集</div>
-    <div class="desc">
-      Mermaid図・KaTeX数式・シンタックスハイライトを完全オフラインで表示。iOS/iPadOS と macOS の両対応で、フォルダ全文検索・Mermaidテンプレート編集・PDF/長画像書き出し・Git履歴比較に対応。1つのProでMac・iPhone・iPadすべて解放（ユニバーサル購入）。広告なし。
-    </div>
-    <div class="tags">
-      <span class="tag">Mac / iPhone / iPad</span>
-      <span class="tag">ユニバーサル購入</span>
-      <span class="tag">Mermaid &amp; KaTeX</span>
-      <span class="tag">広告なし</span>
-    </div>
-    <a class="link" href="MarkdownReader/index.html">詳しく見る &rarr;</a>
-  </div>
-
-  <!-- AirConnect -->
-  <div class="app-card">
-    <img class="app-icon" src="AirConnect/app-icon.png" alt="AirConnect">
-    <h2>AirConnect</h2>
-    <div class="tagline">自分のデバイス間で、ファイルもメモも直接転送</div>
-    <div class="desc">
-      同じWiFiでアプリを開くだけで、スマホ・PC・タブレットがお互いを自動発見。写真・リンク・テキストをチャット形式で直接転送でき、サーバーを経由しないため高速でデータも外に出ません。WiFiがない場所でもQRコードで直結可能。
-    </div>
-    <div class="tags">
-      <span class="tag">ローカル転送</span>
-      <span class="tag">iOS / Android / PC</span>
-      <span class="tag">サーバー不要</span>
-      <span class="tag">3言語対応</span>
-    </div>
-    <a class="link" href="AirConnect/index.html">詳しく見る &rarr;</a>
-  </div>
-
+<div class="lang-switch">
+  <a href="javascript:switchLang('en')" data-lang="en" class="active">English</a>
+  <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+  <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
 </div>
 
-<div class="footer">
-  <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
-  <div class="copy">&copy; 2026 J-DevHouse</div>
+<div class="container">
+
+  <!-- English -->
+  <div id="en" class="section active">
+    <p class="tagline">The Missing Reader for AI-Generated Documents</p>
+    <p class="tagline-sub">Today's AI tools write in Markdown. AI Doc Reader turns raw .md output into a clean, beautiful document &mdash; diagrams, math, code and all.</p>
+
+    <div class="universal-banner">
+      <div class="u-icon"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16'/></svg><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg></div>
+      <div>
+        <h2>One Purchase, Every Apple Device</h2>
+        <p>Start on Mac with multi-window editing and Git diff, then pick up right where you left off on iPhone or iPad via iCloud Drive folders. Pro is a <strong>Universal Purchase</strong> &mdash; unlock once with your Apple Account and enjoy Pro across Mac, iPhone, and iPad.</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div><h3>Renders Everything</h3><p>Mermaid diagrams (with full-screen zoom), KaTeX math formulas, syntax-highlighted code blocks, tables and task lists &mdash; all displayed properly, offline.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><circle cx='11.5' cy='12.5' r='2.5'/><path d='M13.3 14.3 15 16'/></svg></div><h3>Folder Workspace &amp; Search</h3><p>Link any iCloud, Obsidian, or local folder to browse all Markdown files with instant full-text search and auto-generated table of contents.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 20h9'/><path d='M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z'/></svg></div><h3>Smart Editor &amp; Mermaid Shortcuts</h3><p>One-tap 8 Mermaid diagram templates, KaTeX math helpers, code blocks, table builder, and live Edit / Preview across Mac, iPhone &amp; iPad.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></div><h3>HD PDF &amp; Long PNG Export</h3><p>Export cleanly formatted PDFs or high-resolution long PNG images for sharing, plus Git version history side-by-side diff on macOS.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='10'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/><path d='M2 12h20'/></svg></div><h3>Native Across Apple Devices</h3><p>100% native SwiftUI on iOS/iPadOS and lightweight native app on macOS. English, Japanese, and Simplified Chinese with Light, Dark, and Sepia themes.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></div><h3>Zero Ads · Universal Pro</h3><p>Reading is free forever with zero ads. Optional Pro (Monthly ¥100 / Annual ¥800 / Lifetime ¥1,500 &mdash; Universal across Mac, iPhone &amp; iPad) unlocks editing, folder search, PDF/PNG export, Git diff, and Sepia theme. 100% offline.</p></div>
+    </div>
+
+    <div class="screenshots">
+      <h2>Screenshots</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/en_folder.png" alt="Folder tree with rendered document">
+        <img src="ScreenShot/en_doc.png" alt="Document with table of contents">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <p class="tagline">AIが生成した文書のためのリーダー</p>
+    <p class="tagline-sub">AIツールの出力はMarkdownがほとんど。AI Doc Readerは.mdファイルを図・数式・コードまで美しく表示します。</p>
+
+    <div class="universal-banner">
+      <div class="u-icon"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16'/></svg><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg></div>
+      <div>
+        <h2>1 度の購入で Mac・iPhone・iPad すべて対応</h2>
+        <p>Mac でマルチウィンドウ編集や Git 履歴比較を行い、移動中は iCloud フォルダ経由で iPhone / iPad からそのまま閲覧・編集。Pro は<strong>ユニバーサル購入</strong>対応のため、同じ Apple Account の全デバイスで追加課金なしに使えます。</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div><h3>あらゆる要素を表示</h3><p>Mermaid図（全画面拡大対応）、KaTeX数式、シンタックスハイライト付きコード、表、タスクリストを完全オフラインで正確にレンダリング。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><circle cx='11.5' cy='12.5' r='2.5'/><path d='M13.3 14.3 15 16'/></svg></div><h3>フォルダ連携＆全文検索</h3><p>iCloud や Obsidian、ローカルフォルダをリンクして高速に全文検索。各文書の目次も自動生成されます。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 20h9'/><path d='M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z'/></svg></div><h3>スマート編集＆Mermaidショートカット</h3><p>Mac・iPhone・iPad すべてで Mermaid 8種テンプレート、数式・コード・テーブル挿入、ライブプレビュー編集に対応。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></div><h3>PDF＆長画像書き出し</h3><p>図表・数式入りの文書を高画質 PDF や長い PNG 画像として共有可能。macOS 版では Git 履歴の並列 Diff 比較にも対応。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='10'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/><path d='M2 12h20'/></svg></div><h3>Apple エコシステム ネイティブ</h3><p>iOS/iPadOS は純 SwiftUI ネイティブ、macOS も軽量ネイティブ。日英中 3 言語、ライト/ダーク/セピアテーマ対応。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></div><h3>広告なし・3デバイス共通 Pro</h3><p>閲覧機能は完全無料・広告なし。Pro（月額 ¥100 / 年額 ¥800 / 買い切り ¥1,500・Mac/iPhone/iPad 共通）で編集・フォルダ検索・PDF/PNG 書き出し・Git 履歴・セピアテーマを解放。完全オフライン。</p></div>
+    </div>
+
+    <div class="screenshots">
+      <h2>スクリーンショット</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/ja_folder.png" alt="フォルダツリーと文書表示">
+        <img src="ScreenShot/ja_doc.png" alt="目次付き文書表示">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="support.html?lang=ja">サポート</a> · <a href="privacy.html?lang=ja">プライバシーポリシー</a>
+    </div>
+  </div>
+
+  <!-- Simplified Chinese -->
+  <div id="zh" class="section">
+    <p class="tagline">为 AI 生成的文档而生的阅读器</p>
+    <p class="tagline-sub">如今 AI 工具的输出几乎都是 Markdown。AI Doc Reader 把原始 .md 文件渲染成排版精美的文档——图表、公式、代码一个不落。</p>
+
+    <div class="universal-banner">
+      <div class="u-icon"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16'/></svg><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg></div>
+      <div>
+        <h2>一次购买，Mac / iPhone / iPad 三端通用</h2>
+        <p>在 Mac 上多窗口写作、看 Git 版本历史对比；出门时通过 iCloud 文件夹在 iPhone / iPad 上无缝继续阅读与编辑。Pro 支持<strong>苹果通用购买（Universal Purchase）</strong>，同一 Apple ID 下所有设备自动解锁，无需重复付费。</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div><h3>完整渲染</h3><p>Mermaid 图表（支持全屏缩放）、KaTeX 数学公式、语法高亮代码块、表格与任务清单，全部离线精准呈现。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><circle cx='11.5' cy='12.5' r='2.5'/><path d='M13.3 14.3 15 16'/></svg></div><h3>文件夹工作区与全文搜索</h3><p>关联 iCloud / Obsidian / 本地文件夹，跨文档全文检索直达行号，每篇文档自动生成目录。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 20h9'/><path d='M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z'/></svg></div><h3>智能编辑与 Mermaid 快捷键</h3><p>Mac / iPhone / iPad 全端支持 8 种 Mermaid 图表模板、KaTeX 公式、多语言代码块与表格快捷插入，实时预览。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></div><h3>高清 PDF &amp; 长图导出</h3><p>一键将 AI 文档导出为高清 PDF 或长图 PNG 分享，macOS 版同时支持 Git 版本历史并排 Diff 对比。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='10'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/><path d='M2 12h20'/></svg></div><h3>全苹果生态原生体验</h3><p>iOS / iPadOS 纯 SwiftUI 原生打造，macOS 轻量原生应用；中/日/英三语界面与浅色、深色及护眼纸色主题。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></div><h3>零广告 · 三端通用 Pro</h3><p>离线阅读永久免费无广告；Pro（¥100/月、¥800/年 或 ¥1,500 终身买断，Mac/iPhone/iPad 通用）解锁编辑、文件夹搜索、PDF/长图导出、Git 历史与护眼主题。纯本地离线运行。</p></div>
+    </div>
+
+    <div class="screenshots">
+      <h2>应用截图</h2>
+      <div class="screenshot-scroll">
+        <img src="ScreenShot/zh_folder.png" alt="文件夹树与文档渲染">
+        <img src="ScreenShot/zh_doc.png" alt="带目录的文档视图">
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="support.html?lang=zh">支持</a> · <a href="privacy.html?lang=zh">隐私政策</a>
+    </div>
+  </div>
+
+  <div class="footer">© 2026 J-DevHouse</div>
 </div>
 
 </body>

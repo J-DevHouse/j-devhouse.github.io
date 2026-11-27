@@ -25,7 +25,8 @@
   .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; }
   @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
   .feature { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 22px 20px; }
-  .feature .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature .icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--tint); background: color-mix(in srgb, var(--tint) 14%, transparent); }
+  .feature .icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .feature h3 { font-size: 16px; color: #1a1a1a; margin-bottom: 6px; }
   .feature p { font-size: 14px; color: #666; margin: 0; }
   .screenshots { text-align: center; margin-bottom: 36px; }
@@ -96,32 +97,32 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4F7;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></div>
         <h3>Smart Camera Detection</h3>
         <p>Point your camera at any price tag, receipt, or menu. Drag or pinch the adjustable frame to target a single price &mdash; smart OCR filters out dates, phone numbers and product codes.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4B1;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 3 4 7l4 4'/><path d='M4 7h16'/><path d='m16 21 4-4-4-4'/><path d='M20 17H4'/></svg></div>
         <h3>50+ Currencies &amp; Local Formats</h3>
         <p>Currencies grouped by region (Asia-Pacific, Americas, Europe, and more) with multi-select. Supports global formats: Indian lakh (1,23,456), European comma decimals (19,99), Vietnamese dot-thousands (150.000).</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2328;&#xFE0F;</div>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='20' height='16' x='2' y='4' rx='2'/><path d='M6 8h.01'/><path d='M10 8h.01'/><path d='M14 8h.01'/><path d='M18 8h.01'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/><path d='M7 16h10'/></svg></div>
         <h3>Manual Input Mode</h3>
         <p>Tap the keyboard icon to manually enter amounts. Instantly see conversions to all your target currencies at once.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2708;&#xFE0F;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></div>
         <h3>Works Offline</h3>
         <p>No internet connection needed. Built-in exchange rates work anywhere in the world.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2699;&#xFE0F;</div>
+        <div class="icon" style="--tint: #8e8e93"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></div>
         <h3>Custom Exchange Rates</h3>
         <p>Set your own rates for the most accurate conversions. Look up live rates with one tap.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x26A1;</div>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg></div>
         <h3>Fast &amp; Lightweight</h3>
         <p>On-device text recognition — camera images never leave your phone. 13 languages, no sign-up required.</p>
       </div>
@@ -153,32 +154,32 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4F7;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></div>
         <h3>スマートカメラ検出</h3>
         <p>値札・レシート・メニューにカメラを向けるだけ。取景框はドラッグ＆ピンチで自由に調整でき、読みたい金額だけを枠内に収められます。日付・電話番号・商品番号は自動で除外。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4B1;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 3 4 7l4 4'/><path d='M4 7h16'/><path d='m16 21 4-4-4-4'/><path d='M20 17H4'/></svg></div>
         <h3>50以上の通貨と各国フォーマット</h3>
         <p>通貨はアジア太平洋・アメリカ・ヨーロッパなど地域別にグループ表示され、複数選択も簡単。インドのlakh表記(1,23,456)・欧州のコンマ小数(19,99)・ベトナムのドット千分位(150.000)など世界中の形式に対応。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2328;&#xFE0F;</div>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='20' height='16' x='2' y='4' rx='2'/><path d='M6 8h.01'/><path d='M10 8h.01'/><path d='M14 8h.01'/><path d='M18 8h.01'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/><path d='M7 16h10'/></svg></div>
         <h3>手動入力モード</h3>
         <p>キーボードアイコンをタップして金額を手動入力。すべての目標通貨への換算結果を一覧表示します。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2708;&#xFE0F;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></div>
         <h3>オフラインで動作</h3>
         <p>インターネット接続不要。内蔵の為替レートで世界中どこでも使えます。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2699;&#xFE0F;</div>
+        <div class="icon" style="--tint: #8e8e93"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></div>
         <h3>カスタム為替レート</h3>
         <p>独自のレートを設定して正確な換算を。ワンタップでライブレートも検索できます。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x26A1;</div>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg></div>
         <h3>高速＆軽量</h3>
         <p>文字認識は端末内で完結し、カメラの画像は外部に送信されません。13言語対応、登録不要。</p>
       </div>
@@ -210,32 +211,32 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4F7;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></div>
         <h3>智能摄像头识别</h3>
         <p>将摄像头对准任何价签、收据或菜单，取景框可自由拖动与缩放，只把想识别的金额框进去。智能 OCR 自动过滤日期、电话号码和商品编号。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4B1;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 3 4 7l4 4'/><path d='M4 7h16'/><path d='m16 21 4-4-4-4'/><path d='M20 17H4'/></svg></div>
         <h3>50+币种与各国价格格式</h3>
         <p>货币按地区（亚太、美洲、欧洲等）分组显示，支持批量选择。覆盖印度 lakh 分组(1,23,456)、欧洲逗号小数(19,99)、越南点千分位(150.000)等全球价格格式。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2328;&#xFE0F;</div>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='20' height='16' x='2' y='4' rx='2'/><path d='M6 8h.01'/><path d='M10 8h.01'/><path d='M14 8h.01'/><path d='M18 8h.01'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/><path d='M7 16h10'/></svg></div>
         <h3>手动输入模式</h3>
         <p>点击键盘图标手动输入金额，即时显示所有目标货币的换算结果。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2708;&#xFE0F;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></div>
         <h3>离线可用</h3>
         <p>无需网络连接，内置汇率让你在世界任何角落都能使用。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2699;&#xFE0F;</div>
+        <div class="icon" style="--tint: #8e8e93"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></div>
         <h3>自定义汇率</h3>
         <p>设置自己的汇率以获得最准确的换算结果。一键查询实时汇率。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x26A1;</div>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg></div>
         <h3>快速轻量</h3>
         <p>文字识别在设备端完成，相机画面不会离开你的手机。支持13种语言，无需注册。</p>
       </div>
@@ -267,32 +268,32 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4F7;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></div>
         <h3>智慧相機辨識</h3>
         <p>將相機對準任何價標、收據或菜單，取景框可自由拖曳與縮放，只把想辨識的金額框進去。智慧 OCR 自動過濾日期、電話號碼和商品編號。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4B1;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 3 4 7l4 4'/><path d='M4 7h16'/><path d='m16 21 4-4-4-4'/><path d='M20 17H4'/></svg></div>
         <h3>50+幣種與各國價格格式</h3>
         <p>貨幣依地區（亞太、美洲、歐洲等）分組顯示，支援批次選擇。涵蓋印度 lakh 分組(1,23,456)、歐洲逗號小數(19,99)、越南點千分位(150.000)等全球價格格式。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2328;&#xFE0F;</div>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='20' height='16' x='2' y='4' rx='2'/><path d='M6 8h.01'/><path d='M10 8h.01'/><path d='M14 8h.01'/><path d='M18 8h.01'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/><path d='M7 16h10'/></svg></div>
         <h3>手動輸入模式</h3>
         <p>點擊鍵盤圖示手動輸入金額，即時顯示所有目標貨幣的換算結果。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2708;&#xFE0F;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></div>
         <h3>離線可用</h3>
         <p>無需網路連線，內建匯率讓你在世界任何角落都能使用。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2699;&#xFE0F;</div>
+        <div class="icon" style="--tint: #8e8e93"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></div>
         <h3>自訂匯率</h3>
         <p>設定自己的匯率以獲得最準確的換算結果。一鍵查詢即時匯率。</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x26A1;</div>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg></div>
         <h3>快速輕量</h3>
         <p>文字辨識在裝置端完成，相機畫面不會離開你的手機。支援13種語言，無需註冊。</p>
       </div>
@@ -324,32 +325,32 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4F7;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></div>
         <h3>Detecci&oacute;n inteligente</h3>
         <p>Apunta tu c&aacute;mara a cualquier etiqueta de precio. Arrastra o pellizca el marco ajustable para enfocar un solo precio &mdash; el OCR inteligente filtra fechas, tel&eacute;fonos y c&oacute;digos de producto.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4B1;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 3 4 7l4 4'/><path d='M4 7h16'/><path d='m16 21 4-4-4-4'/><path d='M20 17H4'/></svg></div>
         <h3>50+ monedas y formatos locales</h3>
         <p>Monedas agrupadas por regi&oacute;n (Asia-Pac&iacute;fico, Am&eacute;ricas, Europa y m&aacute;s) con selecci&oacute;n m&uacute;ltiple. Compatible con formatos globales: lakh indio (1,23,456), decimales europeos (19,99), miles vietnamitas (150.000).</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2328;&#xFE0F;</div>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='20' height='16' x='2' y='4' rx='2'/><path d='M6 8h.01'/><path d='M10 8h.01'/><path d='M14 8h.01'/><path d='M18 8h.01'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/><path d='M7 16h10'/></svg></div>
         <h3>Entrada manual</h3>
         <p>Toca el icono del teclado para ingresar montos manualmente. Ve las conversiones a todas tus monedas de destino al instante.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2708;&#xFE0F;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></div>
         <h3>Funciona sin conexi&oacute;n</h3>
         <p>No necesitas internet. Las tasas de cambio integradas funcionan en cualquier parte del mundo.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2699;&#xFE0F;</div>
+        <div class="icon" style="--tint: #8e8e93"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></div>
         <h3>Tasas personalizadas</h3>
         <p>Configura tus propias tasas para conversiones m&aacute;s precisas. Consulta tasas en vivo con un toque.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x26A1;</div>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg></div>
         <h3>R&aacute;pido y ligero</h3>
         <p>Reconocimiento de texto en el dispositivo: las im&aacute;genes de la c&aacute;mara nunca salen de tu tel&eacute;fono. 13 idiomas, sin registro.</p>
       </div>
@@ -381,32 +382,32 @@ window.onload = function() {
 
     <div class="features">
       <div class="feature">
-        <div class="icon">&#x1F4F7;</div>
+        <div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></div>
         <h3>스마트 카메라 인식</h3>
         <p>가격표, 영수증, 메뉴판에 카메라를 비추기만 하면 됩니다. 스캔 프레임을 드래그하거나 핀치로 크기를 조절해 원하는 금액만 집어낼 수 있고, 스마트 OCR이 날짜·전화번호·상품 코드는 자동으로 걸러냅니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x1F4B1;</div>
+        <div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 3 4 7l4 4'/><path d='M4 7h16'/><path d='m16 21 4-4-4-4'/><path d='M20 17H4'/></svg></div>
         <h3>50개 이상의 통화와 로컬 형식</h3>
         <p>통화가 지역별(아시아-태평양, 아메리카, 유럽 등)로 묶여 있어 여러 개를 한 번에 선택할 수 있습니다. 인도식 lakh(1,23,456), 유럽식 쉼표 소수(19,99), 베트남식 점 천단위(150.000) 등 전 세계 가격 형식을 지원합니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2328;&#xFE0F;</div>
+        <div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='20' height='16' x='2' y='4' rx='2'/><path d='M6 8h.01'/><path d='M10 8h.01'/><path d='M14 8h.01'/><path d='M18 8h.01'/><path d='M8 12h.01'/><path d='M12 12h.01'/><path d='M16 12h.01'/><path d='M7 16h10'/></svg></div>
         <h3>수동 입력 모드</h3>
         <p>키보드 아이콘을 탭하여 금액을 직접 입력하세요. 모든 대상 통화로의 환산 결과가 한 번에 표시됩니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2708;&#xFE0F;</div>
+        <div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></div>
         <h3>오프라인 작동</h3>
         <p>인터넷 연결이 필요 없습니다. 내장된 환율로 전 세계 어디서나 사용할 수 있습니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x2699;&#xFE0F;</div>
+        <div class="icon" style="--tint: #8e8e93"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></div>
         <h3>사용자 지정 환율</h3>
         <p>정확한 환산을 위해 직접 환율을 설정하세요. 한 번의 탭으로 실시간 환율을 조회할 수 있습니다.</p>
       </div>
       <div class="feature">
-        <div class="icon">&#x26A1;</div>
+        <div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg></div>
         <h3>빠르고 가벼움</h3>
         <p>문자 인식은 기기 안에서 처리되며 카메라 이미지는 휴대폰 밖으로 나가지 않습니다. 13개 언어 지원, 가입 불필요.</p>
       </div>

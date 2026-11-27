@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurrencyCam - Support</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #333; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #e0e0e0; }
+  .header h1 { font-size: 28px; color: #1a1a1a; margin-bottom: 4px; }
+  .header .app-name { font-size: 15px; color: #666; margin-bottom: 8px; }
+  .lang-switch { text-align: center; margin-bottom: 32px; }
+  .lang-switch a { display: inline-block; margin: 0 6px; padding: 6px 14px; font-size: 13px; color: #555; text-decoration: none; border: 1px solid #ddd; border-radius: 6px; transition: all .2s; }
+  .lang-switch a:hover, .lang-switch a.active { background: #007AFF; color: #fff; border-color: #007AFF; }
+  .section { display: none; }
+  .section.active { display: block; }
+  h2 { font-size: 20px; color: #1a1a1a; margin: 28px 0 12px; }
+  p, li { font-size: 15px; color: #444; margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  .faq-item { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+  .faq-item h3 { font-size: 16px; color: #1a1a1a; margin-bottom: 8px; }
+  .faq-item p { margin-bottom: 0; font-size: 14px; color: #555; }
+  .contact-card { background: linear-gradient(135deg, #007AFF, #0055CC); color: #fff; border-radius: 12px; padding: 28px; margin-top: 32px; text-align: center; }
+  .contact-card h2 { color: #fff; margin: 0 0 12px; }
+  .contact-card p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+  .contact-card a { display: inline-block; background: #fff; color: #007AFF; text-decoration: none; padding: 10px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; }
+  .contact-card a:hover { background: #f0f0f0; }
+  .tip { background: #fff3cd; border-left: 3px solid #ffc107; padding: 12px 16px; border-radius: 4px; margin: 16px 0; }
+  .tip p { margin-bottom: 0; color: #856404; font-size: 14px; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #e0e0e0; font-size: 13px; color: #999; }
+  .ico { width: 1.1em; height: 1.1em; vertical-align: -0.2em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+<script>
+var APP_NAMES = {'en':'CurrencyCam','ja':'為替カメラ','zh':'汇率相机','zh-hant':'匯率相機','es':'CámaraTasa','ko':'환율 카메라'};
+var PAGE_TITLES = {'en':'Support','ja':'サポート','zh':'帮助与支持','zh-hant':'幫助與支援','es':'Soporte','ko':'고객 지원'};
+function switchLang(lang) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+  document.getElementById('header-appname').textContent = APP_NAMES[lang];
+  document.getElementById('header-title').textContent = PAGE_TITLES[lang];
+  document.title = APP_NAMES[lang] + ' - ' + PAGE_TITLES[lang];
+}
+window.onload = function() {
+  var p = new URLSearchParams(window.location.search);
+  var forced = p.get('lang');
+  if (forced && document.getElementById(forced)) {
+    switchLang(forced);
+    document.querySelector('.lang-switch').style.display = 'none';
+    return;
+  }
+  var lang = (navigator.language || '').toLowerCase();
+  if (lang.startsWith('ja')) switchLang('ja');
+  else if (lang === 'zh-tw' || lang === 'zh-hant' || lang.startsWith('zh-hant')) switchLang('zh-hant');
+  else if (lang.startsWith('zh')) switchLang('zh');
+  else if (lang.startsWith('es')) switchLang('es');
+  else if (lang.startsWith('ko')) switchLang('ko');
+  else switchLang('en');
+};
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="app-name" id="header-appname">CurrencyCam</div>
+    <h1 id="header-title">Support</h1>
+  </div>
+  <div class="lang-switch">
+    <a href="javascript:switchLang('en')" data-lang="en">English</a>
+    <a href="javascript:switchLang('ja')" data-lang="ja">日本語</a>
+    <a href="javascript:switchLang('zh')" data-lang="zh">简体中文</a>
+    <a href="javascript:switchLang('zh-hant')" data-lang="zh-hant">繁體中文</a>
+    <a href="javascript:switchLang('es')" data-lang="es">Español</a>
+    <a href="javascript:switchLang('ko')" data-lang="ko">한국어</a>
+  </div>
+
+  <!-- English -->
+  <div id="en" class="section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>How does CurrencyCam work?</h3>
+      <p>Simply point your iPhone camera at any price tag, receipt, or menu. The app uses OCR (Optical Character Recognition) to detect amounts and instantly converts them to your selected currencies.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does the app need an internet connection?</h3>
+      <p>No. Currency detection and conversion work entirely offline using built-in exchange rates. An internet connection is only needed for displaying ads.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>The camera is not detecting any amounts. What should I do?</h3>
+      <p>Try these steps:</p>
+      <ul style="margin-top:8px">
+        <li>Drag and pinch the on-screen frame so only the price you want sits inside it</li>
+        <li>Ensure the text is well-lit and clearly visible</li>
+        <li>Hold the camera steady and at a reasonable distance</li>
+        <li>Make sure the amounts include recognizable numbers (e.g., 1,234 or $56.78)</li>
+        <li>Check that camera permission is granted in iOS Settings > CurrencyCam</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I adjust the scan frame?</h3>
+      <p>Drag the on-screen frame to reposition it, or pinch with two fingers to resize. Narrow the frame onto a single price and the app will ignore unrelated numbers around it &mdash; handy for busy menus or shelf labels.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I add multiple target currencies quickly?</h3>
+      <p>Open Settings &gt; Add Currency. Currencies are grouped by region (Asia-Pacific, Oceania, Americas, Europe, Middle East &amp; Africa). Tap to multi-select, use "Clear All" to reset, and search by name or code.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I change the source or target currency?</h3>
+      <p>Tap the gear icon (<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg>) in the top-right corner to open Settings. You can change the source (detected) currency and add/remove target currencies there.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I set my own exchange rates?</h3>
+      <p>Yes! In Settings, each target currency has an editable rate field. Simply type in your preferred rate and it will be used for all conversions.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I convert to multiple currencies at once?</h3>
+      <p>In Settings, tap the currency selection button to add multiple target currencies. On the main screen, you can quickly switch between them using the currency tabs at the bottom.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I change the app language?</h3>
+      <p>Go to Settings > App Language. CurrencyCam supports English, Japanese, Korean, Simplified Chinese, Traditional Chinese, and Spanish.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Are the exchange rates up to date?</h3>
+      <p>The app includes built-in default rates for offline use. For the most accurate rates, you can manually update them in Settings based on current market rates.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is manual input mode?</h3>
+      <p>Tap the keyboard icon (top-left on the camera screen) to manually type in an amount. You'll instantly see conversions to all your target currencies. Great for when you can't point the camera at a price.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Tip:</strong> Use the camera button (bottom center) to freeze the view and examine detected amounts without the camera updating.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>Still need help?</h2>
+      <p>We're happy to assist. Send us an email and we'll get back to you as soon as possible.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Japanese -->
+  <div id="ja" class="section">
+    <h2>よくあるご質問</h2>
+
+    <div class="faq-item">
+      <h3>為替カメラはどのように使いますか？</h3>
+      <p>iPhoneのカメラを値札、レシート、メニューなどに向けるだけです。OCR（光学文字認識）技術で金額を自動検出し、選択した通貨に即座に換算します。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>インターネット接続は必要ですか？</h3>
+      <p>いいえ。通貨検出と換算は内蔵の為替レートを使用してすべてオフラインで動作します。インターネット接続は広告表示にのみ必要です。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>カメラが金額を検出しません。どうすればいいですか？</h3>
+      <p>以下をお試しください：</p>
+      <ul style="margin-top:8px">
+        <li>取景框をドラッグ・ピンチで調整し、読み取りたい金額だけを枠内に収めてください</li>
+        <li>テキストが十分に明るく、はっきり見えることを確認してください</li>
+        <li>カメラを安定させ、適切な距離を保ってください</li>
+        <li>金額に認識可能な数字が含まれていることを確認してください（例：1,234 や ¥5,678）</li>
+        <li>iOS設定 > 為替カメラ でカメラの許可が有効になっているか確認してください</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>取景框はどう調整しますか？</h3>
+      <p>画面上の取景框はドラッグで移動、2本指のピンチで拡大・縮小できます。読み取りたい金額だけを枠内に収めれば、周囲の無関係な数字は無視されます。ごちゃごちゃしたメニューや値札に便利です。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>目標通貨をまとめて追加するには？</h3>
+      <p>設定 &gt; 通貨を追加 を開いてください。通貨は地域別（アジア太平洋・オセアニア・アメリカ・ヨーロッパ・中東＆アフリカ）にグループ表示され、タップで複数選択、「すべてクリア」で一括解除、名称やコードでの検索もできます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>元通貨や目標通貨を変更するには？</h3>
+      <p>右上の歯車アイコン（<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg>）をタップして設定を開きます。元通貨（検出通貨）の変更や、目標通貨の追加・削除ができます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>独自の為替レートを設定できますか？</h3>
+      <p>はい！設定画面で各目標通貨のレート入力欄を編集できます。お好みのレートを入力すると、すべての換算に適用されます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>複数の通貨に同時換算するには？</h3>
+      <p>設定画面で通貨選択ボタンをタップし、複数の目標通貨を追加します。メイン画面では、下部の通貨タブをタップして素早く切り替えできます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>アプリの言語を変更するには？</h3>
+      <p>設定 > アプリの言語 から変更できます。英語、日本語、韓国語、簡体中文、繁體中文、スペイン語に対応しています。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>為替レートは最新ですか？</h3>
+      <p>オフライン利用のためにデフォルトのレートが内蔵されています。最新のレートを使用したい場合は、設定画面で現在の市場レートに手動で更新できます。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>手動入力モードとは？</h3>
+      <p>カメラ画面左上のキーボードアイコンをタップすると、金額を手動で入力できます。すべての目標通貨への換算結果が即座に表示されます。カメラを向けられない場面で便利です。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>ヒント：</strong>画面下部中央のカメラボタンをタップすると、映像を一時停止して検出された金額をゆっくり確認できます。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>解決しませんか？</h2>
+      <p>お気軽にメールでお問い合わせください。できるだけ早くご返信いたします。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">お問い合わせ</a>
+    </div>
+  </div>
+
+  <!-- Chinese -->
+  <div id="zh" class="section">
+    <h2>常见问题</h2>
+
+    <div class="faq-item">
+      <h3>汇率相机怎么使用？</h3>
+      <p>只需将 iPhone 摄像头对准任何价格标签、收据或菜单。应用使用 OCR（光学字符识别）技术自动检测金额，并即时转换为您选择的货币。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>需要联网吗？</h3>
+      <p>不需要。货币检测和换算使用内置汇率，完全离线运行。仅广告显示需要网络连接。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>相机检测不到金额怎么办？</h3>
+      <p>请尝试以下步骤：</p>
+      <ul style="margin-top:8px">
+        <li>拖动或捏合调整屏幕上的取景框，只把想识别的金额框进去</li>
+        <li>确保文字光线充足、清晰可见</li>
+        <li>保持相机稳定，与文字保持适当距离</li>
+        <li>确保金额包含可识别的数字（如 1,234 或 ¥5,678）</li>
+        <li>检查 iOS 设置 > 汇率相机 中的相机权限是否已开启</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何调整取景框？</h3>
+      <p>屏幕上的取景框可以拖动移动位置，也可以用双指捏合放大或缩小。只把想识别的金额框进去，周围无关的数字就会被忽略，在杂乱的菜单、价签上特别好用。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何一次添加多种目标货币？</h3>
+      <p>打开设置 &gt; 添加货币。货币按地区分组显示（亚太、大洋洲、美洲、欧洲、中东与非洲），轻点即可批量选择，「清空」按钮一键清除，也可按名称或代码搜索。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何更改源货币或目标货币？</h3>
+      <p>点击右上角的齿轮图标（<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg>）打开设置。在设置中可以更改源货币（检测货币），以及添加或删除目标货币。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>可以设置自定义汇率吗？</h3>
+      <p>可以！在设置中，每个目标货币都有可编辑的汇率输入框。输入您想要的汇率，即可应用于所有换算。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何同时换算多种货币？</h3>
+      <p>在设置中点击货币选择按钮，添加多个目标货币。在主界面，通过底部的货币标签可以快速切换。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何切换应用语言？</h3>
+      <p>进入设置 > 应用语言。支持英语、日语、韩语、简体中文、繁体中文和西班牙语。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>汇率是最新的吗？</h3>
+      <p>应用内置了默认汇率供离线使用。如需使用最新汇率，可在设置中根据当前市场汇率手动更新。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>什么是手动输入模式？</h3>
+      <p>点击相机界面左上角的键盘图标，可以手动输入金额。即时显示所有目标货币的换算结果。适合不方便使用相机的场景。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>提示：</strong>点击底部中央的相机按钮可以冻结画面，方便仔细查看检测到的金额。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>还有问题？</h2>
+      <p>欢迎通过邮件联系我们，我们会尽快回复。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">联系我们</a>
+    </div>
+  </div>
+
+  <!-- Traditional Chinese -->
+  <div id="zh-hant" class="section">
+    <h2>常見問題</h2>
+
+    <div class="faq-item">
+      <h3>匯率相機怎麼使用？</h3>
+      <p>只需將 iPhone 相機對準任何價格標籤、收據或菜單。應用程式使用 OCR（光學字元辨識）技術自動偵測金額，並即時轉換為您選擇的貨幣。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>需要連網嗎？</h3>
+      <p>不需要。貨幣偵測和換算使用內建匯率，完全離線運作。僅廣告顯示需要網路連線。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>相機偵測不到金額怎麼辦？</h3>
+      <p>請嘗試以下步驟：</p>
+      <ul style="margin-top:8px">
+        <li>拖曳或捏合調整螢幕上的取景框，只把想辨識的金額框進去</li>
+        <li>確保文字光線充足、清晰可見</li>
+        <li>保持相機穩定，與文字保持適當距離</li>
+        <li>確保金額包含可辨識的數字（如 1,234 或 ¥5,678）</li>
+        <li>檢查 iOS 設定 > 匯率相機 中的相機權限是否已開啟</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何調整取景框？</h3>
+      <p>螢幕上的取景框可以拖曳移動位置，也可以用雙指捏合放大或縮小。只把想辨識的金額框進去，周圍無關的數字就會被忽略，在雜亂的菜單、價標上特別好用。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何一次新增多種目標貨幣？</h3>
+      <p>開啟設定 &gt; 新增貨幣。貨幣依地區分組顯示（亞太、大洋洲、美洲、歐洲、中東與非洲），輕點即可批次選擇，「清空」按鈕一鍵清除，也可依名稱或代碼搜尋。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何更改來源貨幣或目標貨幣？</h3>
+      <p>點擊右上角的齒輪圖示（<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg>）開啟設定。在設定中可以更改來源貨幣（偵測貨幣），以及新增或刪除目標貨幣。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>可以設定自訂匯率嗎？</h3>
+      <p>可以！在設定中，每個目標貨幣都有可編輯的匯率輸入框。輸入您想要的匯率，即可套用於所有換算。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何同時換算多種貨幣？</h3>
+      <p>在設定中點擊貨幣選擇按鈕，新增多個目標貨幣。在主畫面，透過底部的貨幣標籤可以快速切換。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>如何切換應用程式語言？</h3>
+      <p>進入設定 > 應用程式語言。支援英語、日語、韓語、簡體中文、繁體中文和西班牙語。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>匯率是最新的嗎？</h3>
+      <p>應用程式內建了預設匯率供離線使用。如需使用最新匯率，可在設定中根據目前市場匯率手動更新。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>什麼是手動輸入模式？</h3>
+      <p>點擊相機畫面左上角的鍵盤圖示，可以手動輸入金額。即時顯示所有目標貨幣的換算結果。適合不方便使用相機的場景。</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>提示：</strong>點擊底部中央的相機按鈕可以凍結畫面，方便仔細查看偵測到的金額。</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>還有問題？</h2>
+      <p>歡迎透過郵件聯絡我們，我們會盡快回覆。</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">聯絡我們</a>
+    </div>
+  </div>
+
+  <!-- Spanish -->
+  <div id="es" class="section">
+    <h2>Preguntas frecuentes</h2>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo funciona C&aacute;maraTasa?</h3>
+      <p>Simplemente apunta la c&aacute;mara de tu iPhone a cualquier etiqueta de precio, recibo o men&uacute;. La app usa OCR (Reconocimiento &Oacute;ptico de Caracteres) para detectar montos y convertirlos instant&aacute;neamente a las monedas seleccionadas.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;La app necesita conexi&oacute;n a internet?</h3>
+      <p>No. La detecci&oacute;n y conversi&oacute;n de monedas funcionan completamente sin conexi&oacute;n usando tasas de cambio integradas. Solo se necesita internet para mostrar anuncios.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>La c&aacute;mara no detecta montos. &iquest;Qu&eacute; debo hacer?</h3>
+      <p>Intenta estos pasos:</p>
+      <ul style="margin-top:8px">
+        <li>Arrastra y pellizca el marco en pantalla para que solo quede dentro el precio que quieres leer</li>
+        <li>Aseg&uacute;rate de que el texto est&eacute; bien iluminado y sea claramente visible</li>
+        <li>Mant&eacute;n la c&aacute;mara estable y a una distancia razonable</li>
+        <li>Aseg&uacute;rate de que los montos incluyan n&uacute;meros reconocibles (ej. 1,234 o $56.78)</li>
+        <li>Verifica que el permiso de c&aacute;mara est&eacute; habilitado en Ajustes de iOS > C&aacute;maraTasa</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo ajusto el marco de escaneo?</h3>
+      <p>Arrastra el marco en pantalla para moverlo, o pell&iacute;zcalo con dos dedos para cambiar su tama&ntilde;o. Deja dentro solo el precio que quieres leer y la app ignorar&aacute; los dem&aacute;s n&uacute;meros. Muy &uacute;til en recibos, men&uacute;s y etiquetas cargadas.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo agrego varias monedas de destino r&aacute;pidamente?</h3>
+      <p>Abre Ajustes &gt; Agregar moneda. Las monedas est&aacute;n agrupadas por regi&oacute;n (Asia-Pac&iacute;fico, Ocean&iacute;a, Am&eacute;ricas, Europa, Oriente Medio y &Aacute;frica). Toca para seleccionar varias a la vez, usa "Borrar todo" para reiniciar y busca por nombre o c&oacute;digo.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo cambio la moneda de origen o destino?</h3>
+      <p>Toca el icono de engranaje (<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg>) en la esquina superior derecha para abrir Ajustes. All&iacute; puedes cambiar la moneda de origen (detectada) y agregar o eliminar monedas de destino.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Puedo configurar mis propias tasas de cambio?</h3>
+      <p>&iexcl;S&iacute;! En Ajustes, cada moneda de destino tiene un campo de tasa editable. Simplemente escribe tu tasa preferida y se usar&aacute; para todas las conversiones.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo convierto a m&uacute;ltiples monedas a la vez?</h3>
+      <p>En Ajustes, toca el bot&oacute;n de selecci&oacute;n de monedas para agregar m&uacute;ltiples monedas de destino. En la pantalla principal, puedes cambiar r&aacute;pidamente entre ellas usando las pesta&ntilde;as de moneda en la parte inferior.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;C&oacute;mo cambio el idioma de la app?</h3>
+      <p>Ve a Ajustes > Idioma de la app. C&aacute;maraTasa es compatible con ingl&eacute;s, japon&eacute;s, coreano, chino simplificado, chino tradicional y espa&ntilde;ol.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Las tasas de cambio est&aacute;n actualizadas?</h3>
+      <p>La app incluye tasas predeterminadas para uso sin conexi&oacute;n. Para las tasas m&aacute;s precisas, puedes actualizarlas manualmente en Ajustes seg&uacute;n las tasas actuales del mercado.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>&iquest;Qu&eacute; es el modo de entrada manual?</h3>
+      <p>Toca el icono de teclado (arriba a la izquierda en la pantalla de la c&aacute;mara) para escribir un monto manualmente. Ver&aacute;s las conversiones a todas tus monedas de destino al instante. Ideal cuando no puedes apuntar la c&aacute;mara.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>Consejo:</strong> Usa el bot&oacute;n de c&aacute;mara (centro inferior) para congelar la vista y examinar los montos detectados sin que se actualice.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>&iquest;A&uacute;n necesitas ayuda?</h2>
+      <p>Estamos encantados de ayudarte. Env&iacute;anos un correo electr&oacute;nico y te responderemos lo antes posible.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">Cont&aacute;ctenos</a>
+    </div>
+  </div>
+
+  <!-- Korean -->
+  <div id="ko" class="section">
+    <h2>자주 묻는 질문</h2>
+
+    <div class="faq-item">
+      <h3>환율 카메라는 어떻게 작동하나요?</h3>
+      <p>iPhone 카메라를 가격표, 영수증, 메뉴판 등에 비추기만 하면 됩니다. OCR(광학 문자 인식) 기술로 금액을 자동 인식하여 선택한 통화로 즉시 환산해 드립니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>인터넷 연결이 필요한가요?</h3>
+      <p>아니요. 통화 인식과 환산은 내장된 환율을 사용하여 오프라인에서도 완전하게 작동합니다. 인터넷 연결은 광고 표시에만 필요합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>카메라가 금액을 인식하지 못합니다. 어떻게 해야 하나요?</h3>
+      <p>다음 방법을 시도해 보세요:</p>
+      <ul style="margin-top:8px">
+        <li>화면의 스캔 프레임을 드래그·핀치로 조절하여 원하는 금액만 안에 들어오게 하세요</li>
+        <li>텍스트에 충분한 조명이 있고 선명하게 보이는지 확인하세요</li>
+        <li>카메라를 안정적으로 잡고 적절한 거리를 유지하세요</li>
+        <li>금액에 인식 가능한 숫자가 포함되어 있는지 확인하세요(예: 1,234 또는 $56.78)</li>
+        <li>iOS 설정 > 환율 카메라 에서 카메라 권한이 허용되어 있는지 확인하세요</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
+      <h3>스캔 프레임은 어떻게 조절하나요?</h3>
+      <p>화면의 스캔 프레임을 드래그하여 위치를 옮기거나, 두 손가락으로 핀치하여 크기를 조절할 수 있습니다. 원하는 금액만 프레임 안에 들어오게 하면 주변의 관련 없는 숫자는 자동으로 무시됩니다. 복잡한 영수증이나 메뉴판에서 특히 유용합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>여러 대상 통화를 한 번에 추가하려면 어떻게 하나요?</h3>
+      <p>설정 &gt; 통화 추가 를 여세요. 통화는 지역별(아시아-태평양, 오세아니아, 아메리카, 유럽, 중동·아프리카)로 그룹화되어 있으며, 탭하여 여러 개를 한 번에 선택할 수 있고, "모두 지우기"로 초기화하거나 이름·코드로 검색할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>원본 통화나 대상 통화를 변경하려면 어떻게 하나요?</h3>
+      <p>오른쪽 상단의 톱니바퀴 아이콘(<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg>)을 탭하여 설정을 여세요. 원본 통화(인식 통화)를 변경하거나 대상 통화를 추가·삭제할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>직접 환율을 설정할 수 있나요?</h3>
+      <p>네! 설정 화면에서 각 대상 통화마다 편집 가능한 환율 입력란이 있습니다. 원하는 환율을 입력하시면 모든 환산에 적용됩니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>여러 통화로 동시에 환산하려면 어떻게 하나요?</h3>
+      <p>설정 화면에서 통화 선택 버튼을 탭하여 여러 대상 통화를 추가하세요. 메인 화면에서는 하단의 통화 탭을 이용해 빠르게 전환할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>앱 언어를 변경하려면 어떻게 하나요?</h3>
+      <p>설정 > 앱 언어 로 이동하세요. 환율 카메라는 영어, 일본어, 중국어 간체, 중국어 번체, 스페인어 및 한국어를 지원합니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>환율은 최신 정보인가요?</h3>
+      <p>오프라인 사용을 위해 기본 환율이 내장되어 있습니다. 가장 정확한 환율을 사용하려면 설정에서 현재 시장 환율에 맞춰 수동으로 업데이트할 수 있습니다.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>수동 입력 모드란 무엇인가요?</h3>
+      <p>카메라 화면 왼쪽 상단의 키보드 아이콘을 탭하면 금액을 직접 입력할 수 있습니다. 모든 대상 통화로의 환산 결과가 즉시 표시됩니다. 카메라를 비추기 어려운 상황에서 유용합니다.</p>
+    </div>
+
+    <div class="tip">
+      <p><strong>팁:</strong> 화면 하단 중앙의 카메라 버튼을 탭하면 화면을 일시 정지하여 인식된 금액을 천천히 확인할 수 있습니다.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>아직 해결되지 않으셨나요?</h2>
+      <p>기꺼이 도와드리겠습니다. 이메일로 문의해 주시면 가능한 한 빨리 답변드리겠습니다.</p>
+      <a href="mailto:lj_dev@ymail.ne.jp">문의하기</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 J-DevHouse. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>

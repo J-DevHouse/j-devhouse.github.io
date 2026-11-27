@@ -139,6 +139,9 @@
     font-size: 16px;
     flex-shrink: 0;
   }
+  .icon-circle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card h4 > .ico, .tip-box > .ico { color: var(--theme); }
+  .tip-box > .ico { color: var(--accent-orange); }
 
   /* ===== Step list ===== */
   .steps { counter-reset: step; }
@@ -180,7 +183,8 @@
     text-align: center;
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   }
-  .feature-item .emoji { font-size: 28px; margin-bottom: 6px; }
+  .feature-item .emoji { width: 44px; height: 44px; margin: 0 auto 8px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--tint); background: color-mix(in srgb, var(--tint) 14%, transparent); }
+  .feature-item .emoji svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .feature-item .label { font-size: 13px; font-weight: 600; }
   .feature-item .desc { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
 
@@ -237,6 +241,7 @@
     .feature-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 24px; }
   }
+  .ico { width: 1.1em; height: 1.1em; vertical-align: -0.2em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 </style>
 </head>
 <body>
@@ -273,22 +278,22 @@
   </div>
   <div class="feature-grid">
     <div class="feature-item">
-      <div class="emoji">📸</div>
+      <div class="emoji" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 7V5a2 2 0 0 1 2-2h2'/><path d='M17 3h2a2 2 0 0 1 2 2v2'/><path d='M21 17v2a2 2 0 0 1-2 2h-2'/><path d='M7 21H5a2 2 0 0 1-2-2v-2'/><path d='M7 12h10'/></svg></div>
       <div class="label">レシートスキャン</div>
       <div class="desc">カメラで撮るだけ<br>日本語OCR自動認識</div>
     </div>
     <div class="feature-item">
-      <div class="emoji">📅</div>
+      <div class="emoji" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 2v4'/><path d='M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/></svg></div>
       <div class="label">カレンダー管理</div>
       <div class="desc">日別の支出を<br>一目で把握</div>
     </div>
     <div class="feature-item">
-      <div class="emoji">📊</div>
+      <div class="emoji" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div>
       <div class="label">統計・分析</div>
       <div class="desc">グラフでカテゴリ別<br>支出を可視化</div>
     </div>
     <div class="feature-item">
-      <div class="emoji">📱</div>
+      <div class="emoji" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='7' height='7' x='3' y='3' rx='1'/><rect width='7' height='7' x='14' y='3' rx='1'/><rect width='7' height='7' x='14' y='14' rx='1'/><rect width='7' height='7' x='3' y='14' rx='1'/></svg></div>
       <div class="label">ウィジェット</div>
       <div class="desc">ホーム画面・ロック画面<br>からすぐアクセス</div>
     </div>
@@ -299,7 +304,7 @@
 <section id="scan">
   <h2>レシートスキャン</h2>
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-blue)">📷</span> カメラでスキャン</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-blue)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg></span> カメラでスキャン</h4>
     <p>アプリ内蔵のドキュメントスキャナーでレシートを撮影すると、Apple の Vision フレームワーク（日本語OCR）が自動的にテキストを認識します。</p>
     <div class="steps" style="margin-top:14px">
       <div class="step">
@@ -322,15 +327,15 @@
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-purple)">🖼️</span> スクリーンショット・写真から読み取り</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-purple)"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='18' x='3' y='3' rx='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21'/></svg></span> スクリーンショット・写真から読み取り</h4>
     <p>カメラだけでなく、保存済みのスクリーンショットや写真からもOCR読み取りが可能です。ネットショッピングの注文確認画面など、紙のレシートがない場面で便利です。</p>
     <div class="tip-box">
-      💡 <strong>活用例：</strong>ネット通販の注文完了画面をスクリーンショットして、フォトライブラリから取り込めば、オンライン支出も簡単に記録できます。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> <strong>活用例：</strong>ネット通販の注文完了画面をスクリーンショットして、フォトライブラリから取り込めば、オンライン支出も簡単に記録できます。
     </div>
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-orange)">📤</span> 共有シートから直接取り込み <span class="badge badge-new">NEW</span></h4>
+    <h4><span class="icon-circle" style="background:var(--accent-orange)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></span> 共有シートから直接取り込み <span class="badge badge-new">NEW</span></h4>
     <p>写真アプリ、Safari、メッセージなど、どのアプリからでも画像を「家計簿」アプリに直接共有できます。スクリーンショット直後に共有メニューから取り込めば、わざわざアプリを開いてフォトライブラリを選ぶ手間が省けます。</p>
     <div class="steps" style="margin-top:14px">
       <div class="step">
@@ -349,24 +354,24 @@
       </div>
     </div>
     <div class="tip-box" style="margin-top:10px">
-      💡 <strong>活用例：</strong>ネット通販の注文完了メールをスクリーンショット → そのまま共有 → 家計簿選択 で、支出記録が一瞬で完成します。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> <strong>活用例：</strong>ネット通販の注文完了メールをスクリーンショット → そのまま共有 → 家計簿選択 で、支出記録が一瞬で完成します。
     </div>
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-green)">📑</span> 一括スキャン</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-green)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 7h-3a2 2 0 0 1-2-2V2'/><path d='M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z'/><path d='M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8'/></svg></span> 一括スキャン</h4>
     <p>複数枚のレシートをまとめてスキャンし、一度に記録を作成できます。溜まったレシートを一気に処理したい時に最適です。</p>
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--theme)">🔗</span> スキャンと記録の相互リンク <span class="badge badge-new">NEW</span></h4>
+    <h4><span class="icon-circle" style="background:var(--theme)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/><path d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/></svg></span> スキャンと記録の相互リンク <span class="badge badge-new">NEW</span></h4>
     <p>スキャン画像と支出記録は双方向にリンクされており、ワンタップで相互に移動できます。</p>
     <ul style="margin-top:8px">
       <li><strong>スキャン詳細 → 記録詳細</strong>：記録に紐づいたスキャン画像から「関連する記録を表示」ボタンで記録詳細へ</li>
       <li><strong>記録詳細 → スキャン詳細</strong>：画像が紐づいた記録の画像プレビューから「スキャン詳細」リンクでスキャン詳細へ</li>
     </ul>
     <div class="tip-box" style="margin-top:10px">
-      💡 無限ループを防ぐため、遷移先ではリンクボタンは表示されません（単方向の1回限りの遷移）。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> 無限ループを防ぐため、遷移先ではリンクボタンは表示されません（単方向の1回限りの遷移）。
     </div>
   </div>
 
@@ -399,14 +404,14 @@
   <h3>カテゴリ一覧</h3>
   <div class="card">
     <h4>固定費</h4>
-    <p>🏠 家賃 ／ 🛡 保険 ／ 📈 積立 ／ 📱 通信費 ／ 🌐 インターネット ／ 🎬 サブスク ／ 💳 ローン</p>
+    <p>家賃 ／ 保険 ／ 積立 ／ 通信費 ／ インターネット ／ サブスク ／ ローン</p>
     <h4 style="margin-top:12px">変動費</h4>
-    <p>💧 水道 ／ ⚡ 電気 ／ 🔥 ガス ／ 🍽 外食 ／ 🛒 買い物 ／ 👥 交際費 ／ 🚌 交通費 ／ 🏥 医療費 ／ 🎭 趣味・娯楽 ／ 📚 教育費</p>
+    <p>水道 ／ 電気 ／ ガス ／ 外食 ／ 買い物 ／ 交際費 ／ 交通費 ／ 医療費 ／ 趣味・娯楽 ／ 教育費</p>
   </div>
 
   <div class="card">
     <h4>支払方法</h4>
-    <p>💴 現金 ／ 💳 クレジットカード ／ 💳 デビットカード ／ 📶 電子マネー ／ 📱 QR決済 ／ 🏦 銀行振込 ／ ⋯ その他</p>
+    <p>現金 ／ クレジットカード ／ デビットカード ／ 電子マネー ／ QR決済 ／ 銀行振込 ／ その他</p>
   </div>
 </section>
 
@@ -415,7 +420,7 @@
   <h2>カテゴリー・支払方法のカスタマイズ <span class="badge badge-new">NEW</span></h2>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-purple)">🎨</span> 外観の編集</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-purple)"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='13.5' cy='6.5' r='1'/><circle cx='17.5' cy='10.5' r='1'/><circle cx='8.5' cy='7.5' r='1'/><circle cx='6.5' cy='12.5' r='1'/><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z'/></svg></span> 外観の編集</h4>
     <p>デフォルト・カスタム問わず、すべてのカテゴリーと支払方法の<strong>名前・アイコン・カラー</strong>を自由に変更できます。</p>
     <div class="steps" style="margin-top:10px">
       <div class="step">
@@ -432,7 +437,7 @@
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-blue)">🔑</span> 自動分類キーワード</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-blue)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4'/><path d='m21 2-9.6 9.6'/><circle cx='7.5' cy='15.5' r='5.5'/></svg></span> 自動分類キーワード</h4>
     <p>レシートをスキャンした際、登録されたキーワードに基づいてカテゴリーと支払方法が自動で判定されます。</p>
     <ul style="margin-top:8px">
       <li>各カテゴリー/支払方法の詳細画面でキーワードを追加・削除</li>
@@ -440,15 +445,15 @@
       <li>例：「クレジットカード」に「VISA」「Mastercard」「一括」等を登録</li>
     </ul>
     <div class="tip-box" style="margin-top:10px">
-      💡 よく利用するお店の名前をキーワードに追加すると、自動分類の精度が向上します。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> よく利用するお店の名前をキーワードに追加すると、自動分類の精度が向上します。
     </div>
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-green)">➕</span> カテゴリー・支払方法の追加と削除</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-green)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M5 12h14'/><path d='M12 5v14'/></svg></span> カテゴリー・支払方法の追加と削除</h4>
     <ul>
       <li><strong>追加</strong>：管理画面の「追加」ボタンから。名前・アイコン・カラーを選んで作成</li>
-      <li><strong>削除</strong>：詳細画面の右上 🗑️ ボタンから。既存の記録は「未分類」になります</li>
+      <li><strong>削除</strong>：詳細画面の右上の<svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M3 6h18'/><path d='M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6'/><path d='M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2'/></svg>ボタンから。既存の記録は「未分類」になります</li>
     </ul>
   </div>
 </section>
@@ -457,7 +462,7 @@
 <section id="calendar">
   <h2>カレンダー</h2>
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--theme)">📅</span> カレンダービュー</h4>
+    <h4><span class="icon-circle" style="background:var(--theme)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8 2v4'/><path d='M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/></svg></span> カレンダービュー</h4>
     <p>メイン画面のカレンダーで、日ごとの支出合計が一目でわかります。</p>
     <ul style="margin-top:8px">
       <li><strong>日付タップ</strong>：その日の支出記録一覧を表示</li>
@@ -473,7 +478,7 @@
 <section id="statistics">
   <h2>統計</h2>
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-blue)">📊</span> 支出分析</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-blue)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></span> 支出分析</h4>
     <p>期間を選んで、支出データをグラフやリストで確認できます。</p>
 
     <h4 style="margin-top:14px">期間の選択</h4>
@@ -499,7 +504,7 @@
   <h2>ウィジェット <span class="badge badge-tip">便利！</span></h2>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-green)">🏠</span> ホーム画面ウィジェット</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-green)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8'/><path d='M3 10a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/></svg></span> ホーム画面ウィジェット</h4>
     <p>ホーム画面に追加して、アプリを開かずに情報確認＆クイック操作ができます。</p>
     <table class="info-table" style="margin-top:10px">
       <tr><th>サイズ</th><th>表示内容</th><th>タップ動作</th></tr>
@@ -526,7 +531,7 @@
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-purple)">🔒</span> ロック画面ウィジェット <span class="badge badge-tip">おすすめ</span></h4>
+    <h4><span class="icon-circle" style="background:var(--accent-purple)"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></span> ロック画面ウィジェット <span class="badge badge-tip">おすすめ</span></h4>
     <p>iPhoneのロック画面に配置すれば、<strong>ロック画面からワンタップでアプリを起動</strong>できます。買い物の直後にすぐ記録をつける習慣づけに最適です。</p>
     <table class="info-table" style="margin-top:10px">
       <tr><th>形状</th><th>表示</th></tr>
@@ -535,7 +540,7 @@
       <tr><td>インライン（Inline）</td><td>「家計簿に記録」テキスト</td></tr>
     </table>
     <div class="tip-box" style="margin-top:10px">
-      💡 <strong>おすすめ設定：</strong>ロック画面に<strong>丸型ウィジェット</strong>を配置しておけば、支払い後すぐにタップ → スキャン → 記録という最速フローが実現します。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> <strong>おすすめ設定：</strong>ロック画面に<strong>丸型ウィジェット</strong>を配置しておけば、支払い後すぐにタップ → スキャン → 記録という最速フローが実現します。
     </div>
     <div class="highlight-box">
       <strong>追加方法：</strong>ロック画面を長押し → 「カスタマイズ」→ ロック画面を選択 → ウィジェットエリアをタップ → 「家計簿」を追加
@@ -543,7 +548,7 @@
   </div>
 
   <div class="card">
-    <h4>📹 実際の操作を見る</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='m16 13 5.22 3.48a.5.5 0 0 0 .78-.42V7.87a.5.5 0 0 0-.75-.43L16 10.5'/><rect x='2' y='6' width='14' height='12' rx='2'/></svg> 実際の操作を見る</h4>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:10px;">
       <div style="text-align:center; flex:1; min-width:120px; max-width:180px;">
         <video controls muted playsinline style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
@@ -561,7 +566,7 @@
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--text)">⚙️</span> コントロールセンター（iOS 18以降）</h4>
+    <h4><span class="icon-circle" style="background:var(--text)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/><circle cx='12' cy='12' r='3'/></svg></span> コントロールセンター（iOS 18以降）</h4>
     <p>コントロールセンターにも家計簿アプリのボタンを追加できます。</p>
     <ul>
       <li><strong>統計ボタン</strong>：統計画面を直接開く</li>
@@ -575,7 +580,7 @@
   <h2>データの移行（エクスポート / インポート）</h2>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-blue)">📤</span> エクスポート（書き出し）</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-blue)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></span> エクスポート（書き出し）</h4>
     <p>2つの形式でデータを書き出せます。</p>
     <table class="info-table" style="margin-top:10px">
       <tr><th>形式</th><th>内容</th><th>用途</th></tr>
@@ -605,12 +610,12 @@
     </div>
 
     <div class="tip-box">
-      💡 <strong>Excel で家計を分析したい方へ：</strong>CSV でエクスポートすれば、Excel やスプレッドシートで自由にグラフを作ったり、年間の支出レポートを作成できます。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> <strong>Excel で家計を分析したい方へ：</strong>CSV でエクスポートすれば、Excel やスプレッドシートで自由にグラフを作ったり、年間の支出レポートを作成できます。
     </div>
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-green)">📥</span> インポート（読み込み）</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-green)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M7 10l5 5 5-5'/><path d='M12 15V3'/></svg></span> インポート（読み込み）</h4>
     <p>mmdata ファイルまたは CSV ファイルからデータを読み込めます。ファイル形式は自動判定されます。</p>
 
     <h4 style="margin-top:12px">読み込み方法</h4>
@@ -639,7 +644,7 @@
   <h2>データ管理</h2>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-red)">🗑️</span> 記録の一括削除</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-red)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 6h18'/><path d='M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6'/><path d='M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2'/></svg></span> 記録の一括削除</h4>
     <p>期間を指定して、まとめて記録を削除できます。</p>
     <ul>
       <li>開始日・終了日を選択して検索</li>
@@ -650,7 +655,7 @@
   </div>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-orange)">🖼️</span> 画像の一括削除</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-orange)"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='18' x='3' y='3' rx='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21'/></svg></span> 画像の一括削除</h4>
     <p>不要なスキャン画像をまとめて削除してストレージを節約できます。</p>
     <ul>
       <li><strong>絞り込み機能</strong>：期間で画像をフィルタリング</li>
@@ -667,7 +672,7 @@
   <h2>設定</h2>
 
   <div class="card">
-    <h4><span class="icon-circle" style="background:var(--accent-orange)">👑</span> プレミアム（広告なし）</h4>
+    <h4><span class="icon-circle" style="background:var(--accent-orange)"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M11.56 3.27a.5.5 0 0 1 .88 0l2.95 5.6a1 1 0 0 0 1.52.3l4.27-3.67a.5.5 0 0 1 .8.52l-2.83 10.25a1 1 0 0 1-.96.73H5.81a1 1 0 0 1-.96-.73L2.02 6.02a.5.5 0 0 1 .8-.52l4.27 3.67a1 1 0 0 0 1.52-.3z'/><path d='M5 21h14'/></svg></span> プレミアム（広告なし）</h4>
     <p>月額サブスクリプションに登録すると、すべての広告（バナー・ネイティブ・開屏広告）が完全に削除されます。</p>
     <ul style="margin-top:8px">
       <li>設定 → 広告設定 から登録</li>
@@ -675,7 +680,7 @@
       <li>キャンセルは端末の「設定」→「Apple ID」→「サブスクリプション」から</li>
     </ul>
     <div class="tip-box" style="margin-top:10px">
-      💡 動画広告を視聴して一時的に広告を非表示にする<strong>無料オプション</strong>もあります（3回視聴で12時間広告なし）。
+      <svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/></svg> 動画広告を視聴して一時的に広告を非表示にする<strong>無料オプション</strong>もあります（3回視聴で12時間広告なし）。
     </div>
   </div>
 
@@ -708,7 +713,7 @@
   <h2>便利な使い方 <span class="badge badge-tip">Tips</span></h2>
 
   <div class="card">
-    <h4>🚀 最速記録フロー</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'/></svg> 最速記録フロー</h4>
     <div class="steps">
       <div class="step">
         <div class="step-title">ロック画面のウィジェットをタップ</div>
@@ -726,7 +731,7 @@
   </div>
 
   <div class="card">
-    <h4>💻 Excel で年間レポートを作る</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/><path d='M14 2v4a2 2 0 0 0 2 2h4'/><path d='M8 13h2'/><path d='M14 13h2'/><path d='M8 17h2'/><path d='M14 17h2'/></svg> Excel で年間レポートを作る</h4>
     <div class="steps">
       <div class="step">
         <div class="step-title">設定 → エクスポート / インポート</div>
@@ -742,7 +747,7 @@
   </div>
 
   <div class="card">
-    <h4>📱 機種変更時のデータ移行</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg> 機種変更時のデータ移行</h4>
     <div class="steps">
       <div class="step">
         <div class="step-title">旧端末：mmdata でエクスポート → iCloud Drive に保存</div>
@@ -758,17 +763,17 @@
   </div>
 
   <div class="card">
-    <h4>📸 ネットショッピングの記録</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><circle cx='8' cy='21' r='1'/><circle cx='19' cy='21' r='1'/><path d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'/></svg> ネットショッピングの記録</h4>
     <p>紙のレシートがないオンライン購入も、注文確認画面をスクリーンショット → 共有メニューから「家計簿」を選ぶだけ。アプリが自動で開き、OCRで金額・日付を認識して記録画面が完成します。</p>
   </div>
 
   <div class="card">
-    <h4>🔄 家族でデータを共有</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M22 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/></svg> 家族でデータを共有</h4>
     <p>mmdata ファイルを AirDrop で家族の端末に送れば、同じ家計データを共有できます。同じ記録は自動スキップされるので、安心して何度でも共有できます。</p>
   </div>
 
   <div class="card">
-    <h4>🧹 ストレージ節約</h4>
+    <h4><svg class='ico' viewBox='0 0 24 24' aria-hidden='true'><path d='M22 12H2'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/><path d='M6 16h.01'/><path d='M10 16h.01'/></svg> ストレージ節約</h4>
     <p>スキャン画像が増えてきたら、設定 → データ管理 → 画像の一括削除 で不要な画像を整理しましょう。記録は残したまま、画像だけ削除できます。</p>
   </div>
 </section>

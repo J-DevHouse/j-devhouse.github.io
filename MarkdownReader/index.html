@@ -35,13 +35,15 @@
   .tagline { text-align: center; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.3px; }
   .tagline-sub { text-align: center; font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
   .universal-banner { background: linear-gradient(135deg, rgba(0,122,255,0.12) 0%, rgba(88,86,214,0.12) 100%); border: 1px solid rgba(88,86,214,0.28); border-radius: 18px; padding: 20px 22px; margin-bottom: 24px; display: flex; gap: 16px; align-items: flex-start; }
-  .universal-banner .u-icon { font-size: 30px; line-height: 1.1; flex-shrink: 0; }
+  .universal-banner .u-icon { flex-shrink: 0; display: flex; gap: 2px; color: #5856d6; }
+  .universal-banner .u-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .universal-banner h2 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
   .universal-banner p { font-size: 14px; color: var(--text-secondary); margin: 0; }
   .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
   @media (max-width: 520px) { .features { grid-template-columns: 1fr; } .universal-banner { flex-direction: column; gap: 8px; } }
   .feature { background: var(--card-bg); border-radius: 16px; padding: 22px 20px; box-shadow: var(--shadow); }
-  .feature .icon { font-size: 28px; margin-bottom: 10px; }
+  .feature .icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--tint); background: color-mix(in srgb, var(--tint) 14%, transparent); }
+  .feature .icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .feature h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
   .feature p { font-size: 14px; color: var(--text-secondary); margin: 0; }
   .screenshots { text-align: center; margin-bottom: 36px; }
@@ -114,7 +116,7 @@ window.onload = function() {
     <p class="tagline-sub">Today's AI tools write in Markdown. AI Doc Reader turns raw .md output into a clean, beautiful document &mdash; diagrams, math, code and all.</p>
 
     <div class="universal-banner">
-      <div class="u-icon">&#x1F4BB;&#x1F4F1;</div>
+      <div class="u-icon"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16'/></svg><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg></div>
       <div>
         <h2>One Purchase, Every Apple Device</h2>
         <p>Start on Mac with multi-window editing and Git diff, then pick up right where you left off on iPhone or iPad via iCloud Drive folders. Pro is a <strong>Universal Purchase</strong> &mdash; unlock once with your Apple Account and enjoy Pro across Mac, iPhone, and iPad.</p>
@@ -122,12 +124,12 @@ window.onload = function() {
     </div>
 
     <div class="features">
-      <div class="feature"><div class="icon">&#x1F4CA;</div><h3>Renders Everything</h3><p>Mermaid diagrams (with full-screen zoom), KaTeX math formulas, syntax-highlighted code blocks, tables and task lists &mdash; all displayed properly, offline.</p></div>
-      <div class="feature"><div class="icon">&#x1F4C2;</div><h3>Folder Workspace &amp; Search</h3><p>Link any iCloud, Obsidian, or local folder to browse all Markdown files with instant full-text search and auto-generated table of contents.</p></div>
-      <div class="feature"><div class="icon">&#x270D;&#xFE0F;</div><h3>Smart Editor &amp; Mermaid Shortcuts</h3><p>One-tap 8 Mermaid diagram templates, KaTeX math helpers, code blocks, table builder, and live Edit / Preview across Mac, iPhone &amp; iPad.</p></div>
-      <div class="feature"><div class="icon">&#x1F4E4;</div><h3>HD PDF &amp; Long PNG Export</h3><p>Export cleanly formatted PDFs or high-resolution long PNG images for sharing, plus Git version history side-by-side diff on macOS.</p></div>
-      <div class="feature"><div class="icon">&#x1F310;</div><h3>Native Across Apple Devices</h3><p>100% native SwiftUI on iOS/iPadOS and lightweight native app on macOS. English, Japanese, and Simplified Chinese with Light, Dark, and Sepia themes.</p></div>
-      <div class="feature"><div class="icon">&#x1F512;</div><h3>Zero Ads · Universal Pro</h3><p>Reading is free forever with zero ads. Optional Pro (Monthly ¥100 / Annual ¥800 / Lifetime ¥1,500 &mdash; Universal across Mac, iPhone &amp; iPad) unlocks editing, folder search, PDF/PNG export, Git diff, and Sepia theme. 100% offline.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div><h3>Renders Everything</h3><p>Mermaid diagrams (with full-screen zoom), KaTeX math formulas, syntax-highlighted code blocks, tables and task lists &mdash; all displayed properly, offline.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><circle cx='11.5' cy='12.5' r='2.5'/><path d='M13.3 14.3 15 16'/></svg></div><h3>Folder Workspace &amp; Search</h3><p>Link any iCloud, Obsidian, or local folder to browse all Markdown files with instant full-text search and auto-generated table of contents.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 20h9'/><path d='M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z'/></svg></div><h3>Smart Editor &amp; Mermaid Shortcuts</h3><p>One-tap 8 Mermaid diagram templates, KaTeX math helpers, code blocks, table builder, and live Edit / Preview across Mac, iPhone &amp; iPad.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></div><h3>HD PDF &amp; Long PNG Export</h3><p>Export cleanly formatted PDFs or high-resolution long PNG images for sharing, plus Git version history side-by-side diff on macOS.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='10'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/><path d='M2 12h20'/></svg></div><h3>Native Across Apple Devices</h3><p>100% native SwiftUI on iOS/iPadOS and lightweight native app on macOS. English, Japanese, and Simplified Chinese with Light, Dark, and Sepia themes.</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></div><h3>Zero Ads · Universal Pro</h3><p>Reading is free forever with zero ads. Optional Pro (Monthly ¥100 / Annual ¥800 / Lifetime ¥1,500 &mdash; Universal across Mac, iPhone &amp; iPad) unlocks editing, folder search, PDF/PNG export, Git diff, and Sepia theme. 100% offline.</p></div>
     </div>
 
     <div class="screenshots">
@@ -149,7 +151,7 @@ window.onload = function() {
     <p class="tagline-sub">AIツールの出力はMarkdownがほとんど。AI Doc Readerは.mdファイルを図・数式・コードまで美しく表示します。</p>
 
     <div class="universal-banner">
-      <div class="u-icon">&#x1F4BB;&#x1F4F1;</div>
+      <div class="u-icon"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16'/></svg><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg></div>
       <div>
         <h2>1 度の購入で Mac・iPhone・iPad すべて対応</h2>
         <p>Mac でマルチウィンドウ編集や Git 履歴比較を行い、移動中は iCloud フォルダ経由で iPhone / iPad からそのまま閲覧・編集。Pro は<strong>ユニバーサル購入</strong>対応のため、同じ Apple Account の全デバイスで追加課金なしに使えます。</p>
@@ -157,12 +159,12 @@ window.onload = function() {
     </div>
 
     <div class="features">
-      <div class="feature"><div class="icon">&#x1F4CA;</div><h3>あらゆる要素を表示</h3><p>Mermaid図（全画面拡大対応）、KaTeX数式、シンタックスハイライト付きコード、表、タスクリストを完全オフラインで正確にレンダリング。</p></div>
-      <div class="feature"><div class="icon">&#x1F4C2;</div><h3>フォルダ連携＆全文検索</h3><p>iCloud や Obsidian、ローカルフォルダをリンクして高速に全文検索。各文書の目次も自動生成されます。</p></div>
-      <div class="feature"><div class="icon">&#x270D;&#xFE0F;</div><h3>スマート編集＆Mermaidショートカット</h3><p>Mac・iPhone・iPad すべてで Mermaid 8種テンプレート、数式・コード・テーブル挿入、ライブプレビュー編集に対応。</p></div>
-      <div class="feature"><div class="icon">&#x1F4E4;</div><h3>PDF＆長画像書き出し</h3><p>図表・数式入りの文書を高画質 PDF や長い PNG 画像として共有可能。macOS 版では Git 履歴の並列 Diff 比較にも対応。</p></div>
-      <div class="feature"><div class="icon">&#x1F310;</div><h3>Apple エコシステム ネイティブ</h3><p>iOS/iPadOS は純 SwiftUI ネイティブ、macOS も軽量ネイティブ。日英中 3 言語、ライト/ダーク/セピアテーマ対応。</p></div>
-      <div class="feature"><div class="icon">&#x1F512;</div><h3>広告なし・3デバイス共通 Pro</h3><p>閲覧機能は完全無料・広告なし。Pro（月額 ¥100 / 年額 ¥800 / 買い切り ¥1,500・Mac/iPhone/iPad 共通）で編集・フォルダ検索・PDF/PNG 書き出し・Git 履歴・セピアテーマを解放。完全オフライン。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div><h3>あらゆる要素を表示</h3><p>Mermaid図（全画面拡大対応）、KaTeX数式、シンタックスハイライト付きコード、表、タスクリストを完全オフラインで正確にレンダリング。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><circle cx='11.5' cy='12.5' r='2.5'/><path d='M13.3 14.3 15 16'/></svg></div><h3>フォルダ連携＆全文検索</h3><p>iCloud や Obsidian、ローカルフォルダをリンクして高速に全文検索。各文書の目次も自動生成されます。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 20h9'/><path d='M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z'/></svg></div><h3>スマート編集＆Mermaidショートカット</h3><p>Mac・iPhone・iPad すべてで Mermaid 8種テンプレート、数式・コード・テーブル挿入、ライブプレビュー編集に対応。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></div><h3>PDF＆長画像書き出し</h3><p>図表・数式入りの文書を高画質 PDF や長い PNG 画像として共有可能。macOS 版では Git 履歴の並列 Diff 比較にも対応。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='10'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/><path d='M2 12h20'/></svg></div><h3>Apple エコシステム ネイティブ</h3><p>iOS/iPadOS は純 SwiftUI ネイティブ、macOS も軽量ネイティブ。日英中 3 言語、ライト/ダーク/セピアテーマ対応。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></div><h3>広告なし・3デバイス共通 Pro</h3><p>閲覧機能は完全無料・広告なし。Pro（月額 ¥100 / 年額 ¥800 / 買い切り ¥1,500・Mac/iPhone/iPad 共通）で編集・フォルダ検索・PDF/PNG 書き出し・Git 履歴・セピアテーマを解放。完全オフライン。</p></div>
     </div>
 
     <div class="screenshots">
@@ -184,7 +186,7 @@ window.onload = function() {
     <p class="tagline-sub">如今 AI 工具的输出几乎都是 Markdown。AI Doc Reader 把原始 .md 文件渲染成排版精美的文档——图表、公式、代码一个不落。</p>
 
     <div class="universal-banner">
-      <div class="u-icon">&#x1F4BB;&#x1F4F1;</div>
+      <div class="u-icon"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16'/></svg><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='14' height='20' x='5' y='2' rx='2'/><path d='M12 18h.01'/></svg></div>
       <div>
         <h2>一次购买，Mac / iPhone / iPad 三端通用</h2>
         <p>在 Mac 上多窗口写作、看 Git 版本历史对比；出门时通过 iCloud 文件夹在 iPhone / iPad 上无缝继续阅读与编辑。Pro 支持<strong>苹果通用购买（Universal Purchase）</strong>，同一 Apple ID 下所有设备自动解锁，无需重复付费。</p>
@@ -192,12 +194,12 @@ window.onload = function() {
     </div>
 
     <div class="features">
-      <div class="feature"><div class="icon">&#x1F4CA;</div><h3>完整渲染</h3><p>Mermaid 图表（支持全屏缩放）、KaTeX 数学公式、语法高亮代码块、表格与任务清单，全部离线精准呈现。</p></div>
-      <div class="feature"><div class="icon">&#x1F4C2;</div><h3>文件夹工作区与全文搜索</h3><p>关联 iCloud / Obsidian / 本地文件夹，跨文档全文检索直达行号，每篇文档自动生成目录。</p></div>
-      <div class="feature"><div class="icon">&#x270D;&#xFE0F;</div><h3>智能编辑与 Mermaid 快捷键</h3><p>Mac / iPhone / iPad 全端支持 8 种 Mermaid 图表模板、KaTeX 公式、多语言代码块与表格快捷插入，实时预览。</p></div>
-      <div class="feature"><div class="icon">&#x1F4E4;</div><h3>高清 PDF &amp; 长图导出</h3><p>一键将 AI 文档导出为高清 PDF 或长图 PNG 分享，macOS 版同时支持 Git 版本历史并排 Diff 对比。</p></div>
-      <div class="feature"><div class="icon">&#x1F310;</div><h3>全苹果生态原生体验</h3><p>iOS / iPadOS 纯 SwiftUI 原生打造，macOS 轻量原生应用；中/日/英三语界面与浅色、深色及护眼纸色主题。</p></div>
-      <div class="feature"><div class="icon">&#x1F512;</div><h3>零广告 · 三端通用 Pro</h3><p>离线阅读永久免费无广告；Pro（¥100/月、¥800/年 或 ¥1,500 终身买断，Mac/iPhone/iPad 通用）解锁编辑、文件夹搜索、PDF/长图导出、Git 历史与护眼主题。纯本地离线运行。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #007aff"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 3v16a2 2 0 0 0 2 2h16'/><path d='M18 17V9'/><path d='M13 17V5'/><path d='M8 17v-3'/></svg></div><h3>完整渲染</h3><p>Mermaid 图表（支持全屏缩放）、KaTeX 数学公式、语法高亮代码块、表格与任务清单，全部离线精准呈现。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff9500"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><circle cx='11.5' cy='12.5' r='2.5'/><path d='M13.3 14.3 15 16'/></svg></div><h3>文件夹工作区与全文搜索</h3><p>关联 iCloud / Obsidian / 本地文件夹，跨文档全文检索直达行号，每篇文档自动生成目录。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #af52de"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 20h9'/><path d='M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z'/></svg></div><h3>智能编辑与 Mermaid 快捷键</h3><p>Mac / iPhone / iPad 全端支持 8 种 Mermaid 图表模板、KaTeX 公式、多语言代码块与表格快捷插入，实时预览。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #34c759"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg></div><h3>高清 PDF &amp; 长图导出</h3><p>一键将 AI 文档导出为高清 PDF 或长图 PNG 分享，macOS 版同时支持 Git 版本历史并排 Diff 对比。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #5856d6"><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='10'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/><path d='M2 12h20'/></svg></div><h3>全苹果生态原生体验</h3><p>iOS / iPadOS 纯 SwiftUI 原生打造，macOS 轻量原生应用；中/日/英三语界面与浅色、深色及护眼纸色主题。</p></div>
+      <div class="feature"><div class="icon" style="--tint: #ff3b30"><svg viewBox='0 0 24 24' aria-hidden='true'><rect width='18' height='11' x='3' y='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></div><h3>零广告 · 三端通用 Pro</h3><p>离线阅读永久免费无广告；Pro（¥100/月、¥800/年 或 ¥1,500 终身买断，Mac/iPhone/iPad 通用）解锁编辑、文件夹搜索、PDF/长图导出、Git 历史与护眼主题。纯本地离线运行。</p></div>
     </div>
 
     <div class="screenshots">
